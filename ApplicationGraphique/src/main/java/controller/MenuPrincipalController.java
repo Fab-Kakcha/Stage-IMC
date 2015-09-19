@@ -9,15 +9,15 @@ import java.util.Iterator;
 
 import javax.swing.JFileChooser;
 
-import main.*;
 import manager.*;
 import model.*;
+import view.*;
 
 import org.apache.log4j.Logger;
 
-import view.ConfigGenerateurProjetUI;
-import view.CreerProjetUI;
-import view.MenuPrincipalUI;
+import Agadir.ApplicationGraphique.CustomException;
+import Agadir.ApplicationGraphique.DataBaseManagement;
+
 
 public class MenuPrincipalController {
 
