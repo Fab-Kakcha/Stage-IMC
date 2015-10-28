@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<languages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/LanguageDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/LanguageDefinition-2.0.0 ../../../../../sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/language/LanguageDefinition-2.0.0.xsd ">
+	
+	<!-- Définition du langage sql pour postgres
+	-->
+	<language name="sql_postgres" genericEnclosing="()">
+	
+	   <type name="String" className="TEXT" package="">
+			<validation>
+				<pattern value=".*"/>
+				<nullable value="true"/>
+			</validation>
+			<formatter template="'$1'"/>
+		</type>
+       <type name="Integer" className="INTEGER" package="">
+			<validation>
+				<pattern value="[0-9]+"/>
+				<nullable value="true"/>
+			</validation>
+		</type>
+       <type name="Short" className="SMALLINT" package="">
+			<validation>
+				<pattern value="[0-9]+"/>
+				<nullable value="true"/>
+			</validation>
+		</type>
+       <type name="Long" className="BIGINT" package="">
+			<validation>
+				<pattern value="[0-9]+"/>
+				<nullable value="true"/>
+			</validation>
+		</type>
+       <type name="Boolean" className="BOOL" package="">
+			<validation>
+				<pattern value="true|false"/>
+				<nullable value="true"/>
+			</validation>
+			<formatter template="'$1'"/>
+		</type>
+       <type name="Double" className="DOUBLE PRECISION" package="">
+			<validation>
+				<pattern value="[0-9.]+"/>
+				<nullable value="true"/>
+			</validation>
+		</type>
+       <type name="Float" className="DOUBLE PRECISION" package="">
+			<validation>
+				<pattern value="[0-9.]+"/>
+				<nullable value="true"/>
+			</validation>
+		</type>
+       <type name="Date" className="DATE" package="" />
+       <type name="Byte" className="byte" package="" />
+       <type name="ByteArray" className="bytea" package="" />
+       
+       <type name="Serial" className="SERIAL" package="" />
+       <type name="BigSerial" className="BIGSERIAL" package="" />
+		
+		<generic package="" name="Character" className="character" nbelements="1"/>
+	</language>
+</languages>

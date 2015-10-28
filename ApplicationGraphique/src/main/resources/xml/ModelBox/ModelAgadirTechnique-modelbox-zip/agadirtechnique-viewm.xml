@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewm name="AgadirTechniqueViewm" project="AgadirTechnique" version="4.0.0" xmlns="http://www.imc-fr.com/ViewModelDefinition-2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- AgadirTechnique:agadir.ILibelle -->
+	<component type="vue" name="ILibelleVue" pack="AgadirTechnique:agadir" object="AgadirTechnique:agadir.ILibelle">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+		<field name="actif"/>
+		<field name="ordre"/>
+	</component>
+
+<!-- AgadirTechnique:agadir.Document -->
+	<vueModel name="DocumentModel" pack="AgadirTechnique:agadir" object="AgadirTechnique:agadir.Document"/>
+	
+	<component type="vue" name="DocumentVue" pack="AgadirTechnique:agadir" object="AgadirTechnique:agadir.Document" vueModel="AgadirTechnique:agadir.DocumentModel">
+		<field name="nomAffichable"/>
+		<field name="nomFichierOrigine"/>
+		<field name="taille"/>
+		<field name="format"/>
+		<field name="emplacement"/>
+		<select name="typeDocument" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="DocumentEdit" pack="AgadirTechnique:agadir" object="AgadirTechnique:agadir.Document" vueModel="AgadirTechnique:agadir.DocumentModel"
+		titre="Edition Document">
+		<vue name="vue" component="AgadirTechnique:agadir.DocumentVue"/>
+
+		<grid name="grid" component="AgadirTechnique:agadir.RechercheDocument"/>
+
+		<action name="Enregistrer" component="AgadirTechnique:agadir.DocumentEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirTechnique:agadir.DocumentEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheDocument" pack="AgadirTechnique:agadir" object="AgadirTechnique:agadir.Document"
+		titre="Recherche Document">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="nomAffichable"/>
+		<colonne name="format"/>
+		
+		<actionColonne name="Modifier" component="AgadirTechnique:agadir.DocumentEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirTechnique:agadir.DocumentEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirTechnique:agadir.DocumentEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirTechnique:agadir.TypeDocument -->
+	<vueModel name="TypeDocumentModel" pack="AgadirTechnique:agadir" object="AgadirTechnique:agadir.TypeDocument"/>
+	
+	<component type="vue" name="TypeDocumentVue" pack="AgadirTechnique:agadir" object="AgadirTechnique:agadir.TypeDocument" vueModel="AgadirTechnique:agadir.TypeDocumentModel">
+		<refComponent name="typeCode" component="AgadirTechnique:agadir.ILibelleVue"/>
+	</component>
+
+	<component type="edit" name="TypeDocumentEdit" pack="AgadirTechnique:agadir" object="AgadirTechnique:agadir.TypeDocument" vueModel="AgadirTechnique:agadir.TypeDocumentModel"
+		titre="Edition TypeDocument">
+		<vue name="vue" component="AgadirTechnique:agadir.TypeDocumentVue"/>
+
+		<grid name="grid" component="AgadirTechnique:agadir.RechercheTypeDocument"/>
+
+		<action name="Enregistrer" component="AgadirTechnique:agadir.TypeDocumentEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirTechnique:agadir.TypeDocumentEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeDocument" pack="AgadirTechnique:agadir" object="AgadirTechnique:agadir.TypeDocument"
+		titre="Recherche TypeDocument">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirTechnique:agadir.TypeDocumentEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirTechnique:agadir.TypeDocumentEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirTechnique:agadir.TypeDocumentEdit" action="Editer"/>
+	</component>
+	
+	<!-- AgadirTechnique:agadir.Signature -->
+	<vueModel name="SignatureModel" pack="AgadirTechnique:agadir" object="AgadirTechnique:agadir.Signature"/>
+	
+	<component type="vue" name="SignatureVue" pack="AgadirTechnique:agadir" object="AgadirTechnique:agadir.Signature" vueModel="AgadirTechnique:agadir.SignatureModel">
+		<field name="date"/>
+		<field name="lieu"/>
+	</component>
+
+	<component type="edit" name="SignatureEdit" pack="AgadirTechnique:agadir" object="AgadirTechnique:agadir.Signature" vueModel="AgadirTechnique:agadir.SignatureModel"
+		titre="Edition Signature">
+		<vue name="vue" component="AgadirTechnique:agadir.SignatureVue"/>
+
+		<grid name="grid" component="AgadirTechnique:agadir.RechercheSignature"/>
+
+		<action name="Enregistrer" component="AgadirTechnique:agadir.SignatureEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirTechnique:agadir.SignatureEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheSignature" pack="AgadirTechnique:agadir" object="AgadirTechnique:agadir.Signature"
+		titre="Recherche Signature">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="date"/>
+		<colonne name="lieu"/>
+		
+		<actionColonne name="Modifier" component="AgadirTechnique:agadir.SignatureEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirTechnique:agadir.SignatureEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirTechnique:agadir.SignatureEdit" action="Editer"/>
+	</component>
+
+</viewm>

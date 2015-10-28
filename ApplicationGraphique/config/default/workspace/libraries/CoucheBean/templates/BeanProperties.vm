@@ -1,0 +1,22 @@
+## #####
+## Générateur java de la couche métier IMC
+## Création d'un fichier de properties pour le chargement dans le persistance manager
+## 
+## @param generatedObject le model obm
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## #####
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+#Les implémentations des beans
+#foreach ( $object in ${generatedObject.objectsList} )
+## on filtre les objet abstrait et les interfaces
+#if ( ${object.abstract} == false && ${object.object} == true )
+#set ( $beanElementImpl = ${manager.getElement("{0}:{1}.{2}BeanImpl", ${object.modelId})} )
+${object.name}=${beanElementImpl.path}
+#end
+#end

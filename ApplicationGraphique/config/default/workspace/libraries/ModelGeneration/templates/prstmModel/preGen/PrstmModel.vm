@@ -1,0 +1,24 @@
+##
+## Générateur Xml
+## Création d'un model prstm à partir de l'obm et du datam
+##
+## $generatedObject = model datam
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 06/10/2009
+##
+<?xml version="1.0" encoding="UTF-8"?>
+<prstm name="${generatedObject.project}Prstm" project="${generatedObject.project}" version="${generatedObject.version}" xmlns="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0">
+
+
+##
+## on génére pour les objects
+#foreach( $dtm in ${generatedObject.getObjectsList()} )
+##
+## si le datam n'étend pas d'un obm on ne le prend pas
+#if( ${dtm.obmObjectName} != "" ) 
+#generate( "ModelGeneration:PrstmObjectPreGen" )
+#end
+#end
+
+</prstm>

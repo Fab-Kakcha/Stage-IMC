@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<languages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/LanguageDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/LanguageDefinition-2.0.0 ../../../../../sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/language/LanguageDefinition-2.0.0.xsd ">
+	
+	<!--
+       Définition des éléments de base du langage xsd
+    -->
+	<language name="xsd" separator=":">
+		
+		<type name="AnyURI" className="anyURI" package="" />
+		<type name="Base64Binary" className="base64Binary" package="" />
+		<type name="Boolean" className="boolean" package="">
+			<validation>
+				<pattern value="true|false"/>
+				<nullable value="true"/>
+			</validation>
+		</type>
+        <type name="Date" className="date" package="" />
+        <type name="DateTime" className="dateTime" package="" />
+			<type name="DateTimeStamp" className="dateTimeStamp" package="" />
+        <type name="Decimal" className="decimal" package="" />
+			<type name="Integer" className="integer" package="">
+				<validation>
+					<pattern value="[0-9]+"/>
+					<nullable value="true"/>
+				</validation>
+			</type>
+				<type name="Long" className="long" package="">
+					<validation>
+						<pattern value="[0-9]+"/>
+						<nullable value="true"/>
+					</validation>
+				</type>
+					<type name="Int" className="int" package="">
+						<validation>
+							<pattern value="[0-9]+"/>
+							<nullable value="true"/>
+						</validation>
+					</type>
+						<type name="Short" className="short" package="">
+							<validation>
+								<pattern value="[0-9]+"/>
+								<nullable value="true"/>
+							</validation>
+						</type>
+							<type name="Byte" className="byte" package="" />
+				<type name="NonNegativeInteger" className="nonNegativeInteger" package="" />
+					<type name="PositiveInteger" className="positiveInteger" package="" />
+					<type name="UnsignedLong" className="unsignedLong" package="" />
+						<type name="UnsignedInt" className="unsignedInt" package="" />
+							<type name="UnsignedShort" className="unsignedShort" package="" />
+								<type name="UnsignedByte" className="unsignedByte" package="" />
+				<type name="NonPositiveInteger" className="nonPositiveInteger" package="" />
+					<type name="NegativeInteger" className="negativeInteger" package="" />
+        <type name="Double" className="double" package="">
+			<validation>
+				<pattern value="[0-9.]+"/>
+				<nullable value="true"/>
+			</validation>
+		</type>
+        <type name="Duration" className="duration" package="" />
+			<type name="DayTimeDuration" className="dayTimeDuration" package="" />
+			<type name="YearMonthDuration" className="yearMonthDuration" package="" />
+        <type name="Float" className="float" package="">
+			<validation>
+				<pattern value="[0-9.]+"/>
+				<nullable value="true"/>
+			</validation>
+		</type>
+        <type name="GDay" className="gDay" package="" />
+        <type name="GMonth" className="gMonth" package="" />
+        <type name="GMonthDay" className="gMonthDay" package="" />
+        <type name="GYear" className="gYear" package="" />
+        <type name="GYearMonth" className="gYearMonth" package="" />
+        <type name="HexBinary" className="hexBinary" package="" />
+        <type name="String" className="string" package="">
+			<validation>
+				<pattern value=".*"/>
+				<nullable value="true"/>
+			</validation>
+		</type>
+			<type name="NormalizedString" className="normalizedString" package="" />
+				<type name="Token" className="token" package="" />
+					<type name="Language" className="language" package="" />
+					<type name="Name" className="Name" package="" />
+						<type name="NCName" className="NCName" package="" />
+					<type name="NMTOKEN" className="NMTOKEN" package="" />
+						<type name="NMTOKENS" className="NMTOKENS" package="" />
+        <type name="Time" className="time" package="" />
+
+		<!-- mapping des types java -->
+		<type name="Object" className="anyType" package="" />
+		<type package="" name="Character" className="string">
+			<validation>
+				<pattern value="."/>
+				<nullable value="false"/>
+			</validation>
+		</type>
+		
+	</language>
+</languages>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prstm name="AgadirReferentielContactPrstm" project="AgadirReferentielContact" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/PrstmModel/src/main/resources/com/imcfr/generateur/sax/persistancemodel/PersistanceModelDefinition-2.0.0.xsd ">
+
+	<!-- iso -->
+	<object name="Sexe" pack="AgadirReferentielContact:referentiel.iso" datamObject="AgadirReferentielContact:referentiel.sexe"/>
+
+	
+		<!-- insee -->
+	<object name="Naf2003" pack="AgadirReferentielContact:referentiel.insee" datamObject="AgadirReferentielContact:referentiel.naf_2003"/>
+	<object name="APE" pack="AgadirReferentielContact:referentiel.insee" datamObject="AgadirReferentielContact:referentiel.ape"/>
+	<object name="Naf2008" pack="AgadirReferentielContact:referentiel.insee" datamObject="AgadirReferentielContact:referentiel.naf_2008"/>
+	<object name="SituationJuridique" pack="AgadirReferentielContact:referentiel.insee" datamObject="AgadirReferentielContact:referentiel.situation_juridique"/>
+	<object name="TypeNaf" pack="AgadirReferentielContact:referentiel.insee" datamObject="AgadirReferentielContact:referentiel.type_naf"/>
+	
+	<!-- legifrance -->
+	<object name="ConventionCollective" pack="AgadirReferentielContact:referentiel.legifrance" datamObject="AgadirReferentielContact:referentiel.convention_collective">
+		<oneToMany name="urls">
+			<refDatamObject name="AgadirReferentielContact:referentiel.convention_collective__url"/>
+			<references>
+				<reference datamField="ref__convention_collective__id" refDatamField="id"/>
+			</references>
+			<inverseReferences>
+				<inverseReference datamField="fk__url__id" refDatamField="id"/>
+			</inverseReferences>
+			<rules>
+				<persistance>
+					<cascade value="ALL"/>
+					<lazy value="true"/>
+				</persistance>
+			</rules>
+		</oneToMany>
+	</object>
+	
+	<!-- agadir -->
+	<object name="SecteurReference" pack="AgadirReferentielContact:referentiel.agadir" datamObject="AgadirReferentielContact:referentiel.secteur_reference"/>
+	<object name="RegimeSocial" pack="AgadirReferentielContact:referentiel.agadir" datamObject="AgadirReferentielContact:referentiel.regime_social"/>
+	
+	
+	
+	<!-- rgi -->
+	<object name="TypeTelephonie" pack="AgadirReferentielContact:referentiel.rgi" datamObject="AgadirReferentielContact:referentiel.type_telephonie"/>
+	<object name="TypeRepetition" pack="AgadirReferentielContact:referentiel.rgi" datamObject="AgadirReferentielContact:referentiel.type_repetition"/>
+	<object name="TypeAdresse" pack="AgadirReferentielContact:referentiel.rgi" datamObject="AgadirReferentielContact:referentiel.type_adresse"/>
+	<object name="TypeMail" pack="AgadirReferentielContact:referentiel.rgi" datamObject="AgadirReferentielContact:referentiel.type_mail"/>
+	<object name="TypeURL" pack="AgadirReferentielContact:referentiel.rgi" datamObject="AgadirReferentielContact:referentiel.type_url"/>
+	<object name="TypeVoie" pack="AgadirReferentielContact:referentiel.rgi" datamObject="AgadirReferentielContact:referentiel.type_voie"/>
+
+
+<object name="ModaliteCommunication" pack="AgadirReferentielContact:referentiel.format" datamObject="AgadirReferentielContact:referentiel.format.modalite_communication" extendsType="Joined">
+	</object>
+	
+	<object name="Mail" pack="AgadirReferentielContact:referentiel.format" datamObject="AgadirReferentielContact:referentiel.format.mail">
+		<!-- référentiel -->
+		<manyToOne name="typeMail">
+			<references>
+				<reference datamField="fk__type_mail__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+	
+	<object name="Telephonie" pack="AgadirReferentielContact:referentiel.format" datamObject="AgadirReferentielContact:referentiel.format.telephonie">
+		<!-- référentiel -->
+		<manyToOne name="typeTelephonie">
+			<references>
+				<reference datamField="fk__type_telephonie__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+	
+	<object name="URL" pack="AgadirReferentielContact:referentiel.format" datamObject="AgadirReferentielContact:referentiel.format.url">
+		<!-- référentiel -->
+		<manyToOne name="typeURL">
+			<references>
+				<reference datamField="fk__type_url__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+	
+	<object name="Adresse" pack="AgadirReferentielContact:referentiel.format" datamObject="AgadirReferentielContact:referentiel.format.adresse">
+		<!-- référentiel -->
+		<manyToOne name="typeAdresse">
+			<references>
+				<reference datamField="fk__type_adresse__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+		<manyToOne name="repetition">
+			<references>
+				<reference datamField="fk__type_repetition__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+		<manyToOne name="localisation">
+			<references>
+				<reference datamField="fk__localisation__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+		<!-- relations -->
+		<manyToOne name="typeVoie">
+			<references>
+				<reference datamField="fk__type_voie__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="true"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+
+
+	<object name="TypeCommunication" pack="AgadirReferentielContact:referentiel.format" datamObject="AgadirReferentielContact:referentiel.format.type_communication"/>
+</prstm>

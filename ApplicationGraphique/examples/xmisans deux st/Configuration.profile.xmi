@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_koCGUGHwEeWSgJl_KVJsYA" name="Configuration" metaclassReference="_koCGYGHwEeWSgJl_KVJsYA _koCGYWHwEeWSgJl_KVJsYA">
+  <eAnnotations xmi:id="_koCGUWHwEeWSgJl_KVJsYA" source="Objing">
+    <contents xmi:type="uml:Property" xmi:id="_koCGUmHwEeWSgJl_KVJsYA" name="Module">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_koCGU2HwEeWSgJl_KVJsYA" value="b022a933-8445-4c84-b3f2-4671eb751676"/>
+    </contents>
+    <contents xmi:type="uml:Property" xmi:id="_koCGVGHwEeWSgJl_KVJsYA" name="ID">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_koCGVWHwEeWSgJl_KVJsYA" value="73472114-b52a-4dd9-8b02-40620b1c1c35"/>
+    </contents>
+  </eAnnotations>
+  <eAnnotations xmi:id="_koCGVmHwEeWSgJl_KVJsYA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_koCGV2HwEeWSgJl_KVJsYA" name="Configuration" nsURI="http:///schemas/Configuration/_knFEQWHwEeWSgJl_KVJsYA/0" nsPrefix="Configuration">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_koCGWGHwEeWSgJl_KVJsYA" name="Project">
+        <eAnnotations xmi:id="_koCGWWHwEeWSgJl_KVJsYA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_koCGYmHwEeWSgJl_KVJsYA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_koCGWmHwEeWSgJl_KVJsYA" name="base_Package" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Package"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_koCGXGHwEeWSgJl_KVJsYA" name="TagConfg">
+        <eAnnotations xmi:id="_koCGXWHwEeWSgJl_KVJsYA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_koCGaWHwEeWSgJl_KVJsYA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_koCGXmHwEeWSgJl_KVJsYA" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_koCGYGHwEeWSgJl_KVJsYA">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+  </elementImport>
+  <elementImport xmi:id="_koCGYWHwEeWSgJl_KVJsYA">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_koCGYmHwEeWSgJl_KVJsYA" name="Project">
+    <eAnnotations xmi:id="_koCGY2HwEeWSgJl_KVJsYA" source="Objing">
+      <contents xmi:type="uml:Property" xmi:id="_koCGZGHwEeWSgJl_KVJsYA" name="ID">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_koCGZWHwEeWSgJl_KVJsYA" value="868d41e4-207b-4cff-ab00-d746c5cd21a7"/>
+      </contents>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_koCGZmHwEeWSgJl_KVJsYA" name="base_Package" association="_koCGZ2HwEeWSgJl_KVJsYA">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_koCGZ2HwEeWSgJl_KVJsYA" name="Package_Project" memberEnd="_koCGaGHwEeWSgJl_KVJsYA _koCGZmHwEeWSgJl_KVJsYA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_koCGaGHwEeWSgJl_KVJsYA" name="extension_Project" type="_koCGYmHwEeWSgJl_KVJsYA" aggregation="composite" association="_koCGZ2HwEeWSgJl_KVJsYA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_koCGaWHwEeWSgJl_KVJsYA" name="TagConfg">
+    <eAnnotations xmi:id="_koCGamHwEeWSgJl_KVJsYA" source="Objing">
+      <contents xmi:type="uml:Property" xmi:id="_koCGa2HwEeWSgJl_KVJsYA" name="ID">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_koCGbGHwEeWSgJl_KVJsYA" value="8e8151f0-b41f-42db-ba39-fdc034349b94"/>
+      </contents>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_koCGbWHwEeWSgJl_KVJsYA" name="base_Class" association="_koCGbmHwEeWSgJl_KVJsYA">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_koCGbmHwEeWSgJl_KVJsYA" name="Class_TagConfg" memberEnd="_koCGb2HwEeWSgJl_KVJsYA _koCGbWHwEeWSgJl_KVJsYA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_koCGb2HwEeWSgJl_KVJsYA" name="extension_TagConfg" type="_koCGaWHwEeWSgJl_KVJsYA" aggregation="composite" association="_koCGbmHwEeWSgJl_KVJsYA"/>
+  </packagedElement>
+</uml:Profile>

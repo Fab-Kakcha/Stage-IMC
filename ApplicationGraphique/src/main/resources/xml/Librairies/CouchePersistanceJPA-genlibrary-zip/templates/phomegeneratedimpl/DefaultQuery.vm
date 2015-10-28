@@ -1,0 +1,198 @@
+## #####
+## Générateur java de la couche persistance IMC
+## Création des méthodes default query (search, count, autocomplete)
+## 
+## @param generatedObject le prstm object
+## @param $beanElement le nom de l'interface bean de l'objet
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+## on récup le pobject
+
+    /* (non-Javadoc)
+     * @see ${manager.getElement("PHome").path}${esc.d}getDefaultSearch(
+     * 		${manager.getElement("JpaEntityManager").path}, ${manager.getElement("QueryFilter").path})
+     */
+    @Override
+    public ${manager.getElement("IList<?>").path} getDefaultSearch(${manager.getElement("JpaEntityManager").path} em, ${manager.getElement("QueryFilter").path} filter)
+            throws ${manager.getElement("PException").path}
+            , ${manager.getElement("ExceptionInconnue").path} {
+        try {
+			${manager.getElement("QueryHelper").path} query
+				= new ${manager.getElement("QueryHelper").path}("SELECT");
+			
+			${manager.getElement("IList<String>").path} listeColonnes = filter.getListeColonnes();
+			if (listeColonnes != null && listeColonnes.size() > 0) {
+				query.add(" "+filter.getColonnes("x"));
+			} else {
+#set ( $first = true )
+#foreach ( $field in ${obmObject.allFieldsList})
+#if ( ${field.list} == false && ${manager.isBaseType(${field.type})} )
+#if ( ${first} == true )
+#set ( $first = false )
+				query.add(" x.${field.name}");
+#else
+				query.add(", x.${field.name}");
+#end
+#end
+#end
+			}
+
+			query.add(" FROM ${obmObject.name} x");
+			if (filter.getJoins() != null && filter.getJoins().size() > 0) {
+				java.lang.String fetchJoins = "";
+				for (String str : filter.getJoins()) {
+					fetchJoins += " LEFT JOIN x."+str;
+				}
+				query.add(fetchJoins);
+			}
+			
+			if (filter.sizeFilter() != 0) {
+				query.add(" WHERE 1=1");
+				
+#foreach ( $field in ${obmObject.allFieldsList})
+#if ( ${field.list} == false && ${manager.isBaseType(${field.type})} )
+				if (filter.containsFilter("${field.name}")) {
+#if ( ${field.type} == "Base:String")
+					query.add(" AND x.${field.name} like(:param_${field.name})");
+					query.addParam("param_${field.name}", filter.getFilter("${field.name}") + "%");
+#else
+					query.add(" AND x.${field.name} = :param_${field.name}");
+					query.addParam("param_${field.name}", filter.getFilter("${field.name}"));
+#end
+				}
+				
+#end
+#end
+			}
+
+			if (filter.sizeOrder() != 0) {
+				query.add(" ORDER BY");
+				boolean first = true;
+				for (String key : filter.keySetOrder()) {
+					if (first == false) {
+						query.add(",");	
+					}
+#foreach ( $field in ${obmObject.allFieldsList})
+#if ( ${field.list} == false && ${manager.isBaseType(${field.type})} )
+					if (key.equals("${field.name}")) {
+						query.add(" x.${field.name} " + filter.getOrder(key));
+					}
+#end
+#end
+					first = false;
+				}
+			}
+			
+            return query.getListByPage(em, filter.getIndiceFirst(), filter.getNbResults());
+        } catch (${manager.getElement("RuntimeException").path} e) {
+            throw new ${manager.getElement("PException").path}(e.getMessage(), e);
+        } catch (${manager.getElement("Exception").path} e) {
+            throw new ${manager.getElement("ExceptionInconnue").path}(e);
+        }
+    }
+    
+    /* (non-Javadoc)
+     * @see ${manager.getElement("PHome").path}${esc.d}getCountDefaultSearch(
+     * 		${manager.getElement("JpaEntityManager").path}, ${manager.getElement("QueryFilter").path})
+     */
+    @Override
+    public ${manager.getElement("Long").path} getCountDefaultSearch(${manager.getElement("JpaEntityManager").path} em, ${manager.getElement("QueryFilter").path} filter)
+            throws ${manager.getElement("PException").path}
+            , ${manager.getElement("ExceptionInconnue").path} {
+        try {
+			${manager.getElement("QueryHelper").path} query
+				= new ${manager.getElement("QueryHelper").path}(
+					"SELECT COUNT(x) FROM ${obmObject.name} x"
+				);
+
+			if (filter.getJoins() != null && filter.getJoins().size() > 0) {
+				java.lang.String fetchJoins = "";
+				for (String str : filter.getJoins()) {
+					fetchJoins += " LEFT JOIN x."+str;
+				}
+				query.add(fetchJoins);
+			}
+			
+			if (filter.sizeFilter() != 0) {
+				query.add(" WHERE 1=1");
+				
+#foreach ( $field in ${obmObject.allFieldsList})
+#if ( ${field.list} == false && ${manager.isBaseType(${field.type})} )
+				if (filter.containsFilter("${field.name}")) {
+#if ( ${field.type} == "Base:String")
+					query.add(" AND x.${field.name} like(:param_${field.name})");
+					query.addParam("param_${field.name}", filter.getFilter("${field.name}") + "%");
+#else
+					query.add(" AND x.${field.name} = :param_${field.name}");
+					query.addParam("param_${field.name}", filter.getFilter("${field.name}"));
+#end
+				}
+				
+#end
+#end
+			}
+			
+            return query.getCount(em);
+        } catch (${manager.getElement("RuntimeException").path} e) {
+            throw new ${manager.getElement("PException").path}(e.getMessage(), e);
+        } catch (${manager.getElement("Exception").path} e) {
+            throw new ${manager.getElement("ExceptionInconnue").path}(e);
+        }
+    }
+    
+    /* (non-Javadoc)
+     * @see ${manager.getElement("PHome").path}${esc.d}getDefaultAutoComplete(
+			${manager.getElement("JpaEntityManager").path}, ${manager.getElement("QueryFilter").path})
+     */
+    @Override
+    public ${manager.getElement("IList<?>").path} getDefaultAutoComplete(${manager.getElement("JpaEntityManager").path} em, ${manager.getElement("QueryFilter").path} filter)
+            throws ${manager.getElement("PException").path}
+            , ${manager.getElement("ExceptionInconnue").path} {
+        try {
+			${manager.getElement("IList<?>").path} res = new ${manager.getElement("List<Object>").path}();
+
+			java.lang.String fetchJoins = "";
+			if (filter.getJoins() != null && filter.getJoins().size() > 0) {
+				for (String str : filter.getJoins()) {
+					fetchJoins += " LEFT JOIN x."+str;
+				}
+			}
+			
+			if (filter == null || filter.sizeFilter() == 0) {
+				res = new  ${manager.getElement("List<java.lang.Object[]>").path}();
+#foreach ( $field in ${obmObject.allFieldsList})
+#if ( ${field.list} == false && ${manager.isBaseType(${field.type})} )
+
+			} else if (filter.containsFilter("${field.name}")) {
+				${manager.getElement("QueryHelper").path} query
+					= new ${manager.getElement("QueryHelper").path}(
+						"SELECT x.${field.name} FROM ${obmObject.name} x "+fetchJoins+" WHERE"
+					);
+
+				query.add(" x.${field.name} like(:param_autocomplete)");
+				query.addParam("param_autocomplete", filter.getFilter("${field.name}") + "%");
+				res = query.getList(em);			
+#end
+#end
+			}
+
+			return res;
+        } catch (${manager.getElement("RuntimeException").path} e) {
+            throw new ${manager.getElement("PException").path}(e.getMessage(), e);
+        } catch (${manager.getElement("Exception").path} e) {
+            throw new ${manager.getElement("ExceptionInconnue").path}(e);
+        }
+    }
+

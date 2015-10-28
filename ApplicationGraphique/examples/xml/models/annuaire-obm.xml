@@ -1,0 +1,93 @@
+<obm name="AgadirAnnuaireObm" project="AgadirAnnuaire" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ObjectModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/ObjectModelDefinition-2.0.0 ../../../../../../IMC/CodeGenerateur/sources/CodeGeneratorModel/src/main/resources/com/imcfr/generateur/sax/objectmodel/ObjectModelDefinition-2.0.0.xsd ">
+
+	<package name="annuaire" completeName="com.imcfr.agadir.annuaire"/>
+	
+	<object name="CompteUtilisateur" pack="AgadirAnnuaire:annuaire" obmExtends="AgadirTechnique:agadir.Libelle">
+		<field name="email" type="AgadirContact:contact.Mail" null="false" />
+		<field name="recevoirMail" type="Base:Boolean" null="true" />
+		<field name="identite" type="AgadirContact:contact.Identite" null="false" />
+		<field name="telephone" type="AgadirContact:contact.Telephonie" null="false" />
+		<field name="adresse" type="AgadirContact:contact.Adresse" null="false" />
+		<field name="site" type="AgadirAnnuaire:annuaire.Site" null="false" />
+		<field name="profils" type="ImcSecurite:securite.Profil" list="true" />
+		<field name="login" type="Base:String" null="false" />
+		<field name="password" type="Base:String" null="false" />
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	
+	<object name="AnnuaireRessource" pack="AgadirAnnuaire:annuaire">
+		<field name="id" type="Base:Long" id="true" null="false" />
+		<field name="ressource" type="ImcSecurite:securite.Ressource" null="false" />
+		<field name="actions" type="ImcSecurite:securite.Action" list="true" />
+	</object>
+	
+	<object name="Site" pack="AgadirAnnuaire:annuaire" obmExtends="AgadirAnnuaire:annuaire.AnnuaireRessource">
+		<field name="libelle" type="Base:String" null="false" />
+		<field name="contact" type="AgadirContact:contact.Contact" null="false" />
+		<field name="saisieLigne" type="Base:Character&lt;1&gt;" null="true" />
+		<field name="nbConvEncours" type="Base:Integer" null="true" />
+		<field name="siret" type="Base:String" null="true" />
+		<field name="nbMaxConv" type="Base:Integer" null="true" />
+		<field name="adresse" type="AgadirContact:contact.Adresse" null="true" />
+		<field name="raisonSociale" type="Base:String" null="true" />
+		<field name="niveau" type="AgadirAnnuaire:annuaire.Niveau" null="true" />
+		<field name="type" type="AgadirAnnuaire:annuaire.TypeSite" null="true" />
+		<field name="reseau" type="AgadirAnnuaire:annuaire.Reseau" null="true" />
+		<field name="regions" type="AgadirReferentielGeographique:referentiel.hexaposte.Region" list="true" />
+		<field name="departements" type="AgadirReferentielGeographique:referentiel.hexaposte.Departement" list="true" />
+	</object>
+	
+	<object name="Niveau" pack="AgadirAnnuaire:annuaire" obmExtends="AgadirTechnique:agadir.Libelle">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	
+	<object name="Reseau" pack="AgadirAnnuaire:annuaire" obmExtends="AgadirTechnique:agadir.Libelle">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	
+	<object name="TypeSite" pack="AgadirAnnuaire:annuaire" obmExtends="AgadirTechnique:agadir.Libelle">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	
+	<object name="ProfilUtilisateurSite" pack="AgadirAnnuaire:annuaire">
+		<field name="id" type="Base:Long" id="true" null="false" />
+		<field name="site" type="AgadirAnnuaire:annuaire.Site" null="false" />
+		<field name="profil" type="ImcSecurite:securite.Profil" null="false" />
+		<field name="utilisateur" type="AgadirAnnuaire:annuaire.CompteUtilisateur" null="false" />
+	</object>
+		
+	
+</obm>
+
+
+
+
+
+
+
+
+

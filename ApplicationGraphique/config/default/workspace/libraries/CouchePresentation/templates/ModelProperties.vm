@@ -1,0 +1,19 @@
+## #####
+## Générateur java de la couche présentation IMC
+## Création d'un fichier de properties pour le chargement du manager de model
+## 
+## @param generatedObject le model viewm
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## #####
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+#Les models de présentation de ${model.project}
+#foreach ( $mod in ${generatedObject.vueModelsList} )
+#set ( $mElement = ${manager.getElement("{0}:{1}.{2}VueModel", ${mod.modelId})} )
+${mod.name}=${mElement.path}
+#end

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edim name="AgadirTechniqueEdim" project="AgadirTechnique" version="4.0.0"
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xmlns="http://www.imc-fr.com/EdiModelDefinition-2.0.0"
+	  xsi:schemaLocation="http://www.imc-fr.com/EdiModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/EdimModel/src/main/resources/com/imcfr/generateur/sax/edimodel/EdiModelDefinition-2.0.0.xsd ">
+
+	<targetNamespace alias="agadirtechnique" namespace="http://www.dgefp.emploi.gouv.fr/Agadir" schemaLocation="AgadirTechnique.xsd"/>
+	
+	<element name="edi" type="t::AgadirTechnique:Enveloppe"/>
+	
+	<type name="Enveloppe" final="contenu">
+		<elements>
+			<element xsi:type="element" name="entete" type="t::AgadirTechnique:Entete"/>
+		</elements>
+	</type>
+	
+	<type name="Entete" final="application">
+		<elements>
+			<element xsi:type="element" name="transmission" type="t::AgadirTechnique:Transmission"/>
+		</elements>
+	</type>
+	
+	<type name="Transmission" final="false">
+		<elements>
+			<element xsi:type="element" name="from" type="t::AgadirTechnique:Participant"/>
+			<element xsi:type="element" name="to" type="t::AgadirTechnique:Participant" minOccurs="0" nillable="true"/>
+		</elements>
+	</type>
+	
+	<type name="Participant" final="false" inherits="t::AgadirTechnique:TypeCode">
+	</type>
+	
+	
+	<type name="Libelle" obmObject="AgadirTechnique:agadir.Libelle">
+		<elements>
+			<element xsi:type="elementObm" obmField="codeLibelle" name="code"/>
+			<element xsi:type="elementObm" obmField="intitule"/>
+		</elements>
+	</type>
+	<typeSimple name="TypeCodeTypeAttr">
+		<restriction base="Base:String" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<xs:minLength value="1"/>
+		</restriction>
+	</typeSimple>
+	<typeSimple name="TypeString256Max">
+		<restriction base="Base:String" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="256"/>
+		</restriction>
+	</typeSimple>
+	<type name="TypeCode" obmObject="AgadirTechnique:agadir.TypeCode">
+		<attribute xsi:type="attributeObm" obmField="codeLibelle" name="codeType" type="ts::AgadirTechnique:TypeCodeTypeAttr" use="required"/>
+	</type>
+	<typeSimple name="TypeCodeValeur">
+		<restriction base="ts::AgadirTechnique:TypeString256Max"></restriction>
+		<attribute name="codeType" type="ts::AgadirTechnique:TypeCodeTypeAttr" use="required"/>
+	</typeSimple>
+	
+	<typeSimple name="TypeDate">
+		<restriction base="Base:Date"></restriction>
+		<attribute name="codeType" type="ts::AgadirTechnique:TypeCodeTypeAttr" use="required"/>
+	</typeSimple>
+	<typeSimple name="TypeDateHeure">
+		<restriction base="Base:DateTime"></restriction>
+		<attribute name="codeType" type="ts::AgadirTechnique:TypeCodeTypeAttr" use="required"/>
+	</typeSimple>
+	
+	<typeSimple name="TypeSiret">
+		<restriction base="Base:String" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<xs:length value="14"/>
+		</restriction>
+	</typeSimple>
+	<typeSimple name="TypeSiren">
+		<restriction base="Base:String" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<xs:length value="9"/>
+		</restriction>
+	</typeSimple>
+	
+	
+	<type name="Document" obmObject="AgadirTechnique:agadir.Document" inherits="t::AgadirTechnique:TypeCode">
+		<elements>
+			<element xsi:type="elementObm" obmField="nomAffichable"/>
+			<element xsi:type="elementObm" obmField="nomFichierOrigine"/>
+			<element xsi:type="elementObm" obmField="taille"/>
+			<element xsi:type="elementObm" obmField="format"/>
+			<element xsi:type="elementObm" obmField="emplacement"/>
+		</elements>
+	</type>
+	
+	<type name="TypeSignature">
+		<elements>
+			<element xsi:type="element" name="date" type="ts::AgadirTechnique:TypeDate"/>
+			<element xsi:type="element" name="lieu" type="Base:String"/>
+		</elements>
+	</type>
+</edim>

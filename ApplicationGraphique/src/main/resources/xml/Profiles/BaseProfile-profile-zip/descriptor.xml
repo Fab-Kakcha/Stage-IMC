@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile name="Base" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.imc-fr.com/ProfileDefinition-1.0.0"
+	xsi:schemaLocation="http://www.imc-fr.com/ProfileDefinition-1.0.0 ../../../main/resources/com/imcfr/generateur/sax/profile/ProfileDefinition-1.0.0.xsd ">
+
+	<profilefile path="Base.profile.xmi" />
+
+
+	<interpreter stereotype="Validation" domaine="METIER"
+		className="com.imcfr.generateur.profiles.base.interpreter.ValidationInterpreter" />
+	<interpreter stereotype="Libelle" domaine="METIER"
+		className="com.imcfr.generateur.profiles.base.interpreter.LibelleInterpreter" />
+	<interpreter stereotype="TypeCode" domaine="METIER"
+		className="com.imcfr.generateur.profiles.base.interpreter.TypeCodeInterpreter" />
+	<interpreter stereotype="Referentiel" domaine="METIER"
+		className="com.imcfr.generateur.profiles.base.interpreter.ReferentielInterpreter" />
+	<interpreter stereotype="Document" domaine="METIER"
+		className="com.imcfr.generateur.profiles.base.interpreter.DocumentInterpreter" />
+	<interpreter stereotype="PropertyConfiguration" domaine="METIER"
+	className="com.imcfr.generateur.profiles.base.interpreter.PropertyInterpreter" />
+
+
+	<stereotypeMapping name="Validation">
+		<box name="AgadirTechnique" />
+	</stereotypeMapping>
+	<stereotypeMapping name="Libelle">
+		<box name="AgadirTechnique" />
+	</stereotypeMapping>
+	<stereotypeMapping name="TypeCode">
+		<box name="AgadirTechnique" />
+	</stereotypeMapping>
+	<stereotypeMapping name="Referentiel">
+		<box name="AgadirTechnique" />
+	</stereotypeMapping>
+	<stereotypeMapping name="Document">
+		<box name="AgadirTechnique" />
+	</stereotypeMapping>
+	<stereotypeMapping name="PropertyConfiguration">
+		<box name="AgadirTechnique" />
+	</stereotypeMapping>
+</profile>

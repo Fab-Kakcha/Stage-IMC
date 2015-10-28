@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prstm name="AgadirReferentielMesurePrstm" project="AgadirMesure" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/PrstmModel/src/main/resources/com/imcfr/generateur/sax/persistancemodel/PersistanceModelDefinition-2.0.0.xsd ">
+
+	<object name="EtatObjetProcedure" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.etat_objet_procedure"/>
+	<object name="Accompagnement" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.accompagnement"/>
+	<object name="DerniereSituation" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.derniere_situation"/>
+	<object name="Derogation" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.derogation"/>
+	<object name="NatureObjetProcedure" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.nature_objet_procedure"/>
+	<object name="Handicap" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.handicap"/>
+	
+	<object name="TypeTutorat" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.type_tutorat"/>
+	<object name="TypeOperation" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.type_operation"/>
+	<object name="TypeFinancement" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.type_financement"/>
+	<object name="TypeConvention" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.type_convention"/>
+	<object name="TypeAccompagnement" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.type_accompagnement"/>
+	<object name="TypeControle" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.type_controle"/>
+	<object name="TypeResultatControle" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.type_resultat_controle"/>
+	<object name="TypeDecision" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.type_decision"/>
+	<object name="TypeNotification" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.type_notification"/>
+
+	<object name="MinimumSocial" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.minimum_social"/>
+	<object name="TypeContratTravail" pack="AgadirMesure:referentiel" datamObject="AgadirMesure:referentiel.type_contrat_travail"/>
+
+</prstm>

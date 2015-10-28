@@ -1,0 +1,66 @@
+## ####
+## Générateur java de la couche persistance IMC
+## Création des méthodes getByRef et getCountByRef
+##
+## $generatedObject = prstm object
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## ####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pobject
+#set ( $obmObject = ${generatedObject.datamObject.obmObject} )
+#set ( $pElement = ${manager.getElement("{0}:{1}.{2}Bean", ${generatedObject.modelId})} )
+#if ( ${obmObject.parent} == true )
+#set ( $typeObject = "TypeObjet" )
+#else
+#set ( $typeObject = ${pElement.path} )
+#end
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+## on parcours les champs, si il sont de types ref à un autre objet, on va générer un getByRef
+#foreach ( $field in ${generatedObject.fields.values()} )
+##
+##on recup le field obm
+#set ( $obmField = ${generatedObject.datamObject.obmObject.getField(${field.name})} )
+#firstUpper( $fieldName, ${field.name} )
+#set ( $objectName = ${manager.getElement("{0}:{1}.{2}Bean", ${generatedObject.modelId}).className} )
+    /* (non-Javadoc)
+     * @see ${manager.getElement("{0}:{1}.S{2}", ${generatedObject.modelId}).path}${esc.h}getBy${fieldName}(${manager.getElement("{0}:{1}.{2}Bean", ${obmField.type}).path})
+     */
+    @Override
+    public ${manager.getElement("IList").path}<${pElement.path}>
+            getBy${fieldName}(${manager.getElement("{0}:{1}.{2}Bean", ${obmField.type}).path} ref)
+            throws ${manager.getElement("SException").path}
+            , ${manager.getElement("ExceptionInconnue").path} {        
+        try {
+            // on exécute depuis le home persistant
+            return ((${pElementHome.path}) pHome).getBy${fieldName}(getEm(), ref);
+        } catch (${manager.getElement("PException").path} e) {
+            throw new ${manager.getElement("SException").path}(e.getMessage(), e);
+        }
+    }
+    
+    /* (non-Javadoc)
+     * @see ${manager.getElement("{0}:{1}.S{2}", ${generatedObject.modelId}).path}${esc.h}getCountBy${fieldName}(${manager.getElement("{0}:{1}.{2}Bean", ${obmField.type}).path})
+     */
+    @Override
+    public ${manager.getElement("Long").path} getCountBy${fieldName}(${manager.getElement("{0}:{1}.{2}Bean", ${obmField.type}).path} ref)
+            throws ${manager.getElement("SException").path}
+            , ${manager.getElement("ExceptionInconnue").path} {        
+        try {
+            // on exécute depuis le home persistant
+            return ((${pElementHome.path}) pHome).getCountBy${fieldName}(getEm(), ref);
+        } catch (${manager.getElement("PException").path} e) {
+            throw new ${manager.getElement("SException").path}(e.getMessage(), e);
+        }
+    }
+
+#end

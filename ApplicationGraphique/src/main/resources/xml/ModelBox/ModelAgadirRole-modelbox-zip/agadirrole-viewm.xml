@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewm name="AgadirRoleViewm" project="AgadirRole" version="4.0.0" xmlns="http://www.imc-fr.com/ViewModelDefinition-2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- AgadirRole:role.Role -->
+	<component type="vue" name="RoleVue" pack="AgadirRole:role" object="AgadirRole:role.Role">
+		<field name="typeIdentite"/>
+		<refComponent name="coordonnees" component="AgadirContact:contact.CoordonneesVue"/>
+		<refComponent name="identite" component="AgadirContact:contact.IdentiteVue"/>
+	</component>
+
+<!-- AgadirRole:role.Operateur -->
+	<vueModel name="OperateurModel" pack="AgadirRole:role" object="AgadirRole:role.Operateur"/>
+	
+	<component type="vue" name="OperateurVue" pack="AgadirRole:role" object="AgadirRole:role.Operateur" vueModel="AgadirRole:role.OperateurModel">
+		<refComponent name="role" component="AgadirRole:role.RoleVue"/>
+		<select name="codeTypeOperateur" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="OperateurEdit" pack="AgadirRole:role" object="AgadirRole:role.Operateur" vueModel="AgadirRole:role.OperateurModel"
+		titre="Edition Operateur">
+		<vue name="vue" component="AgadirRole:role.OperateurVue"/>
+
+		<grid name="grid" component="AgadirRole:role.RechercheOperateur"/>
+
+		<action name="Enregistrer" component="AgadirRole:role.OperateurEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirRole:role.OperateurEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheOperateur" pack="AgadirRole:role" object="AgadirRole:role.Operateur"
+		titre="Recherche Operateur">
+
+		<colonne name="id" key="true" visible="true"/>
+		
+		<actionColonne name="Modifier" component="AgadirRole:role.OperateurEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirRole:role.OperateurEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirRole:role.OperateurEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirRole:role.Beneficiaire -->
+	<vueModel name="BeneficiaireModel" pack="AgadirRole:role" object="AgadirRole:role.Beneficiaire"/>
+	
+	<component type="vue" name="BeneficiaireVue" pack="AgadirRole:role" object="AgadirRole:role.Beneficiaire" vueModel="AgadirRole:role.BeneficiaireModel">
+		<refComponent name="role" component="AgadirRole:role.RoleVue"/>
+		<select name="codeTypeBeneficiaire" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="BeneficiaireEdit" pack="AgadirRole:role" object="AgadirRole:role.Beneficiaire" vueModel="AgadirRole:role.BeneficiaireModel"
+		titre="Edition Beneficiaire">
+		<vue name="vue" component="AgadirRole:role.BeneficiaireVue"/>
+
+		<grid name="grid" component="AgadirRole:role.RechercheBeneficiaire"/>
+
+		<action name="Enregistrer" component="AgadirRole:role.BeneficiaireEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirRole:role.BeneficiaireEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheBeneficiaire" pack="AgadirRole:role" object="AgadirRole:role.Beneficiaire"
+		titre="Recherche Beneficiaire">
+
+		<colonne name="id" key="true" visible="true"/>
+		
+		<actionColonne name="Modifier" component="AgadirRole:role.BeneficiaireEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirRole:role.BeneficiaireEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirRole:role.BeneficiaireEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirRole:role.Commanditaire -->
+	<vueModel name="CommanditaireModel" pack="AgadirRole:role" object="AgadirRole:role.Commanditaire"/>
+	
+	<component type="vue" name="CommanditaireVue" pack="AgadirRole:role" object="AgadirRole:role.Commanditaire" vueModel="AgadirRole:role.CommanditaireModel">
+		<refComponent name="role" component="AgadirRole:role.RoleVue"/>
+		<select name="codeTypeCommanditaire" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="CommanditaireEdit" pack="AgadirRole:role" object="AgadirRole:role.Commanditaire" vueModel="AgadirRole:role.CommanditaireModel"
+		titre="Edition Commanditaire">
+		<vue name="vue" component="AgadirRole:role.CommanditaireVue"/>
+
+		<grid name="grid" component="AgadirRole:role.RechercheCommanditaire"/>
+
+		<action name="Enregistrer" component="AgadirRole:role.CommanditaireEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirRole:role.CommanditaireEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheCommanditaire" pack="AgadirRole:role" object="AgadirRole:role.Commanditaire"
+		titre="Recherche Commanditaire">
+
+		<colonne name="id" key="true" visible="true"/>
+		
+		<actionColonne name="Modifier" component="AgadirRole:role.CommanditaireEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirRole:role.CommanditaireEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirRole:role.CommanditaireEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirRole:role.PorteurProjet -->
+	<vueModel name="PorteurProjetModel" pack="AgadirRole:role" object="AgadirRole:role.PorteurProjet"/>
+	
+	<component type="vue" name="PorteurProjetVue" pack="AgadirRole:role" object="AgadirRole:role.PorteurProjet" vueModel="AgadirRole:role.PorteurProjetModel">
+		<refComponent name="role" component="AgadirRole:role.RoleVue"/>
+		<select name="codeTypePorteurProjet" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="PorteurProjetEdit" pack="AgadirRole:role" object="AgadirRole:role.PorteurProjet" vueModel="AgadirRole:role.PorteurProjetModel"
+		titre="Edition PorteurProjet">
+		<vue name="vue" component="AgadirRole:role.PorteurProjetVue"/>
+
+		<grid name="grid" component="AgadirRole:role.RecherchePorteurProjet"/>
+
+		<action name="Enregistrer" component="AgadirRole:role.PorteurProjetEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirRole:role.PorteurProjetEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RecherchePorteurProjet" pack="AgadirRole:role" object="AgadirRole:role.PorteurProjet"
+		titre="Recherche PorteurProjet">
+
+		<colonne name="id" key="true" visible="true"/>
+		
+		<actionColonne name="Modifier" component="AgadirRole:role.PorteurProjetEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirRole:role.PorteurProjetEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirRole:role.PorteurProjetEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirRole:role.Tuteur -->
+	<vueModel name="TuteurModel" pack="AgadirRole:role" object="AgadirRole:role.Tuteur"/>
+	
+	<component type="vue" name="TuteurVue" pack="AgadirRole:role" object="AgadirRole:role.Tuteur" vueModel="AgadirRole:role.TuteurModel">
+		<refComponent name="role" component="AgadirRole:role.RoleVue"/>
+		<select name="codeTypeTuteur" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TuteurEdit" pack="AgadirRole:role" object="AgadirRole:role.Tuteur" vueModel="AgadirRole:role.TuteurModel"
+		titre="Edition Tuteur">
+		<vue name="vue" component="AgadirRole:role.TuteurVue"/>
+
+		<grid name="grid" component="AgadirRole:role.RechercheTuteur"/>
+
+		<action name="Enregistrer" component="AgadirRole:role.TuteurEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirRole:role.TuteurEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTuteur" pack="AgadirRole:role" object="AgadirRole:role.Tuteur"
+		titre="Recherche Tuteur">
+
+		<colonne name="id" key="true" visible="true"/>
+		
+		<actionColonne name="Modifier" component="AgadirRole:role.TuteurEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirRole:role.TuteurEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirRole:role.TuteurEdit" action="Editer"/>
+	</component>
+
+</viewm>

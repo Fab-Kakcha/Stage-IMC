@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<languages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.imc-fr.com/LanguageDefinition-2.0.0"
+	xsi:schemaLocation="http://www.imc-fr.com/LanguageDefinition-2.0.0 http://sites-snapshots.imc-fr.com/JavaPomParent/GenerateurPomParent/GenerateurModelPomParent/CodeGenerator/xsd/language/LanguageDefinition-2.0.0.xsd">
+	
+	
+	<!--
+       Définition des éléments java utilisé dans la couche persistance JPA IMC
+    -->
+	<language name="java">
+		
+		<!-- Les objets persistant -->
+        <generic name="Bean" className="Bean" package="com.imcfr.commun.bean"
+            nbelements="1" />
+        <generic name="BeanImpl" className="BeanImpl" package="com.imcfr.commun.bean.impl"
+            nbelements="1" />
+        <type name="PKBean" className="PKBean" package="com.imcfr.commun.bean" />
+        <type name="BeanFactory" className="BeanFactory" package="com.imcfr.commun.bean" />
+	</language>
+</languages>

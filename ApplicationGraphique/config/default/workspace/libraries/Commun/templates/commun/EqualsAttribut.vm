@@ -1,0 +1,17 @@
+## #####
+## Générateur Java
+## ligne d'une méthode equals
+## 
+## @parma _attribut (classe com.imcfr.generateur.factory.Attribut) l'attribut dont le equals est à créer
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 27/09/2009
+## #####
+		if (${_attribut.name} == null) {
+			if (other.${_attribut.name} != null) {
+				return false;
+            }
+		} else if (!${_attribut.name}.equals(other.${_attribut.name})) {
+			return false;
+        }
+

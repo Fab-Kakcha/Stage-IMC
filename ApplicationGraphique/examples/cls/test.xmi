@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:LocalProfile="http:///schemas/LocalProfile/_EOFH82NuEeWMk41cjsDxnQ/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/LocalProfile/_EOFH82NuEeWMk41cjsDxnQ/0 LocalProfile.profile.xmi#_EPCKJ2NuEeWMk41cjsDxnQ">
+  <uml:Model xmi:id="_EOFH4GNuEeWMk41cjsDxnQ" name="test">
+    <eAnnotations xmi:id="_EOFH4WNuEeWMk41cjsDxnQ" source="Objing">
+      <contents xmi:type="uml:Property" xmi:id="_EOFH4mNuEeWMk41cjsDxnQ" name="exporterVersion">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_EOFH42NuEeWMk41cjsDxnQ" value="3.0.0"/>
+      </contents>
+    </eAnnotations>
+    <packagedElement xmi:type="uml:Class" xmi:id="_EOFH5GNuEeWMk41cjsDxnQ" name="Emp">
+      <ownedAttribute xmi:id="_EOFH5WNuEeWMk41cjsDxnQ" name="job" visibility="public" type="_EOFH62NuEeWMk41cjsDxnQ" aggregation="shared" association="_EOFH6GNuEeWMk41cjsDxnQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EOFH5mNuEeWMk41cjsDxnQ"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_EOFH52NuEeWMk41cjsDxnQ" name="Name" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_EOFH6GNuEeWMk41cjsDxnQ" memberEnd="_EOFH5WNuEeWMk41cjsDxnQ _EOFH6WNuEeWMk41cjsDxnQ">
+      <ownedEnd xmi:id="_EOFH6WNuEeWMk41cjsDxnQ" visibility="public" type="_EOFH5GNuEeWMk41cjsDxnQ" association="_EOFH6GNuEeWMk41cjsDxnQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EOFH6mNuEeWMk41cjsDxnQ"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_EOFH62NuEeWMk41cjsDxnQ" name="Job">
+      <ownedAttribute xmi:id="_EOFH7GNuEeWMk41cjsDxnQ" name="task" visibility="public" type="_EOFH8WNuEeWMk41cjsDxnQ" aggregation="composite" association="_EOFH72NuEeWMk41cjsDxnQ">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EOFH7WNuEeWMk41cjsDxnQ"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_EOFH7mNuEeWMk41cjsDxnQ" name="Title" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_EOFH72NuEeWMk41cjsDxnQ" memberEnd="_EOFH7GNuEeWMk41cjsDxnQ _EOFH8GNuEeWMk41cjsDxnQ">
+      <ownedEnd xmi:id="_EOFH8GNuEeWMk41cjsDxnQ" visibility="public" type="_EOFH62NuEeWMk41cjsDxnQ" association="_EOFH72NuEeWMk41cjsDxnQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_EOFH8WNuEeWMk41cjsDxnQ" name="Task">
+      <ownedAttribute xmi:id="_EOFH8mNuEeWMk41cjsDxnQ" name="Description" visibility="public" isUnique="false">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <profileApplication xmi:id="_EPCKNGNuEeWMk41cjsDxnQ">
+      <eAnnotations xmi:id="_EPCKNWNuEeWMk41cjsDxnQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="LocalProfile.profile.xmi#_EPCKJ2NuEeWMk41cjsDxnQ"/>
+      </eAnnotations>
+      <appliedProfile href="LocalProfile.profile.xmi#_EPCKIGNuEeWMk41cjsDxnQ"/>
+    </profileApplication>
+  </uml:Model>
+  <LocalProfile:IMC xmi:id="_EPCKNmNuEeWMk41cjsDxnQ" base_Class="_EOFH5GNuEeWMk41cjsDxnQ"/>
+  <LocalProfile:IMC xmi:id="_EPCKN2NuEeWMk41cjsDxnQ" base_Class="_EOFH62NuEeWMk41cjsDxnQ"/>
+</xmi:XMI>

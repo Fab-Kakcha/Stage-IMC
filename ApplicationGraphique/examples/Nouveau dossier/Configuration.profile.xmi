@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_NuoKgGWyEeWWv54g9ePtfg" name="Configuration" metaclassReference="_NuoKkGWyEeWWv54g9ePtfg _NuoKkWWyEeWWv54g9ePtfg">
+  <eAnnotations xmi:id="_NuoKgWWyEeWWv54g9ePtfg" source="Objing">
+    <contents xmi:type="uml:Property" xmi:id="_NuoKgmWyEeWWv54g9ePtfg" name="Module">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_NuoKg2WyEeWWv54g9ePtfg" value="b022a933-8445-4c84-b3f2-4671eb751676"/>
+    </contents>
+    <contents xmi:type="uml:Property" xmi:id="_NuoKhGWyEeWWv54g9ePtfg" name="ID">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_NuoKhWWyEeWWv54g9ePtfg" value="73472114-b52a-4dd9-8b02-40620b1c1c35"/>
+    </contents>
+  </eAnnotations>
+  <eAnnotations xmi:id="_NuoKhmWyEeWWv54g9ePtfg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_NuoKh2WyEeWWv54g9ePtfg" name="Configuration" nsURI="http:///schemas/Configuration/_NtlBoGWyEeWWv54g9ePtfg/0" nsPrefix="Configuration">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_NuoKiGWyEeWWv54g9ePtfg" name="Project">
+        <eAnnotations xmi:id="_NuoKiWWyEeWWv54g9ePtfg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_NuoKkmWyEeWWv54g9ePtfg"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_NuoKimWyEeWWv54g9ePtfg" name="base_Package" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Package"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_NuoKjGWyEeWWv54g9ePtfg" name="TagConfg">
+        <eAnnotations xmi:id="_NuoKjWWyEeWWv54g9ePtfg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_NuoKmWWyEeWWv54g9ePtfg"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_NuoKjmWyEeWWv54g9ePtfg" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_NuoKkGWyEeWWv54g9ePtfg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+  </elementImport>
+  <elementImport xmi:id="_NuoKkWWyEeWWv54g9ePtfg">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_NuoKkmWyEeWWv54g9ePtfg" name="Project">
+    <eAnnotations xmi:id="_NuoKk2WyEeWWv54g9ePtfg" source="Objing">
+      <contents xmi:type="uml:Property" xmi:id="_NuoKlGWyEeWWv54g9ePtfg" name="ID">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_NuoKlWWyEeWWv54g9ePtfg" value="868d41e4-207b-4cff-ab00-d746c5cd21a7"/>
+      </contents>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_NuoKlmWyEeWWv54g9ePtfg" name="base_Package" association="_NuoKl2WyEeWWv54g9ePtfg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_NuoKl2WyEeWWv54g9ePtfg" name="Package_Project" memberEnd="_NuoKmGWyEeWWv54g9ePtfg _NuoKlmWyEeWWv54g9ePtfg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_NuoKmGWyEeWWv54g9ePtfg" name="extension_Project" type="_NuoKkmWyEeWWv54g9ePtfg" aggregation="composite" association="_NuoKl2WyEeWWv54g9ePtfg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_NuoKmWWyEeWWv54g9ePtfg" name="TagConfg">
+    <eAnnotations xmi:id="_NuoKmmWyEeWWv54g9ePtfg" source="Objing">
+      <contents xmi:type="uml:Property" xmi:id="_NuoKm2WyEeWWv54g9ePtfg" name="ID">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_NuoKnGWyEeWWv54g9ePtfg" value="8e8151f0-b41f-42db-ba39-fdc034349b94"/>
+      </contents>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_NuoKnWWyEeWWv54g9ePtfg" name="base_Class" association="_NuoKnmWyEeWWv54g9ePtfg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_NuoKnmWyEeWWv54g9ePtfg" name="Class_TagConfg" memberEnd="_NuoKn2WyEeWWv54g9ePtfg _NuoKnWWyEeWWv54g9ePtfg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_NuoKn2WyEeWWv54g9ePtfg" name="extension_TagConfg" type="_NuoKmWWyEeWWv54g9ePtfg" aggregation="composite" association="_NuoKnmWyEeWWv54g9ePtfg"/>
+  </packagedElement>
+</uml:Profile>

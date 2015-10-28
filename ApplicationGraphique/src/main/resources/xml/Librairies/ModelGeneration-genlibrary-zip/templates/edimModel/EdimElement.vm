@@ -1,0 +1,20 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param element (com.imcfr.generateur.model.edimodel.ElementTopLevel)
+## 
+## #####
+##
+#set($ee_nillable="")
+#if (${element.nillable})
+#**##set($ee_nillable=" nillable=${Q}true${Q}")
+#end
+#set($ee_default="")
+#if ("$!{element.defaut}" != "")
+#**##set($ee_default=" default=${Q}${element.defaut}${Q}")
+#end
+#set($ee_fixed="")
+#if ("$!{element.fixed}" != "")
+#**##set($ee_fixed=" fixed=${Q}${element.fixed}${Q}")
+#end
+	<element name="${element.name}" type="${element.typeAttribute}"$!{ee_nillable}$!{ee_default}$!{ee_fixed}/>

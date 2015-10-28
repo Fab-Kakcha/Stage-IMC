@@ -1,0 +1,29 @@
+## #####
+## 
+## @param generatedObject (com.imcfr.generateur.model.objectmodel.ObmModel)
+## @param box (com.imcfr.generateur.model.commun.ModelsBox)
+## 
+## #####
+#set($model = $generatedObject)
+#set($Q = '"')
+<?xml version="1.0" encoding="UTF-8"?>
+##
+<box name="${box.name}" xmlns="http://www.imc-fr.com/ModelsBoxDefinition-2.0.0">
+   
+## dépendances
+##
+#if (${box.dependencies.size()} > 0)
+	<dependencies>
+#**##foreach ($dep in ${box.dependencies.values()})
+		<dependency name="${dep.name}" use="${dep.use.name().toLowerCase()}"/>
+#**##end
+	</dependencies>
+#end
+
+## models
+##
+#foreach ($model in ${box.superModel.realModels.values()})
+	<model type="${model.type}" path="${model.name}-${model.type}.xml"/>
+#end
+
+</box>

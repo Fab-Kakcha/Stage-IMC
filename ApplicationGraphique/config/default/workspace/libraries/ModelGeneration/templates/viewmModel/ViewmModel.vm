@@ -1,0 +1,20 @@
+## #####
+## 
+## @param generatedObject (com.imcfr.generateur.model.viewmodel.ViewModel)
+## 
+## #####
+#set($model = $generatedObject)
+#set($Q = '"')
+<?xml version="1.0" encoding="UTF-8"?>
+##
+<viewm name="${model.name}" project="${model.project}" version="${model.version}" xmlns="http://www.imc-fr.com/ViewModelDefinition-2.0.0">
+
+#foreach ($element in ${model.elementsList})
+#**##if (${element.type} == "vueModel")
+#**##**##generate("ModelGeneration:ViewmVueModel")
+#**##else
+#**##**##generate("ModelGeneration:ViewmComponent")
+#**##end
+
+#end
+</viewm>

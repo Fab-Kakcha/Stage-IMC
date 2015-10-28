@@ -1,0 +1,74 @@
+## #####
+## 
+## @param generatedObject (com.imcfr.generateur.model.objectmodel.ObmModel)
+## 
+## #####
+## les "
+#set($model = $generatedObject)
+#set($Q = '"')
+##
+#set($final_imcdev_MavenGroupId=${model.project})
+#if ("$!{imcdev_MavenGroupId}" != "")
+#**##set($final_imcdev_MavenGroupId=${imcdev_MavenGroupId})
+#end
+##
+#set($final_imcdev_ProjectName=${model.project})
+#if ("$!{imcdev_ProjectName}" != "")
+#**##set($final_imcdev_ProjectName=${imcdev_ProjectName})
+#end
+#if ("$!{imcdev_ProjectNamePrefix}" != "")
+#**##set($final_imcdev_ProjectName="${imcdev_ProjectNamePrefix}${final_imcdev_ProjectName}")
+#end
+#if ("$!{imcdev_ProjectNameSuffix}" != "")
+#**##set($final_imcdev_ProjectName="${final_imcdev_ProjectName}${imcdev_ProjectNameSuffix}")
+#end
+##
+#set($final_imcdev_PomParent="")
+#if ("$!{imcdev_PomParent}" != "")
+#**##set($final_imcdev_PomParent=$render.eval($ctx, $imcdev_PomParent))
+#end
+#set($final_imcdev_PomParent=$final_imcdev_PomParent.split("\:"))
+##
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>${final_imcdev_MavenGroupId}</groupId>
+	<artifactId>${final_imcdev_ProjectName}</artifactId>
+#if (${list.contains($imcdev_Nature, "web")})
+	<packaging>war</packaging>
+#elseif (${list.contains($imcdev_Nature, "ejb")})
+	<packaging>ejb</packaging>
+#elseif (${list.contains($imcdev_Nature, "ear")})
+	<packaging>ear</packaging>
+#elseif (${list.contains($imcdev_Nature, "java")})
+	<packaging>jar</packaging>
+#elseif (${list.contains($imcdev_Nature, "uberwar")})
+	<packaging>uberwar</packaging>
+#else
+	<packaging>pom</packaging>
+#end
+	<version>${model.version}</version>
+
+#if (${list.isEmpty($final_imcdev_PomParent)} == false)
+	
+	<parent>
+		<groupId>${list.get($final_imcdev_PomParent, 0)}</groupId>
+		<artifactId>${list.get($final_imcdev_PomParent, 1)}</artifactId>
+		<version>${list.get($final_imcdev_PomParent, 2)}</version>
+	</parent>
+#end
+
+	<name>${final_imcdev_ProjectName}</name>
+
+#if (${list.isEmpty(${imcdev_MavenDependencies})} == false)
+	<dependencies>
+#**##foreach ($dependency in $imcdev_MavenDependencies)
+#**##**#$render.eval($ctx, $dependency)
+#**##end
+	</dependencies>
+#end
+#if ("$!{imcdev_MavenPomAddition}" != "")
+#**#$render.eval($ctx, $imcdev_MavenPomAddition)
+#end
+</project>

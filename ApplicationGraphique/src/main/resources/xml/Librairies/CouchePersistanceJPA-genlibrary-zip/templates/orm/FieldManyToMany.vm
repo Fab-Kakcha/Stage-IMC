@@ -1,0 +1,57 @@
+## #####
+## Générateur Java
+## Gestion d'un attribut de l'entité attribut manytomany
+## 
+## @param generatedObject le model prstm
+## @param entite l'objet prstm courant
+## @param datamObject l'objet prstm courant
+## @param obmObject l'objet prstm courant
+## @param field le champ obm courant
+## @param fieldPrstm le champ prstm courant
+## @param fetchType le type de fecth lazy ou eager
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 12/11/2008
+## #####
+##
+## -------------------------
+## Les variables
+## -------------------------
+##
+#set ( $targetEntity = ${manager.getElement("{0}:{1}.{2}BeanImpl", ${field.type}).path} )
+#set ( $mappedBy = "" )
+## si champ mappé, donc définition de l'info mapped
+#if ( ${fieldPrstm.mapped} == "true" )
+#set ( $mappedBy = "mapped-by=${esc.q}${fieldPrstm.mappedPrstmField.prstmFieldName}${esc.q} " )
+#end
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+## on injecte les infos du one to one
+			<many-to-many name="${field.name}" target-entity="${targetEntity}" ${fetchType}${mappedBy}>
+##
+## on crée les références, si le champ est pas mappé
+#if ( ${fieldPrstm.mapped} == "false" )
+##
+## on récup la table de relation
+#set ( $refDatamObject = ${supermodel.getElement("datam:object:${fieldPrstm.refDatamObject}")} )
+##
+## on crée la table jointe
+				<join-table name="${refDatamObject.name}" schema="${refDatamObject.schema.completeName}">
+#foreach ( $ref in ${fieldPrstm.references} )
+					<join-column name="${ref.datamFieldName}" referenced-column-name="${ref.refDatamFieldName}" />
+#end
+##
+## on crée les références inverse
+#foreach ( $ref in ${fieldPrstm.inverseReferences} )
+					<inverse-join-column name="${ref.datamFieldName}" referenced-column-name="${ref.refDatamFieldName}" />
+#end
+				</join-table>
+#end
+#if ( "$!{cascade}" != "" )
+				${cascade}
+#end
+			</many-to-many>
+

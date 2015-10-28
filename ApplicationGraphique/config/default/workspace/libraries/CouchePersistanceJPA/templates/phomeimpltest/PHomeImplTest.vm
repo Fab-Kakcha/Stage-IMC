@@ -1,0 +1,1345 @@
+##
+## Générateur java de la couche persistance IMC
+## Création de la classe d'implémentation de test des PHomeImpl
+##
+## $generatedObject = prstm object
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 17/11/2010
+##
+##
+## on récup le pobject
+#set( $obmObject = ${generatedObject.datamObject.obmObject} )
+#set( $pElementName = ${formatteur.format("{0}:{1}.PHome{2}", ${obmObject.project}, ${obmObject.pack.completeName}, ${obmObject.name})} )
+#set( $pElement = ${manager.getElement(${pElementName})} )
+#set( $pElementHome = ${manager.getElement("{0}:{1}.PHome{2}", ${obmObject.modelId})} )
+#set( $cElement = ${pElement.className} )
+#set( $cElementHome = ${pElementHome.className} )
+#set( $pElementHomeImpl = ${manager.getElement("{0}:{1}.PHome{2}Impl", ${obmObject.modelId})} )
+#set( $pElementHomeImplTest = ${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${obmObject.modelId})} )
+##
+## récupération de l'id de l'objet
+##
+## si l(id est un id composé
+#if ( ${obmObject.fieldId.class.simpleName} == "ComposedId" )
+##
+#set( $cleType = ${manager.getElement("{0}:{1}.PK{2}", ${obmObject.modelId})} )
+#else
+#if( ${manager.isBaseType(${obmObject.fieldId.type})} == true )
+#set( $cleType = ${manager.getElement(${obmObject.fieldId.type})} )
+#else
+#set( $cleType = ${manager.getElement("{0}:{1}.P{2}", ${id.type})} )
+#end
+#end
+##
+##
+## les classes souvent utilisée et qui seront importées
+#set( $cPerstMgr = ${manager.getElement("PersistanceManager").name} )
+#set( $cTypeGen = ${manager.getElement("TypeGenerator").name} )
+#set( $cTestManager = ${manager.getElement("TestManager").name} )
+#set( $cException = ${manager.getElement("Exception").name} )
+#set( $cTest = ${manager.getElement("Test").name} )
+#set( $cAssert = ${manager.getElement("Assert").name} )
+#set( $cTransac = ${manager.getElement("ImcTransaction").name} )
+##
+##
+## Le template
+##
+##
+package ${pElementHomeImplTest.packageName};
+
+import ${manager.getElement("Assert").path};
+import ${manager.getElement("Test").path};
+
+import ${manager.getElement("TestManager").path};
+import ${manager.getElement("TypeGenerator").path};
+import ${manager.getElement("FactoryException").path};
+import ${manager.getElement("ExceptionInconnue").path};
+import ${manager.getElement("PropertiesManager").path};
+
+import ${manager.getElement("ImcEntityManagerFactory").path};
+import ${manager.getElement("JNDIPersistanceManager").path};
+import ${manager.getElement("PersistanceException").path};
+import ${manager.getElement("ImcEntityManager").path};
+import ${manager.getElement("ImcTransaction").path};
+
+import ${pElement.path};
+import ${pElementHome.path};
+
+/**
+ * Classe d'implémentation de test du home de l'objet persistant ${obmObject.completeName}
+ *
+ * @version ${model.version}
+ * @author généré par ${infoGen}
+ */
+public class ${pElementHomeImplTest.className} {
+
+    /**
+     * Affiche les informations de lancement du test
+     * Charge les managers
+     */
+    @${manager.getElement("BeforeClass").path}
+    public static void before() {
+        try {
+            ${cTestManager}.getInstance().setClasseTeste(${pElementHomeImpl.path}.class);
+            ${cTestManager}.getInstance().afficherInfoDebut();
+            
+            ${manager.getElement("PropertiesManager").name}.getInstance().set(${manager.getElement("ImcEntityManagerFactory").name}.ENTITY_MANAGER_PU, "${obmObject.project}");
+            ${manager.getElement("PropertiesManager").name}.getInstance().set(${manager.getElement("ImcEntityManagerFactory").name}.ENTITY_MANAGER_PU_NAMES, "default");
+
+            ${manager.getElement("ImcEntityManagerFactory").name}.getInstance().load();
+            ${cPerstMgr}.noJndi = true;
+            ${cPerstMgr}.getInstance().load();
+        } catch (${cException} e) {
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+    }
+
+    /**
+     * Affiche les informations de fin de test
+     * Ferme les managers
+     */
+    @${manager.getElement("AfterClass").path}
+    public static void after() {
+        try {
+            ${cPerstMgr}.getInstance().unload();
+            ${manager.getElement("ImcEntityManagerFactory").name}.getInstance().unload();
+            
+            ${cTestManager}.getInstance().afficherInfoFin();
+        } catch (${cException} e) {
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+    }
+
+    /**
+     * Méthode pour récupérer un nouvel objet ${obmObject.name}
+     * Une transaction doit exister
+     * Ne flush pas les éléments
+     * @param em
+     *            em l'entity manager
+     * @return le nouvel objet
+     * @throws ${manager.getElement("FactoryException").name}
+     *             si une erreur se lors de la récupération du manager
+     *             données
+     * @throws ${manager.getElement("ExceptionInconnue").name}
+     *             si une erreur inconnue survient
+     * @throws ${manager.getElement("PersistanceException").name}
+     *             si des erreurs se produise lors de l'opération
+     */
+    public static ${cElement} get(${manager.getElement("ImcEntityManager").name} em) throws ${manager.getElement("FactoryException").name}, ${manager.getElement("ExceptionInconnue").name}, ${manager.getElement("PersistanceException").name} {
+        return get(em, false);
+    }
+
+    /**
+     * Méthode pour récupérer un nouvel objet ${obmObject.name}
+     * Une transaction doit exister
+     * @param em
+     *            em l'entity manager
+     * @param flush
+     *            si l'on flush l'em ou pas
+     * @return le nouvel objet
+     * @throws ${manager.getElement("FactoryException").name}
+     *             si une erreur se lors de la récupération du manager
+     *             données
+     * @throws ${manager.getElement("ExceptionInconnue").name}
+     *             si une erreur inconnue survient
+     * @throws ${manager.getElement("PersistanceException").name}
+     *             si des erreurs se produise lors de l'opération
+     */
+    public static ${cElement} get(${manager.getElement("ImcEntityManager").name} em, ${manager.getElement("Boolean").name} flush) throws ${manager.getElement("FactoryException").name}, ${manager.getElement("ExceptionInconnue").name}, ${manager.getElement("PersistanceException").name} {
+        ${cElementHome} home = (${cElementHome}) (Object) ${cPerstMgr}.getInstance().get("${obmObject.name}");
+        home.setEm(em);
+
+        // créer un objet ${obmObject.name}
+        ${cElement} objet = (${cElement})BeanFactory.getInstance().get(${cElement}.BEAN_NAME);
+
+        /*
+         * Renseignement des ids
+         */
+##
+## si l(id est un id composé, création de la clé
+## on conserve l'objet dans lequel affecté les ids, soit la pk, soit l'objet
+#set ( $idObject = "object" )
+#if ( ${obmObject.fieldId.class.simpleName} == "ComposedId" )
+##
+##
+        // création de la clé composé
+        ${cleType.path} pk = new ${cleType.path}();
+#set ( $idObject = "pk" )
+#end
+##
+## parcours des ids pour renseigné ceux pas auto
+#foreach( $field in ${obmObject.allFieldsList})
+##
+## création de l'attribut
+#set( $attribut = ${factory.newAttribut()} )
+#set( ${attribut.name} = ${field.name} )
+##
+## si ce sont les ids
+#if( ${field.id} == true )
+##
+## on récup si le champ a une génération auto
+#set( $autos = ${generatedObject.datamObject.getFieldObm(${field.name}).getByType("fieldGeneration", "auto")} )
+#if( ${list.size(${autos})} != 0 )
+        // id automatique : ${field.name}
+#else
+        // id : ${field.name}
+##
+## si ce sont des types simples sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} )
+        ${idObject}.${attribut.setterMethod}(${cTypeGen}.get${manager.getElement(${field.type}).name}());
+#end
+##
+## si ce sont des types simples avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} )
+        ${manager.getElement("IList<{0}>", ${field.type}).path} ${field.name}Lst = new ${manager.getElement("List<{0}", ${field.type}).path}();
+        ${field.name}Lst.add(${cTypeGen}.get${manager.getElement(${field.type}).name}());
+        ${field.name}Lst.add(${cTypeGen}.get${manager.getElement(${field.type}).name}());
+        ${idObject}.${attribut.setterMethod}(${field.name}Lst);
+à faire
+#end
+##
+## si ce sont des types complexes sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} == false )
+        ${idObject}.${attribut.setterMethod}(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+#end
+##
+## si ce sont des types complexes avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} == false )
+        //TODO supprimer pour l'instant car problème de boucle
+        ${manager.getElement("IList<{0}:{1}.P{2}>", ${field.type}).path} ${field.name}Lst = new ${manager.getElement("List<{0}:{1}.P{2}>", ${field.type}).path}();
+        //${field.name}Lst.add(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+        //${field.name}Lst.add(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+        ${idObject}.${attribut.setterMethod}(${field.name}Lst);
+#end
+#end
+#end
+#end
+##
+## si l(id est un id composé, affectation de la clé
+#if ( ${obmObject.fieldId.class.simpleName} == "ComposedId" )
+##
+##
+        objet.setId(pk);
+#end
+
+        /*
+         * Renseignement des champs
+         */
+#foreach( $field in ${obmObject.allFieldsList})
+##
+## création de l'attribut
+#set( $attribut = ${factory.newAttribut()} )
+#set( ${attribut.name} = ${field.name} )
+##
+## si ce ne sont pas les ids
+#if( ${field.id} == false )
+        // champ : ${field.name}
+##
+## si ce sont des types simples sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} )
+        objet.${attribut.setterMethod}(${cTypeGen}.get${manager.getElement(${field.type}).name}());
+#end
+##
+## si ce sont des types simples avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} )
+        ${manager.getElement("IList<{0}>", ${field.type}).path} ${field.name}Lst = new ${manager.getElement("List<{0}", ${field.type}).path}();
+        ${field.name}Lst.add(${cTypeGen}.get${manager.getElement(${field.type}).name}());
+        ${field.name}Lst.add(${cTypeGen}.get${manager.getElement(${field.type}).name}());
+        objet.${attribut.setterMethod}(${field.name}Lst);
+#end
+##
+## si ce sont des types complexes sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} == false )
+        objet.${attribut.setterMethod}(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+#end
+##
+## si ce sont des types complexes avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} == false )
+        //TODO supprimer pour l'instant car problème de boucle
+        ${manager.getElement("IList<{0}:{1}.P{2}>", ${field.type}).path} ${field.name}Lst = new ${manager.getElement("List<{0}:{1}.P{2}>", ${field.type}).path}();
+        //${field.name}Lst.add(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+        //${field.name}Lst.add(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+        objet.${attribut.setterMethod}(${field.name}Lst);
+#end
+#end
+#end
+
+        // Insertion de l'enregistrement en base
+        objet = home.save(objet, flush);
+
+        return objet;
+    }
+
+    /**
+     * Méthode pour sauvegarder l'objet ${obmObject.name} dans la BD
+     */
+    @${cTest}
+    public void testSave() {
+        ${cTransac} tx = null;
+        try {
+            ${cElementHome} home = (${cElementHome}) (Object) ${cPerstMgr}.getInstance().get("${obmObject.name}");
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // nb objets enregistrés
+            ${manager.getElement("Long").name} nb = home.getCountAll();
+
+            tx.commit();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // créer un objet ${obmObject.name}
+            ${cElement} objet = (${cElement})BeanFactory.getInstance().get(${cElement}.BEAN_NAME);
+
+            /*
+             * Renseignement des ids
+             */
+##
+## si l(id est un id composé, création de la clé
+## on conserve l'objet dans lequel affecté les ids, soit la pk, soit l'objet
+#set ( $idObject = "object" )
+#if ( ${obmObject.fieldId.class.simpleName} == "ComposedId" )
+##
+##
+            // création de la clé composé
+            ${cleType.path} pk = new ${cleType.path}();
+#set ( $idObject = "pk" )
+#end
+##
+## parcours des ids pour renseigné ceux pas auto
+#foreach( $field in ${obmObject.allFieldsList})
+##
+## création de l'attribut
+#set( $attribut = ${factory.newAttribut()} )
+#set( ${attribut.name} = ${field.name} )
+##
+## si ce sont les ids
+#if( ${field.id} == true )
+##
+## on récup si le champ a une génération auto
+#set( $autos = ${generatedObject.datamObject.getFieldObm(${field.name}).getByType("fieldGeneration", "auto")} )
+#if( ${list.size(${autos})} != 0 )
+            // id automatique : ${field.name}
+#else
+            // id : ${field.name}
+##
+## si ce sont des types simples sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} )
+            ${idObject}.${attribut.setterMethod}(${cTypeGen}.get${manager.getElement(${field.type}).name}());
+#end
+##
+## si ce sont des types simples avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} )
+            ${manager.getElement("IList<{0}>", ${field.type}).path} ${field.name}Lst = new ${manager.getElement("List<{0}", ${field.type}).path}();
+            ${field.name}Lst.add(${cTypeGen}.get${manager.getElement(${field.type}).name}());
+            ${field.name}Lst.add(${cTypeGen}.get${manager.getElement(${field.type}).name}());
+            ${idObject}.${attribut.setterMethod}(${field.name}Lst);
+à faire
+#end
+##
+## si ce sont des types complexes sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} == false )
+            ${idObject}.${attribut.setterMethod}(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+#end
+##
+## si ce sont des types complexes avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} == false )
+            //TODO supprimer pour l'instant car problème de boucle
+            ${manager.getElement("IList<{0}:{1}.P{2}>", ${field.type}).path} ${field.name}Lst = new ${manager.getElement("List<{0}:{1}.P{2}>", ${field.type}).path}();
+            //${field.name}Lst.add(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+            //${field.name}Lst.add(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+            ${idObject}.${attribut.setterMethod}(${field.name}Lst);
+#end
+#end
+#end
+#end
+##
+## si l(id est un id composé, affectation de la clé
+#if ( ${obmObject.fieldId.class.simpleName} == "ComposedId" )
+##
+##
+            objet.setId(pk);
+#end
+
+            /*
+             * Renseignement des champs
+             */
+#foreach( $field in ${obmObject.allFieldsList})
+##
+## création de l'attribut
+#set( $attribut = ${factory.newAttribut()} )
+#set( ${attribut.name} = ${field.name} )
+##
+## si ce ne sont pas les ids
+#if( ${field.id} == false )
+            // champ : ${field.name}
+##
+## si ce sont des types simples sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} )
+            objet.${attribut.setterMethod}(${cTypeGen}.get${manager.getElement(${field.type}).name}());
+#end
+##
+## si ce sont des types simples avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} )
+            ${manager.getElement("IList<{0}>", ${field.type}).path} ${field.name}Lst = new ${manager.getElement("List<{0}", ${field.type}).path}();
+            ${field.name}Lst.add(${cTypeGen}.get${manager.getElement(${field.type}).name}());
+            ${field.name}Lst.add(${cTypeGen}.get${manager.getElement(${field.type}).name}());
+            objet.${attribut.setterMethod}(${field.name}Lst);
+#end
+##
+## si ce sont des types complexes sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} == false )
+            objet.${attribut.setterMethod}(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+#end
+##
+## si ce sont des types complexes avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} == false )
+            //TODO supprimer pour l'instant car problème de boucle
+            ${manager.getElement("IList<{0}:{1}.P{2}>", ${field.type}).path} ${field.name}Lst = new ${manager.getElement("List<{0}:{1}.P{2}>", ${field.type}).path}();
+            //${field.name}Lst.add(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+            //${field.name}Lst.add(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+            objet.${attribut.setterMethod}(${field.name}Lst);
+#end
+#end
+#end
+
+            // Insertion de l'enregistrement en base
+            objet = home.save(objet, true);
+
+            tx.commit();
+
+            // test si l'ajout est ok
+            nb++;
+            ${cAssert}.assertEquals("nombre de ${obmObject.name} devrait être de " + (nb + 1), home.getCountAll(), nb);
+        } catch (${cException} e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+    }
+
+    /**
+     * Méthode pour mise à jour l'objet nationalité dans la BD et tester le
+     * modif
+     */
+    @${cTest}
+    public void testUpdate() {
+        ${cTransac} tx = null;
+        try {
+            ${cElementHome} home = (${cElementHome}) (Object) ${cPerstMgr}.getInstance().get("${obmObject.name}");
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // créer un objet nationalité
+            ${cElement} objet = ${pElementHomeImplTest.className}.get(home.getEm(), true);
+
+            // nb objets enregistrés
+            ${manager.getElement("Long").name} nb = home.getCountAll();
+
+            tx.commit();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+            
+            ${cleType.path} idObjet = objet.getId();
+            /*
+             * Modification des champs
+             */
+#foreach( $field in ${obmObject.allFieldsList})
+##
+## création de l'attribut
+#set( $attribut = ${factory.newAttribut()} )
+#set( ${attribut.name} = ${field.name} )
+##
+## si ce ne sont pas les ids
+#if( ${field.id} == false )
+            // champ ${field.name}
+##
+## si ce sont des types simples sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} )
+            ${manager.getElement("{0}:{1}.P{2}", ${field.type}).path} cur${field.name} = ${cTypeGen}.get${manager.getElement("{0}:{1}.P{2}", ${field.type}).name}();
+            objet.${attribut.setterMethod}(cur${field.name});
+#end
+##
+## si ce sont des types simples avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} )
+            //TODO gestion des listes en update
+#end
+##
+## si ce sont des types complexes sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} == false )
+            ${manager.getElement("{0}:{1}.P{2}", ${field.type}).path} cur${field.name} = ${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm());
+            objet.${attribut.setterMethod}(cur${field.name});
+#end
+##
+## si ce sont des types complexes avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} == false )
+            //TODO gestion des listes en update
+#end
+#end
+#end
+
+            // Insertion les enregistrements dans la BD
+            home.save(objet);
+
+            tx.commit();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // récupération de l'objet modifié et vérification de l'id
+            ${cElement} objetModifie = home.getById(idObjet);
+            ${cAssert}.assertEquals(objet.getId(), objetModifie.getId());
+            // test si la modif est ok
+            ${cAssert}.assertEquals("nombre des objets devrait être de " + (nb), home.getCountAll(), nb);
+
+            tx.commit();
+
+
+            /*
+             * Vérirication valeur des champs
+             */
+#foreach( $field in ${obmObject.allFieldsList})
+##
+## création de l'attribut
+#set( $attribut = ${factory.newAttribut()} )
+#set( ${attribut.name} = ${field.name} )
+##
+## si ce ne sont pas les ids
+#if( ${field.id} == false )
+            // champ ${field.name}
+##
+## si ce sont des types sans liste
+#if (${field.list} == false)
+            ${cAssert}.assertEquals("valeur de ${field.name} incorrecte", objetModifie.${attribut.getterMethod}(), cur${field.name});
+#end
+##
+## si ce sont des types avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} == false )
+            //TODO gestion des listes en update
+#end
+#end
+#end
+        } catch (${cException} e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+    }
+
+    /**
+     * Méthode pour annuler enrehgistrement l'objet nationalité dans la BD et
+     * vérifier si ok
+     */
+    @${cTest}
+    public void testRollback() {
+        ${cTransac} tx = null;
+        try {
+            ${cElementHome} home = (${cElementHome}) (Object) ${cPerstMgr}.getInstance().get("${obmObject.name}");
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // créer un objet nationalité
+            ${cElement} objet = ${pElementHomeImplTest.className}.get(home.getEm(), true);
+
+            tx.commit();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+            
+            /*
+             * Modification des champs
+             */
+#foreach( $field in ${obmObject.allFieldsList})
+##
+## création de l'attribut
+#set( $attribut = ${factory.newAttribut()} )
+#set( ${attribut.name} = ${field.name} )
+##
+## si ce ne sont pas les ids
+#if( ${field.id} == false )
+            // champ ${field.name}
+##
+## si ce sont des types simples sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} )
+            ${manager.getElement("{0}:{1}.P{2}", ${field.type}).path} old${field.name} = objet.${attribut.getterMethod}();
+            objet.${attribut.setterMethod}(${cTypeGen}.get${manager.getElement("{0}:{1}.P{2}", ${field.type}).name}());
+#end
+##
+## si ce sont des types simples avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} )
+            //TODO gestion des listes en rollback (comme update)
+#end
+##
+## si ce sont des types complexes sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} == false )
+            ${manager.getElement("{0}:{1}.P{2}", ${field.type}).path} old${field.name} = objet.${attribut.getterMethod}();
+            objet.${attribut.setterMethod}(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+#end
+##
+## si ce sont des types complexes avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} == false )
+            //TODO gestion des listes en rollback (comme update)
+#end
+#end
+#end
+
+            // Insertion les enregistrements dans la BD
+            home.save(objet);
+
+            tx.rollback();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // récupération de l'objet en base
+            objet = home.getById(objet.getId());
+
+            tx.commit();
+            /*
+             * Vérirication valeur des champs sur l'objet de la base
+             * car l'objet en mémoire n'est pas à jour
+             */
+#foreach( $field in ${obmObject.allFieldsList})
+##
+## création de l'attribut
+#set( $attribut = ${factory.newAttribut()} )
+#set( ${attribut.name} = ${field.name} )
+##
+## si ce ne sont pas les ids
+#if( ${field.id} == false )
+            // champ ${field.name}
+##
+## si ce sont des types sans liste
+#if (${field.list} == false)
+            ${cAssert}.assertEquals("valeur de ${field.name} incorrecte", objet.${attribut.getterMethod}(), old${field.name});
+#end
+##
+## si ce sont des types avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} == false )
+            //TODO gestion des listes en rollback (comme update)
+#end
+#end
+#end
+        } catch (${cException} e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+    }
+
+    /**
+     * Méthode pour rafraîchir l'objet nationalité dans la BD et vérifier valeur
+     * des champs
+     */
+    @${cTest}
+    public void testRefresh() {
+        ${cTransac} tx = null;
+        try {
+            ${cElementHome} home = (${cElementHome}) (Object) ${cPerstMgr}.getInstance().get("${obmObject.name}");
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // créer un objet nationalité
+            ${cElement} objet = ${pElementHomeImplTest.className}.get(home.getEm(), true);
+
+            tx.commit();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+            
+            /*
+             * Modification des champs
+             */
+#foreach( $field in ${obmObject.allFieldsList})
+##
+## création de l'attribut
+#set( $attribut = ${factory.newAttribut()} )
+#set( ${attribut.name} = ${field.name} )
+##
+## si ce ne sont pas les ids
+#if( ${field.id} == false )
+            // champ ${field.name}
+##
+## si ce sont des types simples sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} )
+            ${manager.getElement("{0}:{1}.P{2}", ${field.type}).path} old${field.name} = objet.${attribut.getterMethod}();
+            objet.${attribut.setterMethod}(${cTypeGen}.get${manager.getElement("{0}:{1}.P{2}", ${field.type}).name}());
+#end
+##
+## si ce sont des types simples avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} )
+            //TODO gestion des listes en rollback (comme en rollback)
+#end
+##
+## si ce sont des types complexes sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} == false )
+            ${manager.getElement("{0}:{1}.P{2}", ${field.type}).path} old${field.name} = objet.${attribut.getterMethod}();
+            objet.${attribut.setterMethod}(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+#end
+##
+## si ce sont des types complexes avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} == false )
+            //TODO gestion des listes en rollback (comme en rollback)
+#end
+#end
+#end
+
+            // Insertion les enregistrements dans la BD
+            home.refresh(objet);
+
+            tx.commit();
+
+            /*
+             * Vérirication valeur des champs
+             */
+#foreach( $field in ${obmObject.allFieldsList})
+##
+## création de l'attribut
+#set( $attribut = ${factory.newAttribut()} )
+#set( ${attribut.name} = ${field.name} )
+##
+## si ce ne sont pas les ids
+#if( ${field.id} == false )
+            // champ ${field.name}
+##
+## si ce sont des types sans liste
+#if (${field.list} == false)
+            ${cAssert}.assertEquals("valeur de ${field.name} incorrecte", objet.${attribut.getterMethod}(), old${field.name});
+#end
+##
+## si ce sont des types avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} == false )
+            //TODO gestion des listes en rollback (comme en rollback)
+#end
+#end
+#end
+
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // récupération de l'objet en base
+            objet = home.getById(objet.getId());
+
+            tx.commit();
+            /*
+             * Vérirication valeur des champs sur l'objet de la base
+             */
+#foreach( $field in ${obmObject.allFieldsList})
+##
+## création de l'attribut
+#set( $attribut = ${factory.newAttribut()} )
+#set( ${attribut.name} = ${field.name} )
+##
+## si ce ne sont pas les ids
+#if( ${field.id} == false )
+            // champ ${field.name}
+##
+## si ce sont des types sans liste
+#if (${field.list} == false)
+            ${cAssert}.assertEquals("valeur de ${field.name} incorrecte", objet.${attribut.getterMethod}(), old${field.name});
+#end
+##
+## si ce sont des types avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} == false )
+            //TODO gestion des listes en rollback (comme en rollback)
+#end
+#end
+#end
+        } catch (${cException} e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+    }
+    
+    /**
+     * Méthode pour rafraîchir la liste des objets nationalité dans la BD et
+     * vérifier valeur des champs
+     */
+    @${cTest}
+    public void testRefreshList() {
+        ${cTransac} tx = null;
+        try {
+            ${cElementHome} home = (${cElementHome}) (Object) ${cPerstMgr}.getInstance().get("${obmObject.name}");
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // nb objets enregistrés
+            ${manager.getElement("Long").name} nb = home.getCountAll();
+
+            ${manager.getElement("IList<{0}:{1}.{2}>", ${pElement.name}).path} listObjets = new ${manager.getElement("List<{0}:{1}.{2}>", ${pElement.name}).path}();
+
+            // créer des objets ${obmObject.name}
+            ${cElement} objet1 = ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${cElement} objet2 = ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${cElement} objet3 = ${pElementHomeImplTest.className}.get(home.getEm(), true);
+
+            // ajout dans une liste
+            listObjets.add(objet1);
+            listObjets.add(objet2);
+            listObjets.add(objet3);
+
+            ${cAssert}.assertEquals(home.getCountAll(), (Long) (nb + 3));
+
+            tx.commit();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            /*
+             * Récupération des ancienne valeur des champs et mise à jour avec de nouvelle valeur
+             */
+#foreach( $field in ${obmObject.allFieldsList})
+##
+## création de l'attribut
+#set( $attribut = ${factory.newAttribut()} )
+#set( ${attribut.name} = ${field.name} )
+##
+## si ce ne sont pas les ids
+#if( ${field.id} == false )
+            // champ ${field.name}
+##
+## si ce sont des types simples sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} )
+            ${manager.getElement("{0}:{1}.P{2}", ${field.type}).path} old${field.name}1 = objet1.${attribut.getterMethod}();
+            objet1.${attribut.setterMethod}(${cTypeGen}.get${manager.getElement("{0}:{1}.P{2}", ${field.type}).name}());
+            ${manager.getElement("{0}:{1}.P{2}", ${field.type}).path} old${field.name}2 = objet2.${attribut.getterMethod}();
+            objet2.${attribut.setterMethod}(${cTypeGen}.get${manager.getElement("{0}:{1}.P{2}", ${field.type}).name}());
+            ${manager.getElement("{0}:{1}.P{2}", ${field.type}).path} old${field.name}3 = objet3.${attribut.getterMethod}();
+            objet3.${attribut.setterMethod}(${cTypeGen}.get${manager.getElement("{0}:{1}.P{2}", ${field.type}).name}());
+#end
+##
+## si ce sont des types simples avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} )
+            //TODO gestion des listes en rollback (comme en refresh)
+#end
+##
+## si ce sont des types complexes sans liste
+#if (${field.list} == false && ${manager.isBaseType(${field.type})} == false )
+            ${manager.getElement("{0}:{1}.P{2}", ${field.type}).path} old${field.name}1 = objet1.${attribut.getterMethod}();
+            objet1.${attribut.setterMethod}(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+            ${manager.getElement("{0}:{1}.P{2}", ${field.type}).path} old${field.name}2 = objet2.${attribut.getterMethod}();
+            objet2.${attribut.setterMethod}(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+            ${manager.getElement("{0}:{1}.P{2}", ${field.type}).path} old${field.name}3 = objet3.${attribut.getterMethod}();
+            objet3.${attribut.setterMethod}(${manager.getElement("{0}:{1}.PHome{2}ImplTest", ${field.type}).path}.get(home.getEm()));
+#end
+##
+## si ce sont des types complexes avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} == false )
+            //TODO gestion des listes en rollback (comme en refresh)
+#end
+#end
+#end
+
+            // Refresh les enregistrements dans la BD
+            home.refresh(listObjets);
+
+            tx.commit();
+
+            /*
+             * Vérirication valeur des champs
+             */
+#foreach( $field in ${obmObject.allFieldsList})
+##
+## création de l'attribut
+#set( $attribut = ${factory.newAttribut()} )
+#set( ${attribut.name} = ${field.name} )
+##
+## si ce ne sont pas les ids
+#if( ${field.id} == false )
+            // champ ${field.name}
+##
+## si ce sont des types sans liste
+#if (${field.list} == false)
+            ${cAssert}.assertEquals("valeur de ${field.name} incorrecte", objet1.${attribut.getterMethod}(), old${field.name}1);
+            ${cAssert}.assertEquals("valeur de ${field.name} incorrecte", objet2.${attribut.getterMethod}(), old${field.name}2);
+            ${cAssert}.assertEquals("valeur de ${field.name} incorrecte", objet3.${attribut.getterMethod}(), old${field.name}3);
+#end
+##
+## si ce sont des types avec liste
+#if (${field.list} == true && ${manager.isBaseType(${field.type})} == false )
+            //TODO gestion des listes en rollback (comme en refresh)
+#end
+#end
+#end
+        } catch (${cException} e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+    }
+
+    /**
+     * Méthode pour supprimer l'objet nationalité dans la BD et vérifier l'etat
+     * de suppression
+     */
+    @${cTest}
+    public void testRemove() {
+        ${cTransac} tx = null;
+        try {
+            ${cElementHome} home = (${cElementHome}) (Object) ${cPerstMgr}.getInstance().get("${obmObject.name}");
+            
+            tx = home.getEm().getTransaction();
+            tx.begin();
+            
+            // création d'un nouvel objet et récupération de l'objet
+            ${cElement} objet = ${pElementHomeImplTest.className}.get(home.getEm(), true);
+
+            tx.commit();
+            
+            tx = home.getEm().getTransaction();
+            tx.begin();
+            
+            // récupération de l'objet
+            objet = home.getById(objet.getId());
+            
+            /*
+             * Suppression les enregistrements dans la BD
+             */
+            boolean etat = home.remove(objet);
+
+            tx.commit();
+
+            // test si l'etat de suppression est ok
+            ${cAssert}.assertTrue("doivent être d'etat vrai", etat);
+        } catch (${cException} e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+    }
+
+    /**
+     * Méthode pour supperimer la listes des objets nationalité dans la BD et
+     * vérifier la suppression
+     */
+    @${cTest}
+    public void testRemoveList() {
+        ${cTransac} tx = null;
+        try {
+            ${cElementHome} home = (${cElementHome}) (Object) ${cPerstMgr}.getInstance().get("${obmObject.name}");
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // nb objets enregistrés
+            ${manager.getElement("Long").path} nb = home.getCountAll();
+
+            ${manager.getElement("IList<{0}:{1}.{2}>", ${pElement.name}).path} listObjets = new ${manager.getElement("List<{0}:{1}.{2}>", ${pElement.name}).path}();
+            
+            // créer de nouvels objets nationalité et ajout dans une liste
+            listObjets.add(${pElementHomeImplTest.className}.get(home.getEm(), true));
+            listObjets.add(${pElementHomeImplTest.className}.get(home.getEm(), true));
+            listObjets.add(${pElementHomeImplTest.className}.get(home.getEm(), true));
+            listObjets.add(${pElementHomeImplTest.className}.get(home.getEm(), true));
+            listObjets.add(${pElementHomeImplTest.className}.get(home.getEm(), true));
+            listObjets.add(${pElementHomeImplTest.className}.get(home.getEm(), true));
+            listObjets.add(${pElementHomeImplTest.className}.get(home.getEm(), true));
+            listObjets.add(${pElementHomeImplTest.className}.get(home.getEm(), true));
+            listObjets.add(${pElementHomeImplTest.className}.get(home.getEm(), true));
+            listObjets.add(${pElementHomeImplTest.className}.get(home.getEm(), true));
+
+            // vérification de la création
+            nb += 10;
+            ${cAssert}.assertEquals("doivent être de total de nb+10", home.getCountAll(), nb);
+            nb -= 10;
+            
+            tx.commit();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+            
+            // Suppression les enregistrements dans la BD
+            home.remove(listObjets);
+            
+            tx.commit();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // test si la suppression est ok
+            ${cAssert}.assertEquals(home.getCountAll(), nb);
+            
+            tx.commit();
+        } catch (${cException} e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+
+    }
+
+    /**
+     * Méthode pour récuppérer l'objet nationalité dans la BD et vérifier si ok
+     */
+    @${cTest}
+    public void testGetById() {
+        ${cTransac} tx = null;
+        try {
+            ${cElementHome} home = (${cElementHome}) (Object) ${cPerstMgr}.getInstance().get("${obmObject.name}");
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // créer d'objets
+            ${cElement} objet1 = ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${cElement} objet2 = ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${cElement} objet3 = ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${cElement} objet4 = ${pElementHomeImplTest.className}.get(home.getEm(), true);
+
+            tx.commit();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+            
+            /*
+             * récupération des ids des objets
+             */
+            ${cElement} pObjet1 = home.getById(objet1.getId());
+            ${cElement} pObjet2 = home.getById(objet2.getId());
+            ${cElement} pObjet3 = home.getById(objet3.getId());
+            ${cElement} pObjet4 = home.getById(objet4.getId());
+
+            tx.commit();
+
+            // test si la récupperation des ids est ok
+            ${cAssert}.assertEquals(pObjet1.getId(), objet1.getId());
+            ${cAssert}.assertEquals(pObjet2.getId(), objet2.getId());
+            ${cAssert}.assertEquals(pObjet3.getId(), objet3.getId());
+            ${cAssert}.assertEquals(pObjet4.getId(), objet4.getId());
+        } catch (${cException} e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+    }
+
+    /**
+     * Méthode pour récuppérer tous les objets nationalité et vérifier la taille
+     * de la liste
+     */
+    @${cTest}
+    public void testGetAll() {
+        ${cTransac} tx = null;
+        try {
+            ${cElementHome} home = (${cElementHome}) (Object) ${cPerstMgr}.getInstance().get("${obmObject.name}");
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // récupération nb des objets actuellement enregs
+            Long nb = home.getCountAll();
+            
+            // créer d'un nouvel objet
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            
+            tx.commit();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // test si la création de l'objet est ok
+            nb++;
+            ${cAssert}.assertEquals("doivent être de total de nb+1", home.getCountAll(), nb);
+            
+            tx.commit();
+        } catch (${cException} e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+    }
+
+    /**
+     * Méthode pour compter les objets nationalité et vérifier le total
+     */
+    @${cTest}
+    public void testGetCountAll() {
+        ${cTransac} tx = null;
+        try {
+            ${cElementHome} home = (${cElementHome}) (Object) ${cPerstMgr}.getInstance().get("${obmObject.name}");
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // récupération nb nat actuellement enregs
+            long nb = home.getCountAll();
+
+            // création des objet Nationalite
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+
+            tx.commit();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // nb total des objets
+            long newNb = home.getCountAll();
+
+            // test si le nb total des objets est ok
+            ${cAssert}.assertEquals("doivent être de total de nb+8", newNb, nb + 8);
+
+            tx.commit();
+        } catch (${cException} e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+    }
+
+    /**
+     * Méthode pour récupérer les objets nationalité par page et vérifier la
+     * taille
+     */
+    @${cTest}
+    public void testGetAllByPage() {
+        ${cTransac} tx = null;
+        try {
+            ${cElementHome} home = (${cElementHome}) (Object) ${cPerstMgr}.getInstance().get("${obmObject.name}");
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // récupération du nombre av
+            Integer nb = home.getCountAll().intValue();
+            
+            // création des objet Nationalite
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            ${pElementHomeImplTest.className}.get(home.getEm(), true);
+            
+            tx.commit();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+            /*
+             * récupération des objets par page du nb av + 1 par 10, puis en suivant
+             * première page 10, et ensuite 2
+             */
+            ${cAssert}.assertEquals(home.getAll((Integer) nb, 10).size(), 10);
+            ${cAssert}.assertEquals(home.getAll(nb + 10, 10).size(), 2);
+            
+            tx.commit();
+        } catch (${cException} e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+    }
+
+    /**
+     * Méthode pour récupérer les clés id des objets nationalité et vérifier la
+     * taille de la liste des objets
+     */
+    @${cTest}
+    public void testGetByIds() {
+        ${cTransac} tx = null;
+        try {
+            ${cElementHome} home = (${cElementHome}) (Object) ${cPerstMgr}.getInstance().get("${obmObject.name}");
+
+#set ( $iLstType = ${manager.getElement("IList").path} )
+#set ( $iLstType = "${iLstType}<${cleType.path}>" )
+#set ( $lstType = ${manager.getElement("List").path} )
+#set ( $lstType = "${lstType}<${cleType.path}>" )
+            ${iLstType} listIds = new ${lstType}();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // Création de 11 nouveaux objets et ajouts des ids dans une liste
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+
+            tx.commit();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+            
+            // récupération des objets par les ids
+            ${manager.getElement("IList<{0}:{1}.{2}>", ${pElement.name}).path} objets = home.getByIds(listIds);
+
+            tx.commit();
+            
+            // parcours de la liste d'objets et suppression de l'id dans la liste d'id si existe
+            // si existe pas dans la liste d'id on léve une erreur
+            for (${cElement} obj : objets) {
+                if (listIds.contains(obj.getId())) {
+                    listIds.remove(obj.getId());
+                } else {
+                    ${cAssert}.fail("L'id " + obj.getId() + " n'existe pas");
+                }
+            }
+
+            // la taille d'id doit être 0
+            ${cAssert}.assertEquals(listIds.size(), 0);
+        } catch (${cException} e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+
+    }
+
+    /**
+     * Méthode pour compter le nombre d'objets par id
+     * vérifier le total
+     */
+    @${cTest}
+    public void testGetCountByIds() {
+        ${cTransac} tx = null;
+        try {
+            ${cElementHome} home = (${cElementHome}) (Object) ${cPerstMgr}.getInstance().get("${obmObject.name}");
+
+#set ( $iLstType = ${manager.getElement("IList").path} )
+#set ( $iLstType = "${iLstType}<${cleType.path}>" )
+#set ( $lstType = ${manager.getElement("List").path} )
+#set ( $lstType = "${lstType}<${cleType.path}>" )
+            ${iLstType} listIds = new ${lstType}();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // Création de 11 nouveaux objets et ajouts des ids dans une liste
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+
+            tx.commit();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // récupperation de nb des ids
+            long count = home.getCountByIds(listIds);
+
+            // test si le nb des ids est ok
+            ${cAssert}.assertEquals(count, 11);
+
+            tx.commit();
+        } catch (${cException} e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+    }
+
+    /**
+     * Méthode pour compter le nombre d'objets par id par page
+     * et vérifier la taille
+     */
+    @${cTest}
+    public void testGetByIdsByPage() {
+        ${cTransac} tx = null;
+        try {
+            ${cElementHome} home = (${cElementHome}) (Object) ${cPerstMgr}.getInstance().get("${obmObject.name}");
+
+#set ( $iLstType = ${manager.getElement("IList").path} )
+#set ( $iLstType = "${iLstType}<${cleType.path}>" )
+#set ( $lstType = ${manager.getElement("List").path} )
+#set ( $lstType = "${lstType}<${cleType.path}>" )
+            ${iLstType} listIds = new ${lstType}();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+
+            // Création de 12 nouveaux objets et ajouts des ids dans une liste
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+            listIds.add(${pElementHomeImplTest.className}.get(home.getEm(), true).getId());
+
+            tx.commit();
+
+            tx = home.getEm().getTransaction();
+            tx.begin();
+            
+            // test si le nb les objet dans la page est ok
+            ${cAssert}.assertEquals(home.getByIds(listIds, 0, 10).size(), 10);
+            ${cAssert}.assertEquals(home.getByIds(listIds, 10, 10).size(), 2);
+
+            tx.commit();
+        } catch (${cException} e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+
+            ${cTestManager}.getInstance().afficherErrNormalementPasLevee(e);
+        }
+    }
+}

@@ -1,0 +1,34 @@
+## #####
+## Générateur java de la couche service IMC
+## Création de l'interface de Service
+##
+## @param generatedObject l'objet prstm
+##
+## @author Florian
+## @version 1.0.0 09/12/2013
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pobject
+#set ( $obmObject = ${generatedObject.datamObject.obmObject} )
+#set ( $mElementHome = ${manager.getElement("{0}:{1}.S{2}", ${obmObject.modelId})} )
+#set ( $mElementHomeLocal = ${manager.getElement("{0}:{1}.S{2}Local", ${obmObject.modelId})} )
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+package ${mElementHomeLocal.packageName};
+
+/**
+ * Interface locale de service de l'objet ${obmObject.completeName}
+ *
+ * @version ${model.version}
+ * @author généré par ${infoGen}
+ */
+public interface ${mElementHomeLocal.className}
+        extends ${mElementHome.path} {
+}

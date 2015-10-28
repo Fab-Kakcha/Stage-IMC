@@ -1,0 +1,76 @@
+##
+## Générateur Xml
+## Création d'un élément object logim à partir d'un objet datam
+##
+## $generatedObject = model datam
+## $dtm = l'objet datam
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 27/09/2009
+##
+##
+## on récup l'objet obm
+#set ( $obmObject = ${dtm.obmObject} )
+    <!-- Définition de l'objet ${obmObject.name} pour l'objet datam ${dtm.completeName} -->
+    <object name="${obmObject.name}" pack="${obmObject.project}:${obmObject.pack.name}" datamObject="${dtm.project}:${dtm.refName}">
+##
+## on parcours les champs de l'objet
+#foreach($champObmDtm in ${obmObject.getFields()})
+## on ne prend que les champs qui sont des références
+#if ( ${manager.isBaseType(${champObmDtm.type})} == false )
+##
+## si c'est une liste on crée un one to many (ref), mais on dit de vérifier si pas un many to many
+#if ( ${champObmDtm.isList()} )
+        <!-- Champ OneToMany ${champObmDtm.name} -->
+		<!--
+            TODO vérifier qu'il ne s'agit pas d'un ManyToMany
+            Si c'est un ManyToMany, renseigner les informations de référence et inverse référence
+            , ou bien mapped field si la relation est déjà défini dans l'autre objet de la relation
+            En revanche si c'est un OneToMany, renseigné les informations de mappage
+        -->
+		<oneToMany name="${champObmDtm.name}">
+            <mappedPrstmField name="" />
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</oneToMany>
+        
+#else
+##
+## sinon si pas une liste alors c'est un many to one
+        <!-- Champ ManyToOne ${champObmDtm.name} -->
+        <!--
+            TODO vérifier qu'il ne s'agit pas d'un OneToOne
+            Si c'est un OneToOne, renseigner les informations de référence
+            , ou bien mapped field si la relation est déjà défini dans l'autre objet de la relation
+            En revanche si c'est un ManyToOne, vérifier les informations de référence
+        -->
+		<manyToOne name="${champObmDtm.name}">
+			<references>
+##
+## on va parcourir les ids de l'objet référencé
+#set ( $obmField = ${supermodel.getElement("obm:object:${champObmDtm.type}")} )
+#getBddName( $obmFieldName, ${champObmDtm.name} )
+##
+## on va parcourir les ids de cet objet
+#getIdsObm ( $ids, ${obmField} )
+#foreach( $id in ${ids.split(",")} )
+				<reference datamField="fk__${obmFieldName}__${id}" />
+#end
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+#end
+#end
+#end
+	</object>
+

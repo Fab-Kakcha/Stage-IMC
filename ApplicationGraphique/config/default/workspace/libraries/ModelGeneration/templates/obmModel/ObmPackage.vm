@@ -1,0 +1,12 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.objectmodel.ObmModel)
+## @param element (com.imcfr.generateur.model.objectmodel.ObmPackage)
+## 
+## #####
+##
+#set($op_completeName="")
+#if (${element.name} != ${element.completeName})
+#**##set($op_completeName=" completeName=${Q}${element.completeName}${Q}")
+#end
+	<package name="${element.name}"$!{op_completeName}/>

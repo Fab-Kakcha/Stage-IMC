@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<obm name="AgadirTechniqueObm" project="AgadirTechnique" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ObjectModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/ObjectModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/CodeGeneratorModel/src/main/resources/com/imcfr/generateur/sax/objectmodel/ObjectModelDefinition-2.0.0.xsd ">
+
+	<package name="agadir" completeName="com.imcfr.agadir"/>
+	<!-- ILibelle -->
+	<object name="ILibelle" pack="AgadirTechnique:agadir" type="interface">
+		<field name="codeLibelle" type="Base:String" null="false">
+			<descriptions>
+				<description langue="fr" value="code unique dans la table correspondante"/>
+			</descriptions>
+		</field>
+		<field name="intitule" type="Base:String" null="false">
+			<descriptions>
+				<description langue="fr" value="Libellé associé au code"/>
+			</descriptions>
+		</field>
+		<field name="libelleIHM" type="Base:String" null="true">
+			<descriptions>
+				<description langue="fr" value="Libellé utilisé dans l'interface graphique"/>
+			</descriptions>
+		</field>
+		<field name="actif" type="Base:Boolean" null="false">
+			<descriptions>
+				<description langue="fr" value="Indique si l'instance est active, cad utilisable en saisie."/>
+			</descriptions>
+		</field>
+		<field name="ordre" type="Base:Integer" null="true">
+			<descriptions>
+				<description langue="fr" value="Attribut utilisé pour le tri par défaut"/>
+			</descriptions>
+		</field>
+		<descriptions>
+			<description langue="fr" value="Interface commune à tous les objets possédant un code et un intitulé"/>
+		</descriptions>
+	</object>
+	<!-- TypeCode -->
+	<object name="TypeCode" pack="AgadirTechnique:agadir" implements="AgadirTechnique:agadir.ILibelle" abstract="true">
+		<field name="id" type="Base:Long" null="false" id="true">
+			<descriptions>
+				<description langue="fr" value="Identifiant BDD"/>
+			</descriptions>
+		</field>
+		<!-- <field name="actif" value="true"/> -->
+		<descriptions>
+			<description langue="fr" value="Classe de base des références utilisées comme attribut de balise dans le format d'échange (ex:TypeVoie)"/>
+		</descriptions>
+	</object>
+	<!-- Libelle -->
+	<object name="Libelle" pack="AgadirTechnique:agadir" implements="AgadirTechnique:agadir.ILibelle" abstract="true">
+		<field name="id" type="Base:Long" null="false" id="true">
+			<descriptions>
+				<description langue="fr" value="Identifiant BDD"/>
+			</descriptions>
+		</field>
+		<!-- <field name="actif" value="true"/> -->
+		<descriptions>
+			<description langue="fr" value="Classe de base des références dont les codes sont utilisés dans le format d'échange (ex: Repetition)"/>
+		</descriptions>
+	</object>
+	
+	
+	<object name="Document" pack="AgadirTechnique:agadir">
+		<field name="id" type="Base:Long" null="false" id="true">
+			<descriptions>
+				<description langue="fr" value="Identifiant BDD"/>
+			</descriptions>
+		</field>
+
+		<field name="nomAffichable" type="Base:String"/>
+		<field name="nomFichierOrigine" type="Base:String"/>
+		<field name="taille" type="Base:String"/>
+		<field name="format" type="Base:String"/>
+		<field name="emplacement" type="Base:String"/>
+
+		<field name="typeDocument" type="AgadirTechnique:agadir.TypeDocument"/>
+	</object>
+	
+	<object name="TypeDocument" pack="AgadirTechnique:agadir" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	
+	<object name="Signature" pack="AgadirTechnique:agadir">
+		<!-- attributs -->
+		<field name="id" type="Base:Long" null="false" id="true"/>
+		<field name="date" type="Base:Date"/>
+		<field name="lieu" type="Base:String"/>
+	</object>
+</obm>

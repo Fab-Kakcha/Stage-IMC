@@ -1,0 +1,58 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.viewmodel.ViewModel)
+## @param element (com.imcfr.generateur.model.viewmodel.GridComponent)
+## 
+## #####
+##
+#**##foreach ($filtre in ${element.filtres})
+#**##**##set($vcf_type="")
+#**##**##if ("$!{filtre.type}" != "")
+#**##**##**##set($vcf_type=" type=${Q}${filtre.type}${Q}")
+#**##**##end
+		<filter name="${filtre.name}"$!{vcf_type}/>
+#**##end
+
+#**##foreach ($data in ${element.datas})
+#**##**##if (${data.class.simpleName} == "Colonne")
+#**##**##**##set($vcc_type="")
+#**##**##**##if ("$!{data.type}" != "")
+#**##**##**##**##set($vcc_type=" type=${Q}${data.type}${Q}")
+#**##**##**##end
+#**##**##**##set($vcc_visible="")
+#**##**##**##if (!${data.visible})
+#**##**##**##**##set($vcc_visible=" visible=${Q}${data.visible}${Q}")
+#**##**##**##end
+#**##**##**##set($vcc_key="")
+#**##**##**##if (${data.key})
+#**##**##**##**##set($vcc_key=" key=${Q}${data.key}${Q}")
+#**##**##**##end
+#**##**##**##set($vcc_filter="")
+#**##**##**##if (${data.filter})
+#**##**##**##**##set($vcc_filter=" filter=${Q}${data.filter}${Q}")
+#**##**##**##end
+		<colonne name="${data.name}"$!{vcc_filter}$!{vcc_key}$!{vcc_type}$!{vcc_visible}/>
+#**##**##elseif (${data.class.simpleName} == "Action")
+#**##**##**##set($vca_params="")
+#**##**##**##if ("$!{data.params}" != "")
+#**##**##**##**##set($vca_params=" params=${Q}${data.params}${Q}")
+#**##**##**##end
+#**##**##**##set($vca_type="")
+#**##**##**##if ("$!{data.type}" != "")
+#**##**##**##**##set($vca_type=" type=${Q}${data.type}${Q}")
+#**##**##**##end
+		<actionColonne name="${data.name}" component="${data.componentName}" action="${data.action}"$!{vca_params}$!{vca_type}/>
+#**##**##end
+#**##end
+
+#**##foreach ($action in ${element.actions})
+#**##**##set($vca_params="")
+#**##**##if ("$!{action.params}" != "")
+#**##**##**##set($vca_params=" params=${Q}${action.params}${Q}")
+#**##**##end
+#**##**##set($vca_type="")
+#**##**##if ("$!{action.type}" != "")
+#**##**##**##set($vca_type=" type=${Q}${action.type}${Q}")
+#**##**##end
+		<action name="${action.name}" component="${action.componentName}" action="${action.action}"$!{vca_params}$!{vca_type}/>
+#**##end

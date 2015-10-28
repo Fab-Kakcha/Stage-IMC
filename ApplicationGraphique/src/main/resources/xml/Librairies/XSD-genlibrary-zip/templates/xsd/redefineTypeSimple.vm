@@ -1,0 +1,38 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param redefineTypeSimple (com.imcfr.generateur.model.edimodel.RedefineTypeSimple)
+## 
+## #####
+#set($rts_baseElt = ${model.utils.getTypeSimple($model, $redefineTypeSimple.base)})
+#set($rts_baseTns = ${model.utils.getTargetNamespaceOf($model, $redefineTypeSimple.base)})
+## 
+<!-- #formatType($model ${redefineTypeSimple.base}) -->
+	<redefine schemaLocation="${rts_baseTns.schemaLocation}">
+#set($rts_name="#formatType($model ${redefineTypeSimple.base})")
+#set($rts_refname="#formatRef($model ${redefineTypeSimple.base})")
+#if ($redefineTypeSimple.mixed)
+#**##set($rts_name="Simple${rts_name}")
+#**##set($rts_refname="${model.targetNamespace.alias}:${rts_name}")
+#end
+		<simpleType name="$rts_name">
+			<restriction base="$rts_refname">
+				$!{redefineTypeSimple.definition.xsdDefinition}
+			</restriction>
+		</simpleType>
+#if ($redefineTypeSimple.mixed)
+
+#**##set($t_indent="					")
+		<complexType name="#formatType($model ${redefineTypeSimple.base})">
+			<simpleContent>
+				<restriction base="${model.targetNamespace.alias}:#formatType($model ${redefineTypeSimple.base})">
+#**##**##**##**##**##foreach ($t_attribute in $rts_baseElt.attributesList)
+#**##**##**##**##**##**##set($rt_attribute=$!{redefineTypeSimple.getAttribute($t_attribute.name)})
+#**##**##**##**##**##**##generate("XSD:AttributeBase")
+#**##**##**##**##**##**##set($rt_attribute="")
+#**##**##**##**##**##end
+				</restriction>
+			</simpleContent>
+		</complexType>
+#end
+	</redefine>

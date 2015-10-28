@@ -1,0 +1,21 @@
+## #####
+## Générateur java de la couche métier IMC
+## Création d'un fichier de properties pour le chargement dans le métier manager
+## 
+## @param generatedObject le model prstm
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## #####
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+#Les homes métiers de ${model.project} accessible par JNDI
+#foreach ( $object in ${generatedObject.objectsList} )
+#set ( $obmObject = ${object.datamObject.obmObject} )
+#if ( ${obmObject.abstract} == false )
+${obmObject.name}=ejb/${obmObject.name}Local
+#end
+#end

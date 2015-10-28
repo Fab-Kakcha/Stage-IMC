@@ -1,0 +1,53 @@
+## #####
+## Générateur java de la couche persistance IMC
+## Création de l'interface PHome
+## 
+## @param generatedObject le prstm object
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pobject
+#set ( $obmObject = ${generatedObject.datamObject.obmObject} )
+#set ( $beanElement = ${manager.getElement("{0}:{1}.{2}Bean", ${obmObject.modelId})} )
+#set ( $pElementHome = ${manager.getElement("{0}:{1}.PHome{2}Generated", ${obmObject.modelId})} )
+##
+## si le nombre d'id de la classe est différent de 1 alors on aura une clé composé
+#if ( ${obmObject.fieldId.class.simpleName} == "ComposedId" )
+##
+#set ( $cleType = ${manager.getElement("{0}:{1}.PK{2}", ${obmObject.modelId})} )
+#else
+#if ( ${manager.isBaseType(${obmObject.fieldId.type})} == true )
+#set ( $cleType = ${manager.getElement(${obmObject.fieldId.type})} )
+#else
+#set ( $cleType = ${manager.getElement("{0}:{1}.{2}Bean", ${obmObject.fieldId.type})} )
+#end
+#end
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+package ${pElementHome.packageName};
+
+/**
+ * Interface générée non modifiable du home de l'objet persistant ${obmObject.completeName}
+ *
+ * @version ${model.version}
+ * @author généré par ${infoGen}
+ */
+public interface ${pElementHome.className}
+        extends ${manager.getElement("PHome").path}<${beanElement.path}, ${cleType.path}> {
+	
+	/**
+	 * propriété du nom du home
+	 */
+    String PHOME_NAME = "${obmObject.name}";
+    
+#generate ("CouchePersistanceJPA:PHomeGenerated_GetByRef")        
+}

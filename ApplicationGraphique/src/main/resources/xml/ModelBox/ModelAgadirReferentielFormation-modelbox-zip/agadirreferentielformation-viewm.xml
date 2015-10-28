@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewm name="AgadirReferentielFormationViewm" project="AgadirReferentielFormation" version="4.0.0" xmlns="http://www.imc-fr.com/ViewModelDefinition-2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- AgadirReferentielFormation:referentiel.lheo.NiveauFormation -->
+	<vueModel name="NiveauFormationModel" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.NiveauFormation"/>
+	
+	<component type="vue" name="NiveauFormationVue" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.NiveauFormation" vueModel="AgadirReferentielFormation:referentiel.lheo.NiveauFormationModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="NiveauFormationEdit" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.NiveauFormation" vueModel="AgadirReferentielFormation:referentiel.lheo.NiveauFormationModel"
+		titre="Edition NiveauFormation">
+		<vue name="vue" component="AgadirReferentielFormation:referentiel.lheo.NiveauFormationVue"/>
+
+		<grid name="grid" component="AgadirReferentielFormation:referentiel.lheo.RechercheNiveauFormation"/>
+
+		<action name="Enregistrer" component="AgadirReferentielFormation:referentiel.lheo.NiveauFormationEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielFormation:referentiel.lheo.NiveauFormationEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheNiveauFormation" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.NiveauFormation"
+		titre="Recherche NiveauFormation">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielFormation:referentiel.lheo.NiveauFormationEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielFormation:referentiel.lheo.NiveauFormationEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielFormation:referentiel.lheo.NiveauFormationEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielFormation:referentiel.lheo.TypeReferentielMetier -->
+	<vueModel name="TypeReferentielMetierModel" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.TypeReferentielMetier"/>
+	
+	<component type="vue" name="TypeReferentielMetierVue" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.TypeReferentielMetier" vueModel="AgadirReferentielFormation:referentiel.lheo.TypeReferentielMetierModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeReferentielMetierEdit" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.TypeReferentielMetier" vueModel="AgadirReferentielFormation:referentiel.lheo.TypeReferentielMetierModel"
+		titre="Edition TypeReferentielMetier">
+		<vue name="vue" component="AgadirReferentielFormation:referentiel.lheo.TypeReferentielMetierVue"/>
+
+		<grid name="grid" component="AgadirReferentielFormation:referentiel.lheo.RechercheTypeReferentielMetier"/>
+
+		<action name="Enregistrer" component="AgadirReferentielFormation:referentiel.lheo.TypeReferentielMetierEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielFormation:referentiel.lheo.TypeReferentielMetierEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeReferentielMetier" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.TypeReferentielMetier"
+		titre="Recherche TypeReferentielMetier">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielFormation:referentiel.lheo.TypeReferentielMetierEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielFormation:referentiel.lheo.TypeReferentielMetierEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielFormation:referentiel.lheo.TypeReferentielMetierEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielFormation:referentiel.lheo.TypeDiplome -->
+	<vueModel name="TypeDiplomeModel" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.TypeDiplome"/>
+	
+	<component type="vue" name="TypeDiplomeVue" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.TypeDiplome" vueModel="AgadirReferentielFormation:referentiel.lheo.TypeDiplomeModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+		
+		<field name="objectifs"/>
+		<field name="inscritRncp"/>
+		<select name="niveau" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeDiplomeEdit" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.TypeDiplome" vueModel="AgadirReferentielFormation:referentiel.lheo.TypeDiplomeModel"
+		titre="Edition TypeDiplome">
+		<vue name="vue" component="AgadirReferentielFormation:referentiel.lheo.TypeDiplomeVue"/>
+
+		<grid name="grid" component="AgadirReferentielFormation:referentiel.lheo.RechercheTypeDiplome"/>
+
+		<action name="Enregistrer" component="AgadirReferentielFormation:referentiel.lheo.TypeDiplomeEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielFormation:referentiel.lheo.TypeDiplomeEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeDiplome" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.TypeDiplome"
+		titre="Recherche TypeDiplome">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielFormation:referentiel.lheo.TypeDiplomeEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielFormation:referentiel.lheo.TypeDiplomeEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielFormation:referentiel.lheo.TypeDiplomeEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielFormation:referentiel.lheo.Formacode -->
+	<vueModel name="FormacodeModel" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Formacode"/>
+	
+	<component type="vue" name="FormacodeVue" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Formacode" vueModel="AgadirReferentielFormation:referentiel.lheo.FormacodeModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+		
+		<select name="nsf" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="FormacodeEdit" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Formacode" vueModel="AgadirReferentielFormation:referentiel.lheo.FormacodeModel"
+		titre="Edition Formacode">
+		<vue name="vue" component="AgadirReferentielFormation:referentiel.lheo.FormacodeVue"/>
+
+		<grid name="grid" component="AgadirReferentielFormation:referentiel.lheo.RechercheFormacode"/>
+
+		<action name="Enregistrer" component="AgadirReferentielFormation:referentiel.lheo.FormacodeEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielFormation:referentiel.lheo.FormacodeEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheFormacode" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Formacode"
+		titre="Recherche Formacode">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielFormation:referentiel.lheo.FormacodeEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielFormation:referentiel.lheo.FormacodeEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielFormation:referentiel.lheo.FormacodeEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielFormation:referentiel.lheo.Nsf -->
+	<vueModel name="NsfModel" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Nsf"/>
+	
+	<component type="vue" name="NsfVue" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Nsf" vueModel="AgadirReferentielFormation:referentiel.lheo.NsfModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="NsfEdit" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Nsf" vueModel="AgadirReferentielFormation:referentiel.lheo.NsfModel"
+		titre="Edition Nsf">
+		<vue name="vue" component="AgadirReferentielFormation:referentiel.lheo.NsfVue"/>
+
+		<grid name="grid" component="AgadirReferentielFormation:referentiel.lheo.RechercheNsf"/>
+
+		<action name="Enregistrer" component="AgadirReferentielFormation:referentiel.lheo.NsfEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielFormation:referentiel.lheo.NsfEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheNsf" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Nsf"
+		titre="Recherche Nsf">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielFormation:referentiel.lheo.NsfEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielFormation:referentiel.lheo.NsfEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielFormation:referentiel.lheo.NsfEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielFormation:referentiel.lheo.Rncp -->
+	<vueModel name="RncpModel" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Rncp"/>
+	
+	<component type="vue" name="RncpVue" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Rncp" vueModel="AgadirReferentielFormation:referentiel.lheo.RncpModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="RncpEdit" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Rncp" vueModel="AgadirReferentielFormation:referentiel.lheo.RncpModel"
+		titre="Edition Rncp">
+		<vue name="vue" component="AgadirReferentielFormation:referentiel.lheo.RncpVue"/>
+
+		<grid name="grid" component="AgadirReferentielFormation:referentiel.lheo.RechercheRncp"/>
+
+		<action name="Enregistrer" component="AgadirReferentielFormation:referentiel.lheo.RncpEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielFormation:referentiel.lheo.RncpEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheRncp" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Rncp"
+		titre="Recherche Rncp">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielFormation:referentiel.lheo.RncpEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielFormation:referentiel.lheo.RncpEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielFormation:referentiel.lheo.RncpEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielFormation:referentiel.lheo.Diplome -->
+	<vueModel name="DiplomeModel" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Diplome"/>
+	
+	<component type="vue" name="DiplomeVue" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Diplome" vueModel="AgadirReferentielFormation:referentiel.lheo.DiplomeModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+		
+		<select name="niveauFormation" valueObmField="id" labelObmField="libelleIHM"/>
+		<select name="typeDiplome" valueObmField="id" labelObmField="libelleIHM"/>
+		<select name="formacodes" valueObmField="id" labelObmField="libelleIHM"/>
+		<select name="nsf" valueObmField="id" labelObmField="libelleIHM"/>
+		<select name="rncp" valueObmField="id" labelObmField="libelleIHM"/>
+		<select name="referenceMetier" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="DiplomeEdit" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Diplome" vueModel="AgadirReferentielFormation:referentiel.lheo.DiplomeModel"
+		titre="Edition Diplome">
+		<vue name="vue" component="AgadirReferentielFormation:referentiel.lheo.DiplomeVue"/>
+
+		<grid name="grid" component="AgadirReferentielFormation:referentiel.lheo.RechercheDiplome"/>
+
+		<action name="Enregistrer" component="AgadirReferentielFormation:referentiel.lheo.DiplomeEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielFormation:referentiel.lheo.DiplomeEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheDiplome" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.Diplome"
+		titre="Recherche Diplome">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielFormation:referentiel.lheo.DiplomeEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielFormation:referentiel.lheo.DiplomeEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielFormation:referentiel.lheo.DiplomeEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielFormation:referentiel.lheo.ReferentielMetier -->
+	<vueModel name="ReferentielMetierModel" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.ReferentielMetier"/>
+	
+	<component type="vue" name="ReferentielMetierVue" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.ReferentielMetier" vueModel="AgadirReferentielFormation:referentiel.lheo.ReferentielMetierModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+		
+		<select name="typeReferentielMetier" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="ReferentielMetierEdit" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.ReferentielMetier" vueModel="AgadirReferentielFormation:referentiel.lheo.ReferentielMetierModel"
+		titre="Edition ReferentielMetier">
+		<vue name="vue" component="AgadirReferentielFormation:referentiel.lheo.ReferentielMetierVue"/>
+
+		<grid name="grid" component="AgadirReferentielFormation:referentiel.lheo.RechercheReferentielMetier"/>
+
+		<action name="Enregistrer" component="AgadirReferentielFormation:referentiel.lheo.ReferentielMetierEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielFormation:referentiel.lheo.ReferentielMetierEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheReferentielMetier" pack="AgadirReferentielFormation:referentiel.lheo" object="AgadirReferentielFormation:referentiel.lheo.ReferentielMetier"
+		titre="Recherche ReferentielMetier">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielFormation:referentiel.lheo.ReferentielMetierEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielFormation:referentiel.lheo.ReferentielMetierEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielFormation:referentiel.lheo.ReferentielMetierEdit" action="Editer"/>
+	</component>
+
+</viewm>

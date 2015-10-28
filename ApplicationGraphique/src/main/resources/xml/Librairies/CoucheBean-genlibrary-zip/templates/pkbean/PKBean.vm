@@ -1,0 +1,183 @@
+## #####
+## Générateur java de la couche bean IMC
+## Création de la classe clé primaire PK des Beans avec id composé
+##
+## @param generatedObject un objet obm
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pkobject
+#set ( $pkElement = ${manager.getElement("{0}:{1}.PK{2}", ${generatedObject.modelId})} )
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+package ${pkElement.packageName};
+
+/**
+ * Classe d'implémentation de la clé composé du bean ${generatedObject.completeName}
+ *
+ * @version ${model.version}
+ * @author généré par ${infoGen}
+ */
+public class ${pkElement.className}
+		extends ${manager.getElement("PKBean").path}
+        implements ${manager.getElement("Serializable").path} {
+
+    /**
+     * Serial version uid
+     */
+    private static final long serialVersionUID = 1L;
+
+##
+## on génére les ids pour chaque champs pas ids
+#foreach ( $field in  ${generatedObject.fieldsList} )
+#if ( ${field.id} == true )
+#generate ( "CoucheBean:BeanImpl_Attribut" )
+#end
+#end
+##
+## on générer les constructeurs
+    /**
+     * Constructeur sans paramètre
+     */
+    public ${pkElement.className}() {
+        super(new String[]{
+##
+## on parcours les champs ids pour ajouter un éléments de description dans le parent
+#set ( $first = "" )
+##
+## on génére les ids pour chaque champs pas ids
+#foreach ( $field in  ${generatedObject.fieldsList} )
+#if ( ${field.id} == true )
+#if ( ${first} == "" )
+            "${field.name}"
+#set ( $first = "no" )
+#else
+            , "${field.name}"
+#end
+#end
+#end
+            });
+    }
+    
+##
+## on va parcourir les ids de l'objet pour créer les getters et setters
+#foreach ( $field in  ${generatedObject.fieldsList} )
+#if ( ${field.id} == true )
+##
+## on crée l'attribut et on affecte le nom
+#set ( $attribut = ${factory.newAttribut()} )
+#set ( ${attribut.name} = ${field.name} )
+##
+## si le champ est une liste le type sera List<type>
+## sinon type simplement
+#if ( ${manager.isBaseType(${field.type})} == true )
+#set ( ${attribut.type} = ${manager.getElement(${field.type}).path} )
+#else
+#set ( ${attribut.type} = ${manager.getElement("{0}:{1}.{2}Bean", ${field.type}).path} )
+#end
+## si liste
+#if ( ${field.list} )
+#set ( $atype = ${manager.getElement("IList").path} )
+#set ( ${attribut.type} = "${atype}<${attribut.type}>" )
+#end
+##
+## on appel la génération d'attribut getter et setter de classe que si clé est pas composé
+#generate ( "Commun:GetterSetterClasse" )
+#end
+#end
+
+    /* (non-Javadoc)
+     * @see ${manager.getElement("PKBean").path}${esc.h}getValeurElement(${manager.getElement("String").path})
+     */
+    @Override
+    public ${manager.getElement("Object").path} getValeurElement(${manager.getElement("String").path} name) {
+        ${manager.getElement("Object").path} res = "";
+        
+#foreach ( $field in  ${generatedObject.fieldsList} )
+#if ( ${field.id} == true )
+        if (name.equals("${field.name}") && ${field.name} != null) {
+            res = ${field.name};
+        }
+        
+#end
+#end
+        return res;
+    }
+
+    /* (non-Javadoc)
+     * @see ${manager.getElement("Object").path}${esc.h}toString()
+     */
+    @Override
+    public ${manager.getElement("String").path} toString() {
+        String msg = getClass().getSimpleName() + "(";
+
+##
+## on va parcourir les pk de l'objet
+#foreach ( $field in  ${generatedObject.fieldsList} )
+#if ( ${field.id} == true )
+        if (${field.name} != null) {
+            msg += ${field.name}.toString() + ", ";
+        } else {
+            msg += "null, ";
+        }
+
+#end
+#end
+        return msg + ")";
+    }
+    
+    /* (non-Javadoc)
+     * @see ${manager.getElement("Object").path}${esc.h}hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+
+##
+## pour chaque éléments de l'id on ajoute le toString de l'objet
+#foreach ( $field in  ${generatedObject.fieldsList} )
+#if ( ${field.id} == true )
+#set ( $attribut = ${manager.factory.newAttribut()} )
+#set ( ${attribut.name} = ${field.name} )
+#generate ( "Commun:HashCodeAttribut" )
+#end
+#end
+        return result;
+    }
+
+    /* (non-Javadoc)
+     * @see ${manager.getElement("Object").path}${esc.h}equals(${manager.getElement("Object").path})
+     */
+    @Override
+    public boolean equals(${manager.getElement("Object").path} obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        ${pkElement.className} other = (${pkElement.className}) obj;
+
+##
+## pour chaque éléments de l'id on ajoute le toString de l'objet
+#foreach ( $field in  ${generatedObject.fieldsList} )
+#if ( ${field.id} == true )
+#set ( $attribut = ${manager.factory.newAttribut()} )
+#set ( ${attribut.name} = ${field.name} )
+#generate ( "Commun:EqualsAttribut" )
+#end
+#end
+        return true;
+    }
+    
+}

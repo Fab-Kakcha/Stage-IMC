@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<box name="AgadirAnnuaire" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ModelsBoxDefinition-2.0.0">   
+	
+	<dependencies>
+		<dependency name="AgadirTechnique"/>
+		<dependency name="AgadirContact"/>
+		<dependency name="AgadirReferentielGeographique"/>
+		<dependency name="ImcSecurite"/>
+	</dependencies>
+	
+	<!-- Modèles Agadir -->
+    <model type="obm" path="annuaire-obm.xml"/>
+	<model type="datam" path="annuaire-datam.xml"/>
+	<model type="prstm" path="annuaire-prstm.xml"/>
+	
+</box>

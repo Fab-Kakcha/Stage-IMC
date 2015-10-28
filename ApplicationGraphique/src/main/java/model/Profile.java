@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * Cette classe définit le nom et le chemin des fichiers utilisés pour la configuration du générateur
+ * @author fkakcha
+ *
+ */
+
 public class Profile {
 	
 	private String nom;
@@ -7,7 +13,6 @@ public class Profile {
 	
 	
 	public Profile(String nom, String cheminFichier) {
-		super();
 		this.nom = nom;
 		this.cheminFichier = cheminFichier;
 	}

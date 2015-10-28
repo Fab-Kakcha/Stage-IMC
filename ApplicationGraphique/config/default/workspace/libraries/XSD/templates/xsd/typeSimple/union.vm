@@ -1,0 +1,20 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param st_definition (com.imcfr.generateur.model.edimodel.Union)
+## 
+## #####
+#set($st_u_memberTypes="")
+#foreach ($memberType in ${st_definition.memberTypes})
+#**##if (!("$!{st_u_memberTypes}" == ""))
+#**##**##set($st_u_memberTypes="$st_u_memberTypes #formatRef($model $memberType true)")
+#**##else
+#**##**##set($st_u_memberTypes="#formatRef($model $memberType true)")
+#**##end
+#end
+#if (!("$!{st_u_memberTypes}" == ""))
+#**##set($st_u_memberTypes=" memberTypes=${Q}$st_u_memberTypes${Q}")
+#end
+		<union${st_u_memberTypes}>
+			$!{st_definition.xsdDefinition}
+		</union>

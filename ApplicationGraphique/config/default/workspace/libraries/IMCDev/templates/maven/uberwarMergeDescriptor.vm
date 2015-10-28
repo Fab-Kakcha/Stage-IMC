@@ -1,0 +1,94 @@
+## #####
+## 
+## @param generatedObject (com.imcfr.generateur.model.objectmodel.ObmModel)
+## 
+## #####
+## les "
+#set($model = $generatedObject)
+#set($Q = '"')
+##
+#set($final_imcdev_MavenGroupId=${model.project})
+#if ("$!{imcdev_MavenGroupId}" != "")
+#**##set($final_imcdev_MavenGroupId=${imcdev_MavenGroupId})
+#end
+##
+<?xml version="1.0" encoding="UTF-8"?>
+<uberwar>
+	<wars>
+		<war>com.imcfr.imc.java:ImcCommunPresentationWebIHM</war>
+		<war>${final_imcdev_MavenGroupId}:${model.project}Web</war>
+	</wars>
+	<merges>
+		<merge>
+			<type>web.xml</type>
+			<parameters>
+				<default>
+					<tag name="display-name">
+						<strategy name="Overwrite" />
+					</tag>
+					<tag name="context-param">
+						<strategy name="ChooseByName">
+							<default>
+								<strategy name="Overwrite" />
+							</default>
+							<choice name="propertiesFilesNames">
+								<strategy name="NodeMerge">
+									<context-param id="${esc.d}left:param-name">
+										<param-name>${esc.d}left:param-name</param-name>
+										<param-value>${esc.d}left:param-value,${esc.d}right:param-value
+										</param-value>
+									</context-param>
+								</strategy>
+							</choice>
+							<choice name="constantesClassNames">
+								<strategy name="NodeMerge">
+									<context-param id="${esc.d}left:param-name">
+										<param-name>${esc.d}left:param-name</param-name>
+										<param-value>${esc.d}left:param-value,${esc.d}right:param-value
+										</param-value>
+									</context-param>
+								</strategy>
+							</choice>
+							<choice name="beansFilesNames">
+								<strategy name="NodeMerge">
+									<context-param id="${esc.d}left:param-name">
+										<param-name>${esc.d}left:param-name</param-name>
+										<param-value>${esc.d}left:param-value,${esc.d}right:param-value
+										</param-value>
+									</context-param>
+								</strategy>
+							</choice>
+							<choice name="modelsFilesNames">
+								<strategy name="NodeMerge">
+									<context-param id="${esc.d}left:param-name">
+										<param-name>${esc.d}left:param-name</param-name>
+										<param-value>${esc.d}left:param-value,${esc.d}right:param-value
+										</param-value>
+									</context-param>
+								</strategy>
+							</choice>
+							<choice name="servicesJndiFilesNames">
+								<strategy name="NodeMerge">
+									<context-param id="${esc.d}left:param-name">
+										<param-name>${esc.d}left:param-name</param-name>
+										<param-value>${esc.d}left:param-value,${esc.d}right:param-value
+										</param-value>
+									</context-param>
+								</strategy>
+							</choice>
+							<choice name="servicesFilesNames">
+								<strategy name="NodeMerge">
+									<context-param id="${esc.d}left:param-name">
+										<param-name>${esc.d}left:param-name</param-name>
+										<param-value>${esc.d}left:param-value,${esc.d}right:param-value
+										</param-value>
+									</context-param>
+								</strategy>
+							</choice>
+						</strategy>
+					</tag>
+				</default>
+			</parameters>
+		</merge>
+	</merges>
+</uberwar>

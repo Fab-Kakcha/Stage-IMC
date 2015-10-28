@@ -1,0 +1,32 @@
+## #####
+## Générateur Java
+## ligne d'une méthode hashcode
+## 
+## @param _objetClasse (classe java.util.Collection) la liste des attributs dont le hashcode est à créer
+## @param _fields (classe java.util.Collection) la liste des attributs dont le hashcode est à créer
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 27/09/2009
+## #####
+    /* (non-Javadoc)
+     * @see ${manager.getElement("Object").path}${esc.h}equals(${manager.getElement("Object").path})
+     */
+    @Override
+    public boolean equals(${manager.getElement("Object").path} obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        ${_objetClasse} other = (${_objetClasse}) obj;
+
+## pour chaque éléments de l'id on ajoute le toString de l'objet
+#foreach ( $_field in ${_fields})
+#set ( $_attribut = ${manager.factory.newAttribut()} )
+#set ( ${_attribut.name} = ${_field} )
+#generate ( "Commun:EqualsAttribut" )
+#end
+        return true;
+    }
+

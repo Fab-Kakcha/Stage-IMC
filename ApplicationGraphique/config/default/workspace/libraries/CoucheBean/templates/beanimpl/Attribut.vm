@@ -1,0 +1,71 @@
+## #####
+## Générateur Java
+## Attribut de la classe PObjectImpc
+## Créer un objet attribut dans ${attribut} et utilise l'objet ${field}
+##
+## $generatedObject = prstm object
+## $field = un attribut obm
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 12/11/2008
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+#set ( $_attribut = ${factory.newAttribut()} )
+#set ( ${_attribut.name} = ${field.name} )
+##
+## si le champ est une liste le type sera List<type>
+## sinon type simplement
+#if ( ${manager.isBaseType(${field.type})} == true )
+#set ( ${_attribut.type} = ${manager.getElement(${field.type}).path} )
+#else
+#set ( ${_attribut.type} = ${manager.getElement("{0}:{1}.{2}Bean", ${field.type}).path} )
+#end
+## si liste
+#if ( ${field.list} )
+#**##set ( $atype = ${manager.getElement("IList").path} )
+#**##if ("$!{field.value}" != "")
+#**##**##set ( $values = ${field.value.split(" ")} )
+#**##**##set($tmpStrValue="")
+#**##**##foreach ($val in ${values})
+#**##**##**##if ("$!{tmpStrValue}" != "")
+#**##**##**##**##set($tmpStrValue="$tmpStrValue, ")
+#**##**##**##end
+#**##**##**### si c'est une type simple on formatte
+#**##**##**##if ( ${manager.isBaseType(${field.type})} == true )
+#**##**##**##**##if ( ${model.utils.isField(${val})} == true )
+#**##**##**##**##**##set ( $tmpStrValue = "$tmpStrValue#formatFieldRef($model ${val})" )
+#**##**##**##**##else
+#**##**##**##**##**##set ($tmpStrValue = "$tmpStrValue${manager.getElement(${field.type}).formatValue(${val})}" )
+#**##**##**##**##end
+#**##**##**##else
+#**##**##**##**##set ( $tmpStrValue = "$tmpStrValue#formatFieldRef($model $val)" )
+#**##**##**##end
+#**##**##end
+#**##**###
+#**##**##set ( ${_attribut.initValue} = "${manager.getElement('Arrays').path}.asList(${tmpStrValue})" )
+#**##else
+#**##**##set ( ${_attribut.initValue} = "new ${manager.getElement('List').path}<${_attribut.type}>()" )
+#**##end
+#**##set ( ${_attribut.type} = "${atype}<${_attribut.type}>" )
+#elseif ("$!{field.value}" != "")
+#**### si c'est une type simple on formatte
+#**##if ( ${manager.isBaseType(${field.type})} == true )
+#**##**##if ( ${model.utils.isField(${field.value})} == true )
+#**##**##**##set ( ${_attribut.initValue} = "#formatFieldRef($model ${field.value})" )
+#**##**##else
+#**##**##**##set ( ${_attribut.initValue} = ${manager.getElement(${field.type}).formatValue(${field.value})} )
+#**##**##end
+#**##else
+#**##**##set ( ${_attribut.initValue} = "#formatFieldRef($model ${field.value})" )
+#**##end
+#end
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+#generate ( "Commun:Attribut" )

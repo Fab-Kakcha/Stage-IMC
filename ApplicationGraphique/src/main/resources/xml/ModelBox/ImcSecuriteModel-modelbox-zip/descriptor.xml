@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<box name="ImcSecurite" xmlns="http://www.imc-fr.com/ModelsBoxDefinition-2.0.0">
+	
+	<!-- Modèle sécurité -->
+    <model type="obm" path="securite-obm.xml"/>
+	<model type="datam" path="securite-datam.xml"/>
+	<model type="prstm" path="securite-prstm.xml"/>
+	
+</box>

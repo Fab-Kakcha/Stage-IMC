@@ -1,0 +1,20 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param elementTopLevel (com.imcfr.generateur.model.edimodel.ElementTopLevel)
+## 
+## #####
+#set($etl_default="")
+#if (!("$!{elementTopLevel.defaut}" == ""))
+#**##set($etl_default=" default=${Q}${elementTopLevel.defaut}${Q}")
+#end
+#set($etl_fixed="")
+#if (!("$!{elementTopLevel.fixed}" == ""))
+#**##set($etl_fixed=" fixed=${Q}${elementTopLevel.fixed}${Q}")
+#end
+#set($etl_nillable="")
+#if (${elementTopLevel.nillable})
+#**##set($etl_nillable=" nillable=${Q}true${Q}")
+#end
+<!-- ${elementTopLevel.name} -->
+	<element name="${elementTopLevel.name}" type="#formatRef($model $elementTopLevel.typeAttribute)"${etl_default}${etl_fixed}${etl_nillable}/>

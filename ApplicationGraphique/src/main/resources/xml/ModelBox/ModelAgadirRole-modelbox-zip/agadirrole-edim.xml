@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edim name="AgadirRoleEdim" project="AgadirRole" version="4.0.0"
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xmlns="http://www.imc-fr.com/EdiModelDefinition-2.0.0"
+	  xsi:schemaLocation="http://www.imc-fr.com/EdiModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/EdimModel/src/main/resources/com/imcfr/generateur/sax/edimodel/EdiModelDefinition-2.0.0.xsd ">
+
+	<targetNamespace alias="agadirrole" namespace="http://www.dgefp.emploi.gouv.fr/Agadir" schemaLocation="AgadirRole.xsd"/>
+
+	<type name="TypeRole" obmObject="AgadirRole:role.Role" abstract="true">
+		<elements>
+			<element xsi:type="element" name="contact" type="t::AgadirContact:Contact"/>
+		</elements>
+		
+		<attribute xsi:type="attribute" name="codeType" type="ts::AgadirTechnique:TypeCodeTypeAttr" use="required"/>
+	</type>
+	
+	<type name="Beneficiaire" obmObject="AgadirRole:role.Beneficiaire" inherits="t::AgadirRole:TypeRole" final="false"></type>
+	<type name="Operateur" obmObject="AgadirRole:role.Operateur" inherits="t::AgadirRole:TypeRole" final="false"></type>
+	<type name="Commanditaire" obmObject="AgadirRole:role.Commanditaire" inherits="t::AgadirRole:TypeRole" final="false"></type>
+	<type name="PorteurProjet" obmObject="AgadirRole:role.PorteurProjet" inherits="t::AgadirRole:TypeRole" final="false"></type>
+	<type name="Tuteur" obmObject="AgadirRole:role.Tuteur" inherits="t::AgadirRole:TypeRole" final="false"></type>
+</edim>

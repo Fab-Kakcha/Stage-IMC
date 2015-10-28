@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile name="Mesure" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ProfileDefinition-1.0.0" xsi:schemaLocation="http://www.imc-fr.com/ProfileDefinition-1.0.0 ../../../../sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/xmi/profile/ProfileDefinition-1.0.0.xsd ">
+
+	<dependencies>
+		<dependency name="Role"/>
+	</dependencies>
+
+	<profilefile path="Mesure.profile.xmi"/>
+	
+	<interpreter stereotype="Controle" domaine="METIER" className="com.imcfr.generateur.profiles.mesure.interpreters.ControleInterpreter"/>
+	<interpreter stereotype="Accompagnement" domaine="METIER" className="com.imcfr.generateur.profiles.mesure.interpreters.AccompagnementInterpreter"/>
+	<interpreter stereotype="ContratTravail" domaine="METIER" className="com.imcfr.generateur.profiles.mesure.interpreters.ContratTravailInterpreter"/>
+	<interpreter stereotype="Convention" domaine="METIER" className="com.imcfr.generateur.profiles.mesure.interpreters.ConventionInterpreter"/>
+	<interpreter stereotype="Decision" domaine="METIER" className="com.imcfr.generateur.profiles.mesure.interpreters.DecisionInterpreter"/>
+	<interpreter stereotype="Derogation" domaine="METIER" className="com.imcfr.generateur.profiles.mesure.interpreters.DerogationInterpreter"/>
+	<interpreter stereotype="Financement" domaine="METIER" className="com.imcfr.generateur.profiles.mesure.interpreters.FinancementInterpreter"/>
+	<interpreter stereotype="Operation" domaine="METIER" className="com.imcfr.generateur.profiles.mesure.interpreters.OperationInterpreter"/>
+	<interpreter stereotype="Notification" domaine="METIER" className="com.imcfr.generateur.profiles.mesure.interpreters.NotificationInterpreter"/>
+	<interpreter stereotype="ObjetProcedure" domaine="METIER" className="com.imcfr.generateur.profiles.mesure.interpreters.ObjetProcedureInterpreter"/>
+	<interpreter stereotype="DeclarationAdministrative" domaine="METIER" className="com.imcfr.generateur.profiles.mesure.interpreters.DeclarationAdministrativeInterpreter"/>
+	<interpreter stereotype="Agrement" domaine="METIER" className="com.imcfr.generateur.profiles.mesure.interpreters.AgrementInterpreter"/>
+	
+	<stereotypeMapping name="Controle">
+		<box name="AgadirMesure"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="Accompagnement">
+		<box name="AgadirMesure"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="ContratTravail">
+		<box name="AgadirMesure"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="Convention">
+		<box name="AgadirMesure"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="Decision">
+		<box name="AgadirMesure"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="Derogation">
+		<box name="AgadirMesure"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="Financement">
+		<box name="AgadirMesure"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="Operation">
+		<box name="AgadirMesure"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="Notification">
+		<box name="AgadirMesure"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="ObjetProcedure">
+		<box name="AgadirMesure"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="DeclarationAdministrative">
+		<box name="AgadirMesure"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="Agrement">
+		<box name="AgadirMesure"/>
+	</stereotypeMapping>
+</profile>

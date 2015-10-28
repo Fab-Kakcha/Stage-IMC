@@ -1,0 +1,1289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generators langage="java" name="IMCDev" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/GeneratorDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/GeneratorDefinition-2.0.0 ../../../../sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/generator/GeneratorDefinition-2.0.0.xsd ">
+
+	<!-- dépendance -->
+	<dependencies>
+		<dependency name="java:Commun"/>
+	</dependencies>
+
+
+	<generator name="MavenPom" generatedObject="obm:model" version="1.0.0" pathtemplate="maven/pom.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="pom.xml"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional"/>
+			
+			<property name="imcdev_PomParent" use="optional"/>
+			<property name="imcdev_MavenGroupId" use="optional"/>
+			
+			<propertyList name="imcdev_Nature" use="optional"/>
+			<propertyList name="imcdev_MavenDependencies" use="optional"/>
+			<property name="imcdev_MavenPomAddition" use="optional"/>
+		</properties>
+	</generator>
+
+	<generator name="EclipseProject" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/project.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".project"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional"/>
+			
+			<propertyList name="imcdev_Nature" use="optional"/>
+		</properties>
+	</generator>
+
+	<generator name="EclipseJavaProject" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/project.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".project"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional"/>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="EclipseMavenProject" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/project.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".project"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional"/>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="EclipseMavenJavaProject" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/project.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".project"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional"/>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="EclipseJavaClasspath" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/classpath.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".classpath"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional"/>
+		</properties>
+	</generator>
+
+	<generator name="EclipseMavenClasspath" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/classpath.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".classpath"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="EclipseProjectSettings" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/projectSettings.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="org.eclipse.core.resources.prefs"/>
+			<path value="\.settings"/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional"/>
+		</properties>
+	</generator>
+
+	<generator name="EclipseProjectJavaSettings" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/projectSettings.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="org.eclipse.core.resources.prefs"/>
+			<path value="\.settings"/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="EclipseProjectMavenSettings" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/projectMavenSettings.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="org.eclipse.m2e.core.prefs"/>
+			<path value="\.settings"/>
+		</file>
+	</generator>
+	
+
+
+
+
+	<generator name="BddEclipseProject" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/project.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".project"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">Bdd</property>
+			
+			<propertyList name="imcdev_Nature" use="optional"/>
+		</properties>
+	</generator>
+
+	<generator name="PomParentMavenPom" generatedObject="obm:model" version="1.0.0" pathtemplate="maven/pom.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="pom.xml"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">PomParent</property>
+			
+			<property name="imcdev_PomParentPomParent" use="optional">com.imcfr.imc.java:JavaPomParent:3.3.2</property>
+			<property name="imcdev_PomParent" use="optional">${imcdev_PomParentPomParent}</property>
+			<property name="imcdev_MavenGroupId" use="optional"/>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+			</propertyList>
+
+			<propertyList name="imcdev_MavenDependencies" use="optional"/>
+			<property name="imcdev_MavenPomAddition" use="optional"><![CDATA[
+	<dependencyManagement>
+		<dependencies>
+			<!-- PomParent dependencies -->
+			<!-- @TODO
+				 vous devez ici fixer les versions des dépendances du PomParent qui sont en plage
+				 cad, les composants du framework et d'agadir
+			-->
+			
+			<!-- ${model.project} dependencies -->
+			<dependency>
+				<groupId>${final_imcdev_MavenGroupId}</groupId>
+				<artifactId>${model.project}Bean</artifactId>
+				<version>${model.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${final_imcdev_MavenGroupId}</groupId>
+				<artifactId>${model.project}Persistance</artifactId>
+				<version>${model.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${final_imcdev_MavenGroupId}</groupId>
+				<artifactId>${model.project}PersistanceImpl</artifactId>
+				<version>${model.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${final_imcdev_MavenGroupId}</groupId>
+				<artifactId>${model.project}Service</artifactId>
+				<version>${model.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${final_imcdev_MavenGroupId}</groupId>
+				<artifactId>${model.project}ServiceImpl</artifactId>
+				<version>${model.version}</version>
+				<type>ejb</type>
+			</dependency>
+			<dependency>
+				<groupId>${final_imcdev_MavenGroupId}</groupId>
+				<artifactId>${model.project}Web</artifactId>
+				<version>${model.version}</version>
+				<type>war</type>
+			</dependency>
+			<dependency>
+				<groupId>${final_imcdev_MavenGroupId}</groupId>
+				<artifactId>${model.project}Web</artifactId>
+				<version>${model.version}</version>
+				<type>jar</type>
+				<classifier>classes</classifier>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+				]]></property>
+		</properties>
+	</generator>
+
+	<generator name="EarMavenPom" generatedObject="obm:model" version="1.0.0" pathtemplate="maven/pom.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="pom.xml"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">App</property>
+			
+			<property name="imcdev_PomParent" use="optional">${final_imcdev_MavenGroupId}:${model.project}PomParent:${model.version}</property>
+			<property name="imcdev_MavenGroupId" use="optional"/>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+				<value>ear</value>
+			</propertyList>
+
+			<propertyList name="imcdev_MavenDependencies" use="optional">
+				<value><![CDATA[
+		<dependency>
+			<groupId>com.imcfr.imc.java</groupId>
+			<artifactId>EarLauncher</artifactId>
+			<type>war</type>
+		</dependency>
+				]]></value>
+				<value><![CDATA[
+		<dependency>
+			<groupId>${final_imcdev_MavenGroupId}</groupId>
+			<artifactId>${model.project}ServiceImpl</artifactId>
+			<type>ejb</type>
+		</dependency>
+				]]></value>
+				<value><![CDATA[
+		<dependency>
+			<groupId>${final_imcdev_MavenGroupId}</groupId>
+			<artifactId>${model.project}Web</artifactId>
+			<type>war</type>
+		</dependency>
+				]]></value>
+			</propertyList>
+			<property name="imcdev_MavenPomAddition" use="optional"><![CDATA[
+	
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+			]]></property>
+		</properties>
+	</generator>
+
+	<generator name="UberwarMavenPom" generatedObject="obm:model" version="1.0.0" pathtemplate="maven/pom.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="pom.xml"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">Uberwar</property>
+			
+			<property name="imcdev_PomParent" use="optional">${final_imcdev_MavenGroupId}:${model.project}PomParent:${model.version}</property>
+			<property name="imcdev_MavenGroupId" use="optional"/>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+				<value>uberwar</value>
+			</propertyList>
+
+			<propertyList name="imcdev_MavenDependencies" use="optional">
+				<value><![CDATA[
+		<dependency>
+			<groupId>com.imcfr.imc.java</groupId>
+			<artifactId>ImcCommunPresentationWebIHM</artifactId>
+			<type>war</type>
+		</dependency>
+				]]></value>
+				<value><![CDATA[
+		<dependency>
+			<groupId>${final_imcdev_MavenGroupId}</groupId>
+			<artifactId>${model.project}Web</artifactId>
+			<type>war</type>
+		</dependency>
+				]]></value>
+			</propertyList>
+			<property name="imcdev_MavenPomAddition" use="optional"><![CDATA[
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven2-plugin</artifactId>
+				<version>1.2.2</version>
+				<extensions>true</extensions>
+				<configuration>
+					<descriptor>src/assemble/merge.xml</descriptor>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+			]]></property>
+		</properties>
+	</generator>
+	
+	<generator name="UberwarMergeDescriptor" generatedObject="obm:model" version="1.0.0" pathtemplate="maven/uberwarMergeDescriptor.vm">
+		<supports>
+			<support>generation</support>
+		</supports>
+		
+		<file>
+			<name value="merge.xml"/>
+			<path value="src/assemble"/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_MavenGroupId" use="optional"/>
+		</properties>
+	</generator>
+
+	<generator name="BeanMavenPom" generatedObject="obm:model" version="1.0.0" pathtemplate="maven/pom.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="pom.xml"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">Bean</property>
+			
+			<property name="imcdev_PomParent" use="optional">${final_imcdev_MavenGroupId}:${model.project}PomParent:${model.version}</property>
+			<property name="imcdev_MavenGroupId" use="optional"/>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+				<value>java</value>
+			</propertyList>
+
+			<propertyList name="imcdev_MavenDependencies" use="optional">
+				<value><![CDATA[
+		<dependency>
+			<groupId>com.imcfr.imc.java</groupId>
+			<artifactId>ImcCommunBean</artifactId>
+		</dependency>
+				]]></value>
+			</propertyList>
+			<property name="imcdev_MavenPomAddition" use="optional"/>
+		</properties>
+	</generator>
+
+	<generator name="PersistanceMavenPom" generatedObject="obm:model" version="1.0.0" pathtemplate="maven/pom.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="pom.xml"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">Persistance</property>
+			
+			<property name="imcdev_PomParent" use="optional">${final_imcdev_MavenGroupId}:${model.project}PomParent:${model.version}</property>
+			<property name="imcdev_MavenGroupId" use="optional"/>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+				<value>java</value>
+			</propertyList>
+
+			<propertyList name="imcdev_MavenDependencies" use="optional">
+				<value><![CDATA[
+		<dependency>
+			<groupId>javaee</groupId>
+			<artifactId>javaee-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+				]]></value>
+				<value><![CDATA[
+		<dependency>
+			<groupId>com.imcfr.imc.java</groupId>
+			<artifactId>ImcCommunPersistance</artifactId>
+		</dependency>
+				]]></value>
+				<value><![CDATA[
+		<dependency>
+			<groupId>${final_imcdev_MavenGroupId}</groupId>
+			<artifactId>${model.project}Bean</artifactId>
+		</dependency>
+				]]></value>
+			</propertyList>
+			<property name="imcdev_MavenPomAddition" use="optional"/>
+		</properties>
+	</generator>
+
+	<generator name="PersistanceImplMavenPom" generatedObject="obm:model" version="1.0.0" pathtemplate="maven/pom.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="pom.xml"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">PersistanceImpl</property>
+			
+			<property name="imcdev_PomParent" use="optional">${final_imcdev_MavenGroupId}:${model.project}PomParent:${model.version}</property>
+			<property name="imcdev_MavenGroupId" use="optional"/>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+				<value>java</value>
+			</propertyList>
+
+			<propertyList name="imcdev_MavenDependencies" use="optional">
+				<value><![CDATA[
+		<dependency>
+			<groupId>javaee</groupId>
+			<artifactId>javaee-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+				]]></value>
+				<value><![CDATA[
+		<dependency>
+			<groupId>com.imcfr.imc.java</groupId>
+			<artifactId>ImcCommunPersistance</artifactId>
+		</dependency>
+				]]></value>
+				<value><![CDATA[
+		<dependency>
+			<groupId>${final_imcdev_MavenGroupId}</groupId>
+			<artifactId>${model.project}Persistance</artifactId>
+		</dependency>
+				]]></value>
+			</propertyList>
+			<property name="imcdev_MavenPomAddition" use="optional"/>
+		</properties>
+	</generator>
+
+	<generator name="ServiceMavenPom" generatedObject="obm:model" version="1.0.0" pathtemplate="maven/pom.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="pom.xml"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">Service</property>
+			
+			<property name="imcdev_PomParent" use="optional">${final_imcdev_MavenGroupId}:${model.project}PomParent:${model.version}</property>
+			<property name="imcdev_MavenGroupId" use="optional"/>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+				<value>java</value>
+			</propertyList>
+
+			<propertyList name="imcdev_MavenDependencies" use="optional">
+				<value><![CDATA[
+		<dependency>
+			<groupId>javaee</groupId>
+			<artifactId>javaee-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+				]]></value>
+				<value><![CDATA[
+		<dependency>
+			<groupId>com.imcfr.imc.java</groupId>
+			<artifactId>ImcCommunService</artifactId>
+		</dependency>
+				]]></value>
+				<value><![CDATA[
+		<dependency>
+			<groupId>${final_imcdev_MavenGroupId}</groupId>
+			<artifactId>${model.project}Persistance</artifactId>
+		</dependency>
+				]]></value>
+			</propertyList>
+			<property name="imcdev_MavenPomAddition" use="optional"/>
+		</properties>
+	</generator>
+
+	<generator name="ServiceImplMavenPom" generatedObject="obm:model" version="1.0.0" pathtemplate="maven/pom.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="pom.xml"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">ServiceImpl</property>
+			
+			<property name="imcdev_PomParent" use="optional">${final_imcdev_MavenGroupId}:${model.project}PomParent:${model.version}</property>
+			<property name="imcdev_MavenGroupId" use="optional"/>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+				<value>java</value>
+				<value>ejb</value>
+			</propertyList>
+
+			<propertyList name="imcdev_MavenDependencies" use="optional">
+				<value><![CDATA[
+		<dependency>
+			<groupId>javaee</groupId>
+			<artifactId>javaee-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+				]]></value>
+				<value><![CDATA[
+		<dependency>
+			<groupId>${final_imcdev_MavenGroupId}</groupId>
+			<artifactId>${model.project}Service</artifactId>
+		</dependency>
+				]]></value>
+				<value><![CDATA[
+		<dependency>
+			<groupId>${final_imcdev_MavenGroupId}</groupId>
+			<artifactId>${model.project}PersistanceImpl</artifactId>
+		</dependency>
+				]]></value>
+			</propertyList>
+			<property name="imcdev_MavenPomAddition" use="optional"><![CDATA[
+	
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ejb-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+			]]></property>
+		</properties>
+	</generator>
+
+	<generator name="PresentationMavenPom" generatedObject="obm:model" version="1.0.0" pathtemplate="maven/pom.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="pom.xml"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">Web</property>
+			
+			<property name="imcdev_PomParent" use="optional">${final_imcdev_MavenGroupId}:${model.project}PomParent:${model.version}</property>
+			<property name="imcdev_MavenGroupId" use="optional"/>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+				<value>java</value>
+				<value>web</value>
+			</propertyList>
+
+			<propertyList name="imcdev_MavenDependencies" use="optional">
+				<value><![CDATA[
+		<dependency>
+			<groupId>javaee</groupId>
+			<artifactId>javaee-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+				]]></value>
+				<value><![CDATA[
+		<dependency>
+			<groupId>com.imcfr.imc.java</groupId>
+			<artifactId>ImcCommunPresentationWeb</artifactId>
+		</dependency>
+				]]></value>
+				<value><![CDATA[
+		<dependency>
+			<groupId>${final_imcdev_MavenGroupId}</groupId>
+			<artifactId>${model.project}Service</artifactId>
+		</dependency>
+				]]></value>
+			</propertyList>
+			<property name="imcdev_MavenPomAddition" use="optional"><![CDATA[
+	
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+			]]></property>
+		</properties>
+	</generator>
+
+	<generator name="PomParentEclipseProject" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/project.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".project"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">PomParent</property>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="EarEclipseProject" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/project.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".project"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">App</property>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+				<value>ear</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="UberwarEclipseProject" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/project.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".project"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">Uberwar</property>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+				<value>uberwar</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="BeanEclipseProject" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/project.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".project"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">Bean</property>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="PersistanceEclipseProject" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/project.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".project"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">Persistance</property>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="PersistanceImplEclipseProject" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/project.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".project"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">PersistanceImpl</property>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="ServiceEclipseProject" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/project.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".project"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">Service</property>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="ServiceImplEclipseProject" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/project.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".project"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">ServiceImpl</property>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+				<value>ejb</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="PresentationEclipseProject" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/project.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".project"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<property name="imcdev_ProjectNamePrefix" use="optional"/>
+			<property name="imcdev_ProjectName" use="optional"/>
+			<property name="imcdev_ProjectNameSuffix" use="optional">Web</property>
+			
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+				<value>web</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="BeanEclipseClasspath" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/classpath.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".classpath"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="PersistanceEclipseClasspath" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/classpath.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".classpath"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="PersistanceImplEclipseClasspath" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/classpath.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".classpath"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="ServiceEclipseClasspath" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/classpath.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".classpath"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="ServiceImplEclipseClasspath" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/classpath.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".classpath"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="PresentationEclipseClasspath" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/classpath.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value=".classpath"/>
+			<path value=""/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="PomParentEclipseProjectSettings" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/projectSettings.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="org.eclipse.core.resources.prefs"/>
+			<path value="\.settings"/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="EarEclipseProjectSettings" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/projectSettings.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="org.eclipse.core.resources.prefs"/>
+			<path value="\.settings"/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+				<value>ear</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="UberwarEclipseProjectSettings" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/projectSettings.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="org.eclipse.core.resources.prefs"/>
+			<path value="\.settings"/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>maven</value>
+				<value>uberwar</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="BeanEclipseProjectSettings" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/projectSettings.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="org.eclipse.core.resources.prefs"/>
+			<path value="\.settings"/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="PersistanceEclipseProjectSettings" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/projectSettings.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="org.eclipse.core.resources.prefs"/>
+			<path value="\.settings"/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="PersistanceImplEclipseProjectSettings" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/projectSettings.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="org.eclipse.core.resources.prefs"/>
+			<path value="\.settings"/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="ServiceEclipseProjectSettings" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/projectSettings.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="org.eclipse.core.resources.prefs"/>
+			<path value="\.settings"/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="ServiceImplEclipseProjectSettings" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/projectSettings.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="org.eclipse.core.resources.prefs"/>
+			<path value="\.settings"/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+				<value>ejb</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+	<generator name="PresentationEclipseProjectSettings" generatedObject="obm:model" version="1.0.0" pathtemplate="eclipse/projectSettings.vm">
+        <supports>
+        	<support>generation</support>
+        </supports>
+		
+		<file>
+			<name value="org.eclipse.core.resources.prefs"/>
+			<path value="\.settings"/>
+		</file>
+		
+		<properties>
+			<propertyList name="imcdev_Nature" use="optional">
+				<value>java</value>
+				<value>maven</value>
+			</propertyList>
+		</properties>
+	</generator>
+
+
+
+
+
+
+	<api name="Maven">
+		<refgenerator name="MavenPom"/>
+	</api>
+
+	<api name="Eclipse">
+		<refgenerator name="EclipseProject"/>
+		<refgenerator name="EclipseProjectSettings"/>
+	</api>
+
+	<api name="EclipseJava">
+		<refgenerator name="EclipseJavaProject"/>
+		<refgenerator name="EclipseJavaClasspath"/>
+		<refgenerator name="EclipseProjectJavaSettings"/>
+	</api>
+	
+	<api name="EclipseMaven">
+		<refgenerator name="MavenPom"/>
+		<refgenerator name="EclipseMavenProject"/>
+		<refgenerator name="EclipseProjectSettings"/>
+		<refgenerator name="EclipseProjectMavenSettings"/>
+	</api>
+	
+	<api name="EclipseJavaMaven">
+		<refgenerator name="MavenPom"/>
+		<refgenerator name="EclipseMavenJavaProject"/>
+		<refgenerator name="EclipseProjectJavaSettings"/>
+		<refgenerator name="EclipseProjectMavenSettings"/>
+		<refgenerator name="EclipseMavenClasspath"/>
+	</api>
+
+	<api name="PomParent">
+		<refgenerator name="PomParentMavenPom"/>
+		<refgenerator name="PomParentEclipseProject"/>
+		<refgenerator name="PomParentEclipseProjectSettings"/>
+		<refgenerator name="EclipseProjectMavenSettings"/>
+	</api>
+	<api name="Bdd">
+		<refgenerator name="BddEclipseProject"/>
+	</api>
+	<api name="Bean">
+		<refgenerator name="BeanMavenPom"/>
+		<refgenerator name="BeanEclipseProject"/>
+		<refgenerator name="BeanEclipseClasspath"/>
+		<refgenerator name="BeanEclipseProjectSettings"/>
+		<refgenerator name="EclipseProjectMavenSettings"/>
+	</api>
+	<api name="Persistance">
+		<refgenerator name="PersistanceMavenPom"/>
+		<refgenerator name="PersistanceEclipseProject"/>
+		<refgenerator name="PersistanceEclipseClasspath"/>
+		<refgenerator name="PersistanceEclipseProjectSettings"/>
+		<refgenerator name="EclipseProjectMavenSettings"/>
+	</api>
+	<api name="PersistanceImpl">
+		<refgenerator name="PersistanceImplMavenPom"/>
+		<refgenerator name="PersistanceImplEclipseProject"/>
+		<refgenerator name="PersistanceImplEclipseClasspath"/>
+		<refgenerator name="PersistanceImplEclipseProjectSettings"/>
+		<refgenerator name="EclipseProjectMavenSettings"/>
+	</api>
+	<api name="Service">
+		<refgenerator name="ServiceMavenPom"/>
+		<refgenerator name="ServiceEclipseProject"/>
+		<refgenerator name="ServiceEclipseClasspath"/>
+		<refgenerator name="ServiceEclipseProjectSettings"/>
+		<refgenerator name="EclipseProjectMavenSettings"/>
+	</api>
+	<api name="ServiceImpl">
+		<refgenerator name="ServiceImplMavenPom"/>
+		<refgenerator name="ServiceImplEclipseProject"/>
+		<refgenerator name="ServiceImplEclipseClasspath"/>
+		<refgenerator name="ServiceImplEclipseProjectSettings"/>
+		<refgenerator name="EclipseProjectMavenSettings"/>
+	</api>
+	<api name="Presentation">
+		<refgenerator name="PresentationMavenPom"/>
+		<refgenerator name="PresentationEclipseProject"/>
+		<refgenerator name="PresentationEclipseClasspath"/>
+		<refgenerator name="PresentationEclipseProjectSettings"/>
+		<refgenerator name="EclipseProjectMavenSettings"/>
+	</api>
+	<api name="Uberwar">
+		<refgenerator name="UberwarMavenPom"/>
+		<refgenerator name="UberwarEclipseProject"/>
+		<refgenerator name="UberwarEclipseProjectSettings"/>
+		<refgenerator name="EclipseProjectMavenSettings"/>
+		<refgenerator name="UberwarMergeDescriptor"/>
+	</api>
+	<api name="Ear">
+		<refgenerator name="EarMavenPom"/>
+		<refgenerator name="EarEclipseProject"/>
+		<refgenerator name="EarEclipseProjectSettings"/>
+		<refgenerator name="EclipseProjectMavenSettings"/>
+	</api>
+</generators>

@@ -1,0 +1,32 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param element (com.imcfr.generateur.model.edimodel.RedefineTypeSimple)
+## 
+## #####
+##
+	<redefineTypeSimple base="${element.base}">
+#**##if ("$!{element.definition}" != "")
+#**##**##if ("$!{element.definition.xsdDefinition}" != "")
+		<restriction xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			$!{element.definition.xsdDefinition.replaceAll("<([^/])", "<xs:$1").replaceAll("</", "</xs:")}
+		</restriction>
+#**##**##else
+		<restriction/>
+#**##**##end
+#**##end
+#**##if (${element.mixed})
+
+#**##**##foreach ($attr in ${element.attributesList})
+#**##**##**##set($ertsa_use="")
+#**##**##**##if (${attr.use.name()} != "OPTIONAL")
+#**##**##**##**##set($ersta_use=" use=${Q}${attr.use.name().toLowerCase()}${Q}")
+#**##**##**##end
+#**##**##**##set($ertsa_default="")
+#**##**##**##if ("$!{attr.defaut}" != "")
+#**##**##**##**##set($ertsa_default=" default=${Q}${attr.defaut}${Q}")
+#**##**##**##end
+		<attribute name="${attr.name}"$!{ertsa_use}$!{ertsa_default}/>
+#**##**##end
+#**##end
+	</redefineTypeSimple>

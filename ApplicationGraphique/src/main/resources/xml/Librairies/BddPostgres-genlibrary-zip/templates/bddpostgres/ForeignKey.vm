@@ -1,0 +1,56 @@
+##
+## Générateur SQL pour hsql
+## Création des clé étrangères
+##
+## $generatedObject = model datam
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+##
+##
+## on génére les clés étrangères
+##
+## compteur de fk pour éviter le doublement des fk
+#set( $cpt = 1 )
+-------------------------
+-------------------------
+-------------------------
+-- Les clés étrangères
+-------------------------
+-------------------------
+-------------------------
+#foreach( $datam in ${generatedObject.getObjectsList()} ) 
+#if ( ${datam.isAbstract} == false )
+-------------------------
+-- Définition des clés étrangères de la table ${datam.schema.completeName}.${datam.name}
+-------------------------
+##
+## création des clés primaires, on récup les régle field index
+#set( $rules = ${datam.getByType("objectConstraints", "foreignKey")} )
+#if( ${list.size(${rules})} != 0 )
+#foreach( $rule in ${rules} )
+##
+## on parcours les foreign key de la règle
+#set( $fieldNames = "" )
+#set( $refFieldNames = "" )
+#foreach( $foreign in ${rule.foreignKeys} )
+#if( ${fieldNames} != "" )
+#set( $fieldNames = "${fieldNames}, " )
+#set( $refFieldNames = "${refFieldNames}, " )
+#end
+#set( $fieldNames = "${fieldNames}${esc.q}${foreign.fieldName}${esc.q}" )
+#set( $refFieldNames = "${refFieldNames}${esc.q}${foreign.refFieldName}${esc.q}" )
+#end
+#set( $fkName = "fk_${cpt}_${datam.schema.completeName}_${datam.name}__${rule.refObject.schema.completeName}_${rule.refObject.name}" )
+#set( $cpt = ${cpt} + 1 )
+ALTER TABLE "${datam.schema.completeName}"."${datam.name}" ADD CONSTRAINT "${fkName}" FOREIGN KEY (${fieldNames})
+    REFERENCES "${rule.refObject.schema.completeName}"."${rule.refObject.name}"(${refFieldNames})
+      MATCH SIMPLE
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+      NOT DEFERRABLE;
+#end
+#end
+
+#end
+#end

@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewm name="AgadirMesureViewm" project="AgadirMesure" version="4.0.0" xmlns="http://www.imc-fr.com/ViewModelDefinition-2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- AgadirMesure:mesure.ObjetProcedure -->
+	<component type="vue" name="ObjetProcedureVue" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.ObjetProcedure">
+		<field name="dateReception"/>
+		<field name="numDossier"/>
+		<field name="dateDebut"/>
+		<field name="dateEnregistrement"/>
+		<field name="numDossierOperateurInitial"/>
+		<field name="commentaire"/>
+		<field name="dateCompletude"/>
+		<field name="dateConformite"/>
+		<field name="dateFin"/>
+		<select name="etat" valueObmField="id" labelObmField="libelleIHM"/>
+		<select name="nature" valueObmField="id" labelObmField="libelleIHM"/>
+		<refComponent name="signature" component="AgadirTechnique:agadir.SignatureVue"/>
+	</component>
+
+<!-- AgadirMesure:mesure.Convention -->
+	<vueModel name="ConventionModel" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Convention"/>
+	
+	<component type="vue" name="ConventionVue" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Convention" vueModel="AgadirMesure:mesure.ConventionModel">
+		<refComponent name="objetProcedure" component="AgadirMesure:mesure.ObjetProcedureVue"/>
+	</component>
+
+	<component type="edit" name="ConventionEdit" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Convention" vueModel="AgadirMesure:mesure.ConventionModel"
+		titre="Edition Convention">
+		<vue name="vue" component="AgadirMesure:mesure.ConventionVue"/>
+
+		<grid name="grid" component="AgadirMesure:mesure.RechercheConvention"/>
+
+		<action name="Enregistrer" component="AgadirMesure:mesure.ConventionEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:mesure.ConventionEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheConvention" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Convention"
+		titre="Recherche Convention">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="numDossier"/>
+		<colonne name="dateDebut"/>
+		<colonne name="dateFin"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:mesure.ConventionEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:mesure.ConventionEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:mesure.ConventionEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:mesure.DeclarationAdministrative -->
+	<vueModel name="DeclarationAdministrativeModel" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.DeclarationAdministrative"/>
+	
+	<component type="vue" name="DeclarationAdministrativeVue" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.DeclarationAdministrative" vueModel="AgadirMesure:mesure.DeclarationAdministrativeModel">
+		<refComponent name="objetProcedure" component="AgadirMesure:mesure.ObjetProcedureVue"/>
+	</component>
+
+	<component type="edit" name="DeclarationAdministrativeEdit" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.DeclarationAdministrative" vueModel="AgadirMesure:mesure.DeclarationAdministrativeModel"
+		titre="Edition DeclarationAdministrative">
+		<vue name="vue" component="AgadirMesure:mesure.DeclarationAdministrativeVue"/>
+
+		<grid name="grid" component="AgadirMesure:mesure.RechercheDeclarationAdministrative"/>
+
+		<action name="Enregistrer" component="AgadirMesure:mesure.DeclarationAdministrativeEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:mesure.DeclarationAdministrativeEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheDeclarationAdministrative" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.DeclarationAdministrative"
+		titre="Recherche DeclarationAdministrative">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="numDossier"/>
+		<colonne name="dateDebut"/>
+		<colonne name="dateFin"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:mesure.DeclarationAdministrativeEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:mesure.DeclarationAdministrativeEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:mesure.DeclarationAdministrativeEdit" action="Editer"/>
+	</component>
+	
+<!-- AgadirMesure:mesure.Agrement -->
+	<vueModel name="AgrementModel" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Agrement"/>
+	
+	<component type="vue" name="AgrementVue" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Agrement" vueModel="AgadirMesure:mesure.AgrementModel">
+		<refComponent name="objetProcedure" component="AgadirMesure:mesure.ObjetProcedureVue"/>
+	</component>
+
+	<component type="edit" name="AgrementEdit" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Agrement" vueModel="AgadirMesure:mesure.AgrementModel"
+		titre="Edition Agrement">
+		<vue name="vue" component="AgadirMesure:mesure.AgrementVue"/>
+
+		<grid name="grid" component="AgadirMesure:mesure.RechercheAgrement"/>
+
+		<action name="Enregistrer" component="AgadirMesure:mesure.AgrementEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:mesure.AgrementEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheAgrement" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Agrement"
+		titre="Recherche Agrement">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="numDossier"/>
+		<colonne name="dateDebut"/>
+		<colonne name="dateFin"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:mesure.AgrementEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:mesure.AgrementEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:mesure.AgrementEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:mesure.Operation -->
+	<vueModel name="OperationModel" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Operation"/>
+	
+	<component type="vue" name="OperationVue" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Operation" vueModel="AgadirMesure:mesure.OperationModel">
+		<field name="commentaire"/>
+		<field name="dateDebut"/>
+		<field name="dateFin"/>
+		<select name="typeOperation" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="OperationEdit" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Operation" vueModel="AgadirMesure:mesure.OperationModel"
+		titre="Edition Operation">
+		<vue name="vue" component="AgadirMesure:mesure.OperationVue"/>
+
+		<grid name="grid" component="AgadirMesure:mesure.RechercheOperation"/>
+
+		<action name="Enregistrer" component="AgadirMesure:mesure.OperationEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:mesure.OperationEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheOperation" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Operation"
+		titre="Recherche Operation">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="dateDebut"/>
+		<colonne name="dateFin"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:mesure.OperationEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:mesure.OperationEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:mesure.OperationEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:mesure.ContratTravail -->
+	<vueModel name="ContratTravailModel" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.ContratTravail"/>
+	
+	<component type="vue" name="ContratTravailVue" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.ContratTravail" vueModel="AgadirMesure:mesure.ContratTravailModel">
+		<field name="salaireEmbauche"/>
+		<field name="dateDebut"/>
+		<field name="dateFin"/>
+		<field name="dureeHebdomadaire"/>
+		<select name="typeContratTravail" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="ContratTravailEdit" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.ContratTravail" vueModel="AgadirMesure:mesure.ContratTravailModel"
+		titre="Edition ContratTravail">
+		<vue name="vue" component="AgadirMesure:mesure.ContratTravailVue"/>
+
+		<grid name="grid" component="AgadirMesure:mesure.RechercheContratTravail"/>
+
+		<action name="Enregistrer" component="AgadirMesure:mesure.ContratTravailEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:mesure.ContratTravailEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheContratTravail" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.ContratTravail"
+		titre="Recherche ContratTravail">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="salaireEmbauche"/>
+		<colonne name="dateDebut"/>
+		<colonne name="dateFin"/>
+		<colonne name="dureeHebdomadaire"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:mesure.ContratTravailEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:mesure.ContratTravailEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:mesure.ContratTravailEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:mesure.Controle -->
+	<vueModel name="ControleModel" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Controle"/>
+	
+	<component type="vue" name="ControleVue" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Controle" vueModel="AgadirMesure:mesure.ControleModel">
+		<field name="commentaire"/>
+		<field name="dateDebut"/>
+		<field name="dateFin"/>
+		<select name="typeControle" valueObmField="id" labelObmField="libelleIHM"/>
+		<refComponent name="resultatsControle" component="AgadirMesure:mesure.ResultatControleVue"/>
+	</component>
+
+	<component type="edit" name="ControleEdit" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Controle" vueModel="AgadirMesure:mesure.ControleModel"
+		titre="Edition Controle">
+		<vue name="vue" component="AgadirMesure:mesure.ControleVue"/>
+
+		<grid name="grid" component="AgadirMesure:mesure.RechercheControle"/>
+
+		<action name="Enregistrer" component="AgadirMesure:mesure.ControleEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:mesure.ControleEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheControle" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Controle"
+		titre="Recherche Controle">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="dateDebut"/>
+		<colonne name="dateFin"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:mesure.ControleEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:mesure.ControleEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:mesure.ControleEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:mesure.ResultatControle -->
+	<vueModel name="ResultatControleModel" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.ResultatControle"/>
+	
+	<component type="vue" name="ResultatControleVue" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.ResultatControle" vueModel="AgadirMesure:mesure.ResultatControleModel">
+		<field name="commentaire"/>
+		<field name="date"/>
+		<select name="typeResultatControle" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="ResultatControleEdit" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.ResultatControle" vueModel="AgadirMesure:mesure.ResultatControleModel"
+		titre="Edition ResultatControle">
+		<vue name="vue" component="AgadirMesure:mesure.ResultatControleVue"/>
+
+		<grid name="grid" component="AgadirMesure:mesure.RechercheResultatControle"/>
+
+		<action name="Enregistrer" component="AgadirMesure:mesure.ResultatControleEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:mesure.ResultatControleEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheResultatControle" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.ResultatControle"
+		titre="Recherche ResultatControle">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="date"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:mesure.ResultatControleEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:mesure.ResultatControleEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:mesure.ResultatControleEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:mesure.Financement -->
+	<vueModel name="FinancementModel" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Financement"/>
+	
+	<component type="vue" name="FinancementVue" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Financement" vueModel="AgadirMesure:mesure.FinancementModel">
+		<select name="typeFinancement" valueObmField="id" labelObmField="libelleIHM"/>
+		<refComponent name="financeurs" component="AgadirRole:role.CommanditaireVue"/>
+		<refComponent name="decision" component="AgadirMesure:mesure.DecisionVue"/>
+	</component>
+
+	<component type="edit" name="FinancementEdit" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Financement" vueModel="AgadirMesure:mesure.FinancementModel"
+		titre="Edition Financement">
+		<vue name="vue" component="AgadirMesure:mesure.FinancementVue"/>
+
+		<grid name="grid" component="AgadirMesure:mesure.RechercheFinancement"/>
+
+		<action name="Enregistrer" component="AgadirMesure:mesure.FinancementEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:mesure.FinancementEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheFinancement" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Financement"
+		titre="Recherche Financement">
+
+		<colonne name="id" key="true" visible="true"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:mesure.FinancementEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:mesure.FinancementEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:mesure.FinancementEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:mesure.Decision -->
+	<vueModel name="DecisionModel" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Decision"/>
+	
+	<component type="vue" name="DecisionVue" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Decision" vueModel="AgadirMesure:mesure.DecisionModel">
+		<field name="commentaire"/>
+		<field name="date"/>
+		<select name="typeDecision" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="DecisionEdit" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Decision" vueModel="AgadirMesure:mesure.DecisionModel"
+		titre="Edition Decision">
+		<vue name="vue" component="AgadirMesure:mesure.DecisionVue"/>
+
+		<grid name="grid" component="AgadirMesure:mesure.RechercheDecision"/>
+
+		<action name="Enregistrer" component="AgadirMesure:mesure.DecisionEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:mesure.DecisionEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheDecision" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Decision"
+		titre="Recherche Decision">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="date"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:mesure.DecisionEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:mesure.DecisionEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:mesure.DecisionEdit" action="Editer"/>
+	</component>
+	
+	<!-- AgadirMesure:mesure.Notification -->
+	<vueModel name="NotificationModel" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Notification"/>
+	
+	<component type="vue" name="NotificationVue" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Notification" vueModel="AgadirMesure:mesure.NotificationModel">
+		<field name="commentaire"/>
+		<field name="date"/>
+		<select name="typeNotification" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="NotificationEdit" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Notification" vueModel="AgadirMesure:mesure.NotificationModel"
+		titre="Edition Notification">
+		<vue name="vue" component="AgadirMesure:mesure.NotificationVue"/>
+
+		<grid name="grid" component="AgadirMesure:mesure.RechercheNotification"/>
+
+		<action name="Enregistrer" component="AgadirMesure:mesure.NotificationEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:mesure.NotificationEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheNotification" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Notification"
+		titre="Recherche Notification">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="date"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:mesure.NotificationEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:mesure.NotificationEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:mesure.NotificationEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:mesure.Tutorat -->
+	<vueModel name="TutoratModel" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Tutorat"/>
+	
+	<component type="vue" name="TutoratVue" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Tutorat" vueModel="AgadirMesure:mesure.TutoratModel">
+		<field name="commentaire"/>
+		<field name="date"/>
+		<select name="typeTutorat" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TutoratEdit" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Tutorat" vueModel="AgadirMesure:mesure.TutoratModel"
+		titre="Edition Tutorat">
+		<vue name="vue" component="AgadirMesure:mesure.TutoratVue"/>
+
+		<grid name="grid" component="AgadirMesure:mesure.RechercheTutorat"/>
+
+		<action name="Enregistrer" component="AgadirMesure:mesure.TutoratEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:mesure.TutoratEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTutorat" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Tutorat"
+		titre="Recherche Tutorat">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="date"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:mesure.TutoratEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:mesure.TutoratEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:mesure.TutoratEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:mesure.Tutorat -->
+	<vueModel name="TutoratModel" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Tutorat"/>
+	
+	<component type="vue" name="TutoratVue" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Tutorat" vueModel="AgadirMesure:mesure.TutoratModel">
+		<refComponent name="tuteur" component="AgadirRole:role.TuteurVue"/>
+		<select name="typeTutorat" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TutoratEdit" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Tutorat" vueModel="AgadirMesure:mesure.TutoratModel"
+		titre="Edition Tutorat">
+		<vue name="vue" component="AgadirMesure:mesure.TutoratVue"/>
+
+		<grid name="grid" component="AgadirMesure:mesure.RechercheTutorat"/>
+
+		<action name="Enregistrer" component="AgadirMesure:mesure.TutoratEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:mesure.TutoratEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTutorat" pack="AgadirMesure:mesure" object="AgadirMesure:mesure.Tutorat"
+		titre="Recherche Tutorat">
+
+		<colonne name="id" key="true" visible="true"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:mesure.TutoratEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:mesure.TutoratEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:mesure.TutoratEdit" action="Editer"/>
+	</component>
+
+</viewm>

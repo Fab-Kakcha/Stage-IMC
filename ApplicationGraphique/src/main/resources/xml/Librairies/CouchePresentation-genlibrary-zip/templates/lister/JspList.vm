@@ -1,0 +1,80 @@
+## #####
+## Générateur java de la couche présentation IMC
+## Création de la classe de Model
+##
+## @param generatedObject l'objet viemw:vueModel
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 31/01/2012
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pobject
+#set ( $obmObject = ${generatedObject.object} )
+#set ( $eElement = ${manager.getElement("{0}:{1}.{2}ActionList", ${generatedObject.modelId})} )
+#set ( $sElement = ${manager.getElement("{0}:{1}.S{2}", ${obmObject.modelId})} )
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns:pres="urn:jsptagdir:/WEB-INF/tags"
+	xmlns:presui="http://www.imc-fr.com/presentation/commun/ui"
+	xmlns:presaui="http://www.imc-fr.com/presentation/commun/ajaxui"
+	xmlns:presutil="http://www.imc-fr.com/presentation/commun/util"
+	xmlns:st="/struts-tags"
+	xmlns:tiles="http://tiles.apache.org/tags-tiles">
+	
+	<presui:globalcontainer label="${generatedObject.titre}">
+	
+		<presui:grid ajaxMode="true" id="${generatedObject.name}"
+			source="/${generatedObject.pack.pathName}/Refresh${generatedObject.name}.action" datatype="json" pagination="true"
+			filterMode="true">
+#foreach ( $f in ${generatedObject.datas})
+## si ce sont des datas
+#if ( ${f.class.simpleName} == "Colonne" )
+#set ( $valSearch = " search=${esc.q}false${esc.q}" )
+#if ( ${f.filter} )
+#set ( $valSearch = " search=${esc.q}true${esc.q}" )
+#end
+#set ( $valKey = " key=${esc.q}false${esc.q}" )
+#if ( ${f.key} )
+#set ( $valKey = " key=${esc.q}true${esc.q}" )
+#end
+#set ( $valHidden = " hidden=${esc.q}true${esc.q}" )
+#if ( ${f.visible} )
+#set ( $valHidden = " hidden=${esc.q}false${esc.q}" )
+#end
+
+			<presui:datacolumn name="${f.name}" label="${f.name}"${valSearch}${valHidden}${valKey}/>
+#else
+##
+## si ce sont des actions
+
+			<presui:actioncolumn name="${f.name}" label="${f.name}">
+				<presui:action title="${f.name}" source="${f.url}" name="${f.name}" />
+			</presui:actioncolumn>
+#end
+#end
+		</presui:grid>
+##
+## s'il y a des actions en dehors de la grille
+#if ( ${generatedObject.nbrActions} != 0 )
+		<presui:commandcontainer>
+#foreach ( $f in ${generatedObject.actions})
+			<presui:button value="${f.name}" urlRedirect="${f.url}" />
+#end
+		</presui:commandcontainer>
+#end
+	</presui:globalcontainer>
+
+</jsp:root>

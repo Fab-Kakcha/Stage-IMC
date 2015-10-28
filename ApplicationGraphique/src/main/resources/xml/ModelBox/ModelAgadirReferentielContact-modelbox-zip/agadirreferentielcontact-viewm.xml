@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewm name="AgadirReferentielContactViewm" project="AgadirReferentielContact" version="4.0.0" xmlns="http://www.imc-fr.com/ViewModelDefinition-2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- AgadirReferentielContact:referentiel.iso.Sexe -->
+	<vueModel name="SexeModel" pack="AgadirReferentielContact:referentiel.iso" object="AgadirReferentielContact:referentiel.iso.Sexe"/>
+	
+	<component type="vue" name="SexeVue" pack="AgadirReferentielContact:referentiel.iso" object="AgadirReferentielContact:referentiel.iso.Sexe" vueModel="AgadirReferentielContact:referentiel.iso.SexeModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="SexeEdit" pack="AgadirReferentielContact:referentiel.iso" object="AgadirReferentielContact:referentiel.iso.Sexe" vueModel="AgadirReferentielContact:referentiel.iso.SexeModel"
+		titre="Edition Sexe">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.iso.SexeVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.iso.RechercheSexe"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.iso.SexeEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.iso.SexeEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheSexe" pack="AgadirReferentielContact:referentiel.iso" object="AgadirReferentielContact:referentiel.iso.Sexe"
+		titre="Recherche Sexe">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.iso.SexeEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.iso.SexeEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.iso.SexeEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.insee.Naf2003 -->
+	<vueModel name="Naf2003Model" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.Naf2003"/>
+	
+	<component type="vue" name="Naf2003Vue" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.Naf2003" vueModel="AgadirReferentielContact:referentiel.insee.Naf2003Model">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="Naf2003Edit" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.Naf2003" vueModel="AgadirReferentielContact:referentiel.insee.Naf2003Model"
+		titre="Edition Naf2003">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.insee.Naf2003Vue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.insee.RechercheNaf2003"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.insee.Naf2003Edit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.insee.Naf2003Edit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheNaf2003" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.Naf2003"
+		titre="Recherche Naf2003">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.insee.Naf2003Edit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.insee.Naf2003Edit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.insee.Naf2003Edit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.insee.APE -->
+	<vueModel name="APEModel" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.APE"/>
+	
+	<component type="vue" name="APEVue" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.APE" vueModel="AgadirReferentielContact:referentiel.insee.APEModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="APEEdit" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.APE" vueModel="AgadirReferentielContact:referentiel.insee.APEModel"
+		titre="Edition APE">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.insee.APEVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.insee.RechercheAPE"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.insee.APEEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.insee.APEEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheAPE" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.APE"
+		titre="Recherche APE">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.insee.APEEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.insee.APEEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.insee.APEEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.insee.Naf2008 -->
+	<vueModel name="Naf2008Model" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.Naf2008"/>
+	
+	<component type="vue" name="Naf2008Vue" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.Naf2008" vueModel="AgadirReferentielContact:referentiel.insee.Naf2008Model">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="Naf2008Edit" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.Naf2008" vueModel="AgadirReferentielContact:referentiel.insee.Naf2008Model"
+		titre="Edition Naf2008">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.insee.Naf2008Vue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.insee.RechercheNaf2008"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.insee.Naf2008Edit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.insee.Naf2008Edit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheNaf2008" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.Naf2008"
+		titre="Recherche Naf2008">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.insee.Naf2008Edit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.insee.Naf2008Edit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.insee.Naf2008Edit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.insee.SituationJuridique -->
+	<vueModel name="SituationJuridiqueModel" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.SituationJuridique"/>
+	
+	<component type="vue" name="SituationJuridiqueVue" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.SituationJuridique" vueModel="AgadirReferentielContact:referentiel.insee.SituationJuridiqueModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="SituationJuridiqueEdit" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.SituationJuridique" vueModel="AgadirReferentielContact:referentiel.insee.SituationJuridiqueModel"
+		titre="Edition SituationJuridique">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.insee.SituationJuridiqueVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.insee.RechercheSituationJuridique"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.insee.SituationJuridiqueEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.insee.SituationJuridiqueEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheSituationJuridique" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.SituationJuridique"
+		titre="Recherche SituationJuridique">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.insee.SituationJuridiqueEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.insee.SituationJuridiqueEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.insee.SituationJuridiqueEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.insee.TypeNaf -->
+	<vueModel name="TypeNafModel" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.TypeNaf"/>
+	
+	<component type="vue" name="TypeNafVue" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.TypeNaf" vueModel="AgadirReferentielContact:referentiel.insee.TypeNafModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeNafEdit" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.TypeNaf" vueModel="AgadirReferentielContact:referentiel.insee.TypeNafModel"
+		titre="Edition TypeNaf">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.insee.TypeNafVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.insee.RechercheTypeNaf"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.insee.TypeNafEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.insee.TypeNafEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeNaf" pack="AgadirReferentielContact:referentiel.insee" object="AgadirReferentielContact:referentiel.insee.TypeNaf"
+		titre="Recherche TypeNaf">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.insee.TypeNafEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.insee.TypeNafEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.insee.TypeNafEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.legifrance.ConventionCollective -->
+	<vueModel name="ConventionCollectiveModel" pack="AgadirReferentielContact:referentiel.legifrance" object="AgadirReferentielContact:referentiel.legifrance.ConventionCollective"/>
+	
+	<component type="vue" name="ConventionCollectiveVue" pack="AgadirReferentielContact:referentiel.legifrance" object="AgadirReferentielContact:referentiel.legifrance.ConventionCollective" vueModel="AgadirReferentielContact:referentiel.legifrance.ConventionCollectiveModel">
+		<field name="idcc"/>
+		<field name="codeBrochure"/>
+		<field name="libelleCourt"/>
+		<field name="libelleLong"/>
+		<refComponent name="urls" component="AgadirReferentielContact:referentiel.format.URLVue"/>
+	</component>
+
+	<component type="edit" name="ConventionCollectiveEdit" pack="AgadirReferentielContact:referentiel.legifrance" object="AgadirReferentielContact:referentiel.legifrance.ConventionCollective" vueModel="AgadirReferentielContact:referentiel.legifrance.ConventionCollectiveModel"
+		titre="Edition ConventionCollective">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.legifrance.ConventionCollectiveVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.legifrance.RechercheConventionCollective"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.legifrance.ConventionCollectiveEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.legifrance.ConventionCollectiveEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheConventionCollective" pack="AgadirReferentielContact:referentiel.legifrance" object="AgadirReferentielContact:referentiel.legifrance.ConventionCollective"
+		titre="Recherche ConventionCollective">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="idcc"/>
+		<colonne name="codeBrochure"/>
+		<colonne name="libelleCourt"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.legifrance.ConventionCollectiveEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.legifrance.ConventionCollectiveEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.legifrance.ConventionCollectiveEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.agadir.SecteurReference -->
+	<vueModel name="SecteurReferenceModel" pack="AgadirReferentielContact:referentiel.agadir" object="AgadirReferentielContact:referentiel.agadir.SecteurReference"/>
+	
+	<component type="vue" name="SecteurReferenceVue" pack="AgadirReferentielContact:referentiel.agadir" object="AgadirReferentielContact:referentiel.agadir.SecteurReference" vueModel="AgadirReferentielContact:referentiel.agadir.SecteurReferenceModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="SecteurReferenceEdit" pack="AgadirReferentielContact:referentiel.agadir" object="AgadirReferentielContact:referentiel.agadir.SecteurReference" vueModel="AgadirReferentielContact:referentiel.agadir.SecteurReferenceModel"
+		titre="Edition SecteurReference">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.agadir.SecteurReferenceVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.agadir.RechercheSecteurReference"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.agadir.SecteurReferenceEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.agadir.SecteurReferenceEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheSecteurReference" pack="AgadirReferentielContact:referentiel.agadir" object="AgadirReferentielContact:referentiel.agadir.SecteurReference"
+		titre="Recherche SecteurReference">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.agadir.SecteurReferenceEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.agadir.SecteurReferenceEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.agadir.SecteurReferenceEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.agadir.RegimeSocial -->
+	<vueModel name="RegimeSocialModel" pack="AgadirReferentielContact:referentiel.agadir" object="AgadirReferentielContact:referentiel.agadir.RegimeSocial"/>
+	
+	<component type="vue" name="RegimeSocialVue" pack="AgadirReferentielContact:referentiel.agadir" object="AgadirReferentielContact:referentiel.agadir.RegimeSocial" vueModel="AgadirReferentielContact:referentiel.agadir.RegimeSocialModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="RegimeSocialEdit" pack="AgadirReferentielContact:referentiel.agadir" object="AgadirReferentielContact:referentiel.agadir.RegimeSocial" vueModel="AgadirReferentielContact:referentiel.agadir.RegimeSocialModel"
+		titre="Edition RegimeSocial">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.agadir.RegimeSocialVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.agadir.RechercheRegimeSocial"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.agadir.RegimeSocialEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.agadir.RegimeSocialEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheRegimeSocial" pack="AgadirReferentielContact:referentiel.agadir" object="AgadirReferentielContact:referentiel.agadir.RegimeSocial"
+		titre="Recherche RegimeSocial">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.agadir.RegimeSocialEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.agadir.RegimeSocialEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.agadir.RegimeSocialEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.format.TypeCommunication -->
+	<vueModel name="TypeCommunicationModel" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.TypeCommunication"/>
+	
+	<component type="vue" name="TypeCommunicationVue" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.TypeCommunication" vueModel="AgadirReferentielContact:referentiel.format.TypeCommunicationModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeCommunicationEdit" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.TypeCommunication" vueModel="AgadirReferentielContact:referentiel.format.TypeCommunicationModel"
+		titre="Edition TypeCommunication">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.format.TypeCommunicationVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.format.RechercheTypeCommunication"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.format.TypeCommunicationEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.format.TypeCommunicationEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeCommunication" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.TypeCommunication"
+		titre="Recherche TypeCommunication">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.format.TypeCommunicationEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.format.TypeCommunicationEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.format.TypeCommunicationEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.rgi.TypeTelephonie -->
+	<vueModel name="TypeTelephonieModel" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeTelephonie"/>
+	
+	<component type="vue" name="TypeTelephonieVue" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeTelephonie" vueModel="AgadirReferentielContact:referentiel.rgi.TypeTelephonieModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeTelephonieEdit" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeTelephonie" vueModel="AgadirReferentielContact:referentiel.rgi.TypeTelephonieModel"
+		titre="Edition TypeTelephonie">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.rgi.TypeTelephonieVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.rgi.RechercheTypeTelephonie"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.rgi.TypeTelephonieEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.rgi.TypeTelephonieEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeTelephonie" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeTelephonie"
+		titre="Recherche TypeTelephonie">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.rgi.TypeTelephonieEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.rgi.TypeTelephonieEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.rgi.TypeTelephonieEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.rgi.TypeRepetition -->
+	<vueModel name="TypeRepetitionModel" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeRepetition"/>
+	
+	<component type="vue" name="TypeRepetitionVue" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeRepetition" vueModel="AgadirReferentielContact:referentiel.rgi.TypeRepetitionModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeRepetitionEdit" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeRepetition" vueModel="AgadirReferentielContact:referentiel.rgi.TypeRepetitionModel"
+		titre="Edition TypeRepetition">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.rgi.TypeRepetitionVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.rgi.RechercheTypeRepetition"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.rgi.TypeRepetitionEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.rgi.TypeRepetitionEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeRepetition" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeRepetition"
+		titre="Recherche TypeRepetition">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.rgi.TypeRepetitionEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.rgi.TypeRepetitionEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.rgi.TypeRepetitionEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.rgi.TypeAdresse -->
+	<vueModel name="TypeAdresseModel" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeAdresse"/>
+	
+	<component type="vue" name="TypeAdresseVue" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeAdresse" vueModel="AgadirReferentielContact:referentiel.rgi.TypeAdresseModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeAdresseEdit" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeAdresse" vueModel="AgadirReferentielContact:referentiel.rgi.TypeAdresseModel"
+		titre="Edition TypeAdresse">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.rgi.TypeAdresseVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.rgi.RechercheTypeAdresse"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.rgi.TypeAdresseEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.rgi.TypeAdresseEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeAdresse" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeAdresse"
+		titre="Recherche TypeAdresse">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.rgi.TypeAdresseEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.rgi.TypeAdresseEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.rgi.TypeAdresseEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.rgi.TypeMail -->
+	<vueModel name="TypeMailModel" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeMail"/>
+	
+	<component type="vue" name="TypeMailVue" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeMail" vueModel="AgadirReferentielContact:referentiel.rgi.TypeMailModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeMailEdit" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeMail" vueModel="AgadirReferentielContact:referentiel.rgi.TypeMailModel"
+		titre="Edition TypeMail">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.rgi.TypeMailVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.rgi.RechercheTypeMail"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.rgi.TypeMailEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.rgi.TypeMailEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeMail" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeMail"
+		titre="Recherche TypeMail">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.rgi.TypeMailEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.rgi.TypeMailEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.rgi.TypeMailEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.rgi.TypeURL -->
+	<vueModel name="TypeURLModel" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeURL"/>
+	
+	<component type="vue" name="TypeURLVue" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeURL" vueModel="AgadirReferentielContact:referentiel.rgi.TypeURLModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeURLEdit" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeURL" vueModel="AgadirReferentielContact:referentiel.rgi.TypeURLModel"
+		titre="Edition TypeURL">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.rgi.TypeURLVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.rgi.RechercheTypeURL"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.rgi.TypeURLEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.rgi.TypeURLEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeURL" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeURL"
+		titre="Recherche TypeURL">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.rgi.TypeURLEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.rgi.TypeURLEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.rgi.TypeURLEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.rgi.TypeVoie -->
+	<vueModel name="TypeVoieModel" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeVoie"/>
+	
+	<component type="vue" name="TypeVoieVue" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeVoie" vueModel="AgadirReferentielContact:referentiel.rgi.TypeVoieModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeVoieEdit" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeVoie" vueModel="AgadirReferentielContact:referentiel.rgi.TypeVoieModel"
+		titre="Edition TypeVoie">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.rgi.TypeVoieVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.rgi.RechercheTypeVoie"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.rgi.TypeVoieEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.rgi.TypeVoieEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeVoie" pack="AgadirReferentielContact:referentiel.rgi" object="AgadirReferentielContact:referentiel.rgi.TypeVoie"
+		titre="Recherche TypeVoie">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.rgi.TypeVoieEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.rgi.TypeVoieEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.rgi.TypeVoieEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.format.ModaliteCommunication -->
+	<component type="vue" name="ModaliteCommunicationVue" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.ModaliteCommunication">
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.format.Mail -->
+	<vueModel name="MailModel" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.Mail"/>
+	
+	<component type="vue" name="MailVue" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.Mail" vueModel="AgadirReferentielContact:referentiel.format.MailModel">
+		<refComponent name="modaliteCommunication" component="AgadirReferentielContact:referentiel.format.ModaliteCommunicationVue"/>
+		<field name="adresse"/>
+		<select name="typeMail" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="MailEdit" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.Mail" vueModel="AgadirReferentielContact:referentiel.format.MailModel"
+		titre="Edition Mail">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.format.MailVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.format.RechercheMail"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.format.MailEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.format.MailEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheMail" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.Mail"
+		titre="Recherche Mail">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="adresse"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.format.MailEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.format.MailEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.format.MailEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.format.Telephonie -->
+	<vueModel name="TelephonieModel" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.Telephonie"/>
+	
+	<component type="vue" name="TelephonieVue" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.Telephonie" vueModel="AgadirReferentielContact:referentiel.format.TelephonieModel">
+		<refComponent name="modaliteCommunication" component="AgadirReferentielContact:referentiel.format.ModaliteCommunicationVue"/>
+		<field name="indicatif"/>
+		<field name="numero"/>
+		<select name="typeTelephonie" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TelephonieEdit" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.Telephonie" vueModel="AgadirReferentielContact:referentiel.format.TelephonieModel"
+		titre="Edition Telephonie">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.format.TelephonieVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.format.RechercheTelephonie"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.format.TelephonieEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.format.TelephonieEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTelephonie" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.Telephonie"
+		titre="Recherche Telephonie">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="indicatif"/>
+		<colonne name="numero"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.format.TelephonieEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.format.TelephonieEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.format.TelephonieEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.format.URL -->
+	<vueModel name="URLModel" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.URL"/>
+	
+	<component type="vue" name="URLVue" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.URL" vueModel="AgadirReferentielContact:referentiel.format.URLModel">
+		<refComponent name="modaliteCommunication" component="AgadirReferentielContact:referentiel.format.ModaliteCommunicationVue"/>
+		<field name="url"/>
+		<select name="typeURL" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="URLEdit" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.URL" vueModel="AgadirReferentielContact:referentiel.format.URLModel"
+		titre="Edition URL">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.format.URLVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.format.RechercheURL"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.format.URLEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.format.URLEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheURL" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.URL"
+		titre="Recherche URL">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="url"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.format.URLEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.format.URLEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.format.URLEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielContact:referentiel.format.Adresse -->
+	<vueModel name="AdresseModel" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.Adresse"/>
+	
+	<component type="vue" name="AdresseVue" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.Adresse" vueModel="AgadirReferentielContact:referentiel.format.AdresseModel">
+		<refComponent name="modaliteCommunication" component="AgadirReferentielContact:referentiel.format.ModaliteCommunicationVue"/>
+		<field name="numero"/>
+		<select name="repetition" valueObmField="id" labelObmField="libelleIHM"/>
+		<select name="typeVoie" valueObmField="id" labelObmField="libelleIHM"/>
+		<field name="voie"/>
+		<field name="complement"/>
+		<refComponent name="localisation" component="AgadirReferentielGeographique:referentiel.hexaposte.LocalisationVue"/>
+		<field name="bp"/>
+		<field name="cedex"/>
+		<select name="typeAdresse" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="AdresseEdit" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.Adresse" vueModel="AgadirReferentielContact:referentiel.format.AdresseModel"
+		titre="Edition Adresse">
+		<vue name="vue" component="AgadirReferentielContact:referentiel.format.AdresseVue"/>
+
+		<grid name="grid" component="AgadirReferentielContact:referentiel.format.RechercheAdresse"/>
+
+		<action name="Enregistrer" component="AgadirReferentielContact:referentiel.format.AdresseEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielContact:referentiel.format.AdresseEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheAdresse" pack="AgadirReferentielContact:referentiel.format" object="AgadirReferentielContact:referentiel.format.Adresse"
+		titre="Recherche Adresse">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="numero"/>
+		<colonne name="voie"/>
+		<colonne name="complement"/>
+		<colonne name="bp"/>
+		<colonne name="cedex"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielContact:referentiel.format.AdresseEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielContact:referentiel.format.AdresseEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielContact:referentiel.format.AdresseEdit" action="Editer"/>
+	</component>
+
+</viewm>

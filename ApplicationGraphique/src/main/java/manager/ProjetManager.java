@@ -6,11 +6,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import model.Librairie;
 import model.Projet;
 
 /**
- * Récupérer les modèles, le groupe de paramètre, et les paramètres d'un projet à partir du nom du projet.
+ * Cette classe interagit avec la BDD. Elle permet de faire le CRUD sur un Projet.
  * @author fkakcha
  *
  */
@@ -20,16 +19,24 @@ public class ProjetManager {
 	private Connection conn;
 	private static Statement statement;
 	
+	
+	/**
+	 * Constructeur pour initialiser la valeur du paramètre de connexion à la BDD.
+	 * @param conn identifiant de connexion à la BDD
+	 */
 	public ProjetManager(Connection conn) {
 		this.conn = conn;
 	}
 
 	/**
-	 * 
-	 * @param projet
+	 * Sauvegarder en BDD un Projet
+	 * @param projet Projet à sauvegarder
 	 * @throws SQLException
 	 */
 	public void save(Projet projet) throws SQLException{
+		
+		if(projet == null)
+			throw new IllegalArgumentException("Argument is null");
 		
 		String nom = projet.getNom();
 		String version = projet.getChemin();			
@@ -42,12 +49,15 @@ public class ProjetManager {
 	}	
 	
 	/**
-	 * Récupère de la BDD les principales caractéristriques(nom, version, code, etat) du projet
-	 * @param nomProjet le nom du projet à récupérer
-	 * @return projet
+	 * Récupère un Projet de la BDD
+	 * @param nomProjet nom du projet
+	 * @return Projet 
 	 * @throws SQLException
 	 */
 	public Projet get(String nomProjet) throws SQLException{
+		
+		if(nomProjet == null)
+			throw new IllegalArgumentException("Argument is null");
 		
 		Projet projet = null;		
 		
@@ -64,20 +74,28 @@ public class ProjetManager {
 	}
 	
 	/**
-	 * 
-	 * @param projet
+	 * Supprimer un Projet de la BDD
+	 * @param nomProjet nom du projet à supprimer
 	 * @throws SQLException
-	 */
-	public void delete(Projet projet) throws SQLException{
+	 */	
+	public void delete(String nomProjet) throws SQLException{
 		
-		String nom = projet.getNom();
-		statement = conn.createStatement();		
-		statement.executeUpdate("delete from projets where nom_='" + nom + "'");
+		if(nomProjet == null)
+			throw new IllegalArgumentException("Argument is null");
+		
+		statement = conn.createStatement();	
+		statement.executeUpdate("delete from modelbox where nom='" + nomProjet + "'");
+		statement.executeUpdate("delete from projets where nom='" + nomProjet + "'");
 		
 		if(statement != null)
 			statement.close();
 	}	
 	
+	/**
+	 * Retourne la liste de tous les projets en BDD
+	 * @return une liste de Projet
+	 * @throws SQLException
+	 */
 	public ArrayList<Projet> getAll() throws SQLException{
 		
 		ArrayList<Projet> listProjet = new ArrayList<Projet>();
@@ -96,7 +114,5 @@ public class ProjetManager {
 
 		return listProjet;
 	}
-	
+
 }
-
-

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewm name="AgadirReferentielGeographiqueViewm" project="AgadirReferentielGeographique" version="4.0.0" xmlns="http://www.imc-fr.com/ViewModelDefinition-2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- AgadirReferentielGeographique:referentiel.insee.Departement -->
+	<vueModel name="DepartementModel" pack="AgadirReferentielGeographique:referentiel.insee" object="AgadirReferentielGeographique:referentiel.insee.Departement"/>
+	
+	<component type="vue" name="DepartementVue" pack="AgadirReferentielGeographique:referentiel.insee" object="AgadirReferentielGeographique:referentiel.insee.Departement" vueModel="AgadirReferentielGeographique:referentiel.insee.DepartementModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+		<select name="region" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="DepartementEdit" pack="AgadirReferentielGeographique:referentiel.insee" object="AgadirReferentielGeographique:referentiel.insee.Departement" vueModel="AgadirReferentielGeographique:referentiel.insee.DepartementModel"
+		titre="Edition Departement">
+		<vue name="vue" component="AgadirReferentielGeographique:referentiel.insee.DepartementVue"/>
+
+		<grid name="grid" component="AgadirReferentielGeographique:referentiel.insee.RechercheDepartement"/>
+
+		<action name="Enregistrer" component="AgadirReferentielGeographique:referentiel.insee.DepartementEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielGeographique:referentiel.insee.DepartementEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheDepartement" pack="AgadirReferentielGeographique:referentiel.insee" object="AgadirReferentielGeographique:referentiel.insee.Departement"
+		titre="Recherche Departement">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielGeographique:referentiel.insee.DepartementEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielGeographique:referentiel.insee.DepartementEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielGeographique:referentiel.insee.DepartementEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielGeographique:referentiel.insee.Region -->
+	<vueModel name="RegionModel" pack="AgadirReferentielGeographique:referentiel.insee" object="AgadirReferentielGeographique:referentiel.insee.Region"/>
+	
+	<component type="vue" name="RegionVue" pack="AgadirReferentielGeographique:referentiel.insee" object="AgadirReferentielGeographique:referentiel.insee.Region" vueModel="AgadirReferentielGeographique:referentiel.insee.RegionModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="RegionEdit" pack="AgadirReferentielGeographique:referentiel.insee" object="AgadirReferentielGeographique:referentiel.insee.Region" vueModel="AgadirReferentielGeographique:referentiel.insee.RegionModel"
+		titre="Edition Region">
+		<vue name="vue" component="AgadirReferentielGeographique:referentiel.insee.RegionVue"/>
+
+		<grid name="grid" component="AgadirReferentielGeographique:referentiel.insee.RechercheRegion"/>
+
+		<action name="Enregistrer" component="AgadirReferentielGeographique:referentiel.insee.RegionEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielGeographique:referentiel.insee.RegionEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheRegion" pack="AgadirReferentielGeographique:referentiel.insee" object="AgadirReferentielGeographique:referentiel.insee.Region"
+		titre="Recherche Region">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielGeographique:referentiel.insee.RegionEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielGeographique:referentiel.insee.RegionEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielGeographique:referentiel.insee.RegionEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielGeographique:referentiel.hexaposte.Localisation -->
+	<vueModel name="LocalisationModel" pack="AgadirReferentielGeographique:referentiel.hexaposte" object="AgadirReferentielGeographique:referentiel.hexaposte.Localisation"/>
+	
+	<component type="vue" name="LocalisationVue" pack="AgadirReferentielGeographique:referentiel.hexaposte" object="AgadirReferentielGeographique:referentiel.hexaposte.Localisation" vueModel="AgadirReferentielGeographique:referentiel.hexaposte.LocalisationModel">
+		<field name="bureauDistributeur"/>
+		<field name="codePostal"/>
+		<field name="commune"/>
+		<field name="numeroINSEE"/>
+		<select name="pays" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="LocalisationEdit" pack="AgadirReferentielGeographique:referentiel.hexaposte" object="AgadirReferentielGeographique:referentiel.hexaposte.Localisation" vueModel="AgadirReferentielGeographique:referentiel.hexaposte.LocalisationModel"
+		titre="Edition Localisation">
+		<vue name="vue" component="AgadirReferentielGeographique:referentiel.hexaposte.LocalisationVue"/>
+
+		<grid name="grid" component="AgadirReferentielGeographique:referentiel.hexaposte.RechercheLocalisation"/>
+
+		<action name="Enregistrer" component="AgadirReferentielGeographique:referentiel.hexaposte.LocalisationEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielGeographique:referentiel.hexaposte.LocalisationEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheLocalisation" pack="AgadirReferentielGeographique:referentiel.hexaposte" object="AgadirReferentielGeographique:referentiel.hexaposte.Localisation"
+		titre="Recherche Localisation">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="bureauDistributeur"/>
+		<colonne name="codePostal"/>
+		<colonne name="commune"/>
+		<colonne name="numeroINSEE"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielGeographique:referentiel.hexaposte.LocalisationEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielGeographique:referentiel.hexaposte.LocalisationEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielGeographique:referentiel.hexaposte.LocalisationEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielGeographique:referentiel.iso.Pays -->
+	<vueModel name="PaysModel" pack="AgadirReferentielGeographique:referentiel.iso" object="AgadirReferentielGeographique:referentiel.iso.Pays"/>
+	
+	<component type="vue" name="PaysVue" pack="AgadirReferentielGeographique:referentiel.iso" object="AgadirReferentielGeographique:referentiel.iso.Pays" vueModel="AgadirReferentielGeographique:referentiel.iso.PaysModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="PaysEdit" pack="AgadirReferentielGeographique:referentiel.iso" object="AgadirReferentielGeographique:referentiel.iso.Pays" vueModel="AgadirReferentielGeographique:referentiel.iso.PaysModel"
+		titre="Edition Pays">
+		<vue name="vue" component="AgadirReferentielGeographique:referentiel.iso.PaysVue"/>
+
+		<grid name="grid" component="AgadirReferentielGeographique:referentiel.iso.RecherchePays"/>
+
+		<action name="Enregistrer" component="AgadirReferentielGeographique:referentiel.iso.PaysEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielGeographique:referentiel.iso.PaysEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RecherchePays" pack="AgadirReferentielGeographique:referentiel.iso" object="AgadirReferentielGeographique:referentiel.iso.Pays"
+		titre="Recherche Pays">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielGeographique:referentiel.iso.PaysEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielGeographique:referentiel.iso.PaysEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielGeographique:referentiel.iso.PaysEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirReferentielGeographique:referentiel.iso.Nationalite -->
+	<vueModel name="NationaliteModel" pack="AgadirReferentielGeographique:referentiel.iso" object="AgadirReferentielGeographique:referentiel.iso.Nationalite"/>
+	
+	<component type="vue" name="NationaliteVue" pack="AgadirReferentielGeographique:referentiel.iso" object="AgadirReferentielGeographique:referentiel.iso.Nationalite" vueModel="AgadirReferentielGeographique:referentiel.iso.NationaliteModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+		<select name="pays" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="NationaliteEdit" pack="AgadirReferentielGeographique:referentiel.iso" object="AgadirReferentielGeographique:referentiel.iso.Nationalite" vueModel="AgadirReferentielGeographique:referentiel.iso.NationaliteModel"
+		titre="Edition Nationalite">
+		<vue name="vue" component="AgadirReferentielGeographique:referentiel.iso.NationaliteVue"/>
+
+		<grid name="grid" component="AgadirReferentielGeographique:referentiel.iso.RechercheNationalite"/>
+
+		<action name="Enregistrer" component="AgadirReferentielGeographique:referentiel.iso.NationaliteEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirReferentielGeographique:referentiel.iso.NationaliteEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheNationalite" pack="AgadirReferentielGeographique:referentiel.iso" object="AgadirReferentielGeographique:referentiel.iso.Nationalite"
+		titre="Recherche Nationalite">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirReferentielGeographique:referentiel.iso.NationaliteEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirReferentielGeographique:referentiel.iso.NationaliteEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirReferentielGeographique:referentiel.iso.NationaliteEdit" action="Editer"/>
+	</component>
+
+</viewm>

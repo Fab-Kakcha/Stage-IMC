@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<languages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.imc-fr.com/LanguageDefinition-2.0.0"
+	xsi:schemaLocation="http://www.imc-fr.com/LanguageDefinition-2.0.0 http://sites-snapshots.imc-fr.com/JavaPomParent/GenerateurPomParent/GenerateurModelPomParent/CodeGenerator/xsd/language/LanguageDefinition-2.0.0.xsd">
+	
+	
+	<!--
+       Définition des éléments java utilisé dans la couche persistance JPA IMC
+    -->
+	<language name="java">
+	
+	   <!-- Les actions struts de base -->
+	   <type name="DefaultModel" className="DefaultModel" package="com.imcfr.commun.presentation.model" />
+	   <type name="ActionLister" className="ActionLister" package="com.imcfr.commun.presentation.actions" />
+	   <type name="ActionEditer" className="ActionEditer" package="com.imcfr.commun.presentation.actions" />
+	   <type name="AbstractActionModel" className="AbstractActionModel" package="com.imcfr.commun.presentation.actions" />
+		
+	</language>
+</languages>

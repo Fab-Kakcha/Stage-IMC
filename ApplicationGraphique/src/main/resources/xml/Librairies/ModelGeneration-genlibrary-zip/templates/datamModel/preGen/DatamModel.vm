@@ -1,0 +1,35 @@
+##
+## Générateur Xml
+## Création d'un model datam à partir de l'obm
+##
+## $generatedObject = model obm
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 27/09/2009
+##
+<?xml version="1.0" encoding="UTF-8"?>
+<datam name="${generatedObject.project}Datam" project="${generatedObject.project}" version="${generatedObject.version}" xmlns="http://www.imc-fr.com/DataModelDefinition-2.0.0">
+
+
+##
+## on génére les users
+##
+    <!-- Définition des users -->
+    <user name="adm_${generatedObject.project.toLowerCase()}" />
+    <user name="usr_${generatedObject.project.toLowerCase()}" />
+
+##
+## on génére pour les packages
+#foreach( $pack in ${generatedObject.getPackagesList()} )
+#generate( "ModelGeneration:DatamPackagePreGen" )
+#end
+##
+## on génére pour les objects
+#foreach( $obm in ${generatedObject.getObjectsList()} )
+## on filtre les interfaces
+#if ($obm.interface == false)
+#generate( "ModelGeneration:DatamObjectPreGen" )
+#end
+#end
+
+</datam>

@@ -1,0 +1,66 @@
+## ###############
+## Formate une référence
+##
+#macro ( formatRef $_Model $_Type $_ts )
+#**##set ( $_Utils = $_Model.utils )
+#**##set ( $_TypeFormated = "" )
+#**##set ( $_t_tns = ${_Model.utils.getTargetNamespaceOf($_Model, $_Type)})
+#**##set ( $_tnsAlias = $_t_tns.alias )
+#**##if ($_t_tns.namespace == $_Model.targetNamespace.namespace)
+#**##**##set ( $_tnsAlias = $_Model.targetNamespace.alias )
+#**##end
+#**##if( ${_Utils.isBaseType($_Type)} )
+#**##**##set ( $_TypeFormated = $_Utils.getBaseType($_Model, $_Type).path )
+#**##elseif( ${_Utils.isTypeSimpleRef($_Type)} )
+#**##**##if( $_ts )
+#**##**##**##set ( $_TypeFormated = "${_tnsAlias}:${_Utils.getTypeSimple($_Model, $_Type).simpleName}" )
+#**##**##else
+#**##**##**##set ( $_TypeFormated = "${_tnsAlias}:${_Utils.getTypeSimple($_Model, $_Type).name}" )
+#**##**##end
+#**##elseif( ${_Utils.isTypeRef($_Type)} )
+#**##**##set ( $_TypeFormated = "${_tnsAlias}:${_Utils.getType($_Model, $_Type).name}" )
+#**##elseif( ${_Utils.isObmFieldRef($_Type)} )
+#**##**##set ( $_ObmField = $_Utils.getObmField($_Model, $_Type) )
+#**##**##set ( $_TypeFormated = $_Utils.getBaseType($_Model, $_ObmField.type).path )
+#**##end
+${_TypeFormated}#end
+## ###############
+## Formate un type
+##
+#macro ( formatType $_Model $_Type $_ts )
+#**##set ( $_Utils = $_Model.utils )
+#**##set ( $_TypeFormated = "" )
+#**##if( ${_Utils.isBaseType($_Type)} )
+#**##**##set ( $_TypeFormated = $_Utils.getBaseType($_Model, $_Type).path )
+#**##elseif( ${_Utils.isTypeSimpleRef($_Type)} )
+#**##**##if( $_ts )
+#**##**##**##set ( $_TypeFormated = "${_Utils.getTypeSimple($_Model, $_Type).simpleName}" )
+#**##**##else
+#**##**##**##set ( $_TypeFormated = "${_Utils.getTypeSimple($_Model, $_Type).name}" )
+#**##**##end
+#**##elseif( ${_Utils.isTypeRef($_Type)} )
+#**##**##set ( $_TypeFormated = "${_Utils.getType($_Model, $_Type).name}" )
+#**##elseif( ${_Utils.isObmFieldRef($_Type)} )
+#**##**##set ( $_ObmField = $_Utils.getObmField($_Model, $_Type) )
+#**##**##set ( $_TypeFormated = $_Utils.getBaseType($_Model, $_ObmField.type).path )
+#**##end
+${_TypeFormated}#end
+## ###############
+## indique si un type de bse est une chaine
+##
+#macro ( isStringType $_Type $_ret )
+#**##set ( $_ret = false )
+#**##if ($_Type == "Base:String" || $_Type == "String")
+#**##**##set($_ret = true)
+#**##elseif ($_Type == "Base:NormalizedString" || $_Type == "NormalizedString")
+#**##**##set($_ret = true)
+#**##elseif ($_Type == "Base:Token" || $_Type == "Token")
+#**##**##set($_ret = true)
+#**##elseif ($_Type == "Base:Language" || $_Type == "Language")
+#**##**##set($_ret = true)
+#**##elseif ($_Type == "Base:Name" || $_Type == "Name")
+#**##**##set($_ret = true)
+#**##elseif ($_Type == "Base:AnyURI" || $_Type == "AnyURI")
+#**##**##set($_ret = true)
+#**##end
+#end

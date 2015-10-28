@@ -1,0 +1,38 @@
+## ####
+## Générateur java de la couche service IMC
+## Création des tris
+##
+## @param generatedObject le prstm object
+##
+## @author Gildas de Cadoudal
+## @version 1.0.0 2013
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pobject
+#set ( $obmObject = ${generatedObject.datamObject.obmObject} )
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+## on parcours les règles, si il sont de category orders
+#foreach ( $rule in ${obmObject.rules} )
+#if ($rule.category == "orders")
+#if ($rule.default)
+	/**
+	 * nom du tri par défaut : ${rule.name.toUpperCase()}
+	 */
+	String DEFAULT_ORDER_NAME = "${rule.name.toUpperCase()}";
+
+#end
+	/**
+	 * nom du tri : ${rule.name.toUpperCase()}
+	 */
+	String ORDER_NAME_${rule.name.toUpperCase()} = "${rule.name.toUpperCase()}";
+
+#end
+#end

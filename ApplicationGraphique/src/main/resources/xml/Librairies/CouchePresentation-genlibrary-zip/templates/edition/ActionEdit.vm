@@ -1,0 +1,76 @@
+## #####
+## Générateur java de la couche présentation IMC
+## Création de la classe de Model
+##
+## @param generatedObject l'objet viemw:vueModel
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 31/01/2012
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pobject
+#set ( $obmObject = ${generatedObject.object} )
+#set ( $eElement = ${manager.getElement("{0}:{1}.{2}ActionEdit", ${generatedObject.modelId})} )
+#set ( $bElement = ${manager.getElement("{0}:{1}.{2}Bean", ${obmObject.modelId})} )
+#set ( $mElement = ${manager.getElement("{0}:{1}.{2}VueModel", ${generatedObject.vueModel.modelId})} )
+##
+## si le nombre d'id de la classe est différent de 1 alors on aura une clé composé
+## création d'un attribut pour le getter et setter de l'id
+#set( $_attribut = ${factory.newAttribut()} )
+#if ( ${obmObject.fieldId.class.simpleName} == "ComposedId" )
+##
+#set ( $cleType = ${manager.getElement("{0}:{1}.PK{2}", ${obmObject.modelId})} )
+#set( ${_attribut.name} = "pk" )
+#else
+#if ( ${manager.isBaseType(${obmObject.fieldId.type})} == true )
+#set ( $cleType = ${manager.getElement(${obmObject.fieldId.type})} )
+#else
+#set ( $cleType = ${manager.getElement("{0}:{1}.{2}Bean", ${obmObject.fieldId.type})} )
+#end
+#set ( ${_attribut.name} = ${obmObject.fieldId.name} )
+#set ( ${_attribut.type} = ${cleType.path} )
+#end
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+package ${eElement.packageName};
+
+/**
+ * Classe de Model de l'objet ${generatedObject.completeName}
+ *
+ * @version ${model.version}
+ * @author généré par ${infoGen}
+ */
+public class ${eElement.className}
+        extends ${manager.getElement("ActionEditer").path}<${_attribut.type}> {
+
+	/**
+	 * serial uid
+	 */
+	static final long serialVersionUID = 1L;
+
+#generate ( "Commun:Attribut" )
+	/**
+	 * constructeur
+	 */
+	public ${eElement.className}() {
+		super(${mElement.path}.MODEL_NAME);
+		this.title = "${generatedObject.titre}";
+	}
+
+#generate ( "Commun:GetterSetterClasse" )
+	/*
+	 * (non-Javadoc)
+	 * @see ${manager.getElement("AbstractActionModel").path}#getIdObjet()
+	 */
+	@Override
+	public ${_attribut.type} getIdObjet() {
+		return ${_attribut.name};
+	}
+}

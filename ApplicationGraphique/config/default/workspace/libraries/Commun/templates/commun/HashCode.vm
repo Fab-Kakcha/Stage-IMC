@@ -1,0 +1,27 @@
+## #####
+## Générateur Java
+## ligne d'une méthode hashcode
+## 
+## @param _fields (classe java.util.Collection) la liste des attributs dont le hashcode est à créer
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 27/09/2009
+## #####
+    /* (non-Javadoc)
+     * @see ${manager.getElement("Object").path}${esc.h}hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+
+##
+## pour chaque éléments de l'id on ajoute le toString de l'objet
+#foreach ( $_field in ${_fields})
+#set ( $_attribut = ${manager.factory.newAttribut()} )
+#set ( ${_attribut.name} = ${_field} )
+#generate ( "Commun:HashCodeAttribut" )
+#end
+        return result;
+    }
+

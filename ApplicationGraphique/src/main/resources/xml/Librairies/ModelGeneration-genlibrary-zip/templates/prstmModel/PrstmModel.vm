@@ -1,0 +1,18 @@
+## #####
+## 
+## @param generatedObject (com.imcfr.generateur.model.persistancemodel.PrstmModel)
+## 
+## #####
+#set($model = $generatedObject)
+#set($Q = '"')
+<?xml version="1.0" encoding="UTF-8"?>
+##
+<prstm name="${model.name}" project="${model.project}" version="${model.version}" xmlns="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0">
+
+#foreach ($element in ${model.elementsList})
+#**##if (${element.type} == "object")
+#**##**##generate("ModelGeneration:PrstmObject")
+#**##end
+
+#end
+</prstm>

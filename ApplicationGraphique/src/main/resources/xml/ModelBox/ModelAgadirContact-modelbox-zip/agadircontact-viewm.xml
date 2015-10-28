@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewm name="AgadirContactViewm" project="AgadirContact" version="4.0.0" xmlns="http://www.imc-fr.com/ViewModelDefinition-2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- AgadirContact:contact.Coordonnees -->
+	<vueModel name="CoordonneesModel" pack="AgadirContact:contact" object="AgadirContact:contact.Coordonnees"/>
+	
+	<component type="vue" name="CoordonneesVue" pack="AgadirContact:contact" object="AgadirContact:contact.Coordonnees" vueModel="AgadirContact:contact.CoordonneesModel">
+		<refComponent name="adresse" component="AgadirReferentielContact:referentiel.format.AdresseVue"/>
+		<refComponent name="telephonie" component="AgadirReferentielContact:referentiel.format.TelephonieVue"/>
+		<refComponent name="mail" component="AgadirReferentielContact:referentiel.format.MailVue"/>
+		<refComponent name="url" component="AgadirReferentielContact:referentiel.format.URLVue"/>
+	</component>
+
+	<component type="edit" name="CoordonneesEdit" pack="AgadirContact:contact" object="AgadirContact:contact.Coordonnees" vueModel="AgadirContact:contact.CoordonneesModel"
+		titre="Edition Coordonnees">
+		<vue name="vue" component="AgadirContact:contact.CoordonneesVue"/>
+
+		<grid name="grid" component="AgadirContact:contact.RechercheCoordonnees"/>
+
+		<action name="Enregistrer" component="AgadirContact:contact.CoordonneesEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirContact:contact.CoordonneesEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheCoordonnees" pack="AgadirContact:contact" object="AgadirContact:contact.Coordonnees"
+		titre="Recherche Coordonnees">
+
+		<colonne name="id" key="true" visible="true"/>
+		
+		<actionColonne name="Modifier" component="AgadirContact:contact.CoordonneesEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirContact:contact.CoordonneesEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirContact:contact.CoordonneesEdit" action="Editer"/>
+	</component>
+	
+<!-- AgadirContact:contact.Contact -->
+	<vueModel name="ContactModel" pack="AgadirContact:contact" object="AgadirContact:contact.Contact"/>
+	
+	<component type="vue" name="ContactVue" pack="AgadirContact:contact" object="AgadirContact:contact.Contact" vueModel="AgadirContact:contact.ContactModel">
+		<field name="typeIdentite"/>
+		<refComponent name="coordonnees" component="AgadirContact:contact.CoordonneesVue"/>
+		<refComponent name="identite" component="AgadirContact:contact.IdentiteVue"/>
+	</component>
+
+	<component type="edit" name="ContactEdit" pack="AgadirContact:contact" object="AgadirContact:contact.Contact" vueModel="AgadirContact:contact.ContactModel"
+		titre="Edition Contact">
+		<vue name="vue" component="AgadirContact:contact.ContactVue"/>
+
+		<grid name="grid" component="AgadirContact:contact.RechercheContact"/>
+
+		<action name="Enregistrer" component="AgadirContact:contact.ContactEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirContact:contact.ContactEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheContact" pack="AgadirContact:contact" object="AgadirContact:contact.Contact"
+		titre="Recherche Contact">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="typeIdentite"/>
+		
+		<actionColonne name="Modifier" component="AgadirContact:contact.ContactEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirContact:contact.ContactEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirContact:contact.ContactEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirContact:contact.Identite -->
+	<component type="vue" name="IdentiteVue" pack="AgadirContact:contact" object="AgadirContact:contact.Identite">
+		<select name="nationalite" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+<!-- AgadirContact:contact.Personne -->
+	<vueModel name="PersonneModel" pack="AgadirContact:contact" object="AgadirContact:contact.Personne"/>
+	
+	<component type="vue" name="PersonneVue" pack="AgadirContact:contact" object="AgadirContact:contact.Personne" vueModel="AgadirContact:contact.PersonneModel">
+		<refComponent name="identite" component="AgadirContact:contact.IdentiteVue"/>
+		<field name="nom"/>
+		<field name="prenom"/>
+		<field name="dateNaissance"/>
+		<select name="sexe" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="PersonneEdit" pack="AgadirContact:contact" object="AgadirContact:contact.Personne" vueModel="AgadirContact:contact.PersonneModel"
+		titre="Edition Personne">
+		<vue name="vue" component="AgadirContact:contact.PersonneVue"/>
+
+		<grid name="grid" component="AgadirContact:contact.RecherchePersonne"/>
+
+		<action name="Enregistrer" component="AgadirContact:contact.PersonneEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirContact:contact.PersonneEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RecherchePersonne" pack="AgadirContact:contact" object="AgadirContact:contact.Personne"
+		titre="Recherche Personne">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="nom"/>
+		<colonne name="prenom"/>
+		
+		<actionColonne name="Modifier" component="AgadirContact:contact.PersonneEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirContact:contact.PersonneEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirContact:contact.PersonneEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirContact:contact.Organisation -->
+	<vueModel name="OrganisationModel" pack="AgadirContact:contact" object="AgadirContact:contact.Organisation"/>
+	
+	<component type="vue" name="OrganisationVue" pack="AgadirContact:contact" object="AgadirContact:contact.Organisation" vueModel="AgadirContact:contact.OrganisationModel">
+		<refComponent name="identite" component="AgadirContact:contact.IdentiteVue"/>
+		<field name="siret"/>
+		<field name="denomination"/>
+		<field name="siren"/>
+		<field name="effectif"/>
+		<select name="conventionCollective" valueObmField="id" labelObmField="libelleCourt"/>
+		<select name="naf2003" valueObmField="id" labelObmField="libelleIHM"/>
+		<select name="naf2008" valueObmField="id" labelObmField="libelleIHM"/>
+		<select name="ape" valueObmField="id" labelObmField="libelleIHM"/>
+		<select name="situationJuridique" valueObmField="id" labelObmField="libelleIHM"/>
+		<select name="secteurReference" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="OrganisationEdit" pack="AgadirContact:contact" object="AgadirContact:contact.Organisation" vueModel="AgadirContact:contact.OrganisationModel"
+		titre="Edition Organisation">
+		<vue name="vue" component="AgadirContact:contact.OrganisationVue"/>
+
+		<grid name="grid" component="AgadirContact:contact.RechercheOrganisation"/>
+
+		<action name="Enregistrer" component="AgadirContact:contact.OrganisationEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirContact:contact.OrganisationEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheOrganisation" pack="AgadirContact:contact" object="AgadirContact:contact.Organisation"
+		titre="Recherche Organisation">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="siret"/>
+		<colonne name="denomination"/>
+		<colonne name="siren"/>
+		
+		<actionColonne name="Modifier" component="AgadirContact:contact.OrganisationEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirContact:contact.OrganisationEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirContact:contact.OrganisationEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirContact:contact.Entreprise -->
+	<component type="vue" name="EntrepriseVue" pack="AgadirContact:contact" object="AgadirContact:contact.Entreprise">
+		<refComponent name="organisation" component="AgadirContact:contact.OrganisationVue"/>
+	</component>
+
+<!-- AgadirContact:contact.Etablissement -->
+	<component type="vue" name="EtablissementVue" pack="AgadirContact:contact" object="AgadirContact:contact.Etablissement">
+		<refComponent name="organisation" component="AgadirContact:contact.OrganisationVue"/>
+	</component>
+
+<!-- AgadirContact:contact.Entite -->
+	<component type="vue" name="EntiteVue" pack="AgadirContact:contact" object="AgadirContact:contact.Entite">
+	</component>
+
+<!-- AgadirContact:contact.EntiteDepartementale -->
+	<vueModel name="EntiteDepartementaleModel" pack="AgadirContact:contact" object="AgadirContact:contact.EntiteDepartementale"/>
+	
+	<component type="vue" name="EntiteDepartementaleVue" pack="AgadirContact:contact" object="AgadirContact:contact.EntiteDepartementale" vueModel="AgadirContact:contact.EntiteDepartementaleModel">
+		<refComponent name="entite" component="AgadirContact:contact.EntiteVue"/>
+		<select name="departement" valueObmField="id" labelObmField="libelleIHM"/>
+		<select name="entiteRegionale" valueObmField="id" labelObmField="id"/>
+	</component>
+
+	<component type="edit" name="EntiteDepartementaleEdit" pack="AgadirContact:contact" object="AgadirContact:contact.EntiteDepartementale" vueModel="AgadirContact:contact.EntiteDepartementaleModel"
+		titre="Edition EntiteDepartementale">
+		<vue name="vue" component="AgadirContact:contact.EntiteDepartementaleVue"/>
+
+		<grid name="grid" component="AgadirContact:contact.RechercheEntiteDepartementale"/>
+
+		<action name="Enregistrer" component="AgadirContact:contact.EntiteDepartementaleEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirContact:contact.EntiteDepartementaleEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheEntiteDepartementale" pack="AgadirContact:contact" object="AgadirContact:contact.EntiteDepartementale"
+		titre="Recherche EntiteDepartementale">
+
+		<colonne name="id" key="true" visible="true"/>
+		
+		<actionColonne name="Modifier" component="AgadirContact:contact.EntiteDepartementaleEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirContact:contact.EntiteDepartementaleEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirContact:contact.EntiteDepartementaleEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirContact:contact.EntiteRegionale -->
+	<vueModel name="EntiteRegionaleModel" pack="AgadirContact:contact" object="AgadirContact:contact.EntiteRegionale"/>
+	
+	<component type="vue" name="EntiteRegionaleVue" pack="AgadirContact:contact" object="AgadirContact:contact.EntiteRegionale" vueModel="AgadirContact:contact.EntiteRegionaleModel">
+		<refComponent name="entite" component="AgadirContact:contact.EntiteVue"/>
+		<select name="region" valueObmField="id" labelObmField="libelleIHM"/>
+		<select name="entitesDepartementales" valueObmField="id" labelObmField="id"/>
+	</component>
+
+	<component type="edit" name="EntiteRegionaleEdit" pack="AgadirContact:contact" object="AgadirContact:contact.EntiteRegionale" vueModel="AgadirContact:contact.EntiteRegionaleModel"
+		titre="Edition EntiteRegionale">
+		<vue name="vue" component="AgadirContact:contact.EntiteRegionaleVue"/>
+
+		<grid name="grid" component="AgadirContact:contact.RechercheEntiteRegionale"/>
+
+		<action name="Enregistrer" component="AgadirContact:contact.EntiteRegionaleEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirContact:contact.EntiteRegionaleEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheEntiteRegionale" pack="AgadirContact:contact" object="AgadirContact:contact.EntiteRegionale"
+		titre="Recherche EntiteRegionale">
+
+		<colonne name="id" key="true" visible="true"/>
+		
+		<actionColonne name="Modifier" component="AgadirContact:contact.EntiteRegionaleEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirContact:contact.EntiteRegionaleEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirContact:contact.EntiteRegionaleEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirContact:contact.EntiteNationale -->
+	<vueModel name="EntiteNationaleModel" pack="AgadirContact:contact" object="AgadirContact:contact.EntiteNationale"/>
+	
+	<component type="vue" name="EntiteNationaleVue" pack="AgadirContact:contact" object="AgadirContact:contact.EntiteNationale" vueModel="AgadirContact:contact.EntiteNationaleModel">
+		<refComponent name="entite" component="AgadirContact:contact.EntiteVue"/>
+	</component>
+
+	<component type="edit" name="EntiteNationaleEdit" pack="AgadirContact:contact" object="AgadirContact:contact.EntiteNationale" vueModel="AgadirContact:contact.EntiteNationaleModel"
+		titre="Edition EntiteNationale">
+		<vue name="vue" component="AgadirContact:contact.EntiteNationaleVue"/>
+
+		<grid name="grid" component="AgadirContact:contact.RechercheEntiteNationale"/>
+
+		<action name="Enregistrer" component="AgadirContact:contact.EntiteNationaleEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirContact:contact.EntiteNationaleEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheEntiteNationale" pack="AgadirContact:contact" object="AgadirContact:contact.EntiteNationale"
+		titre="Recherche EntiteNationale">
+
+		<colonne name="id" key="true" visible="true"/>
+		
+		<actionColonne name="Modifier" component="AgadirContact:contact.EntiteNationaleEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirContact:contact.EntiteNationaleEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirContact:contact.EntiteNationaleEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirContact:contact.EtablissementFormation -->
+	<component type="vue" name="EtablissementFormationVue" pack="AgadirContact:contact" object="AgadirContact:contact.EtablissementFormation">
+		<refComponent name="organisation" component="AgadirContact:contact.OrganisationVue"/>
+	</component>
+
+<!-- AgadirContact:contact.OrganismeFormation -->
+	<vueModel name="OrganismeFormationModel" pack="AgadirContact:contact" object="AgadirContact:contact.OrganismeFormation"/>
+	
+	<component type="vue" name="OrganismeFormationVue" pack="AgadirContact:contact" object="AgadirContact:contact.OrganismeFormation" vueModel="AgadirContact:contact.OrganismeFormationModel">
+		<refComponent name="etablissementFormation" component="AgadirContact:contact.EtablissementFormationVue"/>
+		<field name="numDA"/>
+	</component>
+
+	<component type="edit" name="OrganismeFormationEdit" pack="AgadirContact:contact" object="AgadirContact:contact.OrganismeFormation" vueModel="AgadirContact:contact.OrganismeFormationModel"
+		titre="Edition OrganismeFormation">
+		<vue name="vue" component="AgadirContact:contact.OrganismeFormationVue"/>
+
+		<grid name="grid" component="AgadirContact:contact.RechercheOrganismeFormation"/>
+
+		<action name="Enregistrer" component="AgadirContact:contact.OrganismeFormationEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirContact:contact.OrganismeFormationEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheOrganismeFormation" pack="AgadirContact:contact" object="AgadirContact:contact.OrganismeFormation"
+		titre="Recherche OrganismeFormation">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="numDA"/>
+		
+		<actionColonne name="Modifier" component="AgadirContact:contact.OrganismeFormationEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirContact:contact.OrganismeFormationEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirContact:contact.OrganismeFormationEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirContact:contact.CFA -->
+	<vueModel name="CFAModel" pack="AgadirContact:contact" object="AgadirContact:contact.CFA"/>
+	
+	<component type="vue" name="CFAVue" pack="AgadirContact:contact" object="AgadirContact:contact.CFA" vueModel="AgadirContact:contact.CFAModel">
+		<refComponent name="etablissementFormation" component="AgadirContact:contact.EtablissementFormationVue"/>
+		<field name="uai"/>
+	</component>
+
+	<component type="edit" name="CFAEdit" pack="AgadirContact:contact" object="AgadirContact:contact.CFA" vueModel="AgadirContact:contact.CFAModel"
+		titre="Edition CFA">
+		<vue name="vue" component="AgadirContact:contact.CFAVue"/>
+
+		<grid name="grid" component="AgadirContact:contact.RechercheCFA"/>
+
+		<action name="Enregistrer" component="AgadirContact:contact.CFAEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirContact:contact.CFAEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheCFA" pack="AgadirContact:contact" object="AgadirContact:contact.CFA"
+		titre="Recherche CFA">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="uai"/>
+		
+		<actionColonne name="Modifier" component="AgadirContact:contact.CFAEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirContact:contact.CFAEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirContact:contact.CFAEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirContact:contact.Communication -->
+	<vueModel name="CommunicationModel" pack="AgadirContact:contact" object="AgadirContact:contact.Communication"/>
+	
+	<component type="vue" name="CommunicationVue" pack="AgadirContact:contact" object="AgadirContact:contact.Communication" vueModel="AgadirContact:contact.CommunicationModel">
+		<field name="dateEnvoi"/>
+		<field name="dateReception"/>
+		<field name="dateRetour"/>
+		<select name="typeCommunication" valueObmField="id" labelObmField="libelleIHM"/>
+		<refComponent name="modaliteCommunication" component="AgadirReferentielContact:referentiel.format.AdresseVue"/>
+	</component>
+
+	<component type="edit" name="CommunicationEdit" pack="AgadirContact:contact" object="AgadirContact:contact.Communication" vueModel="AgadirContact:contact.CommunicationModel"
+		titre="Edition Communication">
+		<vue name="vue" component="AgadirContact:contact.CommunicationVue"/>
+
+		<grid name="grid" component="AgadirContact:contact.RechercheCommunication"/>
+
+		<action name="Enregistrer" component="AgadirContact:contact.CommunicationEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirContact:contact.CommunicationEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheCommunication" pack="AgadirContact:contact" object="AgadirContact:contact.Communication"
+		titre="Recherche Communication">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="dateEnvoi"/>
+		<colonne name="dateReception"/>
+		<colonne name="dateRetour"/>
+		
+		<actionColonne name="Modifier" component="AgadirContact:contact.CommunicationEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirContact:contact.CommunicationEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirContact:contact.CommunicationEdit" action="Editer"/>
+	</component>
+
+</viewm>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<languages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.imc-fr.com/LanguageDefinition-2.0.0"
+	xsi:schemaLocation="http://www.imc-fr.com/LanguageDefinition-2.0.0 http://sites-snapshots.imc-fr.com/JavaPomParent/GenerateurPomParent/GenerateurModelPomParent/CodeGenerator/xsd/language/LanguageDefinition-2.0.0.xsd">
+	
+	
+	<!--
+       Définition des éléments java utilisé dans la couche persistance JPA IMC
+    -->
+	<language name="java">
+	
+	   <type name="PException" className="PersistanceException" package="com.imcfr.commun.persistance" />
+       <type name="PersistanceManager" className="PersistanceManager" package="com.imcfr.commun.persistance" />
+       <type name="PersistanceException" className="PersistanceException" package="com.imcfr.commun.persistance" />
+       <type name="RemoveInfo" className="RemoveInfo" package="com.imcfr.commun.persistance" />
+		
+		<!-- Les objets persistant -->
+        <generic name="PObject" className="PObject" package="com.imcfr.commun.persistance"
+            nbelements="1" />
+        <generic name="PHome" className="PHome" package="com.imcfr.commun.persistance"
+            nbelements="2" />
+        <generic name="PHomeImpl" className="PHomeImpl" package="com.imcfr.commun.persistance.impl"
+            nbelements="2" />
+        <generic name="EMFManager" className="EMFManager" package="com.imcfr.commun.persistance"
+            nbelements="2" />
+            
+        <!-- Query Helper -->
+		<type name="QueryHelper" className="QueryHelper" package="com.imcfr.commun.persistance" />
+		<type name="QueryFilter" className="QueryFilter" package="com.imcfr.commun.persistance" />
+		
+		
+		
+		<!-- Les objets jpa -->
+        <type name="JpaEntityManager" className="EntityManager" package="javax.persistence"/>
+		<type name="JpaPersistenceContext" className="PersistenceContext" package="javax.persistence"/>
+        <type name="JpaQuery" className="Query" package="javax.persistence"/>
+		
+		<type name="JpaEntity" className="Entity" package="javax.persistence"/>
+		<type name="JpaTable" className="Table" package="javax.persistence"/>
+		<type name="JpaInheritance" className="Inheritance" package="javax.persistence"/>
+		<type name="JpaPrimaryKeyJoinColumn" className="PrimaryKeyJoinColumn" package="javax.persistence"/>
+		<type name="JpaPrimaryKeyJoinColumns" className="PrimaryKeyJoinColumns" package="javax.persistence"/>
+		
+		<type name="JpaEmbeddable" className="Embeddable" package="javax.persistence"/>
+        <type name="JpaId" className="Id" package="javax.persistence"/>
+        <type name="JpaEmbeddedId" className="EmbeddedId" package="javax.persistence"/>
+        <type name="JpaGeneratedValue" className="GeneratedValue" package="javax.persistence"/>
+        <type name="JpaGenerationType" className="GenerationType" package="javax.persistence"/>
+        
+        <type name="JpaColumn" className="Column" package="javax.persistence"/>
+        <type name="JpaJoinTable" className="JoinTable" package="javax.persistence"/>
+        <type name="JpaJoinColumn" className="JoinColumn" package="javax.persistence"/>
+        <type name="JpaJoinColumns" className="JoinColumns" package="javax.persistence"/>
+        <type name="JpaCascadeType" className="CascadeType" package="javax.persistence"/>
+        <type name="JpaFetchType" className="FetchType" package="javax.persistence"/>
+        
+        <type name="JpaManyToMany" className="ManyToMany" package="javax.persistence"/>
+        <type name="JpaManyToOne" className="ManyToOne" package="javax.persistence"/>
+        <type name="JpaOneToMany" className="OneToMany" package="javax.persistence"/>
+        <type name="JpaOneToOne" className="OneToOne" package="javax.persistence"/>
+		
+	</language>
+</languages>

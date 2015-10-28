@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<obm name="AgadirReferentielMesureObm" project="AgadirMesure" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ObjectModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/ObjectModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/CodeGeneratorModel/src/main/resources/com/imcfr/generateur/sax/objectmodel/ObjectModelDefinition-2.0.0.xsd ">
+
+	<package name="referentiel" completeName="com.imcfr.agadir.referentiel.mesure"/>
+
+
+	<object name="EtatObjetProcedure" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="Accompagnement" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.Libelle">
+		<!-- relations -->
+		<field name="typeAccompagnement" type="AgadirMesure:referentiel.TypeAccompagnement" null="false"/>
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="DerniereSituation" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="Derogation" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="NatureObjetProcedure" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="Handicap" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+
+	<object name="TypeTutorat" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeOperation" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeFinancement" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeConvention" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeAccompagnement" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeControle" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeResultatControle" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeDecision" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeNotification" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+
+	<object name="MinimumSocial" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeContratTravail" pack="AgadirMesure:referentiel" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+</obm>

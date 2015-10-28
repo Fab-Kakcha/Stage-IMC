@@ -1,0 +1,55 @@
+## ####
+## Générateur java de la couche persistance IMC
+## Création de l'implémentation modifiable des services
+##
+## @param generatedObject le prstm object
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## ####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pobject
+#set( $obmObject = ${generatedObject.datamObject.obmObject} )
+#set( $mElementHome = ${manager.getElement("{0}:{1}.S{2}", ${obmObject.modelId})} )
+#set( $mElementHomeLocal = ${manager.getElement("{0}:{1}.S{2}Local", ${obmObject.modelId})} )
+#set( $mElementHomeImpl = ${manager.getElement("{0}:{1}.S{2}Impl", ${obmObject.modelId})} )
+#set( $mElementHomeGenerated = ${manager.getElement("{0}:{1}.S{2}GeneratedImpl", ${obmObject.modelId})} )
+#set( $pElement = ${manager.getElement("{0}:{1}.{2}Bean", ${obmObject.modelId})} )
+#set( $pElementHome = ${manager.getElement("{0}:{1}.PHome{2}", ${obmObject.modelId})} )
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+package ${mElementHomeImpl.packageName};
+
+/**
+ * Classe d'implémentation du home de l'objet persistant ${obmObject.completeName}
+ *
+ * @version ${model.version}
+ * @author généré par ${infoGen}
+ */
+public class ${mElementHomeImpl.className}
+        extends ${mElementHomeGenerated.path}
+        implements ${mElementHome.path}, ${mElementHomeLocal.path} {
+
+    /**
+     * Serial version uid
+     */
+    private static final long serialVersionUID = 1L;
+    
+    /**
+     * Constructeur
+     * @throws ${manager.getElement("FactoryException").path}
+     *                          Si des erreurs lors de la récupération du home persistant
+     */
+    public ${mElementHomeImpl.className}()
+            throws ${manager.getElement("FactoryException").path} {
+        super();
+		// ne fais rien
+    }
+}

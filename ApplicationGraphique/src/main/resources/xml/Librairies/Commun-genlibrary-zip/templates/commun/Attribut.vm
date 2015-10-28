@@ -1,0 +1,18 @@
+## #####
+## Générateur Java
+## Attribut d'une classe
+## 
+## @param _attribut (classe com.imcfr.generateur.factory.Attribut) l'attribut dont l'attribut est à créer
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 27/09/2009
+## #####
+#set($_a_initValue="")
+#if ("$!{_attribut.initValue}" != "")
+#set($_a_initValue= " = ${_attribut.initValue};")
+#end
+	/**
+	 * Attribut ${_attribut.name}
+	 */
+	private ${_attribut.type} ${_attribut.name}$!{_a_initValue}
+

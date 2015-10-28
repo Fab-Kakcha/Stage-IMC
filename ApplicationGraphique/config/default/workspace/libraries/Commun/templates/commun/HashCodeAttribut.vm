@@ -1,0 +1,10 @@
+## #####
+## Générateur Java
+## ligne d'une méthode hashcode
+## 
+## @param _attribut (classe com.imcfr.generateur.factory.Attribut) l'attribut dont le hashcode est à créer
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 27/09/2009
+## #####
+		result = prime * result + ( ( ${_attribut.name} == null ) ? 0 : ${_attribut.name}.hashCode() );

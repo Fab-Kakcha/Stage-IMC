@@ -1,0 +1,28 @@
+## #####
+## Générateur Java
+## Getter et Setter d'une classe
+## 
+## @param _attribut (classe com.imcfr.generateur.factory.Attribut) l'attribut dont le getter et setter est à créer
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 27/09/2009
+## #####
+    /**
+     * récupéré la valeur de ${_attribut.name}
+     * 
+     * @return ${_attribut.name}
+     */
+    public ${_attribut.type} ${_attribut.getterMethod}() {
+       return this.${_attribut.name};
+    }
+
+    /**
+     * modifie la valeur de ${_attribut.name}
+     * 
+     * @param ${_attribut.name}
+     *                  la nouvelle valeur
+     */
+    public void ${_attribut.setterMethod}(${_attribut.type} ${_attribut.name}) {
+       this.${_attribut.name} = ${_attribut.name};
+    }
+

@@ -1,0 +1,50 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param type (com.imcfr.generateur.model.edimodel.Type)
+## @param redefineType (com.imcfr.generateur.model.edimodel.RedefineType) : optionnel, présent si l'on veut permettre la redefinition
+## @param t_indent (String) : optionnel, présent si l'on veut permettre une indentation différente
+## 
+## #####
+#if ("$!{t_indent}"=="")
+#**##set($t_indent="		")
+#end
+#set($t_ext_type="${model.targetNamespace.alias}:${type.name}Extension")
+#set($t_ext_name="extension")
+#if (!${type.final})
+#**##set($t_ext_name=$type.extensionName)
+#end
+#set($t_elts_min="")
+#if (${type.minOccurs} != 1)
+#**##set($t_elts_min=" minOccurs=${Q}${type.minOccurs}${Q}")
+#end
+#set($t_elts_max="")
+#if (${type.maxOccurs} == -1)
+#**##set($t_elts_max=" maxOccurs=${Q}unbounded${Q}")
+#elseif (${type.maxOccurs} != 1)
+#**##set($t_elts_max=" maxOccurs=${Q}${type.maxOccurs}${Q}")
+#end
+## 
+#set($t_elts_form="")
+#if ($type.form == "SEQUENCE")
+#**##set($t_elts_form="sequence")
+#elseif ($type.form == "CHOICE")
+#**##set($t_elts_form="choice")
+#elseif ($type.form == "ALL")
+#**##set($t_elts_form="all")
+#end
+##
+${t_indent}<${t_elts_form}${t_elts_min}${t_elts_max}>
+#foreach ($t_element in $type.elementsList)
+#**##if (!("$!redefineType" == ""))
+#**##**##set($rt_element=$!{redefineType.getElement($t_element.name)})
+#**##end
+#**##generate("XSD:ElementBase")
+#**##if (!("$!redefineType" == ""))
+#**##**##set($rt_element="")
+#**##end
+#end
+#if (!${type.final} && !$type.abstract)
+${t_indent}	<element name="${t_ext_name}" type="${t_ext_type}" nillable="true" minOccurs="0" maxOccurs="1"/>
+#end
+${t_indent}</${t_elts_form}>

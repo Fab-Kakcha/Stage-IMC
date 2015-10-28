@@ -1,0 +1,46 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param element (com.imcfr.generateur.model.edimodel.Type)
+## @param elt (com.imcfr.generateur.model.edimodel.ElementBase)
+## 
+## #####
+##
+#set($ete_nillable="")
+#if (${elt.nillable})
+#**##set($ete_nillable=" nillable=${Q}true${Q}")
+#end
+#set($ete_default="")
+#if ("$!{elt.defaut}" != "")
+#**##set($ete_default=" default=${Q}${elt.defaut}${Q}")
+#end
+#set($ete_fixed="")
+#if ("$!{elt.fixed}" != "")
+#**##set($ete_fixed=" fixed=${Q}${elt.fixed}${Q}")
+#end
+##
+#if (${elt.class.simpleName} == "Element")
+#**##set($ete_min="")
+#**##if (${elt.minOccurs} != 1)
+#**##**##set($ete_min=" minOccurs=${Q}${elt.minOccurs}${Q}")
+#**##end
+#**##set($ete_max="")
+#**##if (${elt.maxOccurs} != 1)
+#**##**##if (${elt.maxOccurs} != -1)
+#**##**##**##set($ete_max=" maxOccurs=${Q}${elt.maxOccurs}${Q}")
+#**##**##else
+#**##**##**##set($ete_max=" maxOccurs=${Q}unbounded${Q}")
+#**##**##end
+#**##end
+			<element xsi:type="element" name="${elt.name}" type="${elt.type}"$!{ete_min}$!{ete_max}$!{ete_nillable}$!{ete_default}$!{ete_fixed}/>
+#elseif (${elt.class.simpleName} == "ElementObm")
+#**##set($ete_name="")
+#**##if ("$!{elt.name}" != "$!{elt.obmFieldName}")
+#**##**##set($ete_name=" name=${Q}${elt.name}${Q}")
+#**##end
+#**##set($ete_type="")
+#**##if ("$!{elt.type}" != "")
+#**##**##set($ete_type=" type=${Q}${elt.type}${Q}")
+#**##end
+			<element xsi:type="elementObm" obmField="${elt.obmFieldName}"$!{ete_name}$!{ete_type}$!{ete_nillable}$!{ete_default}$!{ete_fixed}/>
+#end

@@ -1,0 +1,12 @@
+## #####
+## 
+## @param require (com.imcfr.generateur.model.edimodel.Require)
+## 
+## #####
+#if (!${require.skip})
+#**##if (${require.import})
+	<import namespace="${require.refTns.namespace}" schemaLocation="${require.refTns.schemaLocation}"/>
+#**##elseif ("$!{require.refTns.schemaLocation}" != "")
+	<include schemaLocation="${require.refTns.schemaLocation}"/>
+#**##end
+#end

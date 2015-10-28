@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generators langage="xml" name="ModelGeneration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/GeneratorDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/GeneratorDefinition-2.0.0 ../../../../sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/generator/GeneratorDefinition-2.0.0.xsd ">
+    
+
+	<!-- dépendance -->
+	<dependencies>
+		<dependency name="java:Commun"/>
+	</dependencies>
+    
+    <!--
+       définition des générateurs de modèles
+    -->
+    
+    
+    <!-- Générateur du modèle datam à partir de l'obm
+       fichier : repGénération/models/$project-datam.xml
+       elementsLangage : aucun
+       filter : aucun
+    -->
+	<generator name="DatamModelPreGen" pathtemplate="datamModel/preGen/DatamModel.vm"
+		version="1.0.0" generatedObject="obm:model">
+		<file>
+			<name value="{0}-datam.xml" >
+             <property>$project</property>
+            </name>
+			<path value="src/main/models" />
+		</file>
+	</generator>
+	
+	<!-- Template de créations pour les packages -->
+	<template name="DatamPackagePreGen" pathtemplate="datamModel/preGen/DatamPackage.vm" />
+	
+    <!-- Template de créations pour les objets -->
+    <template name="DatamObjectPreGen" pathtemplate="datamModel/preGen/DatamObject.vm" />
+    
+    <!-- Template de créations pour les champs d'un objets -->
+    <template name="DatamFieldPreGen" pathtemplate="datamModel/preGen/DatamField.vm" />
+    
+    <!-- Template de créations pour les champs d'un objets -->
+    <template name="DatamFieldForeignKeyPreGen" pathtemplate="datamModel/preGen/DatamFieldForeignKey.vm" />
+    
+    
+    
+    <!-- Générateur du modèle prstm à partir d'un datam
+       fichier : repGénération/models/$project-prstm.xml
+       elementsLangage : aucun
+       filter : aucun
+    -->
+	<generator name="PrstmModelPreGen" pathtemplate="prstmModel/preGen/PrstmModel.vm"
+		version="1.0.0" generatedObject="datam:model">
+		<file>
+			<name value="{0}-prstm.xml" >
+             <property>$project</property>
+			</name>
+			<path value="src/main/models" />
+		</file>
+	</generator>
+	
+    <!-- Template de créations pour les objets -->
+    <template name="PrstmObjectPreGen" pathtemplate="prstmModel/preGen/PrstmObject.vm" />
+    
+    
+    
+    <!-- Générateur du fichier view.xml
+       fichier : repGénération/models/$project-viewm.xml
+       filter : aucun
+    -->
+    <generator name="ViewmModelPreGen" pathtemplate="viewmModel/preGen/Viewm.vm"
+        version="1.0.0" generatedObject="obm:model">
+        <file>
+            <name value="{0}-viewm.xml">
+             <property>$project</property>
+            </name>
+            <path value="src/main/models/"/>
+        </file>
+    </generator>
+	
+	
+    <!-- Générateur du modèle edim à partir de l'obm
+       fichier : repGénération/models/$project-edim.xml
+       elementsLangage : aucun
+       filter : aucun
+    -->
+	<generator name="EdimModelPreGen" pathtemplate="edimModel/preGen/EdimModel.vm"
+		version="1.0.0" generatedObject="obm:model">
+		<file>
+			<name value="{0}-edim.xml" >
+             <property>$project</property>
+            </name>
+			<path value="src/main/models" />
+		</file>
+	</generator>
+
+	<template name="EdimTypePreGen" pathtemplate="edimModel/preGen/EdimType.vm" />
+
+
+	<generator name="BoxDescriptor" pathtemplate="box/descriptor.vm" generatedObject="obm:model" version="1.0.0">
+		<file>
+			<name value="descriptor.xml"/>
+			<path value="src/main/models" />
+		</file>
+	</generator>
+
+
+	<generator name="ObmModel" pathtemplate="obmModel/ObmModel.vm" generatedObject="obm:model" version="1.0.0">
+		<file>
+			<name value="{0}-obm.xml" >
+             <property>$name</property>
+            </name>
+			<path value="src/main/models" />
+		</file>
+	</generator>
+	<template name="ObmPackage" pathtemplate="obmModel/ObmPackage.vm"/>
+	<template name="ObmObject" pathtemplate="obmModel/ObmObject.vm"/>
+	<template name="ObmDescription" pathtemplate="obmModel/ObmDescription.vm"/>
+	
+	<generator name="DatamModel" pathtemplate="datamModel/DatamModel.vm" generatedObject="datam:model" version="1.0.0">
+		<file>
+			<name value="{0}-datam.xml" >
+             <property>$name</property>
+            </name>
+			<path value="src/main/models" />
+		</file>
+	</generator>
+	<template name="DatamUser" pathtemplate="datamModel/DatamUser.vm"/>
+	<template name="DatamSchema" pathtemplate="datamModel/DatamSchema.vm"/>
+	<template name="DatamObject" pathtemplate="datamModel/DatamObject.vm"/>
+	
+	<generator name="PrstmModel" pathtemplate="prstmModel/PrstmModel.vm" generatedObject="prstm:model" version="1.0.0">
+		<file>
+			<name value="{0}-prstm.xml" >
+             <property>$name</property>
+            </name>
+			<path value="src/main/models" />
+		</file>
+	</generator>
+	<template name="PrstmObject" pathtemplate="prstmModel/PrstmObject.vm"/>
+	<template name="PrstmFieldRules" pathtemplate="prstmModel/PrstmFieldRules.vm"/>
+	<template name="PrstmFieldOneToOne" pathtemplate="prstmModel/PrstmFieldOneToOne.vm"/>
+	<template name="PrstmFieldManyToOne" pathtemplate="prstmModel/PrstmFieldManyToOne.vm"/>
+	<template name="PrstmFieldOneToMany" pathtemplate="prstmModel/PrstmFieldOneToMany.vm"/>
+	<template name="PrstmFieldManyToMany" pathtemplate="prstmModel/PrstmFieldManyToMany.vm"/>
+	
+	<generator name="ViewmModel" pathtemplate="viewmModel/ViewmModel.vm" generatedObject="viewm:model" version="1.0.0">
+		<file>
+			<name value="{0}-viewm.xml" >
+             <property>$name</property>
+            </name>
+			<path value="src/main/models" />
+		</file>
+	</generator>
+	<template name="ViewmVueModel" pathtemplate="viewmModel/ViewmVueModel.vm"/>
+	<template name="ViewmComponent" pathtemplate="viewmModel/ViewmComponent.vm"/>
+	<template name="ViewmVue" pathtemplate="viewmModel/ViewmVue.vm"/>
+	<template name="ViewmEdit" pathtemplate="viewmModel/ViewmEdit.vm"/>
+	<template name="ViewmGrid" pathtemplate="viewmModel/ViewmGrid.vm"/>
+
+	<generator name="EdimModel" pathtemplate="edimModel/EdimModel.vm" generatedObject="edim:model" version="1.0.0">
+		<file>
+			<name value="{0}-edim.xml" >
+             <property>$name</property>
+            </name>
+			<path value="src/main/models" />
+		</file>
+	</generator>
+	<template name="EdimTargetNamespace" pathtemplate="edimModel/EdimTargetNamespace.vm"/>
+	<template name="EdimRequire" pathtemplate="edimModel/EdimRequire.vm"/>
+	<template name="EdimType" pathtemplate="edimModel/EdimType.vm"/>
+	<template name="EdimTypeElement" pathtemplate="edimModel/EdimTypeElement.vm"/>
+	<template name="EdimTypeAttribute" pathtemplate="edimModel/EdimTypeAttribute.vm"/>
+	<template name="EdimTypeSimple" pathtemplate="edimModel/EdimTypeSimple.vm"/>
+	<template name="EdimElement" pathtemplate="edimModel/EdimElement.vm"/>
+	<template name="EdimRedefineType" pathtemplate="edimModel/EdimRedefineType.vm"/>
+	<template name="EdimRedefineTypeSimple" pathtemplate="edimModel/EdimRedefineTypeSimple.vm"/>
+	
+	
+	
+
+	
+	<api name="PreGenFromObm">
+		<refgenerator name="DatamModelPreGen"/>
+		<refgenerator name="ViewmModelPreGen"/>
+		<refgenerator name="EdimModelPreGen"/>
+	</api>
+	<api name="PreGenFromDatam">
+		<refgenerator name="PrstmModelPreGen"/>
+	</api>
+	
+	
+	<!-- Fichier de macros -->
+	<macro path="macrosModelGeneration.vm" />
+
+</generators>

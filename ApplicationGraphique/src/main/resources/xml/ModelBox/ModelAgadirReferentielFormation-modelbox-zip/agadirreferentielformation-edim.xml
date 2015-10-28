@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edim name="AgadirReferentielFormationEdim" project="AgadirReferentielFormation" version="4.0.0"
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xmlns="http://www.imc-fr.com/EdiModelDefinition-2.0.0"
+	  xsi:schemaLocation="http://www.imc-fr.com/EdiModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/EdimModel/src/main/resources/com/imcfr/generateur/sax/edimodel/EdiModelDefinition-2.0.0.xsd ">
+
+	<targetNamespace alias="agadirreferentielformation" namespace="http://www.dgefp.emploi.gouv.fr/Agadir" schemaLocation="AgadirReferentielFormation.xsd"/>
+	
+	
+	<type name="NiveauFormation" obmObject="AgadirReferentielFormation:referentiel.lheo.NiveauFormation" inherits="t::AgadirTechnique:TypeCode">
+	</type>
+	
+	<typeSimple name="ReferentielMetier" inherits="ts::AgadirTechnique:TypeCodeValeur">
+	</typeSimple>
+	<type name="Formacode" inherits="t::AgadirTechnique:TypeCode">
+	</type>
+	<type name="Nsf" inherits="t::AgadirTechnique:TypeCode">
+	</type>
+	<type name="Rncp" inherits="t::AgadirTechnique:TypeCode">
+	</type>
+	
+	<type name="Diplome" obmObject="AgadirReferentielFormation:referentiel.lheo.Diplome" inherits="t::AgadirTechnique:TypeCode">
+		<elements>
+			<element xsi:type="elementObm" obmField="niveauFormation" type="t::AgadirReferentielFormation:NiveauFormation"/>
+			<element xsi:type="elementObm" obmField="referenceMetier" type="ts::AgadirReferentielFormation:ReferentielMetier"/>
+			<element xsi:type="elementObm" obmField="formacodes" type="t::AgadirReferentielFormation:Formacode" name="formacode"/>
+			<element xsi:type="elementObm" obmField="nsf" type="t::AgadirReferentielFormation:Nsf"/>
+			<element xsi:type="elementObm" obmField="rncp" type="t::AgadirReferentielFormation:Rncp"/>
+		</elements>
+	</type>	
+	
+</edim>

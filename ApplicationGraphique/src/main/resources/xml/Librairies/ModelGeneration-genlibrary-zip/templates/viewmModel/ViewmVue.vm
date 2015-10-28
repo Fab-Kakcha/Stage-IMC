@@ -1,0 +1,16 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.viewmodel.ViewModel)
+## @param element (com.imcfr.generateur.model.viewmodel.VueComponent)
+## 
+## #####
+##
+#**##foreach ($field in ${element.fields})
+#**##**##if (${field.class.simpleName} == "RefComponent")
+		<refComponent name="${field.name}" component="${field.componentName}"/>
+#**##**##elseif (${field.class.simpleName} == "Select")
+		<select name="${field.name}" valueObmField="${field.valueObmField}" labelObmField="${field.labelObmField}"/>
+#**##**##else
+		<field name="${field.name}"/>
+#**##**##end
+#**##end

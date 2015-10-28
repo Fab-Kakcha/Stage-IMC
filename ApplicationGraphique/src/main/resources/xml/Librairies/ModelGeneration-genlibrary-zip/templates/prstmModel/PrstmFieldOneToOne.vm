@@ -1,0 +1,20 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.persistancemodel.PrstmModel)
+## @param element (com.imcfr.generateur.model.persistancemodel.PrstmObject)
+## @param field (com.imcfr.generateur.model.persistancemodel.OneToOne)
+## 
+## #####
+##
+		<oneToOne name="${field.name}">
+#**##**##if	(${field.mapped})
+			<mappedPrstmField name="${field.mappedPrstmField.prstmFieldName}"/>	
+#**##**##else
+			<references>
+#**##**##**##foreach ($reference in ${field.references})
+				<reference datamField="${reference.datamFieldName}"/>
+#**##**##**##end
+			</references>
+#**##**##end
+#**##**##**##generate("ModelGeneration:PrstmFieldRules")
+		</oneToOne>

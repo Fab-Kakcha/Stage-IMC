@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prstm name="AgadirReferentielGeographiquePrstm" project="AgadirReferentielGeographique" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/PrstmModel/src/main/resources/com/imcfr/generateur/sax/persistancemodel/PersistanceModelDefinition-2.0.0.xsd ">
+
+	<!-- insee -->
+	<object name="Departement" pack="AgadirReferentielGeographique:referentiel.insee" datamObject="AgadirReferentielGeographique:referentiel.departement">
+		<manyToOne name="region">
+			<references>
+				<reference datamField="fk__region__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+	
+	<object name="Region" pack="AgadirReferentielGeographique:referentiel.insee" datamObject="AgadirReferentielGeographique:referentiel.region">
+		<oneToMany name="departements">
+			<mappedPrstmField name="region"/>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="true"/>
+				</persistance>
+			</rules>
+		</oneToMany>
+	</object>
+	
+	<!-- hexaposte -->
+	<object name="Localisation" pack="AgadirReferentielGeographique:referentiel.hexaposte" datamObject="AgadirReferentielGeographique:referentiel.localisation">
+		<manyToOne name="pays">
+			<references>
+				<reference datamField="fk__pays__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+		<manyToOne name="departement">
+			<references>
+				<reference datamField="fk__departement__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+
+	<!-- iso -->	
+	<object name="Pays" pack="AgadirReferentielGeographique:referentiel.iso" datamObject="AgadirReferentielGeographique:referentiel.pays"/>
+	<object name="Nationalite" pack="AgadirReferentielGeographique:referentiel.iso" datamObject="AgadirReferentielGeographique:referentiel.nationalite">
+		<manyToOne name="pays">
+			<references>
+				<reference datamField="fk__pays__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+
+</prstm>

@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datam name="ImcSecuriteDatam" project="ImcSecurite" version="3.4.0" xmlns="http://www.imc-fr.com/DataModelDefinition-2.0.0">
+
+    <!-- Définition des users -->
+    <user name="adm_imcsecurite"/>
+    <user name="usr_imcsecurite"/>
+
+
+    <!-- Définition du schema base pour le package obm base -->
+    <schema name="securite" completeName="imc_securite">
+        <rules>
+            <grants>
+                <grant user="ImcSecurite:adm_imcsecurite" value="OWNER"/>
+                <grant user="ImcSecurite:usr_imcsecurite" value="USAGE"/>
+            </grants>
+        </rules>
+	</schema>
+    
+    
+    <!-- Définition de l'objet application pour l'objet obm securite.Application -->
+    <object name="application" schema="ImcSecurite:securite" obmObject="ImcSecurite:securite.Application">
+        <!--
+            Définition des ids de l'objet
+        -->
+        <!-- Champ id -->
+        <field name="id" obmField="id">
+			<rules>
+				<generation>
+					<sequence name="s_application"/>
+				</generation>
+			</rules>
+		</field>
+
+        <!--
+            Définition des champs de l'objet
+        -->
+        <!-- Champ code -->
+        <field name="code" type="Base:String" obmField="code"/>
+        <!-- Champ libelle -->
+        <field name="libelle" type="Base:String" obmField="libelle"/>
+        <!-- Champ urlMAJAcl -->
+        <field name="urlmajacl" type="Base:String" obmField="urlMAJAcl"/>
+        <!-- Champ libelle -->
+        <field name="admin" type="Base:Boolean" obmField="admin"/>
+
+        <rules>
+            <constraints>
+                <!-- Définition des règles de contraintes de clé primaires -->
+                <primaryKey field="id" />
+            </constraints>
+			
+			<grants>
+				<grant user="ImcSecurite:adm_imcsecurite" value="OWNER"/>
+                <grant user="ImcSecurite:usr_imcsecurite" value="ALL"/>
+			</grants>
+        </rules>
+
+    </object>
+    
+    
+    <!-- Définition de l'objet ressource pour l'objet obm securite.Ressource -->
+    <object name="ressource" schema="ImcSecurite:securite" obmObject="ImcSecurite:securite.Ressource">
+        <!--
+            Définition des ids de l'objet
+        -->
+        <!-- Champ id -->
+        <field name="id" obmField="id">
+			<rules>
+				<generation>
+					<sequence name="s_ressource"/>
+				</generation>
+			</rules>
+		</field>
+
+        <!--
+            Définition des champs de l'objet
+        -->
+        <!-- Champ libelle -->
+        <field name="libelle" type="Base:String" obmField="libelle"/>
+
+        <!-- Champ parent -->
+        <field name="fk__parent__id" type="Base:Long" obmField="parent"/>
+
+        <!-- Champ application -->
+        <field name="fk__application__id" type="Base:Long" obmField="application"/>
+
+        <rules>
+            <constraints>
+                <!-- Définition des règles de contraintes de clé primaires -->
+                <primaryKey field="id" />
+
+                <!-- Définition des clé étrangères du champ parent -->
+                <foreignKeys refObject="ImcSecurite:securite.ressource">
+                    <foreignKey field="fk__parent__id" refField="id" />
+                </foreignKeys>
+
+                <!-- Définition des clé étrangères du champ application -->
+                <foreignKeys refObject="ImcSecurite:securite.application">
+                    <foreignKey field="fk__application__id" refField="id" />
+                </foreignKeys>
+            </constraints>
+			
+			<grants>
+				<grant user="ImcSecurite:adm_imcsecurite" value="OWNER"/>
+                <grant user="ImcSecurite:usr_imcsecurite" value="ALL"/>
+			</grants>
+        </rules>
+
+    </object>
+    
+    
+    <!-- Définition de l'objet profil pour l'objet obm securite.Profil -->
+    <object name="profil" schema="ImcSecurite:securite" obmObject="ImcSecurite:securite.Profil">
+        <!--
+            Définition des ids de l'objet
+        -->
+        <!-- Champ id -->
+        <field name="id" obmField="id">
+			<rules>
+				<generation>
+					<sequence name="s_profil"/>
+				</generation>
+			</rules>
+		</field>
+
+        <!--
+            Définition des champs de l'objet
+        -->
+        <!-- Champ libelle -->
+        <field name="libelle" type="Base:String" obmField="libelle"/>
+
+        <!-- Champ application -->
+        <field name="fk__application__id" type="Base:Long"/>
+
+        <rules>
+            <constraints>
+                <!-- Définition des règles de contraintes de clé primaires -->
+                <primaryKey field="id" />
+
+                <!-- Définition des clé étrangères du champ application -->
+                <foreignKeys refObject="ImcSecurite:securite.application">
+                    <foreignKey field="fk__application__id" refField="id" />
+                </foreignKeys>
+            </constraints>
+			
+			<grants>
+				<grant user="ImcSecurite:adm_imcsecurite" value="OWNER"/>
+                <grant user="ImcSecurite:usr_imcsecurite" value="ALL"/>
+			</grants>
+        </rules>
+
+    </object>
+    
+    
+    <!-- Définition de l'objet profil_parents pour la table de relation entre profils parents et profils enfants -->
+    <object name="profil_parents" schema="ImcSecurite:securite">
+        <!--
+            Définition des ids de l'objet
+        -->
+        <!-- Champ application -->
+        <field name="fk__fils__id" type="Base:Long"/>
+
+        <!-- Champ application -->
+        <field name="fk__parent__id" type="Base:Long"/>
+
+        <!--
+            Définition des champs de l'objet
+        -->
+
+        <rules>
+            <constraints>
+                <!-- Définition des règles de contraintes de clé primaires -->
+                <primaryKey field="fk__fils__id" />
+                <primaryKey field="fk__parent__id" />
+
+                <!-- Définition des clé étrangères du champ fils -->
+                <foreignKeys refObject="ImcSecurite:securite.profil">
+                    <foreignKey field="fk__fils__id" refField="id" />
+                </foreignKeys>
+
+                <!-- Définition des clé étrangères du champ parent -->
+                <foreignKeys refObject="ImcSecurite:securite.profil">
+                    <foreignKey field="fk__parent__id" refField="id" />
+                </foreignKeys>
+            </constraints>
+			
+			<grants>
+				<grant user="ImcSecurite:adm_imcsecurite" value="OWNER"/>
+                <grant user="ImcSecurite:usr_imcsecurite" value="ALL"/>
+			</grants>
+        </rules>
+
+    </object>
+    
+    
+    <!-- Définition de l'objet action pour l'objet obm securite.Action -->
+    <object name="action" schema="ImcSecurite:securite" obmObject="ImcSecurite:securite.Action">
+        <!--
+            Définition des ids de l'objet
+        -->
+        <!-- Champ id -->
+        <field name="id" obmField="id">
+			<rules>
+				<generation>
+					<sequence name="s_action"/>
+				</generation>
+			</rules>
+		</field>
+
+        <!--
+            Définition des champs de l'objet
+        -->
+        <!-- Champ libelle -->
+        <field name="libelle" type="Base:String" obmField="libelle"/>
+
+        <!-- Champ application -->
+        <field name="fk__application__id" type="Base:Long"/>
+
+        <rules>
+            <constraints>
+                <!-- Définition des règles de contraintes de clé primaires -->
+                <primaryKey field="id" />
+
+                <!-- Définition des clé étrangères du champ application -->
+                <foreignKeys refObject="ImcSecurite:securite.application">
+                    <foreignKey field="fk__application__id" refField="id" />
+                </foreignKeys>
+            </constraints>
+			
+			<grants>
+				<grant user="ImcSecurite:adm_imcsecurite" value="OWNER"/>
+                <grant user="ImcSecurite:usr_imcsecurite" value="ALL"/>
+			</grants>
+        </rules>
+
+    </object>
+    
+    
+    <!-- Définition de l'objet droit pour l'objet obm securite.Droit -->
+    <object name="droit" schema="ImcSecurite:securite" obmObject="ImcSecurite:securite.Droit">
+        <!--
+            Définition des ids de l'objet
+        -->
+        <!-- Champ id -->
+        <field name="id" obmField="id">
+			<rules>
+				<generation>
+					<sequence name="s_droit"/>
+				</generation>
+			</rules>
+		</field>
+
+        <!--
+            Définition des champs de l'objet
+        -->
+        <!-- Champ autorise -->
+        <field name="autorise" type="Base:Boolean" obmField="autorise"/>
+
+        <!-- Champ ressource -->
+        <field name="fk__ressource__id" type="Base:Long"/>
+
+        <!-- Champ profil -->
+        <field name="fk__profil__id" type="Base:Long"/>
+
+        <!-- Champ action -->
+        <field name="fk__action__id" type="Base:Long"/>
+
+        <!-- Champ application -->
+        <field name="fk__application__id" type="Base:Long"/>
+
+        <rules>
+            <constraints>
+                <!-- Définition des règles de contraintes de clé primaires -->
+                <primaryKey field="id" />
+
+                <!-- Définition des clé étrangères du champ application -->
+                <foreignKeys refObject="ImcSecurite:securite.ressource">
+                    <foreignKey field="fk__ressource__id" refField="id" />
+                </foreignKeys>
+
+                <!-- Définition des clé étrangères du champ application -->
+                <foreignKeys refObject="ImcSecurite:securite.profil">
+                    <foreignKey field="fk__profil__id" refField="id" />
+                </foreignKeys>
+
+                <!-- Définition des clé étrangères du champ application -->
+                <foreignKeys refObject="ImcSecurite:securite.action">
+                    <foreignKey field="fk__action__id" refField="id" />
+                </foreignKeys>
+
+                <!-- Définition des clé étrangères du champ application -->
+                <foreignKeys refObject="ImcSecurite:securite.application">
+                    <foreignKey field="fk__application__id" refField="id" />
+                </foreignKeys>
+            </constraints>
+			
+			<grants>
+				<grant user="ImcSecurite:adm_imcsecurite" value="OWNER"/>
+                <grant user="ImcSecurite:usr_imcsecurite" value="ALL"/>
+			</grants>
+        </rules>
+
+    </object>
+    
+    
+    <!-- Définition de l'objet Assertion pour l'objet obm securite.Assertion -->
+    <object name="assertion" schema="ImcSecurite:securite" obmObject="ImcSecurite:securite.Assertion">
+        <!--
+            Définition des ids de l'objet
+        -->
+        <!-- Champ id -->
+        <field name="id" obmField="id">
+			<rules>
+				<generation>
+					<sequence name="s_assertion"/>
+				</generation>
+			</rules>
+		</field>
+
+        <!--
+            Définition des champs de l'objet
+        -->
+        <!-- Champ autorise -->
+        <field name="klass" type="Base:String" obmField="klass"/>
+
+        <!-- Champ ressource -->
+        <field name="fk__ressource__id" type="Base:Long"/>
+
+        <!-- Champ profil -->
+        <field name="fk__profil__id" type="Base:Long"/>
+
+        <!-- Champ action -->
+        <field name="fk__action__id" type="Base:Long"/>
+
+        <!-- Champ application -->
+        <field name="fk__application__id" type="Base:Long"/>
+
+        <rules>
+            <constraints>
+                <!-- Définition des règles de contraintes de clé primaires -->
+                <primaryKey field="id" />
+
+                <!-- Définition des clé étrangères du champ application -->
+                <foreignKeys refObject="ImcSecurite:securite.ressource">
+                    <foreignKey field="fk__ressource__id" refField="id" />
+                </foreignKeys>
+
+                <!-- Définition des clé étrangères du champ application -->
+                <foreignKeys refObject="ImcSecurite:securite.profil">
+                    <foreignKey field="fk__profil__id" refField="id" />
+                </foreignKeys>
+
+                <!-- Définition des clé étrangères du champ application -->
+                <foreignKeys refObject="ImcSecurite:securite.action">
+                    <foreignKey field="fk__action__id" refField="id" />
+                </foreignKeys>
+
+                <!-- Définition des clé étrangères du champ application -->
+                <foreignKeys refObject="ImcSecurite:securite.application">
+                    <foreignKey field="fk__application__id" refField="id" />
+                </foreignKeys>
+            </constraints>
+			
+			<grants>
+				<grant user="ImcSecurite:adm_imcsecurite" value="OWNER"/>
+                <grant user="ImcSecurite:usr_imcsecurite" value="ALL"/>
+			</grants>
+        </rules>
+
+    </object>
+</datam>

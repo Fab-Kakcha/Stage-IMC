@@ -1,0 +1,87 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.objectmodel.ObjectModel)
+## @param obmObject (com.imcfr.generateur.model.objectmodel.ObjectObject)
+## 
+## #####
+##
+#set($t_project=${boxName})
+#set($t_pack=$obmObject.pack.name)
+#set($t_name=$obmObject.name)
+#if ($t_pack != "")
+#**##set($t_pack="${t_pack}.")
+#end
+#set($t_packedName="${t_pack}${t_name}")
+##
+#set($t_attrObmValue="<!--")
+##
+#if (${obmObject.abstract})
+#**##set($t_attrObmValue="${t_attrObmValue} abstract=${Q}true${Q}")
+#else
+#**##set($t_attrObmValue="${t_attrObmValue} abstract=${Q}false${Q}")
+#end
+##
+#set($t_inherits = "")
+#set($t_inheritsRem = "")
+#if (!("$!{obmObject.obmExtends}" == ""))
+#**##set($t_inheritsRem = "${N}${T}<!-- Verifiez bien qu'il sagir d'un héritage et pas d'une extension -->")
+#**##set($t_i_typeObject_packedName="${obmObject.obmExtends.pack.name}")
+#**##if ($t_i_typeObject_packedName != "")
+#**##**##set($t_i_typeObject_packedName="${t_i_typeObject_packedName}.")
+#**##end
+#**##set($t_i_typeObject_packedName="${t_i_typeObject_packedName}${obmObject.obmExtends.name}")
+#**##set($t_inherits=" inherits=${Q}t::${t_project}:${t_i_typeObject_packedName}${Q}")
+#end
+##
+#set($t_attrObmValue="${t_attrObmValue} final=${Q}true${Q}")
+##
+#set($t_attrObmValue="${t_attrObmValue} -->")
+##
+##
+<!-- t::${t_project}:${t_packedName} -->$!{t_inheritsRem}
+	<type name="${t_packedName}" obmObject="${obmObject.project}:${obmObject.refName}"$!{t_inherits}>$!{t_attrObmValue}
+#**##**##if (${obmObject.fieldsList.size()} > 0)
+#**#		<elements>
+#**##**##**##**##foreach ($t_element in $obmObject.fieldsList)
+#**##**##**##**##**###
+#**##**##**##**##**##set($t_e_attrObmValue="<!-- name=${Q}${t_element.name}${Q}")
+#**##**##**##**##**###
+#**##**##**##**##**##if (${manager.isBaseType(${t_element.type})})
+#**##**##**##**##**##**##set($t_e_type="")
+#**##**##**##**##**##**##set($t_e_attrObmValue="${t_e_attrObmValue} type=${Q}${t_element.type}${Q}")
+#**##**##**##**##**##else
+#**##**##**##**##**##**##set($t_e_typeObject=${model.getObject($t_element.type)})
+#**##**##**##**##**##**##set($t_e_typeObject_packedName="${t_e_typeObject.pack.name}")
+#**##**##**##**##**##**##if ($t_e_typeObject_packedName != "")
+#**##**##**##**##**##**##set($t_e_typeObject_packedName="${t_e_typeObject_packedName}.")
+#**##**##**##**##**##**##end
+#**##**##**##**##**##**##set($t_e_typeObject_packedName="${t_e_typeObject_packedName}${t_e_typeObject.name}")
+#**##**##**##**##**##**##set($t_e_type=" type=${Q}t::${t_project}:${t_e_typeObject_packedName}${Q}")
+#**##**##**##**##**##end
+#**##**##**##**##**###
+#**##**##**##**##**##if (${t_element.null})
+#**##**##**##**##**##**##set($t_e_attrObmValue="${t_e_attrObmValue} nillable=${Q}true${Q}")
+#**##**##**##**##**##else
+#**##**##**##**##**##**##set($t_e_attrObmValue="${t_e_attrObmValue} nillable=${Q}false${Q}")
+#**##**##**##**##**##end
+#**##**##**##**##**###
+#**##**##**##**##**##set($t_e_attrObmValue="${t_e_attrObmValue} -->")
+#**##**##**##**##**###
+#**##**#			<element xsi:type="elementObm" obmField="${t_element.name}"$!{t_e_type}/>$!{t_e_attrObmValue}
+#**##**##**##**##end
+#**#		</elements>
+#**##**##end
+	</type>
+##
+#if (!${obmObject.abstract})
+#**#
+#**#	<element name="${t_name.toLowerCase()}" type="t::${t_project}:${t_packedName}"/>
+#**#
+#**#	<type name="${t_packedName}List">
+#**#		<elements>
+#**#			<element xsi:type="element" name="${t_name.toLowerCase()}" type="t::${t_project}:${t_packedName}" minOccurs="0" maxOccurs="unbounded"/>
+#**#	    </elements>
+#**#	</type>
+#**#	<element name="${t_name.toLowerCase()}List" type="t::${t_project}:${t_packedName}List"/>
+#end
+

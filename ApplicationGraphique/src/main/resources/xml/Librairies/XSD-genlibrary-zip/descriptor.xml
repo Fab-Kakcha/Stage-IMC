@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generators langage="xsd" name="XSD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/GeneratorDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/GeneratorDefinition-2.0.0 ../../../../sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/generator/GeneratorDefinition-2.0.0.xsd ">
+
+	<!-- dépendance -->
+	<dependencies>
+		<dependency name="java:Commun"/>
+	</dependencies>
+
+	<!-- Language -->
+	<languagefile path="language-xsd.xml" />
+
+
+	<!-- Generateur -->
+	<generator generatedObject="edim:model" version="1.0.0" name="Xsd" pathtemplate="xsd.vm">
+        <supports>
+        	<support>generation</support>
+        	<support>regeneration</support>
+        </supports>
+		<file>
+			<name value="{0}.xsd">
+				<property>iif!$name?all:$project</property>
+			</name>
+			<path value="src/main/resources/{0}/xsd">
+				<property>$project</property>
+			</path>
+		</file>
+	</generator>
+
+
+	<!-- templates -->
+	<template name="Require" pathtemplate="xsd/require.vm" />
+	
+	<template name="TargetNamespace" pathtemplate="xsd/targetNamespace.vm" />
+
+	<template name="ElementTopLevel" pathtemplate="xsd/elementTopLevel.vm" />
+
+	<template name="Type" pathtemplate="xsd/type.vm" />
+		<template name="Extend" pathtemplate="xsd/type/extend.vm" />
+		<template name="Extension" pathtemplate="xsd/type/extension.vm" />
+		<template name="Elements" pathtemplate="xsd/type/elements.vm" />
+			<template name="ElementBase" pathtemplate="xsd/type/elements/elementBase.vm" />
+		<template name="AttributeBase" pathtemplate="xsd/type/attributeBase.vm" />
+	
+	<template name="TypeSimple" pathtemplate="xsd/typeSimple.vm" />
+		<template name="List" pathtemplate="xsd/typeSimple/list.vm" />
+		<template name="Union" pathtemplate="xsd/typeSimple/union.vm" />
+		<template name="Restriction" pathtemplate="xsd/typeSimple/restriction.vm" />
+	
+	<template name="RedefineType" pathtemplate="xsd/redefineType.vm" />
+		<template name="RedefineElement" pathtemplate="xsd/redefineType/redefineElement.vm" />
+		<template name="RedefineAttribute" pathtemplate="xsd/redefineType/redefineAttribute.vm" />
+	
+	<template name="RedefineTypeSimple" pathtemplate="xsd/redefineTypeSimple.vm" />
+
+
+
+	<!-- Macros -->
+	<macro path="macros/utils.vm" />
+
+</generators>

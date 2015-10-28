@@ -1,0 +1,24 @@
+##
+## Générateur jsp de la couche présentation IMC
+## Création de la page d'édition d'une composant
+##
+## $generatedObject = obm model
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 30/09/2009
+##
+##
+## début du fichier
+<?xml version="1.0" encoding="UTF-8"?>
+<viewm name="${generatedObject.project}Viewm" project="${generatedObject.project}" version="${generatedObject.version}" xmlns="http://www.imc-fr.com/ViewModelDefinition-2.0.0">
+##
+## on parcours les objets
+#foreach( $obmObject in ${generatedObject.objectsList} )
+#if ( ${obmObject.abstract} == false )
+#firstLower( $obmObjectName, ${obmObject.name} )
+    
+    <!-- model ${obmObject.modelId} -->
+    <vueModel pack="${obmObject.pack.modelId}" name="${obmObject.name}Model" object="${obmObject.modelId}" />
+#end
+#end
+</viewm>

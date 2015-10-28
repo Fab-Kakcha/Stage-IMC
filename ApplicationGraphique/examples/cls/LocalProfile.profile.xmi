@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_EPCKIGNuEeWMk41cjsDxnQ" name="LocalProfile" metaclassReference="_EPCKLGNuEeWMk41cjsDxnQ">
+  <eAnnotations xmi:id="_EPCKIWNuEeWMk41cjsDxnQ" source="Objing">
+    <contents xmi:type="uml:Property" xmi:id="_EPCKImNuEeWMk41cjsDxnQ" name="Module">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_EPCKI2NuEeWMk41cjsDxnQ" value="67fd584f-14e7-40bd-943e-fe6b663d0b4c"/>
+    </contents>
+    <contents xmi:type="uml:Property" xmi:id="_EPCKJGNuEeWMk41cjsDxnQ" name="ID">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_EPCKJWNuEeWMk41cjsDxnQ" value="b5eaf31a-201e-4bb8-8528-55e896f1bc49"/>
+    </contents>
+  </eAnnotations>
+  <eAnnotations xmi:id="_EPCKJmNuEeWMk41cjsDxnQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_EPCKJ2NuEeWMk41cjsDxnQ" name="LocalProfile" nsURI="http:///schemas/LocalProfile/_EOFH82NuEeWMk41cjsDxnQ/0" nsPrefix="LocalProfile">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_EPCKKGNuEeWMk41cjsDxnQ" name="IMC">
+        <eAnnotations xmi:id="_EPCKKWNuEeWMk41cjsDxnQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_EPCKLWNuEeWMk41cjsDxnQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_EPCKKmNuEeWMk41cjsDxnQ" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_EPCKLGNuEeWMk41cjsDxnQ">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_EPCKLWNuEeWMk41cjsDxnQ" name="IMC">
+    <eAnnotations xmi:id="_EPCKLmNuEeWMk41cjsDxnQ" source="Objing">
+      <contents xmi:type="uml:Property" xmi:id="_EPCKL2NuEeWMk41cjsDxnQ" name="ID">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_EPCKMGNuEeWMk41cjsDxnQ" value="1d2c33df-cca4-43c0-851f-2abc5d157607"/>
+      </contents>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_EPCKMWNuEeWMk41cjsDxnQ" name="base_Class" association="_EPCKMmNuEeWMk41cjsDxnQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_EPCKMmNuEeWMk41cjsDxnQ" name="Class_IMC" memberEnd="_EPCKM2NuEeWMk41cjsDxnQ _EPCKMWNuEeWMk41cjsDxnQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_EPCKM2NuEeWMk41cjsDxnQ" name="extension_IMC" type="_EPCKLWNuEeWMk41cjsDxnQ" aggregation="composite" association="_EPCKMmNuEeWMk41cjsDxnQ"/>
+  </packagedElement>
+</uml:Profile>

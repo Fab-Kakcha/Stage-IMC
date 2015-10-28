@@ -1,5 +1,6 @@
 package manager;
 
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,45 +9,82 @@ import java.util.*;
 
 import model.Librairie;
 
+/**
+ * Cette classe interagit avec la BDD. Elle permet de faire le CRUD sur une Librairie. 
+ * @author fkakcha
+ *
+ */
+
 public class LibrairieManager {
 	
 	private Connection conn;
 	private static Statement statement;
 	
-	
+	/**
+	 * Constructeur pour initialiser la valeur du paramètre de connexion à la BDD.
+	 * @param conn identifiant de connexion à la BDD.
+	 */
 	public LibrairieManager(Connection conn) {
 		this.conn = conn;
 	}
 
-	public void save(Librairie modeles) throws SQLException{
+	/**
+	 * Sauvegarde en BDD d'un objet Librairie 
+	 * @param librairie objet Librairie à sauvegarder
+	 * @throws SQLException
+	 */
+	public void save(Librairie librairie) throws SQLException{
 		
-		String nom = modeles.getNom();
-		String description = modeles.getCheminFichier();
+		if(librairie == null)
+			throw new IllegalArgumentException("Argument is null");
+		
+		String nom = librairie.getNom();
+		String description = librairie.getCheminFichier();
 		
 		statement = conn.createStatement();
 		statement.executeUpdate("insert into librairies values ('" + nom + "','"+ description +"')");
 		statement.close();
 	}
 	
-	public void update(Librairie modele) throws SQLException{
+	/**
+	 * Mise à jour en BDD d'un objet Librairie.
+	 * @param librairie objet Librairie à mettre en jour.
+	 * @throws SQLException
+	 */
+	public void update(Librairie librairie) throws SQLException{
 		
-		String nomModele = modele.getNom();
-		String description = modele.getCheminFichier();
+		if(librairie == null)
+			throw new IllegalArgumentException("Argument is null");
+		
+		String nomModele = librairie.getNom();
+		String description = librairie.getCheminFichier();
 		
 		statement = conn.createStatement();
-        statement.executeUpdate("update from librairies set chemin='"+ description +"' where nom='" + nomModele + "'");
+        statement.executeUpdate("update librairies set chemin='"+ description +"' where nom='" + nomModele + "'");
         if(statement != null)
 			statement.close();      
 	}
 	
-	public void delete(Librairie modeles) throws SQLException{
+	/**
+	 * Suppression en BDD d'une Librairie.
+	 * @param librairie Librairie à supprimer.
+	 * @throws SQLException
+	 */
+	public void delete(String nomLibrairie) throws SQLException{
 		
-		String nom = modeles.getNom();
+		if(nomLibrairie == null)
+			throw new IllegalArgumentException("Argument is null");
+		
 		statement = conn.createStatement();
-		statement.executeUpdate("delete from librairies where nom='" + nom + "'");
+		statement.executeUpdate("delete from librairies where nom='" + nomLibrairie + "'");
 		statement.close();		
 	}
 	
+	/**
+	 * Récupérer de la BDD tous les objets Librairie
+	 * @return une liste de Librairie
+	 * @throws SQLException
+	 */
 	public ArrayList<Librairie> getAll() throws SQLException{
 		
 		ArrayList<Librairie> listModeles = new ArrayList<Librairie>();
@@ -66,7 +104,16 @@ public class LibrairieManager {
 		return listModeles;
    }
 	
+	/**
+	 * Recherche en BDD d'une Librairie à partir de son nom. 
+	 * @param nomLibrairie nom de la Librairie
+	 * @return une Librairie
+	 * @throws SQLException
+	 */
 	public Librairie get(String nomLibrairie) throws SQLException{
+		
+		if(nomLibrairie == null)
+			throw new IllegalArgumentException("Argument is null");
 		
 		Librairie modeles = null;
 		statement = conn.createStatement();

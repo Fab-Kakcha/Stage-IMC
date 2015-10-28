@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<languages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/LanguageDefinition-2.0.0">
+	
+	<!--
+	   Définition des éléments de base du langage java
+	-->
+	<language name="java">
+		
+		<!-- Type de base du langage
+		-->
+		<type name="Object" className="Object" package="java.lang" />
+		<generic name="Class" className="Class" package="java.lang"
+            nbelements="1" />
+		<type name="Integer" className="Integer" package="java.lang">
+			<validation>
+				<pattern value="[0-9]+"/>
+				<nullable value="true"/>
+			</validation>
+		</type>
+		<type name="Short" className="Short" package="java.lang">
+			<validation>
+				<pattern value="[0-9]+"/>
+				<nullable value="true"/>
+			</validation>
+		</type>
+		<type name="String" className="String" package="java.lang">
+			<validation>
+				<pattern value=".*"/>
+				<nullable value="true"/>
+			</validation>
+			<formatter template="&quot;$1&quot;"/>
+		</type>
+		<type name="Boolean" className="Boolean" package="java.lang">
+			<validation>
+				<pattern value="true|false"/>
+				<nullable value="true"/>
+			</validation>
+		</type>
+		<type name="Long" className="Long" package="java.lang">
+			<validation>
+				<pattern value="[0-9]+"/>
+				<nullable value="true"/>
+			</validation>
+			<formatter template="new java.lang.Long($1)"/>
+		</type>
+        <type name="Float" className="Float" package="java.lang">
+			<validation>
+				<pattern value="[0-9.]+"/>
+				<nullable value="true"/>
+			</validation>
+			<formatter template="new java.lang.Float($1)"/>
+		</type>
+        <type name="Double" className="Double" package="java.lang">
+			<validation>
+				<pattern value="[0-9.]+"/>
+				<nullable value="true"/>
+			</validation>
+			<formatter template="new java.lang.Double($1)"/>
+		</type>
+        <type name="Date" className="Date" package="java.util" />
+		<type name="Byte" className="Byte" package="java.lang" />
+        <type name="ByteArray" className="Byte[]" package="java.lang" />
+		<type package="" name="Character" className="char">
+			<validation>
+				<pattern value="."/>
+				<nullable value="false"/>
+			</validation>
+		</type>
+        
+        
+        <!-- Exception de base -->
+        <type name="Exception" className="Exception" package="java.lang" />
+        <type name="RuntimeException" className="RuntimeException" package="java.lang" />
+        
+        
+        <!-- Interface util -->
+        <type name="Serializable" className="Serializable" package="java.io" />
+        
+		
+		<!-- Type générique de list et collection -->
+		<generic name="ICollection" className="Collection" package="java.util"
+            nbelements="1" />
+		<generic name="IList" className="List" package="java.util"
+            nbelements="1" />
+		<generic name="IMap" className="Map" package="java.util"
+            nbelements="2" />
+		<generic name="HashMap" className="HashMap" package="java.util"
+            nbelements="2" />
+        <generic name="List" className="ArrayList" package="java.util"
+            nbelements="1" />
+        <type name="Arrays" className="Arrays" package="java.util"/>
+    
+        <!-- type junit -->
+       <type name="AfterClass" className="AfterClass" package="org.junit" />
+       <type name="BeforeClass" className="BeforeClass" package="org.junit" />
+       <type name="Assert" className="Assert" package="org.junit" />
+       <type name="Test" className="Test" package="org.junit" />
+		
+	</language>
+</languages>

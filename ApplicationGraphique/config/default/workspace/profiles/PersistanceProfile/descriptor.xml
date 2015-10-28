@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile name="PersistanceProfile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ProfileDefinition-1.0.0" xsi:schemaLocation="http://www.imc-fr.com/ProfileDefinition-1.0.0 ../../../main/resources/com/imcfr/generateur/sax/profile/ProfileDefinition-1.0.0.xsd ">
+
+	<profilefile path="profile.xmi"/>
+	<!-- Mettre: 
+		dépendances Profile -> Profile
+		interpreter (Stéréotype -> classe)
+		dépendance Stéréotype Box
+	 -->
+
+</profile>

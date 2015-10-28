@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prstm name="AgadirAnnuairePrstm" project="AgadirAnnuaire" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0"
+	xsi:schemaLocation="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0 http://sites.imc-fr.com/xsd/persistancemodel/PersistanceModelDefinition-2.0.0.xsd">
+    
+
+    
+    <!-- DÃ©finition de l'objet Ressource pour l'objet datam annuaire.ressource -->
+    <object name="AnnuaireRessource" pack="AgadirAnnuaire:annuaire" datamObject="AgadirAnnuaire:annuaire.annuaire_ressource">
+
+        <!-- Champ ManyToMany actions -->
+		<manyToMany name="actions">
+			<refDatamObject name="AgadirAnnuaire:annuaire.actions_ressources" />
+			<references>
+				<reference datamField="fk__ressource__id" refDatamField="id" />
+			</references>
+			<inverseReferences>
+				<inverseReference datamField="fk__action__id" refDatamField="id" />
+			</inverseReferences>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToMany>
+        
+	</object>
+    
+    
+    
+    <!-- DÃ©finition de l'objet Site pour l'objet datam annuaire.site -->
+    <object name="Site" pack="AgadirAnnuaire:annuaire" datamObject="AgadirAnnuaire:annuaire.site">
+        
+		<!-- Champ ManyToMany departements -->
+		<manyToMany name="departements">
+            <refDatamObject name="AgadirAnnuaire:annuaire.departements_sites" />
+			<references>
+				<reference datamField="fk__site__id" refDatamField="ref__annuaire_ressource__id" />
+			</references>
+			<inverseReferences>
+				<inverseReference datamField="fk__departement__id" refDatamField="id" />
+			</inverseReferences>
+			<rules>
+				<persistance>
+					<cascade value="ALL" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToMany>
+        
+        <!-- Champ ManyToOne reseau -->
+		<manyToOne name="reseau">
+			<references>
+				<reference datamField="fk__reseau__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+        <!-- Champ ManyToMany regions -->
+		<manyToMany name="regions">
+            <refDatamObject name="AgadirAnnuaire:annuaire.regions_sites" />
+			<references>
+				<reference datamField="fk__site__id" refDatamField="ref__annuaire_ressource__id" />
+			</references>
+			<inverseReferences>
+				<inverseReference datamField="fk__region__id" refDatamField="id" />
+			</inverseReferences>
+			<rules>
+				<persistance>
+					<cascade value="ALL" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToMany>
+        
+        <!-- Champ ManyToOne contact -->
+		<manyToOne name="contact">
+			<references>
+				<reference datamField="fk__contact__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+        <!-- Champ ManyToOne adresse -->
+		<manyToOne name="adresse">
+			<references>
+				<reference datamField="fk__adresse__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+        <!-- Champ ManyToOne TypeSite -->
+		<manyToOne name="type">
+			<references>
+				<reference datamField="fk__type__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+        <!-- Champ ManyToOne niveau -->
+		<manyToOne name="niveau">
+			<references>
+				<reference datamField="fk__niveau__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+	</object>
+    
+    
+    
+    <!-- DÃ©finition de l'objet TypeSite pour l'objet datam annuaire.type_site -->
+    <object name="TypeSite" pack="AgadirAnnuaire:annuaire" datamObject="AgadirAnnuaire:annuaire.type_site">
+	</object>
+    
+    
+    <!-- DÃ©finition de l'objet CompteUtilisateur pour l'objet datam annuaire.compte_utilisateur -->
+    <object name="CompteUtilisateur" pack="AgadirAnnuaire:annuaire" datamObject="AgadirAnnuaire:annuaire.compte_utilisateur">
+        
+		<!-- Champ ManyToOne identite -->
+		<manyToOne name="identite">
+			<references>
+				<reference datamField="fk__identite__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+		<!-- Champ OneToMany profils -->
+		<manyToMany name="profils">
+			<refDatamObject name="AgadirAnnuaire:annuaire.compte_utilisateurs_profils" />
+			<references>
+				<reference datamField="fk__compte_utilisateur__id" refDatamField="ref__annuaire_ressource__id" />
+			</references>
+			<inverseReferences>
+				<inverseReference datamField="fk__profil__id" refDatamField="id" />
+			</inverseReferences>
+			<rules>
+				<persistance>
+					<cascade value="ALL" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToMany>
+        
+        <!-- Champ ManyToOne telephone -->
+		<manyToOne name="telephone">
+			<references>
+				<reference datamField="fk__telephone__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+        <!-- Champ ManyToOne site -->
+		<manyToOne name="site">
+			<references>
+				<reference datamField="fk__site__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+        <!-- Champ ManyToOne email -->
+		<manyToOne name="email">
+			<references>
+				<reference datamField="fk__email__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+        <!-- Champ ManyToOne adresse -->
+		<manyToOne name="adresse">
+			<references>
+				<reference datamField="fk__adresse__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+	</object>
+    
+    
+    <!-- DÃ©finition de l'objet Reseau pour l'objet datam annuaire.reseau -->
+    <object name="Reseau" pack="AgadirAnnuaire:annuaire" datamObject="AgadirAnnuaire:annuaire.reseau">
+	</object>
+    
+    
+    <!-- DÃ©finition de l'objet Niveau pour l'objet datam annuaire.niveau -->
+    <object name="Niveau" pack="AgadirAnnuaire:annuaire" datamObject="AgadirAnnuaire:annuaire.niveau">
+	</object>
+    
+	<object name="ProfilUtilisateurSite" pack="AgadirAnnuaire:annuaire" datamObject="AgadirAnnuaire:annuaire.profil_utilisateur_site">
+	
+		<manyToOne name="site">
+			<references>
+				<reference datamField="fk__site__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+		<manyToOne name="profil">
+			<references>
+				<reference datamField="fk__profil__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+		<manyToOne name="utilisateur">
+			<references>
+				<reference datamField="fk__utilisateur__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+	
+	</object>
+
+    
+    
+
+</prstm>

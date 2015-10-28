@@ -1,0 +1,22 @@
+## #####
+## Générateur java de la couche métier IMC
+## Création d'un fichier de properties pour le chargement dans le persistance manager
+## 
+## @param generatedObject le model prstm
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## #####
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+#Les homes persistants de ${model.project}
+#foreach ( $object in ${generatedObject.objectsList} )
+#set ( $obmObject = ${object.datamObject.obmObject} )
+#if ( ${obmObject.abstract} == false )
+#set ( $pElementHomeImpl = ${manager.getElement("{0}:{1}.PHome{2}Impl", ${obmObject.modelId})} )
+${obmObject.name}=${pElementHomeImpl.path}
+#end
+#end

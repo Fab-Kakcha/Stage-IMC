@@ -1,0 +1,16 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.objectmodel.ObmModel)
+## @param description (com.imcfr.generateur.model.objectmodel.Description)
+## @param _desc_type (String : libelle || description)
+## @param _indent (String)
+## 
+## #####
+##
+#if ("$!{description.langue}" != "")
+#**##set($od_langue=" langue=${Q}${description.langue}${Q}")
+#end
+#if ("$!{description.value}" != "")
+#**##set($od_value=" value=${Q}${description.value}${Q}")
+#end
+${_indent}<${_desc_type}$!{od_langue}$!{od_value}/>

@@ -1,0 +1,52 @@
+## #####
+## 
+## @param generatedObject (com.imcfr.generateur.model.edimodel.EdimModel)
+## 
+## #####
+## les "
+#set($model = $generatedObject)
+#set($Q = '"')
+##
+<?xml version="1.0" encoding="UTF-8"?>
+## schema
+#set($tns = $generatedObject.targetNamespace)
+<schema version="${model.version}" #generate("XSD:TargetNamespace")>
+	<annotation>
+		<documentation>
+			<project>${model.project}</project>
+			<version>${model.version}</version>
+		</documentation>
+	</annotation>
+## on génére les requires avant tout car c'est obligatoire
+#foreach( $element in ${generatedObject.elementsList} )
+#**##if (${element.type} == "require")
+
+#**##**##set($require=$element)
+#**##**##generate("XSD:Require")
+#**##end
+#end
+#foreach( $element in ${generatedObject.elementsList} )
+#**##if (${element.type} == "require")
+#**##elseif (${element.type} == "element")
+
+#**##**##set($elementTopLevel=$element)
+#**##**##generate("XSD:ElementTopLevel")
+#**##elseif (${element.type} == "type")
+
+#**##**##set($type=$element)
+#**##**##generate("XSD:Type")
+#**##elseif (${element.type} == "typeSimple")
+
+#**##**##set($typeSimple=$element)
+#**##**##generate("XSD:TypeSimple")
+#**##elseif (${element.type} == "redefineType")
+
+#**##**##set($redefineType=$element)
+#**##**##generate("XSD:RedefineType")
+#**##elseif (${element.type} == "redefineTypeSimple")
+
+#**##**##set($redefineTypeSimple=$element)
+#**##**##generate("XSD:RedefineTypeSimple")
+#**##end
+#end
+</schema>

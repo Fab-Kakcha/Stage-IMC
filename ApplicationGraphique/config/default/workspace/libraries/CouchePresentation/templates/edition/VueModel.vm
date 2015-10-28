@@ -1,0 +1,65 @@
+## #####
+## Générateur java de la couche présentation IMC
+## Création de la classe de Model
+##
+## @param generatedObject l'objet viemw:vueModel
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 31/01/2012
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pobject
+#set ( $obmObject = ${generatedObject.object} )
+#set ( $mElement = ${manager.getElement("{0}:{1}.{2}VueModel", ${generatedObject.modelId})} )
+#set ( $bElement = ${manager.getElement("{0}:{1}.{2}Bean", ${obmObject.modelId})} )
+#set ( $sElement = ${manager.getElement("{0}:{1}.S{2}", ${obmObject.modelId})} )
+##
+## si le nombre d'id de la classe est différent de 1 alors on aura une clé composé
+#if ( ${obmObject.fieldId.class.simpleName} == "ComposedId" )
+##
+#set ( $cleType = ${manager.getElement("{0}:{1}.PK{2}", ${obmObject.modelId})} )
+#else
+#if ( ${manager.isBaseType(${obmObject.fieldId.type})} == true )
+#set ( $cleType = ${manager.getElement(${obmObject.fieldId.type})} )
+#else
+#set ( $cleType = ${manager.getElement("{0}:{1}.{2}Bean", ${obmObject.fieldId.type})} )
+#end
+#end
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+package ${mElement.packageName};
+
+/**
+ * Classe de Model de l'objet ${generatedObject.completeName}
+ *
+ * @version ${model.version}
+ * @author généré par ${infoGen}
+ */
+public class ${mElement.className}
+        extends ${manager.getElement("DefaultModel").path}<
+            ${bElement.path}, ${cleType.path}> {
+
+	/**
+	 * serial uid
+	 */
+	static final long serialVersionUID = 1L;
+
+	/**
+	 * le nom du model dans le manager
+	 */
+	public static final String MODEL_NAME = "${generatedObject.name}";
+
+	/**
+	 * Constructeur
+	 */
+	public ${mElement.className}() {
+		super(${sElement.path}.SERVICE_NAME);
+	}
+}

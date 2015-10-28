@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<box name="AgadirRole" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ModelsBoxDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/ModelsBoxDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/model/commun/ModelsBoxDefinition-2.0.0.xsd ">   
+
+	<dependencies>
+		<dependency name="AgadirTechnique" use="required"/>
+		<dependency name="AgadirContact" use="required"/>
+	</dependencies>	
+
+	<model type="obm" path="agadirreferentielrole-obm.xml"/>
+	<model type="datam" path="agadirreferentielrole-datam.xml"/>
+	<model type="prstm" path="agadirreferentielrole-prstm.xml"/>
+    <model type="viewm" path="agadirreferentielrole-viewm.xml"/>
+
+	<model type="obm" path="agadirrole-obm.xml"/>
+	<model type="datam" path="agadirrole-datam.xml"/>
+	<model type="prstm" path="agadirrole-prstm.xml"/>
+	<model type="edim" path="agadirrole-edim.xml"/>
+    <model type="viewm" path="agadirrole-viewm.xml"/>
+
+	<properties>
+		<property name="imcdev_PomParentPomParent">com.imcfr.agadir:AgadirJavaPomParent:4.0.0</property>
+		<property name="imcdev_MavenGroupId">com.imcfr.agadir</property>
+	</properties>
+</box>

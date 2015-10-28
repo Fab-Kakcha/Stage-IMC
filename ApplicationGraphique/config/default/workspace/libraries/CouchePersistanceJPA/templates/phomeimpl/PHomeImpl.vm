@@ -1,0 +1,49 @@
+## #####
+## Générateur java de la couche persistance IMC
+## Création de la classe d'implémentation PHomeImpl
+## 
+## @param generatedObject le prstm object
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pobject
+#set ( $obmObject = ${generatedObject.datamObject.obmObject} )
+#set ( $pElementHome = ${manager.getElement("{0}:{1}.PHome{2}", ${obmObject.modelId})} )
+#set ( $pElementHomeImpl = ${manager.getElement("{0}:{1}.PHome{2}Impl", ${obmObject.modelId})} )
+#set ( $pElementHomeGeneratedImpl = ${manager.getElement("{0}:{1}.PHome{2}GeneratedImpl", ${obmObject.modelId})} )
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+package ${pElementHomeImpl.packageName};
+
+/**
+ * Classe d'implémentation du home de l'objet persistant ${obmObject.completeName}
+ *
+ * @version ${model.version}
+ * @author généré par ${infoGen}
+ */
+public class ${pElementHomeImpl.className}
+        extends ${pElementHomeGeneratedImpl.path}
+        implements ${pElementHome.path} {
+
+    /**
+     * Serial version uid
+     */
+    private static final long serialVersionUID = 1L;
+    
+    /**
+     * Constructeur à partir du persistence unit
+     */
+    public ${pElementHomeImpl.className}() {
+        super();
+    }
+
+}

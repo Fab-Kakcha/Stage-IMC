@@ -1,0 +1,20 @@
+## #####
+## 
+## @param generatedObject (com.imcfr.generateur.model.objectmodel.ObmModel)
+## 
+## #####
+#set($model = $generatedObject)
+#set($Q = '"')
+<?xml version="1.0" encoding="UTF-8"?>
+##
+<obm name="${model.name}" project="${model.project}" version="${model.version}" xmlns="http://www.imc-fr.com/ObjectModelDefinition-2.0.0">
+
+#foreach ($element in ${model.elementsList})
+#**##if (${element.type} == "package")
+#**##**##generate("ModelGeneration:ObmPackage")
+#**##elseif (${element.type} == "object")
+#**##**##generate("ModelGeneration:ObmObject")
+#**##end
+
+#end
+</obm>

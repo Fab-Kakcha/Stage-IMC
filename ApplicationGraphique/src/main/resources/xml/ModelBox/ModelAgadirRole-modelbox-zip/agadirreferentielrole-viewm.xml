@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewm name="AgadirReferentielRoleViewm" project="AgadirRole" version="4.0.0" xmlns="http://www.imc-fr.com/ViewModelDefinition-2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- AgadirRole:referentiel.TypeOperateur -->
+	<vueModel name="TypeOperateurModel" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeOperateur"/>
+	
+	<component type="vue" name="TypeOperateurVue" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeOperateur" vueModel="AgadirRole:referentiel.TypeOperateurModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeOperateurEdit" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeOperateur" vueModel="AgadirRole:referentiel.TypeOperateurModel"
+		titre="Edition TypeOperateur">
+		<vue name="vue" component="AgadirRole:referentiel.TypeOperateurVue"/>
+
+		<grid name="grid" component="AgadirRole:referentiel.RechercheTypeOperateur"/>
+
+		<action name="Enregistrer" component="AgadirRole:referentiel.TypeOperateurEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirRole:referentiel.TypeOperateurEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeOperateur" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeOperateur"
+		titre="Recherche TypeOperateur">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirRole:referentiel.TypeOperateurEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirRole:referentiel.TypeOperateurEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirRole:referentiel.TypeOperateurEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirRole:referentiel.TypeBeneficiaire -->
+	<vueModel name="TypeBeneficiaireModel" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeBeneficiaire"/>
+	
+	<component type="vue" name="TypeBeneficiaireVue" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeBeneficiaire" vueModel="AgadirRole:referentiel.TypeBeneficiaireModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeBeneficiaireEdit" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeBeneficiaire" vueModel="AgadirRole:referentiel.TypeBeneficiaireModel"
+		titre="Edition TypeBeneficiaire">
+		<vue name="vue" component="AgadirRole:referentiel.TypeBeneficiaireVue"/>
+
+		<grid name="grid" component="AgadirRole:referentiel.RechercheTypeBeneficiaire"/>
+
+		<action name="Enregistrer" component="AgadirRole:referentiel.TypeBeneficiaireEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirRole:referentiel.TypeBeneficiaireEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeBeneficiaire" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeBeneficiaire"
+		titre="Recherche TypeBeneficiaire">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirRole:referentiel.TypeBeneficiaireEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirRole:referentiel.TypeBeneficiaireEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirRole:referentiel.TypeBeneficiaireEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirRole:referentiel.TypeCommanditaire -->
+	<vueModel name="TypeCommanditaireModel" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeCommanditaire"/>
+	
+	<component type="vue" name="TypeCommanditaireVue" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeCommanditaire" vueModel="AgadirRole:referentiel.TypeCommanditaireModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeCommanditaireEdit" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeCommanditaire" vueModel="AgadirRole:referentiel.TypeCommanditaireModel"
+		titre="Edition TypeCommanditaire">
+		<vue name="vue" component="AgadirRole:referentiel.TypeCommanditaireVue"/>
+
+		<grid name="grid" component="AgadirRole:referentiel.RechercheTypeCommanditaire"/>
+
+		<action name="Enregistrer" component="AgadirRole:referentiel.TypeCommanditaireEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirRole:referentiel.TypeCommanditaireEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeCommanditaire" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeCommanditaire"
+		titre="Recherche TypeCommanditaire">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirRole:referentiel.TypeCommanditaireEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirRole:referentiel.TypeCommanditaireEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirRole:referentiel.TypeCommanditaireEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirRole:referentiel.TypePorteurProjet -->
+	<vueModel name="TypePorteurProjetModel" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypePorteurProjet"/>
+	
+	<component type="vue" name="TypePorteurProjetVue" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypePorteurProjet" vueModel="AgadirRole:referentiel.TypePorteurProjetModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypePorteurProjetEdit" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypePorteurProjet" vueModel="AgadirRole:referentiel.TypePorteurProjetModel"
+		titre="Edition TypePorteurProjet">
+		<vue name="vue" component="AgadirRole:referentiel.TypePorteurProjetVue"/>
+
+		<grid name="grid" component="AgadirRole:referentiel.RechercheTypePorteurProjet"/>
+
+		<action name="Enregistrer" component="AgadirRole:referentiel.TypePorteurProjetEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirRole:referentiel.TypePorteurProjetEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypePorteurProjet" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypePorteurProjet"
+		titre="Recherche TypePorteurProjet">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirRole:referentiel.TypePorteurProjetEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirRole:referentiel.TypePorteurProjetEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirRole:referentiel.TypePorteurProjetEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirRole:referentiel.TypeTuteur -->
+	<vueModel name="TypeTuteurModel" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeTuteur"/>
+	
+	<component type="vue" name="TypeTuteurVue" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeTuteur" vueModel="AgadirRole:referentiel.TypeTuteurModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeTuteurEdit" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeTuteur" vueModel="AgadirRole:referentiel.TypeTuteurModel"
+		titre="Edition TypeTuteur">
+		<vue name="vue" component="AgadirRole:referentiel.TypeTuteurVue"/>
+
+		<grid name="grid" component="AgadirRole:referentiel.RechercheTypeTuteur"/>
+
+		<action name="Enregistrer" component="AgadirRole:referentiel.TypeTuteurEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirRole:referentiel.TypeTuteurEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeTuteur" pack="AgadirRole:referentiel" object="AgadirRole:referentiel.TypeTuteur"
+		titre="Recherche TypeTuteur">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirRole:referentiel.TypeTuteurEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirRole:referentiel.TypeTuteurEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirRole:referentiel.TypeTuteurEdit" action="Editer"/>
+	</component>
+
+</viewm>

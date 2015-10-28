@@ -1,0 +1,215 @@
+##
+## Macros pour les templates de générations des modèls à partir des autres modèls
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+##
+############################################################
+############################################################
+############################################################
+############################################################
+##
+## formatte un nom pour la base de données
+##
+## $prm_name = le nom
+##
+## $prm_retour = le nom en minuscule et avec un _ avant chaque majuscule
+##
+#macro( getBddName $prm_retour $prm_name )
+##
+## on crée une regex de recherche des majuscules
+#set( $prm_retour = "" )
+#set( $prm_pattern = ${factory.newPattern("[A-Z]+")} )
+#set( $prm_matcher = ${prm_pattern.matcher(${prm_name})} )
+#set( $prm_last = 0 )
+##
+## on appele le group suivant
+#nextGroup( ${prm_retour}, ${prm_name}, ${prm_matcher}, ${prm_last} )
+##
+## si commençais par une majuscule donc _ on l'enléve
+#if( ${prm_retour.startsWith("_")} == true )
+#set( $prm_retour = ${prm_retour.substring(1)} )
+#end
+#end
+############################################################
+############################################################
+############################################################
+############################################################
+##
+## appel le group suivant du matcher
+## appel récursive pour faire un while
+##
+## $prm_value = le name que l'on transforme
+## $prm_matcher = le matcher dans lequel faire la recherche
+## $prm_last = l'indice de la derrnière modif
+##
+## $prm_retour = le résultat
+##
+#macro ( nextGroup $prm_retour $prm_value $prm_matcher $prm_last)
+#if( ${prm_matcher.find()} == true )
+#set( $prm_deb = ${prm_matcher.start()} )
+#if( ${prm_deb} != 0)
+#set( $prm_retour = "${prm_retour}${prm_value.substring(${prm_last}, ${prm_deb})}" )
+#end
+#set( $prm_last = ${prm_matcher.end()} )
+#set( $prm_retour = "${prm_retour}_${prm_value.substring(${prm_deb}, ${prm_last}).toLowerCase()}" )
+#nextGroup( ${prm_retour}, ${prm_value}, ${prm_matcher}, ${prm_last} )
+#else
+#set( $prm_retour = "${prm_retour}${prm_value.substring(${prm_last})}" )
+#end
+#end
+############################################################
+############################################################
+############################################################
+############################################################
+##
+## formatte un de package pour la base de données
+##
+## $prm_pack = le nom du package
+##
+## $prm_retour = le nom avec les . remplacé par _ et en casse minuscule
+##
+#macro( getPackageBddName $prm_retour $prm_pack )
+#set( $prm_retour = "" )
+#getBddName( ${prm_retour}, ${prm_pack} )
+#set( $prm_retour = ${prm_retour.replaceAll("[.]", "_")} )
+#end
+############################################################
+############################################################
+############################################################
+############################################################
+##
+## récupère la liste des ids d'un obm séparé par des points virgule
+## si l'id est direct, on aura le nom du champ sinon on aura les nom des parents
+##
+## $prm_obm = l'obm
+##
+## $prm_retour_getIdsObm = les ids de l'obm
+##
+#macro( getIdsObm $prm_retour_getIdsObm, $prm_obm)
+#####com#####getIdsObm for ${prm_obm.name}
+#####com#####ret : ${prm_retour_getIdsObm}
+#set( $prm_retour_getIdsObm = "" )
+#set( $prm_ids = ${prm_obm.fieldsId.values()} )
+##
+## on parcours les ids de l'objet
+#foreach( $prm_id in ${prm_ids})
+#####com#####traitement id ${prm_id.name}
+#####com#####ret : ${prm_retour_getIdsObm}
+##
+## on récup le nom de l'id
+#getIdName( $tp_prm_retour, ${prm_obm}, ${prm_id})
+##
+## si l'id appartient à l'objet alors c'est le nom direct, sinon ce sera ref_nom
+#if( ${prm_obm.containsField(${prm_id})} == true )
+#####com#####id ${prm_id.name} contenu
+#####com#####ret : ${prm_retour_getIdsObm}
+#if( ${prm_retour_getIdsObm} != "" )
+#set( $prm_retour_getIdsObm = "${prm_retour_getIdsObm}," )
+#end
+#set( $prm_retour_getIdsObm = "${prm_retour_getIdsObm}${tp_prm_retour}" )
+#else
+#####com#####id ${prm_id.name} pas contenu
+#####com#####ret : ${prm_retour_getIdsObm}
+#foreach( $tp_prm_ret in ${tp_prm_retour.split(",")} )
+#####com#####trait part ${tp_prm_ret} dans ${prm_retour_getIdsObm}
+#####com#####ret : ${prm_retour_getIdsObm}
+#if( ${prm_retour_getIdsObm} != "" )
+#set( $prm_retour_getIdsObm = "${prm_retour_getIdsObm}," )
+#end
+#set( $prm_retour_getIdsObm = "${prm_retour_getIdsObm}ref__${tp_prm_ret}" )
+#end
+#end
+#end
+#####com#####fin getIdsObm for ${prm_obm.name}, res : ${prm_retour_getIdsObm}
+#####com#####///////////////////////////////////
+#end
+############################################################
+############################################################
+############################################################
+############################################################
+##
+## récupère le nom de l'id
+##
+## $prm_obm = l'obm
+## $prm_id = le champ id
+##
+## $prm_ret_getIdName = l'id du champ avec fk_ si il vient d'un parent
+##
+#macro( getIdName $prm_ret_getIdName, $prm_obm, $prm_id)
+#####com#####getIdName for ${prm_obm.name} / ${prm_id.name} de ${prm_id.type}
+#####com#####getIdName : ${prm_retour_getIdsObm}
+##
+## on test le type du champ si pas un type simple on va récup c'est id à lui
+#if( ${manager.isBaseType(${prm_id.type})} == false )
+#####com#####${prm_id.name} complexe
+#####com#####getIdName : ${prm_retour_getIdsObm}
+##
+## on récup l'objet lié et on récup c'est id
+#set ( $prm_obmId = ${supermodel.getElement("obm:object:${prm_id.type}")} )
+#getBddName( $prm_IdName, ${prm_id.name} )
+#getIdsObm( ${tp_rets}, ${prm_obmId} )
+#####com#####ret getIdsObm ${tp_rets} in getIdName for ${prm_obm.name} / ${prm_id.name} de ${prm_id.type}
+#####com#####getIdName : ${prm_retour_getIdsObm}
+##
+##on va ajouter le nom de l'objet
+#set( $prm_ret_getIdName = "" )
+#foreach( $tp_ret in ${tp_rets.split(",")} )
+#####com#####trait part ${tp_ret} dans ${prm_ret_getIdName}
+#####com#####getIdName : ${prm_retour_getIdsObm}
+#if( ${prm_ret_getIdName} != "" )
+#set( $prm_ret_getIdName = "${prm_ret_getIdName}," )
+#end
+#set( $prm_ret_getIdName = "${prm_ret_getIdName}fk__${prm_IdName}__${tp_ret}" )
+#end
+#else
+#####com#####${prm_id.name} simple
+#####com#####getIdName : ${prm_retour_getIdsObm}
+##
+## si type simple
+#getBddName( $prm_ret_getIdName, ${prm_id.name} )
+#end
+#####com#####fin getIdName for ${prm_obm.name} / ${prm_id.name} de ${prm_id.type}, res : ${prm_ret_getIdName}
+#####com#####///////////////////////////////////
+#end
+############################################################
+############################################################
+############################################################
+############################################################
+##
+## récupère les type des ids d'un obm
+##
+## $prm_obm = l'obm
+##
+## $prm_retour = les type des ids dans une chaîne séparé par des ,
+##
+#macro( getFieldsType $prm_retour, $prm_obm )
+#set( $prm_retour = "" )
+#set( $prm_ids = ${prm_obm.fieldsId.values()} )
+##
+## on parcours les ids de l'objet
+#foreach( $prm_id in ${prm_ids})
+##
+## on test le type du champ si pas un type simple on va récup c'est id à lui
+#if( ${manager.isBaseType(${prm_id.type})} == false )
+#set ( $prm_obmId = ${supermodel.getElement("obm:object:${prm_id.type}")} )
+#getFieldsType( $tp_rets, ${prm_obmId} )
+##
+##on va ajouter le nom de l'objet
+#foreach( $tp_ret in ${tp_rets.split(",")} )
+#if( ${prm_retour} != "" )
+#set( $prm_retour = "${prm_retour}," )
+#end
+#set( $prm_retour = "${prm_retour}${tp_ret}" )
+#end
+##
+##
+## si pas objet on ajoute l'id
+#else
+#if( ${prm_retour} != "" )
+#set( $prm_retour = "${prm_retour}," )
+#end
+#set( $prm_retour = "${prm_retour}${prm_id.type}" )
+#end
+#end
+#end

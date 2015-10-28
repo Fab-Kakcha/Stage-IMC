@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datam name="AgadirReferentielGeographiqueDatam" project="AgadirReferentielGeographique" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/DataModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/DataModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/DatamModel/src/main/resources/com/imcfr/generateur/sax/datamodel/DataModelDefinition-2.0.0.xsd ">
+
+    <schema name="referentiel" completeName="agadir_referentiel_geographique">
+        <rules>
+            <grants>
+                <grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="USAGE"/>
+            </grants>
+        </rules>
+    </schema>
+
+
+	<!-- hexaposte -->
+	<object name="departement" schema="AgadirReferentielGeographique:referentiel" obmObject="AgadirReferentielGeographique:referentiel.insee.Departement" inherits="true">
+		<!-- relations -->
+		<field name="fk__region__id" obmField="region" type="Base:Long"/>
+		
+		<rules>
+			<constraints>
+				<foreignKeys refObject="AgadirReferentielGeographique:referentiel.region">
+					<foreignKey field="fk__region__id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="region" schema="AgadirReferentielGeographique:referentiel" obmObject="AgadirReferentielGeographique:referentiel.insee.Region" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="localisation" schema="AgadirReferentielGeographique:referentiel" obmObject="AgadirReferentielGeographique:referentiel.hexaposte.Localisation">
+		<field name="id" obmField="id">
+			<rules>
+				<generation>
+					<sequence name="s_localisation"/>
+				</generation>
+			</rules>
+		</field>
+		
+		<field name="bureau_distributeur" obmField="bureauDistributeur"/>
+		<field name="code_postal" obmField="codePostal"/>
+		<field name="commune" obmField="commune"/>
+		<field name="numero_insee" obmField="numeroINSEE"/>
+		
+		<!-- relations -->
+		<field name="fk__pays__id" obmField="pays" type="Base:Long"/>
+		<field name="fk__departement__id" obmField="departement" type="Base:Long"/>
+		
+		<rules>
+			<constraints>
+				<primaryKey field="id"/>
+
+				<foreignKeys refObject="AgadirReferentielGeographique:referentiel.pays">
+					<foreignKey field="fk__pays__id" refField="id"/>
+				</foreignKeys>
+
+				<foreignKeys refObject="AgadirReferentielGeographique:referentiel.departement">
+					<foreignKey field="fk__departement__id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<!-- iso -->	
+	<object name="pays" schema="AgadirReferentielGeographique:referentiel" obmObject="AgadirReferentielGeographique:referentiel.iso.Pays" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="nationalite" schema="AgadirReferentielGeographique:referentiel" obmObject="AgadirReferentielGeographique:referentiel.iso.Nationalite" inherits="true">
+		<!-- relations -->
+		<field name="fk__pays__id" obmField="pays" type="Base:Long"/>
+		
+		<rules>
+			<constraints>
+				<foreignKeys refObject="AgadirReferentielGeographique:referentiel.pays">
+					<foreignKey field="fk__pays__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+</datam>

@@ -1,0 +1,105 @@
+## #####
+## Générateur Java d'une entité pour le fichier orm.xml
+## 
+## @param generatedObject le model prstm
+## @param entite l'objet prstm courant
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 30/09/2009
+## #####
+##
+## -------------------------
+## Les variables
+## -------------------------
+##
+#set ( $datamObject = ${entite.datamObject} )
+#set ( $obmObject = ${datamObject.obmObject} )
+#set ( $entiteClass = ${manager.getElement("{0}:{1}.{2}BeanImpl", ${entite.modelId}).path} )
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+	<!-- Mapping de l'entité ${obmObject.completeName} -->
+	<entity name="${obmObject.name}" class="${entiteClass}">
+		<table name="${datamObject.name}" schema="${datamObject.schema.completeName}" />
+##
+## on récup les primary ley et on les mappe
+#set ( $prims = ${entite.getByType("objectConstraints", "joinPrimaryKey")} )
+#foreach ( $prim in ${prims} )
+		<primary-key-join-column name="${prim.primaryKeyRefName}" />
+#end
+##
+## si il a des enfants
+#if ( ${entite.extendsType} == "Joined" )
+
+		<inheritance strategy="JOINED"/>
+#end
+#if ( ${entite.extendsType} == "ClassConcrete" )
+
+		<inheritance strategy="TABLE_PER_CLASS"/>
+#end
+
+		<attributes>
+## génération de l'id
+##
+## si l'objet n'étend pas d'un objet obm, il aura un id
+## sinon il héritera de l'interface m de l'obm étendu
+#if ( ${obmObject.obmExtendsName} == "" )
+#generate ( "CouchePersistanceJPA:Orm_FieldId" )
+#end
+##
+## on génére les champs simple
+#foreach ( $field in  ${obmObject.fieldsList} )
+#**##if ( ${field.id} == false && (${field.redefinition} == false || ${field.redefinitionFromInterface}))
+#**##**##if (${field.transient})
+#**##**##**##generate ( "CouchePersistanceJPA:Orm_FieldTransient" )
+#**##**##elseif (${manager.isBaseType(${field.type})} == true)
+#**##**##**##generate ( "CouchePersistanceJPA:Orm_Field" )
+#**##**##end
+#**##end
+#end
+##
+## on génére les champs simple manytoone
+#foreach ( $field in  ${obmObject.fieldsList} )
+#if ( ${field.id} == false && (${field.redefinition} == false || ${field.redefinitionFromInterface}) && ${entite.containsField(${field.name})} == true )
+#set ( $fieldPrstm = ${entite.getField(${field.name})} )
+#if ( ${fieldPrstm.class.simpleName} == "ManyToOne" )
+#generate ( "CouchePersistanceJPA:Orm_Field" )
+#end
+#end
+#end
+##
+## on génére les champs onetomany
+#foreach ( $field in  ${obmObject.fieldsList} )
+#if ( ${field.id} == false && (${field.redefinition} == false || ${field.redefinitionFromInterface}) && ${entite.containsField(${field.name})} == true )
+#set ( $fieldPrstm = ${entite.getField(${field.name})} )
+#if ( ${fieldPrstm.class.simpleName} == "OneToMany" )
+#generate ( "CouchePersistanceJPA:Orm_Field" )
+#end
+#end
+#end
+##
+## on génére les champs onetoone
+#foreach ( $field in  ${obmObject.fieldsList} )
+#if ( ${field.id} == false && (${field.redefinition} == false || ${field.redefinitionFromInterface}) && ${entite.containsField(${field.name})} == true )
+#set ( $fieldPrstm = ${entite.getField(${field.name})} )
+#if ( ${fieldPrstm.class.simpleName} == "OneToOne" )
+#generate ( "CouchePersistanceJPA:Orm_Field" )
+#end
+#end
+#end
+##
+## on génére les champs simple manytomany
+#foreach ( $field in  ${obmObject.fieldsList} )
+#if ( ${field.id} == false && (${field.redefinition} == false || ${field.redefinitionFromInterface}) && ${entite.containsField(${field.name})} == true )
+#set ( $fieldPrstm = ${entite.getField(${field.name})} )
+#if ( ${fieldPrstm.class.simpleName} == "ManyToMany" )
+#generate ( "CouchePersistanceJPA:Orm_Field" )
+#end
+#end
+#end
+		</attributes>
+	</entity>
+
+

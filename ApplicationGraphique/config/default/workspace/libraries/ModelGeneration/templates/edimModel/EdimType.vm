@@ -1,0 +1,62 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param element (com.imcfr.generateur.model.edimodel.Type)
+## 
+## #####
+##
+#set($et_obmObject="")
+#if ("$!{element.obmObjectName}" != "")
+#**##set($et_obmObject=" obmObject=${Q}${element.obmObjectName}${Q}")
+#end
+#set($et_abstract="")
+#if (${element.abstract})
+#**##set($et_abstract=" abstract=${Q}${element.abstract}${Q}")
+#end
+#set($et_final="")
+#if (!${element.final})
+#**##if (${element.extensionName} == "extension")
+#**##**##set($et_final=" final=${Q}false${Q}")
+#**##else
+#**##**##set($et_final=" final=${Q}${element.extensionName}${Q}")
+#**##end
+#end
+#set($et_inherits="")
+#if ("$!{element.inherits}" != "")
+#**##set($et_inherits=" inherits=${Q}${element.inherits}${Q}")
+#end
+#set($et_extends="")
+#if ("$!{element.extend}" != "")
+#**##set($et_extends=" extends=${Q}${element.extend}${Q}")
+#end
+	<type name="${element.name}"$!{et_obmObject}$!{et_abstract}$!{et_final}$!{et_inherits}$!{et_extends}>
+#**##if (${element.elementsList.size()} > 0)
+#**##**##set($et_eltsForm="")
+#**##**##if ("$!{element.form.name()}" != "SEQUENCE")
+#**##**##**##set($et_eltsForm=" form=${Q}${element.form.name()}${Q}")
+#**##**##end
+#**##**##set($et_min="")
+#**##**##if (${element.minOccurs} != 1)
+#**##**##**##set($et_min=" minOccurs=${Q}${element.minOccurs}${Q}")
+#**##**##end
+#**##**##set($et_max="")
+#**##**##if (${element.maxOccurs} != 1)
+#**##**##**##if (${element.maxOccurs} != -1)
+#**##**##**##**##set($et_max=" maxOccurs=${Q}${element.maxOccurs}${Q}")
+#**##**##**##else
+#**##**##**##**##set($et_max=" maxOccurs=${Q}unbounded${Q}")
+#**##**##**##end
+#**##**##end
+		<elements$!{et_eltsForm}$!{et_min}$!{et_max}>
+#**##**##foreach ($elt in ${element.elementsList})
+#**##**##**##generate("ModelGeneration:EdimTypeElement")
+#**##**##end
+		</elements>
+#**##end
+#**##if (${element.attributesList.size()} > 0)
+
+#**##**##foreach ($attr in ${element.attributesList})
+#**##**##**##generate("ModelGeneration:EdimTypeAttribute")
+#**##**##end
+#**##end
+	</type>

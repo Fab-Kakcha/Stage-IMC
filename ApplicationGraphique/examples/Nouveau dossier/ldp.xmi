@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Configuration="http:///schemas/Configuration/_NtlBoGWyEeWWv54g9ePtfg/0" xmlns:Profile="http:///schemas/Profile/_NtlBoWWyEeWWv54g9ePtfg/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/Configuration/_NtlBoGWyEeWWv54g9ePtfg/0 Configuration.profile.xmi#_NuoKh2WyEeWWv54g9ePtfg http:///schemas/Profile/_NtlBoWWyEeWWv54g9ePtfg/0 Profile.profile.xmi#_Nv9nR2WyEeWWv54g9ePtfg">
+  <uml:Model xmi:id="_NtSGsGWyEeWWv54g9ePtfg" name="ldp">
+    <eAnnotations xmi:id="_NtSGsWWyEeWWv54g9ePtfg" source="Objing">
+      <contents xmi:type="uml:Property" xmi:id="_NtSGsmWyEeWWv54g9ePtfg" name="exporterVersion">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_NtSGs2WyEeWWv54g9ePtfg" value="3.0.0"/>
+      </contents>
+    </eAnnotations>
+    <packagedElement xmi:type="uml:Package" xmi:id="_NtSGtGWyEeWWv54g9ePtfg" name="RepPkg">
+      <packagedElement xmi:type="uml:Class" xmi:id="_NtSGtWWyEeWWv54g9ePtfg" name="NouvelleClasse"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_NtSGtmWyEeWWv54g9ePtfg" name="sousRepPkg">
+        <packagedElement xmi:type="uml:Package" xmi:id="_NtSGt2WyEeWWv54g9ePtfg" name="sousSousRepPkg"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_NtSGuGWyEeWWv54g9ePtfg" name="AnalPkg">
+      <packagedElement xmi:type="uml:Actor" xmi:id="_NtSGuWWyEeWWv54g9ePtfg" name="theActor"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_NtSGumWyEeWWv54g9ePtfg" memberEnd="_NtSGu2WyEeWWv54g9ePtfg _NtSGvWWyEeWWv54g9ePtfg" navigableOwnedEnd="_NtSGu2WyEeWWv54g9ePtfg">
+        <ownedEnd xmi:id="_NtSGu2WyEeWWv54g9ePtfg" visibility="public" type="_NtSGv2WyEeWWv54g9ePtfg" association="_NtSGumWyEeWWv54g9ePtfg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NtSGvGWyEeWWv54g9ePtfg"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="_NtSGvWWyEeWWv54g9ePtfg" visibility="public" type="_NtSGuWWyEeWWv54g9ePtfg" association="_NtSGumWyEeWWv54g9ePtfg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NtSGvmWyEeWWv54g9ePtfg"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_NtSGv2WyEeWWv54g9ePtfg" name="uc1">
+        <ownedComment xmi:id="_NtSGwGWyEeWWv54g9ePtfg">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="_NtSGwWWyEeWWv54g9ePtfg">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="_NtSGwmWyEeWWv54g9ePtfg">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="_NtSGw2WyEeWWv54g9ePtfg">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="_NtSGxGWyEeWWv54g9ePtfg">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="_NtSGxWWyEeWWv54g9ePtfg">
+          <body>...</body>
+        </ownedComment>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_NtSGxmWyEeWWv54g9ePtfg" name="ldp">
+      <packagedElement xmi:type="uml:Class" xmi:id="_NtSGx2WyEeWWv54g9ePtfg" name="Processus">
+        <ownedAttribute xmi:id="_NtSGyGWyEeWWv54g9ePtfg" name="fin" visibility="public" type="_NtSG4WWyEeWWv54g9ePtfg" aggregation="composite" association="_NtSGzGWyEeWWv54g9ePtfg"/>
+        <ownedAttribute xmi:id="_NtSGyWWyEeWWv54g9ePtfg" name="debut" visibility="public" type="_NtSG32WyEeWWv54g9ePtfg" aggregation="composite" association="_NtSGzmWyEeWWv54g9ePtfg"/>
+        <ownedAttribute xmi:id="_NtSGymWyEeWWv54g9ePtfg" name="activite" visibility="public" type="_NtSG0mWyEeWWv54g9ePtfg" aggregation="composite" association="_NtSG0GWyEeWWv54g9ePtfg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NtSGy2WyEeWWv54g9ePtfg"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_NtSGzGWyEeWWv54g9ePtfg" memberEnd="_NtSGyGWyEeWWv54g9ePtfg _NtSGzWWyEeWWv54g9ePtfg">
+        <ownedEnd xmi:id="_NtSGzWWyEeWWv54g9ePtfg" visibility="public" type="_NtSGx2WyEeWWv54g9ePtfg" association="_NtSGzGWyEeWWv54g9ePtfg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_NtSGzmWyEeWWv54g9ePtfg" memberEnd="_NtSGyWWyEeWWv54g9ePtfg _NtSGz2WyEeWWv54g9ePtfg">
+        <ownedEnd xmi:id="_NtSGz2WyEeWWv54g9ePtfg" visibility="public" type="_NtSGx2WyEeWWv54g9ePtfg" association="_NtSGzmWyEeWWv54g9ePtfg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_NtSG0GWyEeWWv54g9ePtfg" memberEnd="_NtSGymWyEeWWv54g9ePtfg _NtSG0WWyEeWWv54g9ePtfg">
+        <ownedEnd xmi:id="_NtSG0WWyEeWWv54g9ePtfg" visibility="public" type="_NtSGx2WyEeWWv54g9ePtfg" association="_NtSG0GWyEeWWv54g9ePtfg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_NtSG0mWyEeWWv54g9ePtfg" name="Activite">
+        <ownedAttribute xmi:id="_NtSG02WyEeWWv54g9ePtfg" name="activite" visibility="public" type="_NtSG0mWyEeWWv54g9ePtfg" association="_NtSG1mWyEeWWv54g9ePtfg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NtSG1GWyEeWWv54g9ePtfg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_NtSG1WWyEeWWv54g9ePtfg" name="nom" visibility="public" isUnique="false">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_NtSG1mWyEeWWv54g9ePtfg" name="precedente" memberEnd="_NtSG02WyEeWWv54g9ePtfg _NtSG12WyEeWWv54g9ePtfg">
+        <ownedEnd xmi:id="_NtSG12WyEeWWv54g9ePtfg" visibility="public" type="_NtSG0mWyEeWWv54g9ePtfg" association="_NtSG1mWyEeWWv54g9ePtfg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NtSG2GWyEeWWv54g9ePtfg"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_NtSG2WWyEeWWv54g9ePtfg" name="PseudoEtat">
+        <ownedAttribute xmi:id="_NtSG2mWyEeWWv54g9ePtfg" name="nom" visibility="public" type="_NtSG0mWyEeWWv54g9ePtfg" association="_NtSG3GWyEeWWv54g9ePtfg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NtSG22WyEeWWv54g9ePtfg"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_NtSG3GWyEeWWv54g9ePtfg" name="reference" memberEnd="_NtSG2mWyEeWWv54g9ePtfg _NtSG3WWyEeWWv54g9ePtfg">
+        <ownedEnd xmi:id="_NtSG3WWyEeWWv54g9ePtfg" visibility="public" type="_NtSG2WWyEeWWv54g9ePtfg" association="_NtSG3GWyEeWWv54g9ePtfg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NtSG3mWyEeWWv54g9ePtfg"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_NtSG32WyEeWWv54g9ePtfg" name="Debut">
+        <generalization xmi:id="_NtSG4GWyEeWWv54g9ePtfg" general="_NtSG2WWyEeWWv54g9ePtfg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_NtSG4WWyEeWWv54g9ePtfg" name="Fin">
+        <generalization xmi:id="_NtSG4mWyEeWWv54g9ePtfg" general="_NtSG2WWyEeWWv54g9ePtfg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_NtSG42WyEeWWv54g9ePtfg" name="sousLDP">
+        <packagedElement xmi:type="uml:Class" xmi:id="_NtSG5GWyEeWWv54g9ePtfg" name="Class"/>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_Nv9na2WyEeWWv54g9ePtfg">
+      <eAnnotations xmi:id="_Nv9nbGWyEeWWv54g9ePtfg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="Configuration.profile.xmi#_NuoKh2WyEeWWv54g9ePtfg"/>
+      </eAnnotations>
+      <appliedProfile href="Configuration.profile.xmi#_NuoKgGWyEeWWv54g9ePtfg"/>
+    </profileApplication>
+    <profileApplication xmi:id="_Nv9nbWWyEeWWv54g9ePtfg">
+      <eAnnotations xmi:id="_Nv9nbmWyEeWWv54g9ePtfg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="Profile.profile.xmi#_Nv9nR2WyEeWWv54g9ePtfg"/>
+      </eAnnotations>
+      <appliedProfile href="Profile.profile.xmi#_Nv9nQGWyEeWWv54g9ePtfg"/>
+    </profileApplication>
+  </uml:Model>
+  <Configuration:Project xmi:id="_NwHYQGWyEeWWv54g9ePtfg" base_Package="_NtSGtGWyEeWWv54g9ePtfg"/>
+  <Configuration:TagConfg xmi:id="_NwHYQWWyEeWWv54g9ePtfg" base_Class="_NtSGtWWyEeWWv54g9ePtfg"/>
+  <Profile:Tag3 xmi:id="_NwHYQmWyEeWWv54g9ePtfg" base_Package="_NtSGtmWyEeWWv54g9ePtfg"/>
+  <Configuration:Project xmi:id="_NwHYQ2WyEeWWv54g9ePtfg" base_Package="_NtSGt2WyEeWWv54g9ePtfg"/>
+  <Profile:Tag3 xmi:id="_NwHYRGWyEeWWv54g9ePtfg" base_Package="_NtSGuGWyEeWWv54g9ePtfg"/>
+  <Configuration:Project xmi:id="_NwHYRWWyEeWWv54g9ePtfg" base_Package="_NtSGxmWyEeWWv54g9ePtfg"/>
+  <Profile:Tag3 xmi:id="_NwHYRmWyEeWWv54g9ePtfg" base_Package="_NtSGxmWyEeWWv54g9ePtfg"/>
+  <Profile:Tag1 xmi:id="_NwHYR2WyEeWWv54g9ePtfg" base_Class="_NtSGx2WyEeWWv54g9ePtfg"/>
+  <Profile:Tag2 xmi:id="_NwHYSGWyEeWWv54g9ePtfg" base_Class="_NtSG0mWyEeWWv54g9ePtfg"/>
+  <Profile:Tag1 xmi:id="_NwHYSWWyEeWWv54g9ePtfg" base_Class="_NtSG2WWyEeWWv54g9ePtfg"/>
+  <Profile:Tag3 xmi:id="_NwHYSmWyEeWWv54g9ePtfg" base_Package="_NtSG42WyEeWWv54g9ePtfg"/>
+  <Profile:Tag1 xmi:id="_NwHYS2WyEeWWv54g9ePtfg" base_Class="_NtSG5GWyEeWWv54g9ePtfg"/>
+</xmi:XMI>

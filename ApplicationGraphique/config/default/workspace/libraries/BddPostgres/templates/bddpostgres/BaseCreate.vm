@@ -1,0 +1,40 @@
+##
+## Générateur SQL pour postgres
+## Script de création de la base de données
+##
+## $generatedObject = model datam
+##
+
+##
+## on génére les schemas
+-------------------------
+-------------------------
+-------------------------
+-- Les Schémas
+-------------------------
+-------------------------
+-------------------------
+#foreach ( $schema in ${generatedObject.getSchemasList()} )
+CREATE SCHEMA "${schema.completeName}";
+
+#end
+
+
+
+
+
+##
+## on génére les tables
+-------------------------
+-------------------------
+-------------------------
+-- Les tables
+-------------------------
+-------------------------
+-------------------------
+#foreach ( $datam in ${generatedObject.getObjectsList()} ) 
+#generate( "BddPostgres:Table" )
+
+#end
+
+#generate ( "BddPostgres:ForeigneKey" )

@@ -1,0 +1,83 @@
+## #####
+## Générateur java de la couche présentation IMC
+## Création de la classe de Model
+##
+## @param generatedObject l'objet viemw:vueModel
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 31/01/2012
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pobject
+#set ( $obmObject = ${generatedObject.object} )
+#set ( $eElement = ${manager.getElement("{0}:{1}.{2}ActionList", ${generatedObject.modelId})} )
+#set ( $sElement = ${manager.getElement("{0}:{1}.S{2}", ${obmObject.modelId})} )
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+package ${eElement.packageName};
+
+/**
+ * Classe de Model de l'objet ${generatedObject.completeName}
+ *
+ * @version ${model.version}
+ * @author généré par ${infoGen}
+ */
+public class ${eElement.className} extends ${manager.getElement("ActionLister").path} {
+
+	/**
+	 * uid
+	 */
+	private static final long serialVersionUID = -2429358621499488378L;
+
+	/**
+	 * Constructeur
+	 */
+	public ${eElement.className}() {
+		super(${sElement.path}.SERVICE_NAME, true);
+		this.title = "${generatedObject.titre}";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see ${manager.getElement("ActionLister").path}#getGridType()
+	 */
+	@Override
+	public ${manager.getElement("IMap").path}<${manager.getElement("String").path}, ${manager.getElement("Class").path}<?>> getGridType() {
+		${manager.getElement("IMap").path}<${manager.getElement("String").path}, ${manager.getElement("Class").path}<?>> map = new ${manager.getElement("HashMap").path}<${manager.getElement("String").path}, ${manager.getElement("Class").path}<?>>();
+#foreach ( $f in ${generatedObject.filtres})
+		map.put("${f.name}", ${manager.getElement(${f.type}).path}.class);
+#end
+#foreach ( $f in ${generatedObject.colonnes})
+#if ( ${f.filter} )
+		map.put("${f.name}", ${manager.getElement(${f.type}).path}.class);
+#end
+#end
+		setSessionFilterMode(true);
+		return map;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see ${manager.getElement("ActionLister").path}#getFilters()
+	 */
+	@Override
+	public ${manager.getElement("IList").path}<${manager.getElement("String").path}> getFilters() {
+		${manager.getElement("IList").path}<${manager.getElement("String").path}> lst = new ${manager.getElement("List").path}<${manager.getElement("String").path}>();
+#foreach ( $f in ${generatedObject.filtres})
+		lst.add("${f.name}");
+#end
+#foreach ( $f in ${generatedObject.colonnes})
+#if ( ${f.filter} )
+		lst.add("${f.name}");
+#end
+#end
+		return lst;
+	}
+}

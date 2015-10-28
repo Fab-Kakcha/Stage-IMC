@@ -1,0 +1,59 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param type (com.imcfr.generateur.model.edimodel.Type)
+## 
+## #####
+#**##set($t_indent="		")
+#if (!("$!{type.inherits}" == ""))
+#**##set($t_indent="				")
+#end
+<!-- ${type.name} -->
+#if (!("$!{type.extend}" == ""))
+#**##generate("XSD:Extend")
+#else
+#**##set($t_abstract="")
+#**##if ($type.abstract)
+#**##**##set($t_abstract=" abstract=${Q}true${Q}")
+#**##end
+#**##if (!("$!{type.obmObject}" == "") && $type.obmObject.abstract)
+#**##**##set($t_abstract=" abstract=${Q}true${Q}")
+#**##end
+	<complexType name="${type.name}"${t_abstract}>
+#**##**##if (!("$!{type.obmObject}" == ""))
+#**##**##**##if (${type.obmObject.libellesList.size()} > 0 || ${type.obmObject.descriptionsList.size()} > 0)
+#**##**#		<annotation>
+#**##**#			<documentation>
+#**##**##**##**##foreach ($t_libelle in ${type.obmObject.libellesList})
+#**##**#				<libelle xml:lang="${t_libelle.langue}">${t_libelle.value}</libelle>
+#**##**##**##**##end
+#**##**##**##**##foreach ($t_desc in ${type.obmObject.descriptionsList})
+#**##**#				<description xml:lang="${t_desc.langue}">${t_desc.value}</description>
+#**##**##**##**##end
+#**##**#			</documentation>
+#**##**#		</annotation>
+#**##**#
+#**##**##**##end
+#**##**##end
+#**##**##if (!("$!{type.inherits}" == ""))
+		<complexContent>
+			<extension base="#formatRef($model $type.inherits)">
+#**##**##end
+#**##**##generate("XSD:Elements")
+#**##**##if (${type.attributesList.size()} > 0)
+
+#**##**##**##foreach ($t_attribute in $type.attributesList)
+#**##**##**##**##generate("XSD:AttributeBase")
+#**##**##**##end
+#**##**##end
+#**###
+#**##**##if (!("$!{type.inherits}" == ""))
+			</extension>
+		</complexContent>
+#**##**##end
+	</complexType>
+#end
+#if (!$type.final && !$type.abstract)
+#**#
+#**##generate("XSD:Extension")
+#end

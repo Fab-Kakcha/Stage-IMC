@@ -1,0 +1,44 @@
+## #####
+## Générateur Java
+## Getters et Setters des attributs de la classe PObject
+## Créer un objet attribut dans ${_attribut} et utilise l'objet ${field}
+## 
+## @param field un attribut obm
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 12/11/2008
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+#set ( $_attribut = ${factory.newAttribut()} )
+#set ( ${_attribut.name} = ${field.name} )
+##
+## si le champ est une liste le type sera List<type>
+## sinon type simplement
+#if ( ${manager.isBaseType(${field.type})} == true )
+#set ( ${_attribut.type} = ${manager.getElement(${field.type}).path} )
+#else
+#set ( ${_attribut.type} = ${manager.getElement("{0}:{1}.{2}Bean", ${field.type}).path} )
+#end
+## si liste
+#if ( ${field.list} )
+#set ( $atype = ${manager.getElement("IList").path} )
+#set ( ${_attribut.type} = "${atype}<${_attribut.type}>" )
+#end
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+#if (${field.is("rw")})
+#**##generate ( "Commun:GetterSetterClasse" )
+#elseif (${field.is("r")})
+#**##generate ( "Commun:GetterClasse" )
+#elseif (${field.is("w")})
+#**##generate ( "Commun:SetterClasse" )
+#else
+#**##generate ( "Commun:GetterSetterClasse" )
+#end

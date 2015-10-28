@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generators langage="sql_postgres" name="BddPostgres"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/GeneratorDefinition-2.0.0"
+	xsi:schemaLocation="http://www.imc-fr.com/GeneratorDefinition-2.0.0 ../../../../sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/generator/GeneratorDefinition-2.0.0.xsd ">
+
+	<!-- dépendance -->
+	<dependencies>
+		<dependency name="java:Commun" />
+	</dependencies>
+
+
+	<languagefile path="PostgresLanguage.xml" />
+
+
+	<!-- définition des générateurs des scripts bdd pour postgres -->
+
+
+	<!-- Script de création de la base fichier : repGénération/$project-UserCreate.sql 
+		elementsLangage : aucun filter : aucun -->
+	<generator name="UserCreate" pathtemplate="bddpostgres/UserCreate.vm"
+		version="1.0.0" generatedObject="datam:model">
+		<supports>
+			<support>generation</support>
+			<support>regeneration</support>
+		</supports>
+		<file>
+			<name value="{0}-UserCreate.sql">
+				<property>$project</property>
+			</name>
+			<path value="sql" />
+		</file>
+	</generator>
+
+
+	<generator name="BaseCreate" pathtemplate="bddpostgres/BaseCreate.vm"
+		version="1.0.0" generatedObject="datam:model">
+		<supports>
+			<support>generation</support>
+			<support>regeneration</support>
+		</supports>
+		<file>
+			<name value="{0}-BaseCreate.sql">
+				<property>$project</property>
+			</name>
+			<path value="sql" />
+		</file>
+	</generator>
+
+	<generator name="DroitCreate" pathtemplate="bddpostgres/DroitCreate.vm"
+		version="1.0.0" generatedObject="datam:model">
+		<supports>
+			<support>generation</support>
+			<support>regeneration</support>
+		</supports>
+		<file>
+			<name value="{0}-DroitCreate.sql">
+				<property>$project</property>
+			</name>
+			<path value="sql" />
+		</file>
+	</generator>
+
+	<generator name="RefDroitCreate" pathtemplate="bddpostgres/RefDroitCreate.vm"
+		version="1.0.0" generatedObject="datam:model">
+		<supports>
+			<support>generation</support>
+			<support>regeneration</support>
+		</supports>
+		<file>
+			<name value="{0}-RefDroitCreate.sql">
+				<property>$project</property>
+			</name>
+			<path value="sql" />
+		</file>
+	</generator>
+
+	<generator name="UserDrop" pathtemplate="bddpostgres/UserDrop.vm"
+		version="1.0.0" generatedObject="datam:model">
+		<supports>
+			<support>generation</support>
+			<support>regeneration</support>
+		</supports>
+		<file>
+			<name value="{0}-UserDrop.sql">
+				<property>$project</property>
+			</name>
+			<path value="sql" />
+		</file>
+	</generator>
+
+	<generator name="BaseDrop" pathtemplate="bddpostgres/BaseDrop.vm"
+		version="1.0.0" generatedObject="datam:model">
+		<supports>
+			<support>generation</support>
+			<support>regeneration</support>
+		</supports>
+		<file>
+			<name value="{0}-BaseDrop.sql">
+				<property>$project</property>
+			</name>
+			<path value="sql" />
+		</file>
+	</generator>
+
+	<!-- Template de création des informations d'une table -->
+	<template name="Table" pathtemplate="bddpostgres/Table.vm" />
+
+	<!-- Template de création des foreign key -->
+	<template name="ForeigneKey" pathtemplate="bddpostgres/ForeignKey.vm" />
+
+
+
+	<!-- Définition de l'api de génération -->
+	<api name="BddPostgres">
+		<refgenerator name="UserCreate" />
+		<refgenerator name="BaseCreate" />
+		<refgenerator name="DroitCreate" />
+		<refgenerator name="UserDrop" />
+		<refgenerator name="BaseDrop" />
+	</api>
+
+</generators>

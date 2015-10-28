@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<languages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.imc-fr.com/LanguageDefinition-2.0.0"
+	xsi:schemaLocation="http://www.imc-fr.com/LanguageDefinition-2.0.0 http://sites-snapshots.imc-fr.com/JavaPomParent/GenerateurPomParent/GenerateurModelPomParent/CodeGenerator/xsd/language/LanguageDefinition-2.0.0.xsd">
+
+    <!--
+       Définition des éléments java utilisé dans la couche serivce IMC
+    -->
+	<language name="java">
+	
+	   <type name="SException" className="ServiceException" package="com.imcfr.commun.service" />
+		
+	   <!-- Type de base du langage -->
+       <generic name="ServiceCrud" className="ServiceCrud" package="com.imcfr.commun.service"
+           nbelements="2" />
+       <generic name="ServiceCrudImpl" className="ServiceCrudImpl" package="com.imcfr.commun.service.impl"
+           nbelements="2" />
+		
+	</language>
+</languages>

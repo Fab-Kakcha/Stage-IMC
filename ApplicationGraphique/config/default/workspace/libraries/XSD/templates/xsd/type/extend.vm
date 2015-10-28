@@ -1,0 +1,21 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param type (com.imcfr.generateur.model.edimodel.Type)
+## 
+## #####
+#set($t_indent="				")
+## 
+	<complexType name="${type.name}">
+		<complexContent>
+			<extension base="#formatRef($model ${type.extend})Extension">
+#**##**##**##**##generate("XSD:Elements")
+#**##**##**##**##if (${type.attributesList.size()} > 0)
+
+#**##**##**##**##**##foreach ($t_attribute in $type.attributesList)
+#**##**##**##**##**##**##generate("XSD:AttributeBase")
+#**##**##**##**##**##end
+#**##**##**##**##end
+			</extension>
+		</complexContent>
+	</complexType>

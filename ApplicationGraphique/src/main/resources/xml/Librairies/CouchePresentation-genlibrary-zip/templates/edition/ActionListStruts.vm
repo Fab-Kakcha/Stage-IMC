@@ -1,0 +1,43 @@
+## #####
+## Générateur java de la couche présentation IMC
+## Création de la classe de Model
+##
+## @param generatedObject l'objet viemw:vueModel
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 31/01/2012
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pobject
+#set ( $eElement = ${manager.getElement("{0}:{1}.{2}ActionList", ${generatedObject.modelId})} )
+#set ( $obmObject = ${generatedObject.object} )
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="${generatedObject.name}" namespace="/${generatedObject.pack.pathName}" extends="${model.project}">
+	
+       <!-- Liste -> résul jsp -->
+        <action name="${generatedObject.name}" class="${eElement.path}" method="execute">
+            <result name="success" type="imctiles">
+                <param name="page">/${generatedObject.pack.pathName}/${generatedObject.name}.jspx</param>
+            </result>
+        </action>
+        
+       <!-- Action de rafraîchissement de la liste -> résult dans une grille -->
+       <action name="Refresh${generatedObject.name}" class="${eElement.path}" method="lister">
+            <result name="success" type="grid"/>
+        </action>
+
+	</package>
+</struts>

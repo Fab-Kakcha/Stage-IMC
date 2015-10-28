@@ -1,0 +1,36 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param element (com.imcfr.generateur.model.edimodel.Type || com.imcfr.generateur.model.edimodel.TypeSimple)
+## @param attr (com.imcfr.generateur.model.edimodel.AttributeBase || com.imcfr.generateur.model.edimodel.AttributeTypeSimple)
+## 
+## #####
+##
+#set($eta_use="")
+#if (${attr.use.name()} != "OPTIONAL")
+#**##set($eta_use=" use=${Q}${attr.use.name().toLowerCase()}${Q}")
+#end
+#set($eta_default="")
+#if ("$!{attr.defaut}" != "")
+#**##set($eta_default=" default=${Q}${attr.defaut}${Q}")
+#end
+#set($eta_fixed="")
+#if ("$!{attr.fixed}" != "")
+#**##set($eta_fixed=" fixed=${Q}${attr.fixed}${Q}")
+#end
+##
+#if (${attr.class.simpleName} == "Attribute")
+		<attribute xsi:type="attribute" name="${attr.name}" type="${attr.type}"$!{eta_use}$!{eta_default}$!{eta_fixed}/>
+#elseif (${attr.class.simpleName} == "AttributeObm")
+#**##set($eta_name="")
+#**##if ("$!{attr.name}" != "$!{attr.obmFieldName}")
+#**##**##set($eta_name=" name=${Q}${attr.name}${Q}")
+#**##end
+#**##set($eta_type="")
+#**##if ("$!{attr.type}" != "")
+#**##**##set($eta_type=" type=${Q}${attr.type}${Q}")
+#**##end
+		<attribute xsi:type="attributeObm" obmField="${attr.obmFieldName}"$!{eta_name}$!{eta_type}$!{eta_use}$!{eta_default}$!{eta_fixed}/>
+#elseif (${attr.class.simpleName} == "AttributeTypeSimple")
+		<attribute name="${attr.name}" type="${attr.type}"$!{eta_use}$!{eta_default}$!{eta_fixed}/>
+#end

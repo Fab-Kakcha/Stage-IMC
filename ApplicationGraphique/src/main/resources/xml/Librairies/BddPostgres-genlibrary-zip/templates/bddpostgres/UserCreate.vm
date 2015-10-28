@@ -1,0 +1,19 @@
+##
+## Générateur SQL pour postgres
+## Script de création de la base de données
+##
+## $generatedObject = model datam
+##
+## on génére les users
+-------------------------
+-------------------------
+-------------------------
+-- Les users
+-------------------------
+-------------------------
+-------------------------
+#foreach ( $user in ${generatedObject.getUsersList()} )
+CREATE ROLE "${user.name}" LOGIN ENCRYPTED PASSWORD 'pwd_${user.name}' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE;
+
+#end
+

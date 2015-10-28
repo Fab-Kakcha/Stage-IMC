@@ -1,0 +1,157 @@
+## #####
+## Générateur java de la couche bean IMC
+## Création de l'interface
+## 
+## @param generatedObject l'obm object
+## 
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+##  on récup le pobject et le pobjectimpl
+#set ( $beanElement = ${manager.getElement("{0}:{1}.{2}Enum", ${generatedObject.modelId})} )
+##
+## gestion des implémentations
+#set($implementionsDef="")
+#if ($generatedObject.nbImplementations > 0)
+#**##set($first=true)
+#**##set($implementionsDef=" implements")
+#**##foreach ($implementationObject in $generatedObject.implementationObjectList)
+#**##**##set($virgule = ",")
+#**##**##if ($first)
+#**##**##**##set($virgule = "")
+#**##**##**##set($first = false)
+#**##**##end
+#**##**##set($implementionsDef="$implementionsDef${virgule} ${manager.getElement('{0}:{1}.{2}Interface', ${implementationObject.modelId}).path}")
+#**##end
+#end
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+package ${beanElement.packageName};
+
+/**
+ * Enum ${generatedObject.completeName}
+ *
+ * @version ${model.version}
+ * @author généré par ${infoGen}
+ */
+public enum ${beanElement.className}$!{implementionsDef} {
+## on génére les constantes
+#set($cpt=1)
+#foreach ( $enum in  ${generatedObject.enumsList} )
+#**##set($virgule = ",")
+#**##if ($cpt == ${generatedObject.nbEnums})
+#**##**##set($virgule = ";")
+#**##end
+#**##set($cpt = ${cpt}+1)
+#**###
+#**##set($first=true)
+#**##set($str_callconst="")
+#**##foreach ($field in ${generatedObject.fieldsList})
+#**##**##if ($field.required)
+#**##**##**##set($virgule2 = ", ")
+#**##**##**##if ($first)
+#**##**##**##**##set($virgule2 = "")
+#**##**##**##**##set($first = false)
+#**##**##**##end
+#**##**##**###
+#**##**##**##set($strValue=${enum.getValue($field.name).value})
+#**##**##**### si liste
+#**##**##**##if ( ${field.list} )
+#**##**##**##**##set ( $values = ${strValue.split(" ")} )
+#**##**##**##**##set($tmpStrValue="")
+#**##**##**##**##foreach ($val in ${values})
+#**##**##**##**##**##if ("$!{tmpStrValue}" != "")
+#**##**##**##**##**##**##set($tmpStrValue="$tmpStrValue, ")
+#**##**##**##**##**##end
+#**##**##**##**##**### si c'est une type simple on formatte
+#**##**##**##**##**##if ( ${manager.isBaseType(${field.type})} == true )
+#**##**##**##**##**##**##if ( ${model.utils.isField(${val})} == true )
+#**##**##**##**##**##**##**##set ( $tmpStrValue = "$tmpStrValue#formatFieldRef($model ${val})" )
+#**##**##**##**##**##**##else
+#**##**##**##**##**##**##**##set ($tmpStrValue = "$tmpStrValue${manager.getElement(${field.type}).formatValue(${val})}" )
+#**##**##**##**##**##**##end
+#**##**##**##**##**##else
+#**##**##**##**##**##**##set ( $tmpStrValue = "$tmpStrValue#formatFieldRef($model $val)" )
+#**##**##**##**##**##end
+#**##**##**##**##end
+#**##**##**##**###
+#**##**##**##**##set ( $strValue = "${manager.getElement('Arrays').path}.asList(${tmpStrValue})" )
+#**##**##**##else
+#**##**##**##**### si c'est une type simple on formatte
+#**##**##**##**##if ( ${manager.isBaseType(${field.type})} == true )
+#**##**##**##**##**##if ( ${model.utils.isField(${field.value})} == true )
+#**##**##**##**##**##**##set ( $strValue = "#formatFieldRef($model ${strValue})" )
+#**##**##**##**##**##else
+#**##**##**##**##**##**##set ($strValue = ${manager.getElement(${field.type}).formatValue(${strValue})} )
+#**##**##**##**##**##end
+#**##**##**##**##else
+#**##**##**##**##**##set ( $strValue = "#formatFieldRef($model $strValue)" )
+#**##**##**##**##end
+#**##**##**##end
+#**##**##**###
+#**##**##**##set($str_callconst="${str_callconst}${virgule2}${strValue}")
+#**##**##end
+#**##end
+#**##if ("$!{str_callconst}" != "")
+#**##**##set($str_callconst="(${str_callconst})")
+#**##end
+#**###
+	${enum.name}$!{str_callconst}${virgule}
+#end
+
+## on génére les constantes
+#foreach ( $constante in  ${generatedObject.constsList} )
+#generate ( "CoucheBean:Bean_Constante" )
+#end
+
+#foreach ( $field in  ${generatedObject.fieldsList} )
+#generate ( "CoucheBean:BeanImpl_Attribut" )
+#end
+##
+#set($str_constparam="")
+#set($str_constbody="")
+#foreach ($field in ${generatedObject.fieldsList})
+#**##if ($field.required)
+#**##**### si le champ est une liste le type sera List<type>
+#**##**### sinon type simplement
+#**##**##set ( $_attributType = "" )
+#**##**##if ( ${manager.isBaseType(${field.type})} == true )
+#**##**##**##set ( $_attributType = ${manager.getElement(${field.type}).path} )
+#**##**##else
+#**##**##**##set ( $_attributType = ${manager.getElement("{0}:{1}.{2}Bean", ${field.type}).path} )
+#**##**##end
+#**##**### si liste
+#**##**##if ( ${field.list} )
+#**##**##**##set ( $atype = ${manager.getElement("IList").path} )
+#**##**##**##set ( $_attributType = "${atype}<${_attribut.type}>" )
+#**##**##end
+#**##**###
+#**##**##if ("$!{str_constparam}" == "")
+#**##**##**##set($str_constparam="${_attributType} ${field.name}")
+#**##**##else
+#**##**##**##set($str_constparam="${str_constparam}, ${_attributType} ${field.name}")
+#**##**##end
+#**##**##set($str_constbody="${str_constbody}${N}${T}${T}this.${field.name} = ${field.name};")
+#**##end
+#end
+#if ("$!{str_constbody}" != "" && "$!{str_constparam}" != "")
+
+    private ${beanElement.className}($!{str_constparam}) {$!{str_constbody}
+    }
+#end
+
+## on génére les getter et setter des champs
+#foreach ( $field in  ${generatedObject.fieldsList} )
+#generate ( "CoucheBean:BeanImpl_GetterSetter" )
+#**##if ("$!{field.usedFor}" != "")
+#**##**##set($fieldUsedFor = ${field.usedForField})
+#**##**##generate ( "CoucheBean:BeanImpl_GetterSetterUsedFor" )
+#**##end
+#end
+}

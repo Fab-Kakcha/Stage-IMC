@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile name="Presentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ProfileDefinition-1.0.0" xsi:schemaLocation="http://www.imc-fr.com/ProfileDefinition-1.0.0 ../../../../sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/xmi/profile/ProfileDefinition-1.0.0.xsd ">
+
+	<profilefile path="profile.xmi"/>
+	
+	<interpreter stereotype="VueModel" domaine="TECHNIQUE" className="com.imcfr.generateur.profiles.presentation.interpreters.VueModelInterpreter"/>
+	<interpreter stereotype="ModelObject" domaine="TECHNIQUE" className="com.imcfr.generateur.profiles.presentation.interpreters.ModelObjectInterpreter"/>
+	<interpreter stereotype="Vue" domaine="TECHNIQUE" className="com.imcfr.generateur.profiles.presentation.interpreters.VueInterpreter"/>
+	<interpreter stereotype="Edit" domaine="TECHNIQUE" className="com.imcfr.generateur.profiles.presentation.interpreters.EditInterpreter"/>
+	<interpreter stereotype="Grid" domaine="TECHNIQUE" className="com.imcfr.generateur.profiles.presentation.interpreters.GridInterpreter"/>
+	<interpreter stereotype="Filtre" domaine="TECHNIQUE" className="com.imcfr.generateur.profiles.presentation.interpreters.FiltreInterpreter"/>
+	<interpreter stereotype="Colonne" domaine="TECHNIQUE" className="com.imcfr.generateur.profiles.presentation.interpreters.ColonneInterpreter"/>
+	<interpreter stereotype="Action" domaine="TECHNIQUE" className="com.imcfr.generateur.profiles.presentation.interpreters.ActionInterpreter"/>
+	<interpreter stereotype="ActionColonne" domaine="TECHNIQUE" className="com.imcfr.generateur.profiles.presentation.interpreters.ActionColonneInterpreter"/>
+
+</profile>

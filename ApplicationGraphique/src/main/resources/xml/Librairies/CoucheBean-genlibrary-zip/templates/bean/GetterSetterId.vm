@@ -1,0 +1,26 @@
+## #####
+## Générateur Java
+## Getters et Setters de l'id du bean
+## 
+## @param generatedObject l'obm object
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## si l'id de la classe est composé
+#if ( ${generatedObject.fieldId.class.simpleName} == "ComposedId" )
+#set ( $idtype = ${manager.getElement("{0}:{1}.PK{2}", ${generatedObject.modelId})} )
+    /**
+     * Met à jour l'id de l'objet
+     * 
+     * @param id
+     *          La nouvelle valeur de l'id
+     */
+    public void setId(${idtype.path} id);
+
+#end

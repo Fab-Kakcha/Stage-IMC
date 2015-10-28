@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generators langage="java" name="CouchePersistanceJPA" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/GeneratorDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/GeneratorDefinition-2.0.0 ../../../../sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/generator/GeneratorDefinition-2.0.0.xsd ">
+
+	<!-- dépendance -->
+	<dependencies>
+		<dependency name="java:Commun"/>
+		<dependency name="java:CoucheBean"/>
+	</dependencies>
+    
+    <languagefile path="JavaLanguageCouchePersistanceJPA.xml" />
+    
+    
+    <!--
+       définition des générateurs de la couche persistance JPA IMC
+    -->
+    
+    
+    
+    <!-- Générateur de création des interface home d'objet Persistant PHome
+       fichier : repGénération/interface/src/main/java/{object.pack.completeName}/persistance/home/PHome{object.name}.java
+       elementsLangage : 
+                    - interface MHome - nommé {project}:{packName}.PHome{name}
+       filter : uniquement les objets pas abstrait
+    -->
+    <generator name="PHome" pathtemplate="phome/PHome.vm"
+        version="1.0.0" generatedObject="prstm:object">
+        <filter class="com.imcfr.generateur.generator.param.filter.PrstmObjectNotAbstract" />
+        <file>
+            <name value="PHome{0}.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/persistance/home">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.PHome{2}">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="PHome{0}">
+                <property>$name</property>
+            </className>
+            <package value="{0}.persistance.home">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+    </generator>
+    
+    
+    
+    <!-- Générateur de création des interface home generated d'objet Persistant PHome
+       fichier : repGénération/interface/src/main/java/{object.pack.completeName}/persistance/home/generated/PHome{object.name}Generated.java
+       elementsLangage : 
+                    - interface MHome - nommé {project}:{packName}.PHome{name}Generated
+       filter : uniquement les objets pas abstrait
+    -->
+    <generator name="PHomeGenerated" pathtemplate="phomegenerated/PHomeGenerated.vm"
+        version="1.0.0" generatedObject="prstm:object">
+        <supports>
+        	<support>generation</support>
+        	<support>regeneration</support>
+        </supports>
+        <filter class="com.imcfr.generateur.generator.param.filter.PrstmObjectNotAbstract" />
+        <file>
+            <name value="PHome{0}Generated.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/persistance/home/generated">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.PHome{2}Generated">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="PHome{0}Generated">
+                <property>$name</property>
+            </className>
+            <package value="{0}.persistance.home.generated">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+    </generator>
+    
+    <!-- Template de création des méthodes getByRef -->
+    <template name="PHomeGenerated_GetByRef" pathtemplate="phomegenerated/GetByRef.vm" />
+    
+    
+    
+    <!-- Générateur de création des classe homeimpl d'objet Persistant PHomeImpl
+       fichier : repGénération/impl/src/main/java/{object.pack.completeName}/persistance/home/impl/PHome{object.name}Impl.java
+       elementsLangage : 
+                    - class PHomeImpl - nommé {project}:{packName}.PHome{name}Impl
+       filter : uniquement les objets pas abstrait
+    -->
+    <generator name="PHomeImpl" pathtemplate="phomeimpl/PHomeImpl.vm"
+        version="1.0.0" generatedObject="prstm:object">
+        <filter class="com.imcfr.generateur.generator.param.filter.PrstmObjectNotAbstract" />
+        <file>
+            <name value="PHome{0}Impl.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/persistance/home/impl">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.PHome{2}Impl">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="PHome{0}Impl">
+                <property>$name</property>
+            </className>
+            <package value="{0}.persistance.home.impl">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+    </generator>
+    
+    
+    
+    <!-- Générateur de création des classe homeimpl generated d'objet Persistant PHomeImpl
+       fichier : repGénération/impl/src/main/java/{object.pack.completeName}/persistance/home/impl/generated/PHome{object.name}GeneratedImpl.java
+       elementsLangage : 
+                    - class PHomeGeneratedImpl - nommé {project}:{packName}.PHome{name}GeneratedImpl
+       filter : uniquement les objets pas abstrait
+    -->
+    <generator name="PHomeGeneratedImpl" pathtemplate="phomegeneratedimpl/PHomeGeneratedImpl.vm"
+        version="1.0.0" generatedObject="prstm:object">
+        <supports>
+        	<support>generation</support>
+        	<support>regeneration</support>
+        </supports>
+        <filter class="com.imcfr.generateur.generator.param.filter.PrstmObjectNotAbstract" />
+        <file>
+            <name value="PHome{0}GeneratedImpl.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/persistance/home/impl/generated">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.PHome{2}GeneratedImpl">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="PHome{0}GeneratedImpl">
+                <property>$name</property>
+            </className>
+            <package value="{0}.persistance.home.impl.generated">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+    </generator>
+    
+    <!-- Template de création des méthodes getByRef et getCountByRef -->
+    <template name="PHomeGeneratedImpl_GetByRef" pathtemplate="phomegeneratedimpl/GetByRef.vm" />
+	<!-- Template de création des méthodes getByRefList et getCountByRefList -->
+    <template name="PHomeGeneratedImpl_GetByRefList" pathtemplate="phomegeneratedimpl/GetByRefList.vm" />
+    <!-- Template de création des méthodes DefaultQuery -->
+    <template name="PHomeGeneratedImpl_DefaultQuery" pathtemplate="phomegeneratedimpl/DefaultQuery.vm" />
+    
+    
+    <!-- Générateur du fichier persistance.xml
+       fichier : repGénération/impl/src/main/resources/persistance.xml
+       filter : aucun
+    -->
+    <generator name="PersistenceXml" pathtemplate="PersistenceXml.vm"
+        version="1.0.0" generatedObject="prstm:model">
+        <file>
+            <name value="persistence.xml" />
+            <path value="src/main/application/META-INF"/>
+        </file>
+    </generator>
+    
+    
+    <!-- Générateur du fichier orm.xml
+       fichier : repGénération/impl/src/main/resources/${project}.xml
+       filter : aucun
+    -->
+    <generator name="OrmXml" pathtemplate="orm/OrmXml.vm"
+        version="1.0.0" generatedObject="prstm:model">
+        <file>
+            <name value="{0}-orm.xml">
+             <property>$project</property>
+            </name>
+            <path value="src/main/resources/META-INF"/>
+        </file>
+    </generator>
+    
+    <!-- Template de création de l'orm pour une entité -->
+    <template name="Orm_Entite" pathtemplate="orm/OrmEntite.vm" />
+    <template name="Orm_FieldId" pathtemplate="orm/FieldId.vm" />
+    <template name="Orm_Field" pathtemplate="orm/Field.vm" />
+    <template name="Orm_FieldSimple" pathtemplate="orm/FieldSimple.vm" />
+    <template name="Orm_FieldTransient" pathtemplate="orm/FieldTransient.vm" />
+	<template name="Orm_FieldOneToOne" pathtemplate="orm/FieldOneToOne.vm" />
+	<template name="Orm_FieldManyToOne" pathtemplate="orm/FieldManyToOne.vm" />
+	<template name="Orm_FieldOneToMany" pathtemplate="orm/FieldOneToMany.vm" />
+	<template name="Orm_FieldManyToMany" pathtemplate="orm/FieldManyToMany.vm" />
+    
+    
+    
+     <!-- Générateur de création du fichier ${project}-persistance.properties de définition des homes persistants
+       fichier : repGénération/impl/src/main/resources/{project}-persistance.properties
+       filter : aucun
+    -->
+    <generator name="PersistanceProperties" pathtemplate="PersistanceProperties.vm"
+        version="1.0.0" generatedObject="prstm:model">
+        <file>
+            <name value="{0}-persistance.properties">
+             <property>$project</property>
+            </name>
+            <path value="src/main/resources"/>
+        </file>
+    </generator>
+    
+    
+    <!-- Générateur du fichier persistance.xml pour les tests
+       fichier : repGénération/impl/src/test/resources/persistance.xml
+       filter : aucun
+    -->
+    <generator name="PersistenceXmlTest" pathtemplate="phomeimpltest/PersistenceXmlTest.vm"
+        version="1.0.0" generatedObject="prstm:model">
+        <file>
+            <name value="persistence.xml" />
+            <path value="src/test/resources/META-INF"/>
+        </file>
+    </generator>
+    
+    
+    
+    <!-- Générateur de création des classe homeimpltest d'objet Persistant PHomeImpl
+       fichier : repGénération/impl/src/test/java/{object.pack.completeName}/persistance/home/impl/PHome{object.name}ImplTest.java
+       elementsLangage : 
+                    - class PHomeImpl - nommé {project}:{packName}.PHome{name}ImplTest
+       filter : uniquement les objets pas abstrait
+    -->
+    <generator name="PHomeImplTest" pathtemplate="phomeimpltest/PHomeImplTest.vm"
+        version="1.0.0" generatedObject="prstm:object">
+        <filter class="com.imcfr.generateur.generator.param.filter.PrstmObjectNotAbstract" />
+        <file>
+            <name value="PHome{0}ImplTest.java">
+                <property>$name</property>
+            </name>
+            <path value="src/test/java/{0}/persistance/home/impl">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.PHome{2}ImplTest">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="PHome{0}ImplTest">
+                <property>$name</property>
+            </className>
+            <package value="{0}.persistance.home.impl">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+    </generator>
+    
+    
+    
+	<!-- Apis permettant de générer directement dans les projets eclipse -->
+	<api name="Persistance">
+		<refgenerator name="PHome"/>
+        <refgenerator name="PHomeGenerated"/>
+	</api>
+
+
+	
+	<api name="PersistanceImpl">
+		<refgenerator name="PHomeImpl"/>
+        <refgenerator name="PHomeGeneratedImpl"/>
+        <refgenerator name="OrmXml"/>
+		<refgenerator name="PersistanceProperties"/>
+	</api>
+
+</generators>

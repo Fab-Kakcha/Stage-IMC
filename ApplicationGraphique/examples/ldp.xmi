@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Configuration="http:///schemas/Configuration/_1YHftWaqEeW-i86-GJQ9ZQ/0" xmlns:Profile="http:///schemas/Profile/_1YHftmaqEeW-i86-GJQ9ZQ/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/Configuration/_1YHftWaqEeW-i86-GJQ9ZQ/0 Configuration.profile.xmi#_1YHfvmaqEeW-i86-GJQ9ZQ http:///schemas/Profile/_1YHftmaqEeW-i86-GJQ9ZQ/0 Profile.profile.xmi#_1YNmJ2aqEeW-i86-GJQ9ZQ">
+  <uml:Model xmi:id="_1YHfgGaqEeW-i86-GJQ9ZQ" name="ldp">
+    <eAnnotations xmi:id="_1YHfgWaqEeW-i86-GJQ9ZQ" source="Objing">
+      <contents xmi:type="uml:Property" xmi:id="_1YHfgmaqEeW-i86-GJQ9ZQ" name="exporterVersion">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_1YHfg2aqEeW-i86-GJQ9ZQ" value="3.0.0"/>
+      </contents>
+    </eAnnotations>
+    <packagedElement xmi:type="uml:Package" xmi:id="_1YHfhGaqEeW-i86-GJQ9ZQ" name="RepPkg">
+      <packagedElement xmi:type="uml:Class" xmi:id="_1YHfhWaqEeW-i86-GJQ9ZQ" name="NouvelleClasse"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_1YHfhmaqEeW-i86-GJQ9ZQ" name="sousRepPkg">
+        <packagedElement xmi:type="uml:Package" xmi:id="_1YHfh2aqEeW-i86-GJQ9ZQ" name="sousSousRepPkg"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_1YHfiGaqEeW-i86-GJQ9ZQ" name="AnalPkg">
+      <packagedElement xmi:type="uml:Actor" xmi:id="_1YHfiWaqEeW-i86-GJQ9ZQ" name="theActor"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_1YHfimaqEeW-i86-GJQ9ZQ" memberEnd="_1YHfi2aqEeW-i86-GJQ9ZQ _1YHfjWaqEeW-i86-GJQ9ZQ" navigableOwnedEnd="_1YHfi2aqEeW-i86-GJQ9ZQ">
+        <ownedEnd xmi:id="_1YHfi2aqEeW-i86-GJQ9ZQ" visibility="public" type="_1YHfj2aqEeW-i86-GJQ9ZQ" association="_1YHfimaqEeW-i86-GJQ9ZQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1YHfjGaqEeW-i86-GJQ9ZQ"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="_1YHfjWaqEeW-i86-GJQ9ZQ" visibility="public" type="_1YHfiWaqEeW-i86-GJQ9ZQ" association="_1YHfimaqEeW-i86-GJQ9ZQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1YHfjmaqEeW-i86-GJQ9ZQ"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_1YHfj2aqEeW-i86-GJQ9ZQ" name="uc1">
+        <ownedComment xmi:id="_1YHfkGaqEeW-i86-GJQ9ZQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="_1YHfkWaqEeW-i86-GJQ9ZQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="_1YHfkmaqEeW-i86-GJQ9ZQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="_1YHfk2aqEeW-i86-GJQ9ZQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="_1YHflGaqEeW-i86-GJQ9ZQ">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="_1YHflWaqEeW-i86-GJQ9ZQ">
+          <body>...</body>
+        </ownedComment>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_1YHflmaqEeW-i86-GJQ9ZQ" name="ldp">
+      <packagedElement xmi:type="uml:Class" xmi:id="_1YHfl2aqEeW-i86-GJQ9ZQ" name="Processus">
+        <ownedAttribute xmi:id="_1YHfmGaqEeW-i86-GJQ9ZQ" name="fin" visibility="public" type="_1YHfsWaqEeW-i86-GJQ9ZQ" aggregation="composite" association="_1YHfnGaqEeW-i86-GJQ9ZQ"/>
+        <ownedAttribute xmi:id="_1YHfmWaqEeW-i86-GJQ9ZQ" name="debut" visibility="public" type="_1YHfr2aqEeW-i86-GJQ9ZQ" aggregation="composite" association="_1YHfnmaqEeW-i86-GJQ9ZQ"/>
+        <ownedAttribute xmi:id="_1YHfmmaqEeW-i86-GJQ9ZQ" name="activite" visibility="public" type="_1YHfomaqEeW-i86-GJQ9ZQ" aggregation="composite" association="_1YHfoGaqEeW-i86-GJQ9ZQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1YHfm2aqEeW-i86-GJQ9ZQ"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_1YHfnGaqEeW-i86-GJQ9ZQ" memberEnd="_1YHfmGaqEeW-i86-GJQ9ZQ _1YHfnWaqEeW-i86-GJQ9ZQ">
+        <ownedEnd xmi:id="_1YHfnWaqEeW-i86-GJQ9ZQ" visibility="public" type="_1YHfl2aqEeW-i86-GJQ9ZQ" association="_1YHfnGaqEeW-i86-GJQ9ZQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_1YHfnmaqEeW-i86-GJQ9ZQ" memberEnd="_1YHfmWaqEeW-i86-GJQ9ZQ _1YHfn2aqEeW-i86-GJQ9ZQ">
+        <ownedEnd xmi:id="_1YHfn2aqEeW-i86-GJQ9ZQ" visibility="public" type="_1YHfl2aqEeW-i86-GJQ9ZQ" association="_1YHfnmaqEeW-i86-GJQ9ZQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_1YHfoGaqEeW-i86-GJQ9ZQ" memberEnd="_1YHfmmaqEeW-i86-GJQ9ZQ _1YHfoWaqEeW-i86-GJQ9ZQ">
+        <ownedEnd xmi:id="_1YHfoWaqEeW-i86-GJQ9ZQ" visibility="public" type="_1YHfl2aqEeW-i86-GJQ9ZQ" association="_1YHfoGaqEeW-i86-GJQ9ZQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_1YHfomaqEeW-i86-GJQ9ZQ" name="Activite">
+        <ownedAttribute xmi:id="_1YHfo2aqEeW-i86-GJQ9ZQ" name="activite" visibility="public" type="_1YHfomaqEeW-i86-GJQ9ZQ" association="_1YHfpmaqEeW-i86-GJQ9ZQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1YHfpGaqEeW-i86-GJQ9ZQ"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_1YHfpWaqEeW-i86-GJQ9ZQ" name="nom" visibility="public" isUnique="false">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_1YHfpmaqEeW-i86-GJQ9ZQ" name="precedente" memberEnd="_1YHfo2aqEeW-i86-GJQ9ZQ _1YHfp2aqEeW-i86-GJQ9ZQ">
+        <ownedEnd xmi:id="_1YHfp2aqEeW-i86-GJQ9ZQ" visibility="public" type="_1YHfomaqEeW-i86-GJQ9ZQ" association="_1YHfpmaqEeW-i86-GJQ9ZQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1YHfqGaqEeW-i86-GJQ9ZQ"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_1YHfqWaqEeW-i86-GJQ9ZQ" name="PseudoEtat">
+        <ownedAttribute xmi:id="_1YHfqmaqEeW-i86-GJQ9ZQ" name="nom" visibility="public" type="_1YHfomaqEeW-i86-GJQ9ZQ" association="_1YHfrGaqEeW-i86-GJQ9ZQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1YHfq2aqEeW-i86-GJQ9ZQ"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_1YHfrGaqEeW-i86-GJQ9ZQ" name="reference" memberEnd="_1YHfqmaqEeW-i86-GJQ9ZQ _1YHfrWaqEeW-i86-GJQ9ZQ">
+        <ownedEnd xmi:id="_1YHfrWaqEeW-i86-GJQ9ZQ" visibility="public" type="_1YHfqWaqEeW-i86-GJQ9ZQ" association="_1YHfrGaqEeW-i86-GJQ9ZQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1YHfrmaqEeW-i86-GJQ9ZQ"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_1YHfr2aqEeW-i86-GJQ9ZQ" name="Debut">
+        <generalization xmi:id="_1YHfsGaqEeW-i86-GJQ9ZQ" general="_1YHfqWaqEeW-i86-GJQ9ZQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_1YHfsWaqEeW-i86-GJQ9ZQ" name="Fin">
+        <generalization xmi:id="_1YHfsmaqEeW-i86-GJQ9ZQ" general="_1YHfqWaqEeW-i86-GJQ9ZQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_1YHfs2aqEeW-i86-GJQ9ZQ" name="sousLDP">
+        <packagedElement xmi:type="uml:Class" xmi:id="_1YHftGaqEeW-i86-GJQ9ZQ" name="Class"/>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_1YTswGaqEeW-i86-GJQ9ZQ">
+      <eAnnotations xmi:id="_1YTswWaqEeW-i86-GJQ9ZQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="Configuration.profile.xmi#_1YHfvmaqEeW-i86-GJQ9ZQ"/>
+      </eAnnotations>
+      <appliedProfile href="Configuration.profile.xmi#_1YHft2aqEeW-i86-GJQ9ZQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_1YTswmaqEeW-i86-GJQ9ZQ">
+      <eAnnotations xmi:id="_1YTsw2aqEeW-i86-GJQ9ZQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="Profile.profile.xmi#_1YNmJ2aqEeW-i86-GJQ9ZQ"/>
+      </eAnnotations>
+      <appliedProfile href="Profile.profile.xmi#_1YNmIGaqEeW-i86-GJQ9ZQ"/>
+    </profileApplication>
+  </uml:Model>
+  <Configuration:Project xmi:id="_1YTsxGaqEeW-i86-GJQ9ZQ" base_Package="_1YHfhGaqEeW-i86-GJQ9ZQ"/>
+  <Configuration:TagConfg xmi:id="_1YTsxWaqEeW-i86-GJQ9ZQ" base_Class="_1YHfhWaqEeW-i86-GJQ9ZQ"/>
+  <Profile:Tag3 xmi:id="_1YTsxmaqEeW-i86-GJQ9ZQ" base_Package="_1YHfhmaqEeW-i86-GJQ9ZQ"/>
+  <Configuration:Project xmi:id="_1YTsx2aqEeW-i86-GJQ9ZQ" base_Package="_1YHfh2aqEeW-i86-GJQ9ZQ"/>
+  <Configuration:newST xmi:id="_1YTsyGaqEeW-i86-GJQ9ZQ" base_Package="_1YHfh2aqEeW-i86-GJQ9ZQ"/>
+  <Profile:Tag3 xmi:id="_1YTsyWaqEeW-i86-GJQ9ZQ" base_Package="_1YHfiGaqEeW-i86-GJQ9ZQ"/>
+  <Configuration:Project xmi:id="_1YTsymaqEeW-i86-GJQ9ZQ" base_Package="_1YHflmaqEeW-i86-GJQ9ZQ"/>
+  <Profile:Tag3 xmi:id="_1YUT0GaqEeW-i86-GJQ9ZQ" base_Package="_1YHflmaqEeW-i86-GJQ9ZQ"/>
+  <Profile:Tag1 xmi:id="_1YUT0WaqEeW-i86-GJQ9ZQ" base_Class="_1YHfl2aqEeW-i86-GJQ9ZQ"/>
+  <Profile:Tag2 xmi:id="_1YUT0maqEeW-i86-GJQ9ZQ" base_Class="_1YHfomaqEeW-i86-GJQ9ZQ"/>
+  <Profile:Tag1 xmi:id="_1YUT02aqEeW-i86-GJQ9ZQ" base_Class="_1YHfqWaqEeW-i86-GJQ9ZQ"/>
+  <Profile:Tag3 xmi:id="_1YUT1GaqEeW-i86-GJQ9ZQ" base_Package="_1YHfs2aqEeW-i86-GJQ9ZQ"/>
+  <Profile:Tag1 xmi:id="_1YUT1WaqEeW-i86-GJQ9ZQ" base_Class="_1YHftGaqEeW-i86-GJQ9ZQ"/>
+</xmi:XMI>

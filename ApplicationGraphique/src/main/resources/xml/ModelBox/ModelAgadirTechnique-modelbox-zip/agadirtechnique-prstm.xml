@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prstm name="AgadirTechniquePrstm" project="AgadirTechnique" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/PrstmModel/src/main/resources/com/imcfr/generateur/sax/persistancemodel/PersistanceModelDefinition-2.0.0.xsd ">
+	<!-- TypeCode -->
+	<object name="TypeCode" pack="AgadirTechnique:agadir" datamObject="AgadirTechnique:agadir.type_code" extendsType="ClassConcrete"/>
+	<!-- Libelle -->
+	<object name="Libelle" pack="AgadirTechnique:agadir" datamObject="AgadirTechnique:agadir.libelle" extendsType="ClassConcrete"/>
+	
+	<object name="Document" pack="AgadirTechnique:agadir" datamObject="AgadirTechnique:agadir.document" extendsType="ClassConcrete">
+		<manyToOne name="typeDocument">
+			<references>
+				<reference datamField="fk__type_document__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+
+	<object name="TypeDocument" pack="AgadirTechnique:agadir" datamObject="AgadirTechnique:agadir.type_document" extendsType="Joined"/>
+	<object name="Signature" pack="AgadirTechnique:agadir" datamObject="AgadirTechnique:agadir.signature" extendsType="Joined">
+	</object>
+</prstm>

@@ -1,0 +1,90 @@
+## #####
+## Générateur Java
+## Gestion d'un attribut de l'entité
+## 
+## @param generatedObject le model prstm
+## @param entite l'objet prstm courant
+## @param datamObject l'objet prstm courant
+## @param obmObject l'objet prstm courant
+## @param field le champ obm courant
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 12/11/2008
+## #####
+##
+## -------------------------
+## Les variables
+## -------------------------
+##
+## Aucunes
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+##
+## on récup le champ persistant
+#set ( $fieldPrstm = ${entite.getField(${field.name})} )
+## si type de base on géné un champ classique
+#if ( ${manager.isBaseType(${field.type})} == true )
+			<basic name="${field.name}" >
+#**##generate ( "CouchePersistanceJPA:Orm_FieldSimple" )
+			</basic>
+#else
+##
+## on récup le cascade et le fetch
+#**##set ( $cascade = "" )
+#**##set ( $cascades = ${fieldPrstm.getByType("persistance", "cascade")} )
+#**##if ( ${cascades.size()} != 0 )
+#**##**##set ( $cascade = "<cascade>" )
+#**##**##foreach ($cascadeObj in $cascades)
+#**##**##**##if ( ${cascadeObj.value} != "NONE" )
+#**##**##**##**##if ( ${cascadeObj.value} == "ALL" )
+#**##**##**##**##**##set ( $cascade = "${cascade}${N}${T}${T}${T}${T}${T}<cascade-all />" )
+#**##**##**##**##end
+#**##**##**##**##if ( ${cascadeObj.value} == "PERSIST" )
+#**##**##**##**##**##set ( $cascade = "${cascade}${N}${T}${T}${T}${T}${T}<cascade-persist />" )
+#**##**##**##**##end
+#**##**##**##**##if ( ${cascadeObj.value} == "MERGE" )
+#**##**##**##**##**##set ( $cascade = "${cascade}${N}${T}${T}${T}${T}${T}<cascade-merge />" )
+#**##**##**##**##end
+#**##**##**##**##if ( ${cascadeObj.value} == "REMOVE" )
+#**##**##**##**##**##set ( $cascade = "${cascade}${N}${T}${T}${T}${T}${T}<cascade-remove />" )
+#**##**##**##**##end
+#**##**##**##**##if ( ${cascadeObj.value} == "REFRESH" )
+#**##**##**##**##**##set ( $cascade = "${cascade}${N}${T}${T}${T}${T}${T}<cascade-refresh />" )
+#**##**##**##**##end
+#**##**##**##end
+#**##**##end
+#**##**##set ( $cascade = "${cascade}${N}${T}${T}${T}${T}</cascade>" )
+#**##end
+##
+## on récup le cascade et le fetch
+#set ( $fetchType = "" )
+#set ( $fetchs = ${fieldPrstm.getByType("persistance", "lazy")} )
+#if ( ${fetchs.size()} != 0 )
+#if ( ${list.get(${fetchs}, 0).lazy} == true )
+#set ( $fetchType = "fetch=${esc.q}LAZY${esc.q} " )
+#end
+#end
+##
+## si one to one
+#if ( ${fieldPrstm.class.simpleName} == "OneToOne" )
+#generate ( "CouchePersistanceJPA:Orm_FieldOneToOne" )
+#end
+##
+## si one to one
+#if ( ${fieldPrstm.class.simpleName} == "OneToMany" )
+#generate ( "CouchePersistanceJPA:Orm_FieldOneToMany" )
+#end
+##
+## si one to one
+#if ( ${fieldPrstm.class.simpleName} == "ManyToOne" )
+#generate ( "CouchePersistanceJPA:Orm_FieldManyToOne" )
+#end
+##
+## si one to one
+#if ( ${fieldPrstm.class.simpleName} == "ManyToMany" )
+#generate ( "CouchePersistanceJPA:Orm_FieldManyToMany" )
+#end
+#end

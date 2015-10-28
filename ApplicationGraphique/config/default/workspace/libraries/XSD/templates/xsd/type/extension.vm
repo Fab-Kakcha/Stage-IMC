@@ -1,0 +1,7 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param type (com.imcfr.generateur.model.edimodel.Type)
+## 
+## #####
+	<complexType name="${type.name}Extension"/>

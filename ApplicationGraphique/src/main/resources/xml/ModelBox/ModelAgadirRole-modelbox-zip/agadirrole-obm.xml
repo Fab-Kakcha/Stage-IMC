@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<obm name="AgadirRole" project="AgadirRole" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ObjectModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/ObjectModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/CodeGeneratorModel/src/main/resources/com/imcfr/generateur/sax/objectmodel/ObjectModelDefinition-2.0.0.xsd ">
+
+	<package name="role" completeName="com.imcfr.agadir.role"/>
+
+
+	<object type="interface" name="Role" pack="AgadirRole:role" obmExtends="AgadirContact:contact.Contact"></object>
+
+	<object name="Operateur" pack="AgadirRole:role" implements="AgadirRole:role.Role">
+		<!-- attributs -->
+		<field name="id"/>
+		<field name="typeIdentite"/>
+		
+		<!-- relations -->
+		<field name="codeTypeOperateur" type="AgadirRole:referentiel.TypeOperateur" null="false"/>
+		<field name="coordonnees"/>
+		<field name="identite"/>
+	</object>
+
+	<object name="Beneficiaire" pack="AgadirRole:role" implements="AgadirRole:role.Role">
+		<!-- attributs -->
+		<field name="id"/>
+		<field name="typeIdentite"/>
+		
+		<!-- relations -->
+		<field name="codeTypeBeneficiaire" type="AgadirRole:referentiel.TypeBeneficiaire" null="false"/>
+		<field name="coordonnees"/>
+		<field name="identite"/>
+	</object>
+
+	<object name="Commanditaire" pack="AgadirRole:role" implements="AgadirRole:role.Role">
+		<!-- attributs -->
+		<field name="id"/>
+		<field name="typeIdentite"/>
+		
+		<!-- relations -->
+		<field name="codeTypeCommanditaire" type="AgadirRole:referentiel.TypeCommanditaire" null="false"/>
+		<field name="coordonnees"/>
+		<field name="identite"/>
+	</object>
+
+	<object name="PorteurProjet" pack="AgadirRole:role" implements="AgadirRole:role.Role">
+		<!-- attributs -->
+		<field name="id"/>
+		<field name="typeIdentite"/>
+		
+		<!-- relations -->
+		<field name="codeTypePorteurProjet" type="AgadirRole:referentiel.TypePorteurProjet" null="false"/>
+		<field name="coordonnees"/>
+		<field name="identite"/>
+	</object>
+
+	<object name="Tuteur" pack="AgadirRole:role" implements="AgadirRole:role.Role">
+		<!-- attributs -->
+		<field name="id"/>
+		<field name="typeIdentite"/>
+		
+		<!-- relations -->
+		<field name="codeTypeTuteur" type="AgadirRole:referentiel.TypeTuteur" null="false"/>
+		<field name="coordonnees"/>
+		<field name="identite"/>
+	</object>
+
+</obm>

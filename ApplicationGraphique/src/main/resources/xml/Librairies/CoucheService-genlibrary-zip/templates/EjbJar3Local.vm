@@ -1,0 +1,43 @@
+## #####
+## Générateur java de la couche métier IMC
+## Création d'un fichier ejb-jar.xml définissant les homes ejb métiers
+##
+## @param generatedObject le model prstm
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## #####
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:ejb="http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd" version="3.0">
+  <display-name>${model.project}Metier</display-name>
+  <enterprise-beans>
+#foreach ( $object in ${generatedObject.objectsList} )
+#set ( $obmObject = ${object.datamObject.obmObject} )
+#if ( ${obmObject.abstract} == false )
+#set ( $mElementHome = ${manager.getElement("{0}:{1}.S{2}", ${obmObject.modelId})} )
+#set ( $mElementHomeImpl = ${manager.getElement("{0}:{1}.S{2}Impl", ${obmObject.modelId})} )
+    <!-- définition de l'ejb ${object.modelId} -->
+    <session>
+        <ejb-name>${mElementHomeImpl.className}</ejb-name>
+        <mapped-name>ejb/${obmObject.name}Local</mapped-name>
+        <business-local>${mElementHome.path}</business-local>
+        <ejb-class>${mElementHomeImpl.path}</ejb-class>
+        <session-type>Stateful</session-type>
+        <remove-method>
+            <bean-method>
+                <method-name>release</method-name>
+                <method-params></method-params>
+            </bean-method>
+            <retain-if-exception>false</retain-if-exception>
+        </remove-method>
+     </session>
+
+#end
+#end
+  </enterprise-beans>
+</ejb-jar>

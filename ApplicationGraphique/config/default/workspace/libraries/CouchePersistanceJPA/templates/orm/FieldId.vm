@@ -1,0 +1,41 @@
+## #####
+## Générateur Java
+## gestion de l'id de l'entité
+## 
+## @param generatedObject le model prstm
+## @param entite l'objet prstm courant
+## @param datamObject l'objet prstm courant
+## @param obmObject l'objet prstm courant
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 12/11/2008
+## #####
+##
+## -------------------------
+## Les variables
+## -------------------------
+##
+## Aucunes
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+## si une clé composée
+#if ( ${obmObject.fieldId.class.simpleName} == "ComposedId" )
+			<embedded-id name="pk" />
+#else
+##
+## si pas id composé
+			<id name="${obmObject.fieldId.name}">
+## si type de base on géné un champ classique
+#if ( ${manager.isBaseType(${obmObject.fieldId.type})} == true )
+#set ( $field = ${obmObject.fieldId} )
+#generate ( "CouchePersistanceJPA:Orm_FieldSimple" )
+#else
+	id de champ ManyToMany, ManToOne, OneToOne ou OneToMany
+	non généré pour le moment
+#end
+			</id>
+#end
+

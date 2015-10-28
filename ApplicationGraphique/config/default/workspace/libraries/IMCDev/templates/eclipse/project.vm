@@ -1,0 +1,51 @@
+## #####
+## 
+## @param generatedObject (com.imcfr.generateur.model.objectmodel.ObmModel)
+## 
+## #####
+## les "
+#set($model = $generatedObject)
+#set($Q = '"')
+##
+#set($final_imcdev_ProjectName=${model.project})
+#if ("$!{imcdev_ProjectName}" != "")
+#**##set($final_imcdev_ProjectName=${imcdev_ProjectName})
+#end
+#if ("$!{imcdev_ProjectNamePrefix}" != "")
+#**##set($final_imcdev_ProjectName="${imcdev_ProjectNamePrefix}${final_imcdev_ProjectName}")
+#end
+#if ("$!{imcdev_ProjectNameSuffix}" != "")
+#**##set($final_imcdev_ProjectName="${final_imcdev_ProjectName}${imcdev_ProjectNameSuffix}")
+#end
+##
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>${final_imcdev_ProjectName}</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+#if (${list.contains($imcdev_Nature, "java")})
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+#end
+#if (${list.contains($imcdev_Nature, "maven")})
+		<buildCommand>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+#end
+	</buildSpec>
+	<natures>
+#if (${list.contains($imcdev_Nature, "java")})
+		<nature>org.eclipse.jdt.core.javanature</nature>
+#end
+#if (${list.contains($imcdev_Nature, "maven")})
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
+#end
+	</natures>
+</projectDescription>

@@ -1,0 +1,24 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.datamodel.DatamModel)
+## @param element (com.imcfr.generateur.model.datamodel.Schema)
+## 
+## #####
+##
+#set($ds_completeName="")
+#if (${element.name} != ${element.completeName})
+#**##set($ds_completeName=" completeName=${Q}${element.completeName}${Q}")
+#end
+#if (${element.getByCategory("grants").size()} == 0)
+	<schema name="${element.name}"$!{ds_completeName}/>
+#else
+	<schema name="${element.name}"$!{ds_completeName}>
+		<rules>
+			<grants>
+#**##**##**##foreach ($rule in ${element.getByCategory("grants")})
+				<grant user="${rule.userName}" value="${rule.value}"/>
+#**##**##**##end
+			</grants>
+		</rules>
+	</schema>
+#end

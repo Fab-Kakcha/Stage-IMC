@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<obm name="AgadirReferentielGeographiqueObm" project="AgadirReferentielGeographique" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ObjectModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/ObjectModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/CodeGeneratorModel/src/main/resources/com/imcfr/generateur/sax/objectmodel/ObjectModelDefinition-2.0.0.xsd ">
+
+	<package name="referentiel.hexaposte" completeName="com.imcfr.agadir.referentiel.geographique.hexaposte"/>
+	<package name="referentiel.iso" completeName="com.imcfr.agadir.referentiel.geographique.iso"/>
+	<package name="referentiel.insee" completeName="com.imcfr.agadir.referentiel.geographique.insee"/>
+
+
+	<!-- hexaposte -->
+	<object name="Departement" pack="AgadirReferentielGeographique:referentiel.insee" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<field name="codeLibelle" type="Base:String" null="false">
+			<rules>
+				<validation>
+					<pattern value="[0-9]{2}"/>
+				</validation>
+			</rules>
+		</field>
+		
+		<!-- relations -->
+		<field name="region" type="AgadirReferentielGeographique:referentiel.insee.Region"/>
+		
+		<descriptions>
+			<description langue="fr" value="Liste des départements provenant du du Code Officiel Géographique de l'INSEE"/>
+		</descriptions>
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="Region" pack="AgadirReferentielGeographique:referentiel.insee" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<field name="codeLibelle" type="Base:String" null="false">
+			<rules>
+				<validation>
+					<pattern value="0[1-9]|[1-8][0-9]|9[0-8]|97[1-4]|2A|2B|2a|2b|976$"/>
+				</validation>
+			</rules>
+		</field>
+		
+		<!-- relations -->
+		<field name="departements" type="AgadirReferentielGeographique:referentiel.insee.Departement" list="true"/>
+		
+		<descriptions>
+			<description langue="fr" value="Liste des régions provenant du Code Officiel Géographique de l'INSEE"/>
+		</descriptions>
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="Localisation" pack="AgadirReferentielGeographique:referentiel.hexaposte">
+		<field name="id" type="Base:Long" null="false" id="true"/>
+		<field name="bureauDistributeur" type="Base:String"/>
+		<field name="codePostal" type="Base:String" null="false">
+			<rules>
+				<validation>
+					<min value="5"/>
+					<max value="5"/>
+				</validation>
+			</rules>
+		</field>
+		<field name="commune" type="Base:String"/>
+		<field name="numeroINSEE" type="Base:String" null="true">
+			<rules>
+				<validation>
+					<min value="5"/>
+					<max value="5"/>
+				</validation>
+			</rules>
+		</field>
+		<!-- relations -->
+		<field name="pays" type="AgadirReferentielGeographique:referentiel.iso.Pays" null="false"/>
+		<field name="departement" type="AgadirReferentielGeographique:referentiel.insee.Departement" null="true"/>
+		
+		<descriptions>
+			<description langue="fr" value="Liste des villes provenant du référentiel Hexaposte"/>
+		</descriptions>
+	</object>
+	<!-- iso -->
+	<object name="Pays" pack="AgadirReferentielGeographique:referentiel.iso" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<descriptions>
+			<description langue="fr" value="Liste des pays respectant le Format ISO-3166"/>
+		</descriptions>
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="Nationalite" pack="AgadirReferentielGeographique:referentiel.iso" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<!-- relations -->
+		<field name="pays" type="AgadirReferentielGeographique:referentiel.iso.Pays" null="false"/>
+		<descriptions>
+			<description langue="fr" value="Liste des Nationalités respectant le Format ISO-3166"/>
+		</descriptions>
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	
+</obm>

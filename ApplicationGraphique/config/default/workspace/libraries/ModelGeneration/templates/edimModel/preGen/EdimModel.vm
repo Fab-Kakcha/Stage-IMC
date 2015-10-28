@@ -1,0 +1,28 @@
+## #####
+## 
+## @param generatedObject (com.imcfr.generateur.model.objectmodel.ObjectModel)
+## 
+## #####
+#set($model = $generatedObject)
+#set($Q = '"')
+<?xml version="1.0" encoding="UTF-8"?>
+#set($edimName="${model.project}")
+##
+<edim name="${edimName}Edim" project="${generatedObject.project}" version="${generatedObject.version}" xmlns="http://www.imc-fr.com/EdiModelDefinition-2.0.0">
+
+<!--
+NB : Dans le cas où vous voudirez utiliser les fonctionnalités de redéfinition (ie: attributs 'extends' et balises redefine*)
+	vous devrez absoluement indiquer ici le même namespace que celui du modèle edi dont vous souhaitez faire des redéfinitions
+	de même, le schemaLocation n'est indispensable que dans ce cas là.
+-->
+	<targetNamespace alias="${edimName.toLowerCase()}" namespace="urn:agadir:generator:model:edim:tns:${edimName.toLowerCase()}" schemaLocation="${edimName.toLowerCase()}.edim.xsd"/>
+
+<!-- 
+NB : Vous trouverez dans les commentaires les valeurs provenant de l'obm
+	ce sont donc c'est valeurs qui seront utilisées lors de la génération
+	mais vous pouvez donc les surcharger
+-->
+#**##foreach ($obmObject in ${generatedObject.objectsList})
+#**##**##generate("ModelGeneration:EdimTypePreGen")
+#**##end
+</edim>

@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datam name="AgadirContactDatam" project="AgadirContact" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/DataModelDefinition-2.0.0">
+
+    <schema name="contact" completeName="agadir_contact">
+        <rules>
+            <grants>
+                <grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="USAGE"/>
+            </grants>
+        </rules>
+    </schema>
+
+
+	
+	
+	<object name="coordonnees" schema="AgadirContact:contact" obmObject="AgadirContact:contact.Coordonnees">
+		<!-- attributs -->
+		<field name="id" obmField="id">
+			<rules>
+				<generation>
+					<sequence name="s_coordonnees"/>
+				</generation>
+			</rules>
+		</field>
+		
+		<rules>
+			<constraints>
+				<primaryKey field="id"/>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="coordonnee__adr" schema="AgadirContact:contact" >
+		<!-- attributs -->
+		<field name="id" type="Base:Long" default="{NEXTVAL}">
+			<rules>
+				<generation>
+					<sequence name="s_coordonnee__adr"/>
+				</generation>
+			</rules>
+		</field>
+		<!-- relations -->
+		<field name="fk__coordonnees__id" type="Base:Long"/>
+		<field name="fk__adresse__id" type="Base:Long"/>
+		<rules>
+			<constraints>
+				<primaryKey field="id"/>
+				<foreignKeys refObject="AgadirContact:contact.coordonnees">
+					<foreignKey field="fk__coordonnees__id" refField="id"/>
+				</foreignKeys>
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.format.adresse">
+					<foreignKey field="fk__adresse__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="coordonnee__tel" schema="AgadirContact:contact" >
+		<!-- attributs -->
+		<field name="id" type="Base:Long" default="{NEXTVAL}">
+			<rules>
+				<generation>
+					<sequence name="s_coordonnee__tel"/>
+				</generation>
+			</rules>
+		</field>
+		<!-- relations -->
+		<field name="fk__coordonnees__id" type="Base:Long"/>
+		<field name="fk__telephonie__id" type="Base:Long"/>
+		<rules>
+			<constraints>
+				<primaryKey field="id"/>
+				<foreignKeys refObject="AgadirContact:contact.coordonnees">
+					<foreignKey field="fk__coordonnees__id" refField="id"/>
+				</foreignKeys>
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.format.telephonie">
+					<foreignKey field="fk__telephonie__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="coordonnee__mail" schema="AgadirContact:contact" >
+		<!-- attributs -->
+		<field name="id" type="Base:Long" default="{NEXTVAL}">
+			<rules>
+				<generation>
+					<sequence name="s_coordonnee__mail"/>
+				</generation>
+			</rules>
+		</field>
+		<!-- relations -->
+		<field name="fk__coordonnees__id" type="Base:Long"/>
+		<field name="fk__mail__id" type="Base:Long"/>
+		<rules>
+			<constraints>
+				<primaryKey field="id"/>
+				<foreignKeys refObject="AgadirContact:contact.coordonnees">
+					<foreignKey field="fk__coordonnees__id" refField="id"/>
+				</foreignKeys>
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.format.mail">
+					<foreignKey field="fk__mail__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="coordonnee__url" schema="AgadirContact:contact" >
+		<!-- attributs -->
+		<field name="id" type="Base:Long" default="{NEXTVAL}">
+			<rules>
+				<generation>
+					<sequence name="s_coordonnee__url"/>
+				</generation>
+			</rules>
+		</field>
+		<!-- relations -->
+		<field name="fk__coordonnees__id" type="Base:Long"/>
+		<field name="fk__url__id" type="Base:Long"/>
+		<rules>
+			<constraints>
+				<primaryKey field="id"/>
+				<foreignKeys refObject="AgadirContact:contact.coordonnees">
+					<foreignKey field="fk__coordonnees__id" refField="id"/>
+				</foreignKeys>
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.format.url">
+					<foreignKey field="fk__url__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="coordonnee__mod_comm" schema="AgadirContact:contact" >
+		<!-- attributs -->
+		<field name="id" type="Base:Long" default="{NEXTVAL}">
+			<rules>
+				<generation>
+					<sequence name="s_coordonnee__mod_comm"/>
+				</generation>
+			</rules>
+		</field>
+		<!-- relations -->
+		<field name="fk__coordonnees__id" type="Base:Long"/>
+		<field name="fk__modalite__id" type="Base:Long"/>
+		<rules>
+			<constraints>
+				<primaryKey field="id"/>
+				<foreignKeys refObject="AgadirContact:contact.coordonnees">
+					<foreignKey field="fk__coordonnees__id" refField="id"/>
+				</foreignKeys>
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.format.modalite_communication">
+					<foreignKey field="fk__modalite__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="contact" schema="AgadirContact:contact" obmObject="AgadirContact:contact.Contact">
+		<!-- attributs -->
+		<field name="id" obmField="id">
+			<rules>
+				<generation>
+					<sequence name="s_contact"/>
+				</generation>
+			</rules>
+		</field>
+		<field name="type_identite" obmField="typeIdentite"/>
+		<!-- relations -->
+		<field name="fk__coordonnees__id" obmField="coordonnees" type="Base:Long"/>
+		<field name="fk__identite__id" obmField="identite" type="Base:Long"/>
+		
+		<rules>
+			<constraints>
+				<primaryKey field="id"/>
+				
+				<foreignKeys refObject="AgadirContact:contact.coordonnees">
+					<foreignKey field="fk__coordonnees__id" refField="id"/>
+				</foreignKeys>
+				
+				<foreignKeys refObject="AgadirContact:contact.identite">
+					<foreignKey field="fk__identite__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<!-- Le Datam d'identité doit être concret sinon on ne peut pas le lier à Contact -->
+	<object name="identite" schema="AgadirContact:contact" obmObject="AgadirContact:contact.Identite">
+		<!-- attributs -->
+		<field name="id" obmField="id">
+			<rules>
+				<generation>
+					<sequence name="s_identite"/>
+				</generation>
+			</rules>
+		</field>
+		
+		<!-- référentiel -->
+		<field name="fk__nationalite__id" obmField="nationalite" type="Base:Long"/>
+		
+		<rules>
+			<constraints>
+				<primaryKey field="id"/>
+				
+				<foreignKeys refObject="AgadirReferentielGeographique:referentiel.nationalite">
+					<foreignKey field="fk__nationalite__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="personne" schema="AgadirContact:contact" obmObject="AgadirContact:contact.Personne">
+		<!-- attributs -->
+		<field name="ref__id" type="Base:Long"/>
+		<field name="nom" obmField="nom"/>
+		<field name="prenom" obmField="prenom"/>
+		<field name="date_naissance" obmField="dateNaissance"/>
+		
+		<!-- référentiel -->
+		<field name="fk__sexe__id" obmField="sexe" type="Base:Long"/>
+		
+		<rules>
+			<constraints>
+				<primaryKey field="ref__id"/>
+				<foreignKeys refObject="AgadirContact:contact.identite">
+					<foreignKey field="ref__id"/>
+				</foreignKeys>
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.sexe">
+					<foreignKey field="fk__sexe__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="organisation" schema="AgadirContact:contact" obmObject="AgadirContact:contact.Organisation">
+		<!-- attributs -->
+		<field name="ref__id" type="Base:Long"/>
+		<field name="siret" obmField="siret"/>
+		<field name="denomination" obmField="denomination"/>
+		<field name="siren" obmField="siren"/>
+		<field name="effectif" obmField="effectif"/>
+		
+		<!-- référentiel -->
+		<field name="fk__convention_collective__id" obmField="conventionCollective" type="Base:Long"/>
+		<field name="fk__naf_2003__id" obmField="naf2003" type="Base:Long"/>
+		<field name="fk__naf_2008__id" obmField="naf2008" type="Base:Long"/>
+		<field name="fk__ape__id" obmField="ape" type="Base:Long"/>
+		<field name="fk__situation_juridique__id" obmField="situationJuridique" type="Base:Long"/>
+		<field name="fk__secteur_reference__id" obmField="secteurReference" type="Base:Long"/>
+		
+		<rules>
+			<constraints>
+				<primaryKey field="ref__id"/>
+				<foreignKeys refObject="AgadirContact:contact.identite">
+					<foreignKey field="ref__id"/>
+				</foreignKeys>
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.convention_collective">
+					<foreignKey field="fk__convention_collective__id" refField="id"/>
+				</foreignKeys>
+				
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.naf_2003">
+					<foreignKey field="fk__naf_2003__id" refField="id"/>
+				</foreignKeys>
+				
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.naf_2008">
+					<foreignKey field="fk__naf_2008__id" refField="id"/>
+				</foreignKeys>
+				
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.ape">
+					<foreignKey field="fk__ape__id" refField="id"/>
+				</foreignKeys>
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.situation_juridique">
+					<foreignKey field="fk__situation_juridique__id" refField="id"/>
+				</foreignKeys>
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.secteur_reference">
+					<foreignKey field="fk__secteur_reference__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="entite" schema="AgadirContact:contact" obmObject="AgadirContact:contact.Entite" abstract="true">
+		<field name="ref__id" type="Base:Long"/>
+		<rules>
+			<constraints>
+				<primaryKey field="ref__id"/>
+				<foreignKeys refObject="AgadirContact:contact.identite">
+					<foreignKey field="ref__id"/>
+				</foreignKeys>
+			</constraints>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="entite_nationale" schema="AgadirContact:contact" obmObject="AgadirContact:contact.EntiteNationale" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="entite_regionale" schema="AgadirContact:contact" obmObject="AgadirContact:contact.EntiteRegionale" inherits="true">
+		<field name="fk__region__id" type="Base:Long"/>
+		<rules>
+			<constraints>
+				<foreignKeys refObject="AgadirReferentielGeographique:referentiel.region">
+					<foreignKey field="fk__region__id"/>
+				</foreignKeys>
+			</constraints>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="entite_departementale" schema="AgadirContact:contact" obmObject="AgadirContact:contact.EntiteDepartementale" inherits="true">
+		<field name="fk__dept__id" type="Base:Long"/>
+		<field name="fk__entite_reg__id" type="Base:Long"/>
+		<rules>
+			<constraints>
+				<foreignKeys refObject="AgadirContact:contact.entite_regionale">
+					<foreignKey field="fk__entite_reg__id"/>
+				</foreignKeys>
+				<foreignKeys refObject="AgadirReferentielGeographique:referentiel.region">
+					<foreignKey field="fk__dept__id"/>
+				</foreignKeys>
+			</constraints>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="etablissement_formation" schema="AgadirContact:contact" obmObject="AgadirContact:contact.EtablissementFormation" abstract="true">
+		<field name="ref__id" type="Base:Long"/>
+		<rules>
+			<constraints>
+				<primaryKey field="ref__id"/>
+				<foreignKeys refObject="AgadirContact:contact.organisation">
+					<foreignKey field="ref__id"/>
+				</foreignKeys>
+			</constraints>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="organisme_formation" schema="AgadirContact:contact" obmObject="AgadirContact:contact.OrganismeFormation" inherits="true">
+		<field name="num_da" obmField="numDA"/>
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="cfa" schema="AgadirContact:contact" obmObject="AgadirContact:contact.CFA" inherits="true">
+		<field name="uai" obmField="uai"/>
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="communication" schema="AgadirContact:contact" obmObject="AgadirContact:contact.Communication">
+		<field name="id" obmField="id">
+			<rules>
+				<generation>
+					<sequence name="s_communication"/>
+				</generation>
+			</rules>
+		</field>
+		
+		<field name="date_envoi" obmField="dateEnvoi"/>
+		<field name="date_reception" obmField="dateReception"/>
+		<field name="date_retour" obmField="dateRetour"/>
+		
+		<field name="fk__type_communication__id" type="Base:Long"/>
+		<field name="fk__modalite_communication__id" type="Base:Long"/>
+
+		<rules>
+			<constraints>
+				<primaryKey field="id"/>
+				
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.format.type_communication">
+					<foreignKey field="fk__type_communication__id"/>
+				</foreignKeys>
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.format.modalite_communication">
+					<foreignKey field="fk__modalite_communication__id"/>
+				</foreignKeys>
+			</constraints>
+
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+</datam>

@@ -1,0 +1,45 @@
+## #####
+## lance la génération du template demandé
+## 
+## @pram $_name le nom du template à générer
+## #####
+#macro ( generate $_name )
+${manager.generateTemplate(${_name})}#end
+## #####
+## format la chaine avec une première lettre en majuscule
+## 
+## @param _value le nom à formatter
+## 
+## @return $_ret la chaine en casse upper
+## #####
+#macro ( firstUpper $_ret $_value )
+#set ( $_ret = "" )
+#if ( ${_value} != "" )
+#set ( $_ret = "${_value.substring(0, 1).toUpperCase()}" )
+#set ( $_ret = "${_ret}${_value.substring(1, ${_value.length()})}" )
+#end
+#end
+## #####
+## format la chaine avec une première lettre en minuscules
+## 
+## @param $_value le nom à formatter
+## 
+## @return _ret le retour
+## #####
+#macro ( firstLower $_ret $_value )
+#set ( $_ret = "" )
+#if ( ${_value} != "" )
+#set ( $_ret = "${_value.substring(0, 1).toLowerCase()}" )
+#set ( $_ret = "${_ret}${_value.substring(1, ${_value.length()})}" )
+#end
+#end
+## ###############
+## Formate une référence de field
+##
+#macro ( formatFieldRef $_Model $_Type )
+#**##set ( $_Utils = $_Model.utils )
+#**##set ( $_TypeFormated = "" )
+#**##set($parts=${_Utils.getFieldParts($_Type)})
+#**##set($_TypeFormated=${manager.getElement("{0}:{1}.{2}Bean", "${list.get($parts, 0)}:${list.get($parts, 1)}").path})
+#**##set($_TypeFormated="${_TypeFormated}.${list.get($parts, 2)}")
+${_TypeFormated}#end

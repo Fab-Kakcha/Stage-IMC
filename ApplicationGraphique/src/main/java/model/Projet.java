@@ -1,13 +1,18 @@
 package model;
 
-import org.apache.log4j.Logger;
+import java.sql.Connection;
 
+/**
+ * Cette classe définit un projet. Un projet est déterminé par un nom et par le chemin du répertoire local qui lui es associé
+ * lors de sa création.
+ * @author fkakcha
+ *
+ */
+ 
 public class Projet {
-
-	private static Logger logger = Logger.getLogger(Projet.class);
 	
 	private String nom;
-	private String chemin;		
+	private String chemin;
 	
 	public Projet(String nom, String chemin) {
 
@@ -30,9 +35,15 @@ public class Projet {
 	public void setChemin(String chemin) {
 		this.chemin = chemin;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Projet [nom=" + nom + ", chemin=" + chemin + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Projet [nom=");
+		builder.append(nom);
+		builder.append(", chemin=");
+		builder.append(chemin);
+		builder.append("]");
+		return builder.toString();
 	}		
 }

@@ -1,0 +1,13 @@
+## #####
+## 
+## @param generatedObject (com.imcfr.generateur.model.objectmodel.ObmModel)
+## 
+## #####
+## les "
+#set($model = $generatedObject)
+#set($Q = '"')
+##
+activeProfiles=
+eclipse.preferences.version=1
+resolveWorkspaceProjects=true
+version=1

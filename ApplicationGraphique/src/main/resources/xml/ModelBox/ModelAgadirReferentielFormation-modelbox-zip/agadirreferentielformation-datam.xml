@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datam name="AgadirReferentielFormationDatam" project="AgadirReferentielFormation" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/DataModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/DataModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/DatamModel/src/main/resources/com/imcfr/generateur/sax/datamodel/DataModelDefinition-2.0.0.xsd ">
+
+    <schema name="referentiel" completeName="agadir_referentiel_formation">
+        <rules>
+            <grants>
+                <grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="USAGE"/>
+            </grants>
+        </rules>
+    </schema>
+
+
+	<!-- lheo -->
+	<object name="niveau_formation" schema="AgadirReferentielFormation:referentiel" obmObject="AgadirReferentielFormation:referentiel.lheo.NiveauFormation" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="type_referentiel_metier" schema="AgadirReferentielFormation:referentiel" obmObject="AgadirReferentielFormation:referentiel.lheo.TypeReferentielMetier" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="type_diplome" schema="AgadirReferentielFormation:referentiel" obmObject="AgadirReferentielFormation:referentiel.lheo.TypeDiplome" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="formacode" schema="AgadirReferentielFormation:referentiel" obmObject="AgadirReferentielFormation:referentiel.lheo.Formacode" inherits="true">
+		<!-- Relations -->
+		<field name="fk__nsf__id" obmField="nsf" type="Base:Long"/>
+		<rules>
+			<constraints>
+				<foreignKeys refObject="AgadirReferentielFormation:referentiel.nsf">
+					<foreignKey field="fk__nsf__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="nsf" schema="AgadirReferentielFormation:referentiel" obmObject="AgadirReferentielFormation:referentiel.lheo.Nsf" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="rncp" schema="AgadirReferentielFormation:referentiel" obmObject="AgadirReferentielFormation:referentiel.lheo.Rncp" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	
+	
+	<object name="diplome" schema="AgadirReferentielFormation:referentiel" obmObject="AgadirReferentielFormation:referentiel.lheo.Diplome" inherits="true">
+		<!-- relations -->
+		<field name="fk__niveau_formation__id" obmField="niveauFormation" type="Base:Long"/>
+		<field name="fk__type_diplome__id" obmField="typeDiplome" type="Base:Long"/>
+		<field name="fk__nsf__id" obmField="nsf" type="Base:Long"/>
+		<field name="fk__rncp__id" obmField="rncp" type="Base:Long"/>
+		
+		
+		<rules>
+			<constraints>
+				<foreignKeys refObject="AgadirReferentielFormation:referentiel.niveau_formation">
+					<foreignKey field="fk__niveau_formation__id" refField="id"/>
+				</foreignKeys>
+				
+				<foreignKeys refObject="AgadirReferentielFormation:referentiel.type_diplome">
+					<foreignKey field="fk__type_diplome__id" refField="id"/>
+				</foreignKeys>
+				<foreignKeys refObject="AgadirReferentielFormation:referentiel.nsf">
+					<foreignKey field="fk__nsf__id" refField="id"/>
+				</foreignKeys>
+				<foreignKeys refObject="AgadirReferentielFormation:referentiel.rncp">
+					<foreignKey field="fk__rncp__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="referentiel_metier" schema="AgadirReferentielFormation:referentiel" obmObject="AgadirReferentielFormation:referentiel.lheo.ReferentielMetier" inherits="true">
+		<!-- relations -->
+		<field name="fk__type_referentiel_metier__id" obmField="typeReferentielMetier" type="Base:Long"/>
+		
+		<rules>
+			<constraints>
+				<foreignKeys refObject="AgadirReferentielFormation:referentiel.type_referentiel_metier">
+					<foreignKey field="fk__type_referentiel_metier__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="diplome__referentiel_metier" schema="AgadirReferentielFormation:referentiel">
+		<field name="id" type="Base:Long" default="{NEXTVAL}">
+			<rules>
+				<generation>
+					<sequence name="s_diplome__referentiel_metier"/>
+				</generation>
+			</rules>
+		</field>
+		
+		<!-- relations -->
+		<field name="ref__diplome__id" type="Base:Long"/>
+		<field name="fk__referentiel_metier__id" type="Base:Long"/>
+		
+		<rules>
+			<constraints>
+				<primaryKey field="id"/>
+				
+				<foreignKeys refObject="AgadirReferentielFormation:referentiel.diplome">
+					<foreignKey field="ref__diplome__id" refField="id"/>
+				</foreignKeys>
+				
+				<foreignKeys refObject="AgadirReferentielFormation:referentiel.referentiel_metier">
+					<foreignKey field="fk__referentiel_metier__id" refField="id"/>
+				</foreignKeys>
+				
+				<unique field="ref__diplome__id"/>
+				<unique field="fk__referentiel_metier__id"/>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="diplome__formacode" schema="AgadirReferentielFormation:referentiel">
+		<field name="id" type="Base:Long" default="{NEXTVAL}">
+			<rules>
+				<generation>
+					<sequence name="s_diplome__formacode"/>
+				</generation>
+			</rules>
+		</field>
+		
+		<!-- relations -->
+		<field name="ref__diplome__id" type="Base:Long"/>
+		<field name="fk__formacode__id" type="Base:Long"/>
+		
+		<rules>
+			<constraints>
+				<primaryKey field="id"/>
+				
+				<foreignKeys refObject="AgadirReferentielFormation:referentiel.diplome">
+					<foreignKey field="ref__diplome__id" refField="id"/>
+				</foreignKeys>
+				
+				<foreignKeys refObject="AgadirReferentielFormation:referentiel.formacode">
+					<foreignKey field="fk__formacode__id" refField="id"/>
+				</foreignKeys>
+				
+				<unique field="ref__diplome__id"/>
+				<unique field="fk__formacode__id"/>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+</datam>

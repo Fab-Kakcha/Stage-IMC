@@ -1,0 +1,113 @@
+## #####
+## Générateur java de la couche présentation IMC
+## Création de la classe de Model
+##
+## @param generatedObject l'objet viemw:vueModel
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 31/01/2012
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+#set ( $obmObject = ${generatedObject.object} )
+#set($Q = '"')
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns:pres="urn:jsptagdir:/WEB-INF/tags"
+	xmlns:presui="http://www.imc-fr.com/presentation/commun/ui"
+	xmlns:presaui="http://www.imc-fr.com/presentation/commun/ajaxui"
+	xmlns:presutil="http://www.imc-fr.com/presentation/commun/util"
+	xmlns:st="/struts-tags"
+	xmlns:tiles="http://tiles.apache.org/tags-tiles">
+
+	<presui:fieldscontainer>
+#foreach ( $f in ${generatedObject.fields} )
+#**##if (${obmObject.getAllField(${f.name}).redefinition} && ${generatedObject.hasRefComponent()})
+		<!-- @TODO : ce champs est une redéfinition d'un champ parent
+			veuillez verifier que ce champ n'est pas déjà présent dans les vues inclues avant de le décommenter
+#**##end
+#**###
+#**### si field simple
+#**##if ( ${f.class.simpleName} == "Field" )
+
+		<presui:fieldcontainer label="${f.name}">
+#**##**###
+#**##**### on regarde si on à le champ dans l'obm et donc que l'on peut avoir des infos dessus
+#**##**##if ( ${obmObject.containsAllField(${f.name})} )
+#**##**##**##if (${obmObject.getAllField(${f.name}).list})
+			<!-- @TODO : ce champ ${f.name} n'est pas généré car c'est une liste dans le bean et que cela n'est pas supporté à la génération -->
+#**##**##**##else
+			<presui:text value="${esc.d}{model.objet.${f.name}}" id="${esc.d}{templateKeyword}_${f.name}"
+				name="${esc.d}{model.path}.objet.${f.name}" consult="${esc.d}{consultMode}" />
+#**##**##**##end
+#**##**##else
+#**##**##**###
+#**##**##**### si pas dans l'obm lié
+			<!-- @TODO : ce champ ${f.name} n'existe pas dans le modèle, il ne sera pas enregistré -->
+			<presui:text value="${esc.d}{model.${f.name}}" id="${esc.d}{templateKeyword}_${f.name}"
+				name="${esc.d}{model.path}.${f.name}" consult="${esc.d}{consultMode}" />
+#**##**##end
+		</presui:fieldcontainer>
+#**##elseif (${f.class.simpleName} == "Select")
+#**##**###
+#**##**### si un type complexe
+#**##**##set($valueColonneName="")
+#**##**##if ("$!{f.valueObmField}" != "")
+#**##**##**##set($valueColonneName=" valueColonneName=${Q}${f.valueObmField}${Q}")
+#**##**##end
+#**##**##set($colonneName="")
+#**##**##if ("$!{f.labelObmField}" != "")
+#**##**##**##set($colonneName=" colonneName=${Q}${f.labelObmField}${Q}")
+#**##**##end
+
+		<presui:fieldcontainer label="${f.name}">
+#**##**##if (${obmObject.getAllField(${f.name}).list})
+			<presaui:ajaxCheckboxGroup value="${esc.d}{model.objet.${f.name}.${obmLie.fieldId.name}}" id="${esc.d}{templateKeyword}_${f.name}"
+				name="${model.path}.objet.${f.name}.${obmLie.getFieldId().name}" consult="${esc.d}{consultMode}"
+				nomService="${obmLie.name}" valueColonneName="${f.valueObmField}" colonneName="${f.labelObmField}"/>
+#**##**##else
+#**##**##**##set ( $obmLie = "obm:object:${obmObject.getAllField(${f.name}).type}" )
+#**##**##**##**##set ( $obmLie = ${supermodel.getElement(${obmLie})} )
+			<presaui:ajaxSelect value="${esc.d}{model.objet.${f.name}.${obmLie.fieldId.name}}" id="${esc.d}{templateKeyword}_${f.name}"
+				name="${esc.d}{model.path}.objet.${f.name}.${obmLie.getFieldId().name}" consult="${esc.d}{consultMode}"
+				nomService="${obmLie.name}" valueColonneName="${f.valueObmField}" colonneName="${f.labelObmField}"/>
+#**##**##end
+		</presui:fieldcontainer>
+#**##else
+	</presui:fieldscontainer>
+#**##**###
+#**##**### sinon si refComponent
+#**##**##if (${obmObject.getAllField(${f.name}).list})
+
+			<!-- @TODO : ce champ ${f.name} n'est pas généré car c'est une liste dans le bean et que cela n'est pas supporté à la génération -->
+#**##**##else
+#**##**##**##if ("$!{f.component.vueModelName}" == "")
+
+		<presui:template model="${esc.d}{model}" template="/${f.component.pack.pathName}/${f.component.name}.jspx" keyword="${esc.d}{templateKeyword}_${f.name}"/>
+#**##**##**##else
+
+		<presui:childModel parentModel="${esc.d}{model}" parentObjectPath="objet.${f.name}"
+			template="/${f.component.pack.pathName}/${f.component.name}.jspx" name="${f.component.vueModel.name}" keyword="${esc.d}{templateKeyword}_${f.name}" />
+#**##**##**##end
+#**##**##end
+	<presui:fieldscontainer>
+#**##end
+#**##if (${obmObject.getAllField(${f.name}).redefinition} && ${generatedObject.hasRefComponent()})
+			-->
+#**##end
+#end
+	</presui:fieldscontainer>
+
+</jsp:root>

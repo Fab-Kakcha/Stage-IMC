@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datam name="AgadirReferentielContactDatam" project="AgadirReferentielContact" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/DataModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/DataModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/DatamModel/src/main/resources/com/imcfr/generateur/sax/datamodel/DataModelDefinition-2.0.0.xsd ">
+
+    <schema name="referentiel" completeName="agadir_referentiel_contact">
+        <rules>
+            <grants>
+                <grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="USAGE"/>
+            </grants>
+        </rules>
+    </schema>
+    <schema name="referentiel.format" completeName="agadir_info_contact">
+        <rules>
+            <grants>
+                <grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="USAGE"/>
+            </grants>
+        </rules>
+    </schema>
+
+
+	<!-- iso -->
+	<object name="sexe" schema="AgadirReferentielContact:referentiel" obmObject="AgadirReferentielContact:referentiel.iso.Sexe" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<!-- insee -->
+	<object name="naf_2003" schema="AgadirReferentielContact:referentiel" obmObject="AgadirReferentielContact:referentiel.insee.Naf2003" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="ape" schema="AgadirReferentielContact:referentiel" obmObject="AgadirReferentielContact:referentiel.insee.APE" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="naf_2008" schema="AgadirReferentielContact:referentiel" obmObject="AgadirReferentielContact:referentiel.insee.Naf2008" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="situation_juridique" schema="AgadirReferentielContact:referentiel" obmObject="AgadirReferentielContact:referentiel.insee.SituationJuridique" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="type_naf" schema="AgadirReferentielContact:referentiel" obmObject="AgadirReferentielContact:referentiel.insee.TypeNaf" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<!-- legifrance -->
+	<object name="convention_collective" schema="AgadirReferentielContact:referentiel" obmObject="AgadirReferentielContact:referentiel.legifrance.ConventionCollective">
+		<field name="id" obmField="id">
+			<rules>
+				<generation>
+					<sequence name="s_convention_collective"/>
+				</generation>
+			</rules>
+		</field>
+		<field name="idcc" obmField="idcc" />
+		<field name="code_brochure" obmField="codeBrochure" />
+		<field name="libelle_court" obmField="libelleCourt" />
+		<field name="libelle_long" obmField="libelleLong" />
+		<rules>
+			<constraints>
+				<primaryKey field="id"/>
+			</constraints>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="convention_collective__url" schema="AgadirReferentielContact:referentiel">
+		<field name="id" type="Base:Long" default="{NEXTVAL}">
+			<rules>
+				<generation>
+					<sequence name="s_convention_collective__url"/>
+				</generation>
+			</rules>
+		</field>
+		<field name="ref__convention_collective__id" type="Base:Long" />
+		<field name="fk__url__id" type="Base:Long" />
+		<rules>
+			<constraints>
+				<primaryKey field="id"/>
+				
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.format.url">
+					<foreignKey field="fk__url__id" refField="id"/>
+				</foreignKeys>
+				
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.convention_collective">
+					<foreignKey field="ref__convention_collective__id" refField="id"/>
+				</foreignKeys>
+				
+				<unique field="ref__convention_collective__id"/>
+				<unique field="fk__url__id"/>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="secteur_reference" schema="AgadirReferentielContact:referentiel" obmObject="AgadirReferentielContact:referentiel.agadir.SecteurReference" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<!-- agadir -->
+	<object name="regime_social" schema="AgadirReferentielContact:referentiel" obmObject="AgadirReferentielContact:referentiel.agadir.RegimeSocial" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<!-- rgi -->
+	<object name="type_telephonie" schema="AgadirReferentielContact:referentiel" obmObject="AgadirReferentielContact:referentiel.rgi.TypeTelephonie" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="type_repetition" schema="AgadirReferentielContact:referentiel" obmObject="AgadirReferentielContact:referentiel.rgi.TypeRepetition" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="type_adresse" schema="AgadirReferentielContact:referentiel" obmObject="AgadirReferentielContact:referentiel.rgi.TypeAdresse" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="type_mail" schema="AgadirReferentielContact:referentiel" obmObject="AgadirReferentielContact:referentiel.rgi.TypeMail" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="type_url" schema="AgadirReferentielContact:referentiel" obmObject="AgadirReferentielContact:referentiel.rgi.TypeURL" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="type_voie" schema="AgadirReferentielContact:referentiel" obmObject="AgadirReferentielContact:referentiel.rgi.TypeVoie" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="modalite_communication" schema="AgadirReferentielContact:referentiel.format" obmObject="AgadirReferentielContact:referentiel.format.ModaliteCommunication">
+		<!-- attributs -->
+		<field name="id" obmField="id">
+			<rules>
+				<generation>
+					<sequence name="s_modalite_communication"/>
+				</generation>
+			</rules>
+		</field>
+		
+		<!-- relations -->
+		<rules>
+			<constraints>
+				<primaryKey field="id"/>
+			</constraints>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="mail" schema="AgadirReferentielContact:referentiel.format" obmObject="AgadirReferentielContact:referentiel.format.Mail" inherits="true">
+		<!-- référentiel -->
+		<field name="fk__type_mail__id" obmField="typeMail" type="Base:Long"/>
+		<field name="adresse" obmField="adresse" type="Base:String"/>
+		<rules>
+			<constraints>
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.type_mail">
+					<foreignKey field="fk__type_mail__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="telephonie" schema="AgadirReferentielContact:referentiel.format" obmObject="AgadirReferentielContact:referentiel.format.Telephonie" inherits="true">
+		<field name="indicatif" obmField="indicatif" type="Base:String"/>
+		<field name="numero" obmField="numero" type="Base:String"/>
+		<!-- référentiel -->
+		<field name="fk__type_telephonie__id" obmField="typeTelephonie" type="Base:Long"/>
+		
+		<rules>
+			<constraints>
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.type_telephonie">
+					<foreignKey field="fk__type_telephonie__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="url" schema="AgadirReferentielContact:referentiel.format" obmObject="AgadirReferentielContact:referentiel.format.URL" inherits="true">
+		
+		<!-- référentiel -->
+		<field name="fk__type_url__id" obmField="typeURL" type="Base:Long"/>
+		<field name="url" obmField="url" type="Base:String"/>
+		<rules>
+			<constraints>
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.type_url">
+					<foreignKey field="fk__type_url__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="adresse" schema="AgadirReferentielContact:referentiel.format" obmObject="AgadirReferentielContact:referentiel.format.Adresse" inherits="true">
+		<!-- attributs -->
+		<field name="numero" obmField="numero"/>
+		<field name="fk__type_repetition__id" obmField="repetition" type="Base:Long"/>
+		<field name="fk__type_voie__id" obmField="typeVoie" type="Base:Long"/>
+		<field name="voie" obmField="voie"/>
+		<field name="complement" obmField="complement"/>
+		<field name="fk__localisation__id" obmField="localisation" type="Base:Long"/>
+		<field name="bp" obmField="bp"/>
+		<field name="cedex" obmField="cedex"/>
+		
+		<!-- référentiel -->
+		<field name="fk__type_adresse__id" obmField="typeAdresse" type="Base:Long"/>
+		<rules>
+			<constraints>
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.type_adresse">
+					<foreignKey field="fk__type_adresse__id" refField="id"/>
+				</foreignKeys>
+				
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.type_repetition">
+					<foreignKey field="fk__type_repetition__id" refField="id"/>
+				</foreignKeys>
+				
+				<foreignKeys refObject="AgadirReferentielGeographique:referentiel.localisation">
+					<foreignKey field="fk__localisation__id" refField="id"/>
+				</foreignKeys>
+				
+				<foreignKeys refObject="AgadirReferentielContact:referentiel.type_voie">
+					<foreignKey field="fk__type_voie__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	
+	<object name="type_communication" schema="AgadirReferentielContact:referentiel.format" obmObject="AgadirReferentielContact:referentiel.format.TypeCommunication" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+</datam>

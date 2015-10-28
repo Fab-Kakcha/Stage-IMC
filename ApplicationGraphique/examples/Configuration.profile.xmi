@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_1YHft2aqEeW-i86-GJQ9ZQ" name="Configuration" metaclassReference="_1YHfy2aqEeW-i86-GJQ9ZQ _1YHfzGaqEeW-i86-GJQ9ZQ">
+  <eAnnotations xmi:id="_1YHfuGaqEeW-i86-GJQ9ZQ" source="Objing">
+    <contents xmi:type="uml:Property" xmi:id="_1YHfuWaqEeW-i86-GJQ9ZQ" name="Module">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_1YHfumaqEeW-i86-GJQ9ZQ" value="b022a933-8445-4c84-b3f2-4671eb751676"/>
+    </contents>
+    <contents xmi:type="uml:Property" xmi:id="_1YHfu2aqEeW-i86-GJQ9ZQ" name="ID">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_1YHfvGaqEeW-i86-GJQ9ZQ" value="73472114-b52a-4dd9-8b02-40620b1c1c35"/>
+    </contents>
+  </eAnnotations>
+  <eAnnotations xmi:id="_1YHfvWaqEeW-i86-GJQ9ZQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_1YHfvmaqEeW-i86-GJQ9ZQ" name="Configuration" nsURI="http:///schemas/Configuration/_1YHftWaqEeW-i86-GJQ9ZQ/0" nsPrefix="Configuration">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_1YHfv2aqEeW-i86-GJQ9ZQ" name="Project">
+        <eAnnotations xmi:id="_1YHfwGaqEeW-i86-GJQ9ZQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_1YHfzWaqEeW-i86-GJQ9ZQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_1YHfwWaqEeW-i86-GJQ9ZQ" name="base_Package" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Package"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_1YHfw2aqEeW-i86-GJQ9ZQ" name="TagConfg">
+        <eAnnotations xmi:id="_1YHfxGaqEeW-i86-GJQ9ZQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_1YHf1GaqEeW-i86-GJQ9ZQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_1YHfxWaqEeW-i86-GJQ9ZQ" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_1YHfx2aqEeW-i86-GJQ9ZQ" name="newST">
+        <eAnnotations xmi:id="_1YHfyGaqEeW-i86-GJQ9ZQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_1YHf22aqEeW-i86-GJQ9ZQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_1YHfyWaqEeW-i86-GJQ9ZQ" name="base_Package" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Package"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:id="_1YHfy2aqEeW-i86-GJQ9ZQ">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+  </elementImport>
+  <elementImport xmi:id="_1YHfzGaqEeW-i86-GJQ9ZQ">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_1YHfzWaqEeW-i86-GJQ9ZQ" name="Project">
+    <eAnnotations xmi:id="_1YHfzmaqEeW-i86-GJQ9ZQ" source="Objing">
+      <contents xmi:type="uml:Property" xmi:id="_1YHfz2aqEeW-i86-GJQ9ZQ" name="ID">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_1YHf0GaqEeW-i86-GJQ9ZQ" value="868d41e4-207b-4cff-ab00-d746c5cd21a7"/>
+      </contents>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_1YHf0WaqEeW-i86-GJQ9ZQ" name="base_Package" association="_1YHf0maqEeW-i86-GJQ9ZQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_1YHf0maqEeW-i86-GJQ9ZQ" name="Package_Project" memberEnd="_1YHf02aqEeW-i86-GJQ9ZQ _1YHf0WaqEeW-i86-GJQ9ZQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_1YHf02aqEeW-i86-GJQ9ZQ" name="extension_Project" type="_1YHfzWaqEeW-i86-GJQ9ZQ" aggregation="composite" association="_1YHf0maqEeW-i86-GJQ9ZQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_1YHf1GaqEeW-i86-GJQ9ZQ" name="TagConfg">
+    <eAnnotations xmi:id="_1YHf1WaqEeW-i86-GJQ9ZQ" source="Objing">
+      <contents xmi:type="uml:Property" xmi:id="_1YHf1maqEeW-i86-GJQ9ZQ" name="ID">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_1YHf12aqEeW-i86-GJQ9ZQ" value="8e8151f0-b41f-42db-ba39-fdc034349b94"/>
+      </contents>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_1YHf2GaqEeW-i86-GJQ9ZQ" name="base_Class" association="_1YHf2WaqEeW-i86-GJQ9ZQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_1YHf2WaqEeW-i86-GJQ9ZQ" name="Class_TagConfg" memberEnd="_1YHf2maqEeW-i86-GJQ9ZQ _1YHf2GaqEeW-i86-GJQ9ZQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_1YHf2maqEeW-i86-GJQ9ZQ" name="extension_TagConfg" type="_1YHf1GaqEeW-i86-GJQ9ZQ" aggregation="composite" association="_1YHf2WaqEeW-i86-GJQ9ZQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_1YHf22aqEeW-i86-GJQ9ZQ" name="newST">
+    <eAnnotations xmi:id="_1YHf3GaqEeW-i86-GJQ9ZQ" source="Objing">
+      <contents xmi:type="uml:Property" xmi:id="_1YHf3WaqEeW-i86-GJQ9ZQ" name="ID">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_1YHf3maqEeW-i86-GJQ9ZQ" value="dcf66a0e-73ce-4c95-8a9b-cabb460949cb"/>
+      </contents>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_1YHf32aqEeW-i86-GJQ9ZQ" name="base_Package" association="_1YHf4GaqEeW-i86-GJQ9ZQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_1YHf4GaqEeW-i86-GJQ9ZQ" name="Package_newST" memberEnd="_1YHf4WaqEeW-i86-GJQ9ZQ _1YHf32aqEeW-i86-GJQ9ZQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_1YHf4WaqEeW-i86-GJQ9ZQ" name="extension_newST" type="_1YHf22aqEeW-i86-GJQ9ZQ" aggregation="composite" association="_1YHf4GaqEeW-i86-GJQ9ZQ"/>
+  </packagedElement>
+</uml:Profile>

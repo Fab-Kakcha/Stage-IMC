@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile name="Role" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ProfileDefinition-1.0.0" xsi:schemaLocation="http://www.imc-fr.com/ProfileDefinition-1.0.0 ../../../../sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/xmi/profile/ProfileDefinition-1.0.0.xsd ">
+
+	<dependencies>
+		<dependency name="Contact"/>
+	</dependencies>
+
+	<profilefile path="Role.profile.xmi"/>
+	
+	<interpreter stereotype="Beneficiaire" domaine="METIER" className="com.imcfr.generateur.profiles.roles.interpreters.roles.BeneficiaireInterpreter"/>
+	<interpreter stereotype="Commanditaire" domaine="METIER" className="com.imcfr.generateur.profiles.roles.interpreters.roles.CommanditaireInterpreter"/>
+	<interpreter stereotype="Operateur" domaine="METIER" className="com.imcfr.generateur.profiles.roles.interpreters.roles.OperateurInterpreter"/>
+	<interpreter stereotype="PorteurProjet" domaine="METIER" className="com.imcfr.generateur.profiles.roles.interpreters.roles.PorteurProjetInterpreter"/>
+	<interpreter stereotype="Tuteur" domaine="METIER" className="com.imcfr.generateur.profiles.roles.interpreters.roles.TuteurInterpreter"/>
+	
+	<interpreter stereotype="TypeBeneficiaire" domaine="METIER" className="com.imcfr.generateur.profiles.roles.interpreters.typeRoles.TypeBeneficiaireInterpreter"/>
+	<interpreter stereotype="TypeCommanditaire" domaine="METIER" className="com.imcfr.generateur.profiles.roles.interpreters.typeRoles.TypeCommanditaireInterpreter"/>
+	<interpreter stereotype="TypeOperateur" domaine="METIER" className="com.imcfr.generateur.profiles.roles.interpreters.typeRoles.TypeOperateurInterpreter"/>
+	<interpreter stereotype="TypePorteurProjet" domaine="METIER" className="com.imcfr.generateur.profiles.roles.interpreters.typeRoles.TypePorteurProjetInterpreter"/>
+	<interpreter stereotype="TypeTuteur" domaine="METIER" className="com.imcfr.generateur.profiles.roles.interpreters.typeRoles.TypeTuteurInterpreter"/>
+	
+	<stereotypeMapping name="Beneficiaire">
+		<box name="AgadirRole"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="Commanditaire">
+		<box name="AgadirRole"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="Operateur">
+		<box name="AgadirRole"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="PorteurProjet">
+		<box name="AgadirRole"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="Tuteur">
+		<box name="AgadirRole"/>
+	</stereotypeMapping>
+	
+	<stereotypeMapping name="TypeBeneficiaire">
+		<box name="AgadirRole"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="TypeCommanditaire">
+		<box name="AgadirRole"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="TypeOperateur">
+		<box name="AgadirRole"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="TypePorteurProjet">
+		<box name="AgadirRole"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="TypeTuteur">
+		<box name="AgadirRole"/>
+	</stereotypeMapping>
+</profile>

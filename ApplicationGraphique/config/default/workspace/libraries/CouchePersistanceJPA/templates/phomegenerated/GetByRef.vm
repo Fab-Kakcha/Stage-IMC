@@ -1,0 +1,68 @@
+## #####
+## Générateur java de la couche persistance IMC
+## Création des méthodes getByRef et getCountByRef
+## 
+## @param $generatedObject le prstm object
+## @param $beanElement le nom de l'interface bean de l'objet
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+##
+## on parcours les champs, si il sont de types ref à un autre objet, on va générer un getByRef
+#foreach ( $field in ${generatedObject.fields.values()} )
+##
+##on recup le field obm
+#set ( $obmField = ${generatedObject.datamObject.obmObject.getField(${field.name})} )
+#firstUpper( $fieldName, ${field.name} )
+    /**
+     * Méthode pour récupére la liste des objets ${beanElement.className}
+     * du champ ${field.name}, dont la référence type est égale au paramètre
+     *
+     * @param em
+     *              l'entity manager
+     * @param ref
+     *              valeur de la référence dont les objets sont à récupérer
+     * 
+     * @return la liste des objets ${beanElement.className} correspondant
+     * 
+     * @throws ${manager.getElement("PException").path}
+     *             si des erreurs se produise lors de l'opération
+     * @throws ${manager.getElement("ExceptionInconnue").path}
+     *             si une erreur inconnue survient
+     */
+    ${manager.getElement("IList").path}<${beanElement.path}>
+            getBy${fieldName}(${manager.getElement("JpaEntityManager").path} em, ${manager.getElement("{0}:{1}.{2}Bean", ${obmField.type}).path} ref)
+            throws ${manager.getElement("PException").path}
+            , ${manager.getElement("ExceptionInconnue").path};
+    
+    /**
+     * Méthode pour récupére le compte des objets ${beanElement.className}
+     * du champ ${field.name}, dont la référence type est égale au paramètre
+     *
+     * @param em
+     *              l'entity manager
+     * @param ref
+     *              valeur de la référence dont les objets sont à récupérer
+     * 
+     * @return le compte des objets ${beanElement.className} correspondant
+     * 
+     * @throws ${manager.getElement("PException").path}
+     *             si des erreurs se produise lors de l'opération
+     * @throws ${manager.getElement("ExceptionInconnue").path}
+     *             si une erreur inconnue survient
+     */
+    ${manager.getElement("Long").path} getCountBy${fieldName}(${manager.getElement("JpaEntityManager").path} em, ${manager.getElement("{0}:{1}.{2}Bean", ${obmField.type}).path} ref)
+            throws ${manager.getElement("PException").path}
+            , ${manager.getElement("ExceptionInconnue").path};
+
+#end

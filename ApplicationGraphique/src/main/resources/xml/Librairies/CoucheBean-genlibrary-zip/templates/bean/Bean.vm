@@ -1,0 +1,84 @@
+## #####
+## Générateur java de la couche bean IMC
+## Création de l'interface des beans
+## 
+## @param generatedObject l'obm object
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 30/09/2009
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+##  on récup le pobject et le pobjectimpl
+#set ( $beanElement = ${manager.getElement("{0}:{1}.{2}Bean", ${generatedObject.modelId})} )
+## si il hérite l'extends est son parent
+#if ( ${generatedObject.obmExtendsName} != "" )
+#set ( $extends = ${manager.getElement("{0}:{1}.{2}Bean", ${generatedObject.obmExtends.modelId}).path} )
+#else
+## si l'objet n'hérite pas d'autre objet, il héritera de Bean<TypeCle> en passant le type de clé en généric
+## sinon il héritera du PObject de l'obm hérité
+##
+## si le nombre d'id de la classe est différent de 1 alors on aura une clé composé
+#if ( ${generatedObject.fieldId.class.simpleName} == "ComposedId" )
+#set ( $cleType = ${manager.getElement("{0}:{1}.PK{2}", ${generatedObject.modelId})} )
+#set ( $extends = ${manager.getElement("Bean").path} )
+#set ( $extends = "${extends}<${cleType.path}>" )
+#else
+## si l'id est pas composé ou composé
+#if ( ${manager.isBaseType(${generatedObject.fieldId.type})} == true )
+#set ( $cleType = ${manager.getElement(${generatedObject.fieldId.type})} )
+#else
+#set ( $cleType = ${manager.getElement("{0}:{1}.{2}Bean", ${generatedObject.fieldId.type})} )
+#end
+#set ( $extends = ${manager.getElement("Bean").path} )
+#set ( $extends = "${extends}<${cleType.path}>" )
+#end
+#end
+##
+## gestion des implémentations
+#set($implementionsDef="")
+#if ($generatedObject.nbImplementations > 0)
+#**##foreach ($implementationObject in $generatedObject.implementationObjectList)
+#**##**##set($implementionsDef="${implementionsDef}, ${manager.getElement('{0}:{1}.{2}Interface', ${implementationObject.modelId}).path}")
+#**##end
+#end
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+package ${beanElement.packageName};
+
+/**
+ * Interface du bean ${generatedObject.completeName}
+ *
+ * @version ${model.version}
+ * @author généré par ${infoGen}
+ */
+public interface ${beanElement.className}
+		extends ${extends}$!{implementionsDef} {
+    
+    /**
+     * le nom du bean pour la factory
+     */
+    String BEAN_NAME = "${generatedObject.name}";
+
+## on génére les constantes
+#foreach ( $constante in  ${generatedObject.constsList} )
+#generate ( "CoucheBean:Bean_Constante" )
+#end
+    
+## si l'objet n'hérite pas on génére un getId
+#if ( ${generatedObject.obmExtendsName} == "" )
+#generate ( "CoucheBean:Bean_GetterSetterId" )
+#end
+## on génére les getter et setter des champs
+#foreach ( $field in  ${generatedObject.fieldsList} )
+#**##if (${field.redefinition} == false && ${field.fromHierarchy} == false)
+#**##**##generate ( "CoucheBean:Bean_GetterSetter" )
+#**##end
+#end
+}

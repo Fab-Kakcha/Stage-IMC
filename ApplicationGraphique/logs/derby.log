@@ -1,0 +1,1407 @@
+ INFO	[2015-10-27 10:55:34,801] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 10:55:34,803] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 10:55:34,803] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 10:55:34,803] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 10:55:34,803] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 10:55:34,804] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 10:55:34,836] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 10:56:03,599] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: /home/hly/Documents/workspace/java/eclipse/kepler/Agadir/ApplicationGraphiqueAgadir/projets/exemples/Application_hassane
+
+ INFO	[2015-10-27 10:58:37,875] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 10:58:37,878] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 10:58:37,878] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 10:58:37,878] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 10:58:37,878] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 10:58:37,880] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 10:58:37,913] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 10:58:50,903] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: /home/hly/Documents/workspace/java/eclipse/kepler/Agadir/ApplicationGraphiqueAgadir/projets/exemples/toto
+
+ INFO	[2015-10-27 11:22:46,217] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 11:22:46,219] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 11:22:46,219] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 11:22:46,219] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 11:22:46,219] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 11:22:46,220] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 11:22:46,254] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 11:23:12,703] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: /home/hly/Documents/workspace/java/eclipse/kepler/Agadir/ApplicationGraphiqueAgadir/projets/exemples/toto2
+
+ INFO	[2015-10-27 11:23:20,862] [AWT-EventQueue-0] (MenuPrincipalController.java:200)
+     	Ouverture du: Projet [nom=toto2, chemin=/home/hly/Documents/workspace/java/eclipse/kepler/Agadir/ApplicationGraphiqueAgadir/projets/exemples/toto2]
+
+ INFO	[2015-10-27 11:23:51,169] [AWT-EventQueue-0] (Utils.java:65)
+     	Dossier supprimé: /home/hly/Documents/workspace/java/eclipse/kepler/Agadir/ApplicationGraphiqueAgadir/projets/exemples/toto2
+
+ INFO	[2015-10-27 11:23:59,502] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: /home/hly/Documents/workspace/java/eclipse/kepler/Agadir/ApplicationGraphiqueAgadir/projets/exemples/toto2
+
+ INFO	[2015-10-27 11:24:05,161] [AWT-EventQueue-0] (Utils.java:65)
+     	Dossier supprimé: /home/hly/Documents/workspace/java/eclipse/kepler/Agadir/ApplicationGraphiqueAgadir/projets/exemples/toto2
+
+ INFO	[2015-10-27 12:12:41,653] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 12:12:41,655] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 12:12:41,655] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 12:12:41,655] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 12:12:41,656] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 12:12:41,656] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 12:12:41,685] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 14:19:29,311] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 14:19:29,311] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 14:19:29,311] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 14:19:29,311] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 14:19:29,311] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 14:19:29,311] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 14:19:29,374] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 15:58:47,425] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 15:58:47,425] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 15:58:47,425] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 15:58:47,425] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 15:58:47,425] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 15:58:47,425] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 15:58:47,457] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 17:48:00,598] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 17:48:00,598] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 17:48:00,598] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 17:48:00,598] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 17:48:00,598] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 17:48:00,598] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 17:48:00,631] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 17:54:58,072] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 17:54:58,088] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 17:54:58,088] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 17:54:58,088] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 17:54:58,088] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 17:54:58,088] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 17:54:58,104] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 18:04:34,774] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 18:04:34,774] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 18:04:34,774] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 18:04:34,774] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 18:04:34,774] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:04:34,774] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:04:34,807] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 18:04:45,820] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\exemples\projet
+
+ INFO	[2015-10-27 18:04:48,551] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=projet, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\exemples\projet]
+
+ INFO	[2015-10-27 18:05:37,865] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=projet, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\exemples\projet]
+
+ INFO	[2015-10-27 18:05:42,672] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=projet, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\exemples\projet]
+
+ INFO	[2015-10-27 18:05:47,838] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=projet, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\exemples\projet]
+
+ INFO	[2015-10-27 18:05:51,350] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=projet, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\exemples\projet]
+
+ INFO	[2015-10-27 18:19:39,072] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 18:19:39,072] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 18:19:39,072] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 18:19:39,072] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 18:19:39,072] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:19:39,072] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:19:39,088] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 18:19:51,729] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\exemples\projet1
+
+ INFO	[2015-10-27 18:19:56,473] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=projet1, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\exemples\projet1]
+
+ INFO	[2015-10-27 18:20:25,212] [AWT-EventQueue-0] (Utils.java:65)
+     	Dossier supprimé: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\exemples\projet1
+
+ INFO	[2015-10-27 18:23:54,288] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 18:23:54,288] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 18:23:54,288] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 18:23:54,288] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 18:23:54,288] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:23:54,288] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:23:54,319] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 18:24:01,997] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet
+
+ INFO	[2015-10-27 18:24:03,683] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=projet, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet]
+
+ INFO	[2015-10-27 18:26:33,629] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 18:26:33,629] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 18:26:33,629] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 18:26:33,629] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 18:26:33,629] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:26:33,629] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:26:33,661] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 18:26:44,250] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\fffffff
+
+ INFO	[2015-10-27 18:26:45,579] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=fffffff, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\fffffff]
+
+ INFO	[2015-10-27 18:28:31,386] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 18:28:31,401] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 18:28:31,401] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 18:28:31,401] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 18:28:31,401] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:28:31,401] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:28:31,434] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 18:28:39,407] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet1
+
+ INFO	[2015-10-27 18:28:40,282] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=projet1, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet1]
+
+ INFO	[2015-10-27 18:30:13,442] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 18:30:13,442] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 18:30:13,442] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 18:30:13,442] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 18:30:13,442] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:30:13,442] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:30:13,474] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 18:30:17,593] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111
+
+ INFO	[2015-10-27 18:30:18,343] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=1111, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111]
+
+ INFO	[2015-10-27 18:32:55,660] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 18:32:55,660] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 18:32:55,660] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 18:32:55,660] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 18:32:55,660] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:32:55,660] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:32:55,677] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 18:33:01,358] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111
+
+ INFO	[2015-10-27 18:33:02,061] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=1111, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111]
+
+ INFO	[2015-10-27 18:37:40,865] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 18:37:40,865] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 18:37:40,865] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 18:37:40,865] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 18:37:40,865] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:37:40,865] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:37:40,882] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 18:37:46,466] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111
+
+ INFO	[2015-10-27 18:37:47,419] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=1111, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111]
+
+ INFO	[2015-10-27 18:38:11,324] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=1111, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111]
+
+ INFO	[2015-10-27 18:43:26,697] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 18:43:26,697] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 18:43:26,697] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 18:43:26,697] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 18:43:26,697] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:43:26,697] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:43:26,729] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 18:43:36,265] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\2222
+
+ INFO	[2015-10-27 18:43:37,342] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=2222, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\2222]
+
+ INFO	[2015-10-27 18:58:01,256] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 18:58:01,256] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 18:58:01,256] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 18:58:01,256] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 18:58:01,256] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:58:01,256] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 18:58:01,288] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 18:58:13,805] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111
+
+ INFO	[2015-10-27 18:58:14,664] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=1111, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111]
+
+ INFO	[2015-10-27 18:58:31,201] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=1111, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111]
+
+ INFO	[2015-10-27 19:00:28,675] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 19:00:28,675] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 19:00:28,675] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 19:00:28,675] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 19:00:28,675] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 19:00:28,675] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 19:00:28,707] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 19:00:34,982] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\aaaaaa
+
+ INFO	[2015-10-27 19:00:36,168] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=aaaaaa, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\aaaaaa]
+
+ INFO	[2015-10-27 19:03:22,679] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 19:03:22,679] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 19:03:22,679] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 19:03:22,679] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 19:03:22,679] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 19:03:22,679] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 19:03:22,711] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 19:03:29,719] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\aaaaa
+
+ INFO	[2015-10-27 19:03:30,904] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=aaaaa, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\aaaaa]
+
+ INFO	[2015-10-27 19:05:20,742] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 19:05:20,742] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 19:05:20,742] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 19:05:20,742] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 19:05:20,742] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 19:05:20,742] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 19:05:20,759] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 19:05:42,372] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111
+
+ INFO	[2015-10-27 19:05:43,528] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=1111, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111]
+
+ INFO	[2015-10-27 19:08:40,286] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 19:08:40,286] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 19:08:40,286] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 19:08:40,286] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 19:08:40,286] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 19:08:40,286] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 19:08:40,318] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 19:08:44,670] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111
+
+ INFO	[2015-10-27 19:08:45,529] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=1111, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111]
+
+ INFO	[2015-10-27 19:10:40,720] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-27 19:10:40,720] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-27 19:10:40,720] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-27 19:10:40,720] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-27 19:10:40,720] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 19:10:40,720] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-27 19:10:40,736] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-27 19:10:46,526] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111111
+
+ INFO	[2015-10-27 19:10:47,401] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=1111111, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111111]
+
+ INFO	[2015-10-28 09:12:48,415] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 09:12:48,428] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 09:12:48,428] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 09:12:48,428] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 09:12:48,429] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 09:12:48,430] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 09:12:48,465] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 09:13:09,806] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet
+
+ INFO	[2015-10-28 09:13:11,441] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=projet, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet]
+
+ INFO	[2015-10-28 09:17:55,634] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 09:17:55,636] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 09:17:55,636] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 09:17:55,636] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 09:17:55,637] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 09:17:55,638] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 09:17:55,668] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 09:18:00,749] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\11111
+
+ INFO	[2015-10-28 09:18:01,461] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=11111, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\11111]
+
+ INFO	[2015-10-28 09:23:42,847] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 09:23:42,849] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 09:23:42,849] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 09:23:42,849] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 09:23:42,850] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 09:23:42,851] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 09:23:42,882] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 09:23:47,765] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111
+
+ INFO	[2015-10-28 09:23:48,876] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=1111, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\1111]
+
+ INFO	[2015-10-28 09:28:30,969] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 09:28:30,971] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 09:28:30,971] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 09:28:30,971] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 09:28:30,971] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 09:28:30,972] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 09:28:31,005] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 09:28:46,171] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet
+
+ INFO	[2015-10-28 09:28:48,321] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=projet, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet]
+
+ INFO	[2015-10-28 09:36:04,927] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 09:36:04,928] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 09:36:04,928] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 09:36:04,929] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 09:36:04,929] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 09:36:04,930] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 09:36:04,963] [main] (Main.java:48)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 09:36:20,187] [AWT-EventQueue-0] (Utils.java:37)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet
+
+ INFO	[2015-10-28 09:36:21,130] [AWT-EventQueue-0] (MenuPrincipalController.java:210)
+     	Ouverture du: Projet [nom=projet, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet]
+
+ INFO	[2015-10-28 09:55:51,070] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 09:55:51,086] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 09:55:51,086] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 09:55:51,086] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 09:55:51,086] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 09:55:51,086] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 09:55:51,118] [main] (Main.java:54)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 10:29:23,561] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 10:29:23,561] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 10:29:23,561] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 10:29:23,561] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 10:29:23,561] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 10:29:23,561] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 10:29:23,593] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 10:29:30,398] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\11121
+
+ INFO	[2015-10-28 10:29:36,218] [AWT-EventQueue-0] (BDDProjet.java:31)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@1239857243 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\11121\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 10:33:06,457] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 10:33:06,457] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 10:33:06,457] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 10:33:06,457] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 10:33:06,457] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 10:33:06,457] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 10:33:06,490] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 10:33:17,372] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\popo
+
+ INFO	[2015-10-28 10:33:23,161] [AWT-EventQueue-0] (BDDProjet.java:31)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@676282177 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\popo\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 10:57:02,442] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 10:57:02,442] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 10:57:02,442] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 10:57:02,442] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 10:57:02,442] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 10:57:02,442] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 10:57:02,474] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 10:57:14,302] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\aza
+
+ INFO	[2015-10-28 10:57:19,421] [AWT-EventQueue-0] (BDDProjet.java:45)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@1345809017 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\aza\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 10:57:36,760] [AWT-EventQueue-0] (MenuPrincipalController.java:213)
+     	Ouverture du: Projet [nom=aza, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\aza]
+
+ INFO	[2015-10-28 11:31:02,290] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 11:31:02,290] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 11:31:02,290] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 11:31:02,290] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 11:31:02,290] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 11:31:02,290] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 11:31:02,322] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 11:31:12,816] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet1
+
+ INFO	[2015-10-28 11:31:18,875] [SwingWorker-pool-3-thread-1] (BDDProjet.java:45)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@1757301157 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet1\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 11:31:38,947] [AWT-EventQueue-0] (MenuPrincipalController.java:214)
+     	Ouverture du: Projet [nom=projet1, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet1]
+
+ INFO	[2015-10-28 12:24:27,231] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 12:24:27,231] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 12:24:27,231] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 12:24:27,231] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 12:24:27,231] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 12:24:27,231] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 12:24:27,263] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 12:24:38,984] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\poyre
+
+ INFO	[2015-10-28 12:24:44,768] [SwingWorker-pool-3-thread-1] (BDDProjet.java:46)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@681028613 (XID = 166), (SESSIONID = 1), (DATABASE = null\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 12:26:30,273] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 12:26:30,288] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 12:26:30,288] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 12:26:30,288] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 12:26:30,288] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 12:26:30,288] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 12:26:30,305] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 12:26:38,559] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet
+
+ INFO	[2015-10-28 12:26:38,559] [AWT-EventQueue-0] (MenuPrincipalController.java:580)
+     	Projet [nom=projet, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet, conn=null]
+
+ INFO	[2015-10-28 12:26:38,841] [SwingWorker-pool-3-thread-1] (BDDProjet.java:46)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@803266379 (XID = 13), (SESSIONID = 1), (DATABASE = null\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 13:46:50,836] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 13:46:50,836] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 13:46:50,836] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 13:46:50,836] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 13:46:50,836] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 13:46:50,836] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 13:46:50,868] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 13:46:57,842] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\poto
+
+ INFO	[2015-10-28 13:46:57,842] [AWT-EventQueue-0] (MenuPrincipalController.java:580)
+     	Projet [nom=poto, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\poto, conn=null]
+
+ INFO	[2015-10-28 13:46:58,077] [SwingWorker-pool-3-thread-1] (BDDProjet.java:46)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@475834058 (XID = 14), (SESSIONID = 1), (DATABASE = null\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 13:47:55,409] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 13:47:55,409] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 13:47:55,409] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 13:47:55,409] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 13:47:55,409] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 13:47:55,409] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 13:47:55,442] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 13:47:59,515] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\p
+
+ INFO	[2015-10-28 13:47:59,515] [AWT-EventQueue-0] (MenuPrincipalController.java:580)
+     	Projet [nom=p, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\p, conn=null]
+
+ INFO	[2015-10-28 13:48:05,496] [SwingWorker-pool-3-thread-1] (BDDProjet.java:46)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@263451123 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\p\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 13:55:59,349] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 13:55:59,349] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 13:55:59,349] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 13:55:59,349] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 13:55:59,349] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 13:55:59,349] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 13:55:59,381] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 13:56:04,703] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\p
+
+ INFO	[2015-10-28 13:56:10,591] [SwingWorker-pool-3-thread-1] (BDDProjet.java:46)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@1696289432 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\p\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 13:56:10,639] [AWT-EventQueue-0] (MenuPrincipalController.java:589)
+     	Projet [nom=p, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\p, conn=org.apache.derby.impl.jdbc.EmbedConnection40@1696289432 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\p\.metadata\bdd), (DRDAID = null) ]
+
+ INFO	[2015-10-28 14:15:01,100] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 14:15:01,100] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 14:15:01,100] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 14:15:01,100] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 14:15:01,100] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 14:15:01,100] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 14:15:01,132] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 14:15:11,893] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet
+
+ INFO	[2015-10-28 14:15:17,451] [SwingWorker-pool-3-thread-1] (BDDProjet.java:46)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@2128532959 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 14:15:17,499] [AWT-EventQueue-0] (MenuPrincipalController.java:592)
+     	Projet [nom=projet, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet, conn=org.apache.derby.impl.jdbc.EmbedConnection40@2128532959 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet\.metadata\bdd), (DRDAID = null) ]
+
+ INFO	[2015-10-28 14:16:11,867] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 14:16:11,867] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 14:16:11,867] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 14:16:11,867] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 14:16:11,867] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 14:16:11,867] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 14:16:11,900] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 14:16:21,952] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet1
+
+ INFO	[2015-10-28 14:16:27,855] [SwingWorker-pool-3-thread-1] (BDDProjet.java:46)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@1679628243 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet1\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 14:16:27,903] [AWT-EventQueue-0] (MenuPrincipalController.java:592)
+     	Projet [nom=projet1, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet1, conn=org.apache.derby.impl.jdbc.EmbedConnection40@1679628243 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet1\.metadata\bdd), (DRDAID = null) ]
+
+ INFO	[2015-10-28 14:16:27,981] [AWT-EventQueue-0] (MenuPrincipalController.java:598)
+     	chargement fini
+
+ INFO	[2015-10-28 14:16:42,583] [AWT-EventQueue-0] (MenuPrincipalController.java:217)
+     	Ouverture du: Projet [nom=projet1, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet1, conn=null]
+
+ INFO	[2015-10-28 14:17:55,196] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\rere
+
+ INFO	[2015-10-28 14:17:57,820] [AWT-EventQueue-0] (MenuPrincipalController.java:217)
+     	Ouverture du: Projet [nom=rere, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\rere, conn=null]
+
+ INFO	[2015-10-28 14:18:00,507] [SwingWorker-pool-3-thread-2] (BDDProjet.java:46)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@323779469 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\rere\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 14:18:00,555] [AWT-EventQueue-0] (MenuPrincipalController.java:592)
+     	Projet [nom=rere, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\rere, conn=org.apache.derby.impl.jdbc.EmbedConnection40@323779469 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\rere\.metadata\bdd), (DRDAID = null) ]
+
+ INFO	[2015-10-28 14:18:00,664] [AWT-EventQueue-0] (MenuPrincipalController.java:598)
+     	chargement fini
+
+ INFO	[2015-10-28 14:18:18,016] [AWT-EventQueue-0] (MenuPrincipalController.java:217)
+     	Ouverture du: Projet [nom=projet1, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet1, conn=null]
+
+ INFO	[2015-10-28 14:50:26,701] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 14:50:26,701] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 14:50:26,701] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 14:50:26,701] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 14:50:26,701] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 14:50:26,701] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 14:50:26,733] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 14:50:39,502] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\popo
+
+ INFO	[2015-10-28 14:50:42,219] [AWT-EventQueue-0] (MenuPrincipalController.java:216)
+     	Ouverture du: Projet [nom=popo, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\popo]
+
+ INFO	[2015-10-28 14:50:45,604] [SwingWorker-pool-3-thread-1] (BDDProjet.java:46)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@406157372 (XID = 167), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\popo\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 14:50:45,604] [AWT-EventQueue-0] (BDDProjet.java:46)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@2001343019 (XID = 169), (SESSIONID = 3), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\popo\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 14:50:45,746] [AWT-EventQueue-0] (MenuPrincipalController.java:599)
+     	chargement fini
+
+ INFO	[2015-10-28 14:51:33,700] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 14:51:33,700] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 14:51:33,700] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 14:51:33,700] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 14:51:33,700] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 14:51:33,700] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 14:51:33,732] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 14:51:40,784] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\pipi
+
+ INFO	[2015-10-28 14:51:47,034] [SwingWorker-pool-3-thread-1] (BDDProjet.java:46)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@535757372 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\pipi\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 14:51:47,207] [AWT-EventQueue-0] (MenuPrincipalController.java:599)
+     	chargement fini
+
+ INFO	[2015-10-28 14:51:49,796] [AWT-EventQueue-0] (MenuPrincipalController.java:216)
+     	Ouverture du: Projet [nom=pipi, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\pipi]
+
+ INFO	[2015-10-28 14:51:49,796] [AWT-EventQueue-0] (BDDProjet.java:46)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@1296787755 (XID = 188), (SESSIONID = 3), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\pipi\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 14:59:13,103] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 14:59:13,103] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 14:59:13,103] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 14:59:13,103] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 14:59:13,103] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 14:59:13,103] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 14:59:13,136] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 14:59:19,163] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\popo
+
+ INFO	[2015-10-28 14:59:21,520] [AWT-EventQueue-0] (MenuPrincipalController.java:216)
+     	Ouverture du: Projet [nom=popo, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\popo]
+
+ INFO	[2015-10-28 14:59:25,662] [AWT-EventQueue-0] (MenuPrincipalController.java:599)
+     	chargement fini
+
+ INFO	[2015-10-28 15:23:10,522] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 15:23:10,522] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 15:23:10,522] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 15:23:10,522] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 15:23:10,522] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 15:23:10,522] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 15:23:10,554] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 15:23:17,599] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\azer
+
+ INFO	[2015-10-28 15:23:23,759] [SwingWorker-pool-3-thread-1] (BDDProjet.java:45)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@297595244 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\azer\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 15:23:23,900] [AWT-EventQueue-0] (MenuPrincipalController.java:604)
+     	chargement fini
+
+ INFO	[2015-10-28 15:23:50,899] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\123
+
+ INFO	[2015-10-28 15:23:51,744] [AWT-EventQueue-0] (MenuPrincipalController.java:221)
+     	Ouverture du: Projet [nom=123, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\123]
+
+ INFO	[2015-10-28 15:23:57,502] [SwingWorker-pool-3-thread-2] (BDDProjet.java:45)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@1740171089 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\123\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 15:23:57,612] [AWT-EventQueue-0] (MenuPrincipalController.java:604)
+     	chargement fini
+
+ INFO	[2015-10-28 16:36:38,581] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 16:36:38,581] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 16:36:38,581] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 16:36:38,581] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 16:36:38,581] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 16:36:38,581] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 16:36:38,613] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 16:36:47,294] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet1
+
+ INFO	[2015-10-28 16:36:53,227] [SwingWorker-pool-3-thread-1] (BDDProjet.java:45)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@1161130003 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet1\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 16:36:53,352] [AWT-EventQueue-0] (MenuPrincipalController.java:611)
+     	chargement fini
+
+ INFO	[2015-10-28 16:41:04,132] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 16:41:04,132] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 16:41:04,132] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 16:41:04,132] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 16:41:04,148] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 16:41:04,148] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 16:41:04,180] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 16:41:12,510] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet1
+
+ INFO	[2015-10-28 16:41:18,696] [SwingWorker-pool-3-thread-1] (BDDProjet.java:45)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@959470844 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\projet1\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 16:41:18,822] [AWT-EventQueue-0] (MenuPrincipalController.java:611)
+     	chargement fini
+
+ INFO	[2015-10-28 16:43:52,906] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 16:43:52,906] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 16:43:52,906] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 16:43:52,906] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 16:43:52,906] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 16:43:52,906] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 16:43:52,938] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 16:44:05,067] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\11111
+
+ INFO	[2015-10-28 16:44:10,918] [SwingWorker-pool-3-thread-1] (BDDProjet.java:45)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@1434202265 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\11111\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 16:44:11,030] [AWT-EventQueue-0] (MenuPrincipalController.java:611)
+     	chargement fini
+
+ INFO	[2015-10-28 16:44:14,072] [AWT-EventQueue-0] (MenuPrincipalController.java:222)
+     	Ouverture du: Projet [nom=11111, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\11111]
+
+ INFO	[2015-10-28 16:46:48,000] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 16:46:48,000] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 16:46:48,000] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 16:46:48,000] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 16:46:48,000] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 16:46:48,000] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 16:46:48,033] [main] (Main.java:56)
+     	Lancement de l'application graphique
+
+ INFO	[2015-10-28 16:47:15,011] [AWT-EventQueue-0] (Utils.java:39)
+     	Dossier crée: C:\Users\fkakcha\workspace\ApplicationGraphique\projets\pooi
+
+ INFO	[2015-10-28 16:47:21,134] [SwingWorker-pool-3-thread-1] (BDDProjet.java:45)
+     	org.apache.derby.impl.jdbc.EmbedConnection40@1149514549 (XID = 166), (SESSIONID = 1), (DATABASE = C:\Users\fkakcha\workspace\ApplicationGraphique\projets\pooi\.metadata\bdd), (DRDAID = null) 
+
+ INFO	[2015-10-28 16:47:21,291] [AWT-EventQueue-0] (MenuPrincipalController.java:616)
+     	chargement fini
+
+ INFO	[2015-10-28 16:47:33,637] [AWT-EventQueue-0] (MenuPrincipalController.java:222)
+     	Ouverture du: Projet [nom=pooi, chemin=C:\Users\fkakcha\workspace\ApplicationGraphique\projets\pooi]
+
+ INFO	[2015-10-28 17:40:26,172] [main] (Log.java:93)
+     	EnvProperties : Chargement des propriétés de l''environnement
+
+ INFO	[2015-10-28 17:40:26,172] [main] (Log.java:93)
+     	EnvProperties : Encodage : UTF-8
+
+ INFO	[2015-10-28 17:40:26,172] [main] (Log.java:93)
+     	EnvProperties : Langue : fr
+
+ INFO	[2015-10-28 17:40:26,172] [main] (Log.java:93)
+     	EnvProperties : Pays : FR
+
+ INFO	[2015-10-28 17:40:26,172] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier config/codeGenerator.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 17:40:26,172] [main] (Log.java:93)
+     	PropertiesManager : Chargement du fichier classpath:com/imcfr/generateur/sax/XsdLocation.properties dans le manager de propriétés
+
+ INFO	[2015-10-28 17:40:26,204] [main] (Main.java:56)
+     	Lancement de l'application graphique
+

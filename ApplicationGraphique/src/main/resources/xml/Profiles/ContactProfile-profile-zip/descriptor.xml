@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile name="Contact" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ProfileDefinition-1.0.0" xsi:schemaLocation="http://www.imc-fr.com/ProfileDefinition-1.0.0 ../../../../sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/xmi/profile/ProfileDefinition-1.0.0.xsd ">
+
+	<profilefile path="Contact.profile.xmi"/>
+	
+	<interpreter stereotype="Contact" domaine="METIER" className="com.imcfr.generateur.profiles.contact.interpreters.ContactInterpreter"/>
+	<interpreter stereotype="Etablissement" domaine="METIER" className="com.imcfr.generateur.profiles.contact.interpreters.EtablissementInterpreter"/>
+	<interpreter stereotype="Entreprise" domaine="METIER" className="com.imcfr.generateur.profiles.contact.interpreters.EntrepriseInterpreter"/>
+	<interpreter stereotype="EntiteRegionale" domaine="METIER" className="com.imcfr.generateur.profiles.contact.interpreters.EntiteRegionaleInterpreter"/>
+	<interpreter stereotype="EntiteDepartementale" domaine="METIER" className="com.imcfr.generateur.profiles.contact.interpreters.EntiteDepartementaleInterpreter"/>
+	<interpreter stereotype="EntiteNationale" domaine="METIER" className="com.imcfr.generateur.profiles.contact.interpreters.EntiteNationaleInterpreter"/>
+	<interpreter stereotype="Personne" domaine="METIER" className="com.imcfr.generateur.profiles.contact.interpreters.PersonneInterpreter"/>
+	
+	<stereotypeMapping name="Contact">
+		<box name="AgadirContact"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="Entreprise">
+		<box name="AgadirContact"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="Etablissement">
+		<box name="AgadirContact"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="EntiteRegionale">
+		<box name="AgadirContact"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="EntiteDepartementale">
+		<box name="AgadirContact"/>
+	</stereotypeMapping>
+	<stereotypeMapping name="EntiteNationale">
+		<box name="AgadirContact"/>
+	</stereotypeMapping>
+	
+	<stereotypeMapping name="Personne">
+		<box name="AgadirContact"/>
+	</stereotypeMapping>
+</profile>

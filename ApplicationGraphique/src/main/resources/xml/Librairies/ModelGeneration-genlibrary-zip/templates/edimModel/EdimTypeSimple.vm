@@ -1,0 +1,37 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param element (com.imcfr.generateur.model.edimodel.TypeSimple)
+## 
+## #####
+##
+#set($ets_inherits="")
+#if ("$!{element.inherits}" != "")
+#**##set($ets_inherits=" inherits=${Q}${element.inherits}${Q}")
+#end
+	<typeSimple name="${element.name}"$!{ets_inherits}>
+#**##if ("$!{element.definition}" != "")
+#**##**##set($etsd_attr="")
+#**##**##if (${element.definition.definition.name()} == "LIST" && "$!{element.definition.itemType}" != "")
+#**##**##**##set($etsd_attr=" itemType=${Q}${element.definition.itemType}${Q}")
+#**##**##elseif (${element.definition.definition.name()} == "UNION" && "$!{element.definition.memberTypesString}" != "")
+#**##**##**##set($etsd_attr=" memberTypes=${Q}${element.definition.memberTypesString}${Q}")
+#**##**##elseif (${element.definition.definition.name()} == "RESTRICTION" && "$!{element.definition.base}" != "")
+#**##**##**##set($etsd_attr=" base=${Q}${element.definition.base}${Q}")
+#**##**##end
+#**##**###
+#**##**##if ("$!{element.definition.xsdDefinition}" != "")
+		<${element.definition.definition.name().toLowerCase()}$!{etsd_attr} xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			$!{element.definition.xsdDefinition.replaceAll("<([^/])", "<xs:$1").replaceAll("</", "</xs:")}
+		</${element.definition.definition.name().toLowerCase()}>
+#**##**##else
+		<${element.definition.definition.name().toLowerCase()}$!{etsd_attr}/>
+#**##**##end
+#**##end
+#**##if (${element.mixed})
+
+#**##**##foreach ($attr in ${element.attributesList})
+#**##**##**##generate("ModelGeneration:EdimTypeAttribute")
+#**##**##end
+#**##end
+	</typeSimple>

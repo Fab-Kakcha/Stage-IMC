@@ -1,16 +1,20 @@
 package view;
 
-import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
 
+/**
+ * Cette classe définit l'UI qui permet de créer un projet.
+ * @author fkakcha
+ *
+ */
 public class CreerProjetUI extends JDialog{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
     // Variables declaration - do not modify                     
@@ -21,18 +25,19 @@ public class CreerProjetUI extends JDialog{
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration 
+    
     
     public CreerProjetUI(){
     	
     	initComponents();
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-
+    	
         setModal(true);
         setAlwaysOnTop(false);
         setModalityType(ModalityType.APPLICATION_MODAL);
@@ -45,7 +50,14 @@ public class CreerProjetUI extends JDialog{
         jButton4 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-
+        jProgressBar1 = new javax.swing.JProgressBar();
+       
+        this.addComponentListener(new ComponentAdapter(){     	
+         	public void componentShown(ComponentEvent ce){        		
+         		jTextField1.requestFocusInWindow();
+         	}
+         });
+        
         setTitle("Nouveau projet");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DejaVu Sans", 1, 14))); // NOI18N
@@ -54,6 +66,8 @@ public class CreerProjetUI extends JDialog{
 
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("*");
+
+        jProgressBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -67,6 +81,9 @@ public class CreerProjetUI extends JDialog{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(108, 108, 108))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,7 +93,8 @@ public class CreerProjetUI extends JDialog{
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel4))
-                .addGap(74, 74, 74))
+                .addGap(60, 60, 60)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jButton3.setText("Créer");
@@ -155,8 +173,12 @@ public class CreerProjetUI extends JDialog{
     }
     
     public void addJButton4Listener(ActionListener action){
-    	jButton4.setActionCommand("Annuler projet");
+    	jButton4.setActionCommand("Annuler creation projet");
     	jButton4.addActionListener(action);
+    }
+    
+    public JProgressBar getJProgressBar(){    	
+    	return jProgressBar1;
     }
     
     public boolean verificationNomProjet(){

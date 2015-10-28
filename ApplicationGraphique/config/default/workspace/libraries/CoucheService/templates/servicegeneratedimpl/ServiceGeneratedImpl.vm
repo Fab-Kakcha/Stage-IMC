@@ -1,0 +1,102 @@
+## ####
+## Générateur java de la couche service IMC
+## Création de l'implémentation générée non modifiable des services
+##
+## $generatedObject = prstm object
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## ####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pobject
+#set ( $obmObject = ${generatedObject.datamObject.obmObject} )
+#set ( $mElementHome = ${manager.getElement("{0}:{1}.S{2}Generated", ${obmObject.modelId})} )
+#set ( $mElementHomeImpl = ${manager.getElement("{0}:{1}.S{2}GeneratedImpl", ${obmObject.modelId})} )
+#set ( $pElement = ${manager.getElement("{0}:{1}.{2}Bean", ${obmObject.modelId})} )
+#set ( $pElementHome = ${manager.getElement("{0}:{1}.PHome{2}", ${obmObject.modelId})} )
+##
+## si le nombre d'id de la classe est différent de 1 alors on aura une clé composé
+#if ( ${obmObject.fieldId.class.simpleName} == "ComposedId" )
+##
+#set ( $cleType = ${manager.getElement("{0}:{1}.PK{2}", ${obmObject.modelId})} )
+#else
+#if ( ${manager.isBaseType(${obmObject.fieldId.type})} == true )
+#set ( $cleType = ${manager.getElement(${obmObject.fieldId.type})} )
+#else
+#set ( $cleType = ${manager.getElement("{0}:{1}.{2}Bean", ${obmObject.fieldId.type})} )
+#end
+#end
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+package ${mElementHomeImpl.packageName};
+
+/**
+ * Classe d'implémentation du home de l'objet persistant ${obmObject.completeName}
+ *
+ * @version ${model.version}
+ * @author généré par ${infoGen}
+ */
+public abstract class ${mElementHomeImpl.className}
+        extends ${manager.getElement("ServiceCrudImpl").path}<
+            ${pElement.path}, ${cleType.path}>
+        implements ${mElementHome.path} {
+
+    /**
+     * Serial version uid
+     */
+    private static final long serialVersionUID = 1L;
+    
+    /**
+     * Constructeur
+     * @throws ${manager.getElement("FactoryException").path}
+     *                          Si des erreurs lors de la récupération du home persistant
+     */
+    public ${mElementHomeImpl.className}()
+            throws ${manager.getElement("FactoryException").path} {
+        super(${pElementHome.path}.PHOME_NAME);
+    }
+##
+##
+##
+## méthode getname
+
+    /* (non-Javadoc)
+     * @see com.imcfr.commun.persistance.PHome#getName()
+     */
+    @Override
+    public String getName() {
+        return "Service_${generatedObject.refName}";
+    }
+    
+#generate ("CoucheService:ServiceGeneratedImpl_Orders")
+    
+#generate ("CoucheService:ServiceGeneratedImpl_GetByRef")
+    
+    /* (non-Javadoc)
+     * @see ${manager.getElement("ServiceCrudImpl").path}${esc.h}validate(${pElement.path})
+     */
+    @Override
+	public ${manager.getElement("ValidateurResults").path} validate(${pElement.path} objetPersistant)
+            throws ${manager.getElement("SException").path}
+            , ${manager.getElement("ExceptionInconnue").path} {
+		/*try {
+			${manager.getElement("Validateur").path} v = new ${manager.getElement("Validateur").path}(
+					"cheminvalidators.xml", "${obmObject.name}");
+			return v.execute(objetPersistant);
+		} catch (IOException e) {
+			throw new ${manager.getElement("SException").path}(e.getMessage(), e);
+		} catch (SAXException e) {
+			throw new ${manager.getElement("SException").path}(e.getMessage(), e);
+		} catch (Exception e) {
+			throw new ${manager.getElement("ExceptionInconnue").path}(e);
+		}*/
+		return new ${manager.getElement("ValidateurResults").path}("${obmObject.name}");
+	}
+}

@@ -1,0 +1,39 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param typeSimple (com.imcfr.generateur.model.edimodel.TypeSimple)
+## 
+## #####
+<!-- ${typeSimple.name} -->
+#set($st_name=$typeSimple.name)
+#if ($typeSimple.mixed)
+#**##set($st_name="${typeSimple.simpleName}")
+#end
+#if ("$!{typeSimple.inherits}" != "")
+#**##set($st_name="${typeSimple.parent.name}")
+#end
+#if ("$!{typeSimple.inherits}" == "")
+	<simpleType name="${st_name}">
+#**##**##set($st_definition = $typeSimple.definition)
+#**##**##if ($st_definition.definition == "LIST")
+#**##**##**##generate("XSD:List")
+#**##**##elseif ($st_definition.definition == "RESTRICTION")
+#**##**##**##generate("XSD:Restriction")
+#**##**##elseif ($st_definition.definition == "UNION")
+#**##**##**##generate("XSD:Union")
+#**##**##end
+	</simpleType>
+#end
+#if ($typeSimple.mixed || "$!{typeSimple.inherits}" != "")
+
+#**##set($t_indent="				")
+	<complexType name="${typeSimple.name}">
+		<simpleContent>
+			<extension base="${model.targetNamespace.alias}:${st_name}">
+#**##**##**##**##foreach ($t_attribute in $typeSimple.attributesList)
+#**##**##**##**##**##generate("XSD:AttributeBase")
+#**##**##**##**##end
+			</extension>
+		</simpleContent>
+	</complexType>
+#end

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prstm name="AgadirMesurePrstm" project="AgadirMesure" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/PrstmModel/src/main/resources/com/imcfr/generateur/sax/persistancemodel/PersistanceModelDefinition-2.0.0.xsd ">
+
+	<object name="ObjetProcedure" pack="AgadirMesure:mesure" datamObject="AgadirMesure:mesure.objet_procedure" extendsType="ClassConcrete">
+		<!-- référentiel -->
+		<manyToOne name="etat">
+			<references>
+				<reference datamField="fk__etat__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+		<manyToOne name="nature">
+			<references>
+				<reference datamField="fk__nature__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+		<!-- relations -->
+		<manyToOne name="signature">
+			<references>
+				<reference datamField="fk__signature__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="ALL"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+	
+	<object name="Convention" pack="AgadirMesure:mesure" datamObject="AgadirMesure:mesure.convention">
+		<!-- relations -->
+		<manyToOne name="conventionPrecedente">
+			<references>
+				<reference datamField="fk__convention_precedente__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="true"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+		<manyToOne name="avenant">
+			<references>
+				<reference datamField="fk__avenant__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="true"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+
+	<object name="DeclarationAdministrative" pack="AgadirMesure:mesure" datamObject="AgadirMesure:mesure.declaration_administrative">
+	</object>
+	
+	<object name="Agrement" pack="AgadirMesure:mesure" datamObject="AgadirMesure:mesure.agrement">
+	</object>
+
+	<object name="Operation" pack="AgadirMesure:mesure" datamObject="AgadirMesure:mesure.operation" extendsType="ClassConcrete">
+		<!-- référentiel -->
+		<manyToOne name="typeOperation">
+			<references>
+				<reference datamField="fk__type_operation__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+
+	<object name="ContratTravail" pack="AgadirMesure:mesure" datamObject="AgadirMesure:mesure.contrat_travail" extendsType="Joined">
+		<!-- référentiel -->
+		<manyToOne name="typeContratTravail">
+			<references>
+				<reference datamField="fk__type_contrat_travail__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+
+	<object name="Controle" pack="AgadirMesure:mesure" datamObject="AgadirMesure:mesure.controle" extendsType="Joined">
+		<!-- référentiel -->
+		<manyToOne name="typeControle">
+			<references>
+				<reference datamField="fk__type_controle__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+		<!-- relations -->
+		<oneToMany name="resultatsControle">
+			<mappedPrstmField name="controle"/>
+			<rules>
+				<persistance>
+					<cascade value="ALL"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</oneToMany>
+	</object>
+
+	<object name="ResultatControle" pack="AgadirMesure:mesure" datamObject="AgadirMesure:mesure.resultat_controle" extendsType="Joined">
+		<!-- référentiel -->
+		<manyToOne name="typeResultatControle">
+			<references>
+				<reference datamField="fk__type_resultat_controle__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+		<!-- relations -->
+		<manyToOne name="controle">
+			<references>
+				<reference datamField="fk__controle__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="true"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+
+	<object name="Financement" pack="AgadirMesure:mesure" datamObject="AgadirMesure:mesure.financement" extendsType="Joined">
+		<!-- référentiel -->
+		<manyToOne name="typeFinancement">
+			<references>
+				<reference datamField="fk__type_financement__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+		<!-- relations -->
+		<manyToMany name="financeurs">
+			<refDatamObject name="AgadirMesure:mesure.financement__commanditaire"/>
+			<references>
+				<reference datamField="ref__financement__id" refDatamField="id"/>
+			</references>
+			<inverseReferences>
+				<inverseReference datamField="fk__commanditaire__id" refDatamField="id"/>
+			</inverseReferences>
+			<rules>
+				<persistance>
+					<cascade value="ALL"/>
+					<lazy value="true"/>
+				</persistance>
+			</rules>
+		</manyToMany>
+		
+		<manyToOne name="decision">
+			<references>
+				<reference datamField="fk__decision__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="ALL"/>
+					<lazy value="true"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+	<object name="Decision" pack="AgadirMesure:mesure" datamObject="AgadirMesure:mesure.decision" extendsType="Joined">
+		<manyToOne name="typeDecision">
+			<references>
+				<reference datamField="fk__type_decision__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+	<object name="Notification" pack="AgadirMesure:mesure" datamObject="AgadirMesure:mesure.notification" extendsType="Joined">
+		<manyToOne name="typeNotification">
+			<references>
+				<reference datamField="fk__type_notification__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+	<object name="Tutorat" pack="AgadirMesure:mesure" datamObject="AgadirMesure:mesure.tutorat" extendsType="Joined">
+		<manyToOne name="typeTutorat">
+			<references>
+				<reference datamField="fk__type_tutorat__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+		<oneToMany name="tuteur">
+			<refDatamObject name="AgadirMesure:mesure.tutorat__tuteur"/>
+			<references>
+				<reference datamField="ref__tutorat__id" refDatamField="id"/>
+			</references>
+			<inverseReferences>
+				<inverseReference datamField="fk__tuteur__id" refDatamField="id"/>
+			</inverseReferences>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</oneToMany>
+	</object>
+</prstm>

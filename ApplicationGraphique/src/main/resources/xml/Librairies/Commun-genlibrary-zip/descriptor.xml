@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generators langage="java" name="Commun"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/GeneratorDefinition-2.0.0"
+	xsi:schemaLocation="http://www.imc-fr.com/GeneratorDefinition-2.0.0 http://sites-snapshots.imc-fr.com/JavaPomParent/GenerateurPomParent/GenerateurModelPomParent/CodeGenerator/xsd/generator/GeneratorDefinition-2.0.0.xsd">
+    
+    <languagefile path="XmlBase.xml" />
+    <languagefile path="JavaBase.xml" />
+    <languagefile path="JavaLanguageCommun.xml" />
+    
+    <!--
+       définition des générateurs communs en java
+    -->
+    
+    <!-- Création des informations d'un attribut -->
+    <template name="Attribut" pathtemplate="commun/Attribut.vm" />
+    
+    <!--
+        Générateur template de la méthode equals pour une liste de champs
+        utilise une string (classe de l'objet) et objet collection (liste des champs)
+    -->
+    <template name="Equals" pathtemplate="commun/Equals.vm" />
+    
+    <!--
+        Générateur template de la partie de la méthode equals pour un attribut
+        utilise de l'objet att (attribut de la fabrique)
+    -->
+    <template name="EqualsAttribut" pathtemplate="commun/EqualsAttribut.vm" />
+    
+    <!--
+        Générateur template de la méthode hashcode pour une liste de champs
+        utilise une string (classe de l'objet) et objet collection (liste des champs)
+    -->
+    <template name="HashCode" pathtemplate="commun/HashCode.vm" />
+    
+    <!--
+        Générateur template de la partie de la méthode hashcode pour un attribut
+        utilise de l'objet att (attribut de la fabrique)
+    -->
+    <template name="HashCodeAttribut" pathtemplate="commun/HashCodeAttribut.vm" />
+    
+    <!--
+        Générateur template de getter d'une classe pour un attribut
+        utilise de l'objet att (attribut de la fabrique)
+    -->
+    <template name="GetterClasse" pathtemplate="commun/GetterClasse.vm" />
+    
+    <!--
+        Générateur template de setter d'une classe pour un attribut
+        utilise de l'objet att (attribut de la fabrique)
+    -->
+    <template name="SetterClasse" pathtemplate="commun/SetterClasse.vm" />
+    
+    <!--
+        Générateur template de getter et setter d'une classe pour un attribut
+        utilise de l'objet att (attribut de la fabrique)
+    -->
+    <template name="GetterSetterClasse" pathtemplate="commun/GetterSetterClasse.vm" />
+    
+    <!--
+        Générateur template de getter d'une interface pour un attribut
+        utilise de l'objet att (attribut de la fabrique)
+    -->
+    <template name="GetterInterface" pathtemplate="commun/GetterInterface.vm" />
+    
+    <!--
+        Générateur template de setter d'une interface pour un attribut
+        utilise de l'objet att (attribut de la fabrique)
+    -->
+    <template name="SetterInterface" pathtemplate="commun/SetterInterface.vm" />
+    
+    <!--
+        Générateur template de getter et setter d'une interface pour un attribut
+        utilise de l'objet att (attribut de la fabrique)
+    -->
+    <template name="GetterSetterInterface" pathtemplate="commun/GetterSetterInterface.vm" />
+    
+    
+    
+    <!-- Fichier de macros -->
+    <macro path="CommonBaseLibrairy.vm" />
+    
+</generators>

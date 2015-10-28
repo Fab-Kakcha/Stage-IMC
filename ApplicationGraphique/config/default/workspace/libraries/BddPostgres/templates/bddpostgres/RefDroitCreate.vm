@@ -1,0 +1,81 @@
+##
+## Générateur SQL pour postgres
+## Création des inforamtions de droit sur les objets
+##
+## $generatedObject = model datam
+## $refDroitCreateUser = datam user
+##
+## on génére les droits des tables
+#set($refDroitCreateUser = ${contextBox.superModel.getElements("datam:user", false)})
+#foreach ( $user in ${refDroitCreateUser} ) 
+
+
+
+-------------------------
+-------------------------
+-------------------------
+-- Les droits des schémas
+-------------------------
+-------------------------
+-------------------------
+#foreach ( $schema in ${generatedObject.getSchemasList()} ) 
+##
+## création des clés primaires, on récup les régle field index
+
+-------------------------
+-- Droits pour le schéma ${schema.completeName}
+-------------------------
+GRANT USAGE ON SCHEMA "${schema.completeName}" TO "${user.name}";
+#end
+##
+## on génére les droits des tables
+
+
+
+
+
+-------------------------
+-------------------------
+-------------------------
+-- Les droits des tables
+-------------------------
+-------------------------
+-------------------------
+#foreach ( $datam in ${generatedObject.getObjectsList()} ) 
+#if ( ${datam.isAbstract} == false )
+##
+## création des clés primaires, on récup les régle field index
+
+-------------------------
+-- Droits pour la table ${datam.schema.completeName}.${datam.name}
+-------------------------
+GRANT ALL ON TABLE "${datam.schema.completeName}"."${datam.name}" TO "${user.name}";
+#end
+#end
+
+
+-------------------------
+-------------------------
+-------------------------
+-- Les droits des sequences
+-------------------------
+-------------------------
+-------------------------
+
+
+
+#foreach ( $datam in ${generatedObject.getObjectsList()} ) 
+#foreach ( $field in ${datam.fieldsList} )
+##
+## on récup si le champ ou il faut créer une séquance
+#set ( $seqs = ${field.getByType("fieldGeneration", "sequence")} )
+#foreach ( $seq in ${seqs} )
+-------------------------
+-- Droits pour la sequence ${datam.schema.completeName}.${seq.name}
+-------------------------
+GRANT USAGE ON SEQUENCE "${datam.schema.completeName}"."${seq.name}" TO "${user.name}";
+#end
+#end
+#end
+
+#end

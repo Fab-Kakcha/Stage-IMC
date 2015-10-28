@@ -1,0 +1,67 @@
+## #####
+## Générateur java de la couche présentation IMC
+## Création de la classe de Model
+##
+## @param generatedObject l'objet viemw:vueModel
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 31/01/2012
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns:pres="urn:jsptagdir:/WEB-INF/tags"
+	xmlns:presui="http://www.imc-fr.com/presentation/commun/ui"
+	xmlns:presaui="http://www.imc-fr.com/presentation/commun/ajaxui"
+	xmlns:presutil="http://www.imc-fr.com/presentation/commun/util"
+	xmlns:st="/struts-tags"
+	xmlns:tiles="http://tiles.apache.org/tags-tiles">
+
+	<presui:globalcontainer label="${generatedObject.titre}">
+		<presui:model model="${esc.d}{model}">
+#foreach ( $v in ${generatedObject.fields})
+			<presui:template model="${esc.d}{model}"
+				template="/${v.component.pack.pathName}/${v.component.name}.jspx" />
+#end
+
+			<presui:commandcontainer>
+#foreach ( $f in ${generatedObject.actions})
+
+##
+## sinon on est en cancel validation
+#if ( ${f.type} == "cancel" )
+				<presui:submit value="${f.name}" title="${f.name}"
+					form="${esc.d}(jq('#form_${esc.d}{model.path}'))" url="${f.url}" validate="false" />
+#else
+##
+## sinon si button submit on le cache en consult
+#if ( ${f.type} == "submit" )
+                <c:if test="${esc.d}{consultMode eq false}">
+					<presui:submit value="${f.name}" title="${f.name}"
+						form="${esc.d}(jq('#form_${esc.d}{model.path}'))" url="${f.url}" />
+				</c:if>
+#else
+                <c:if test="${esc.d}{consultMode eq false}">
+					<presui:button value="${f.name}" urlRedirect="${f.url}" />
+				</c:if>
+#end
+#end
+#end
+			</presui:commandcontainer>
+		</presui:model>
+
+	</presui:globalcontainer>
+
+</jsp:root>

@@ -1,0 +1,30 @@
+## #####
+## 
+## @param generatedObject (com.imcfr.generateur.model.edimodel.EdimModel)
+## 
+## #####
+#set($model = $generatedObject)
+#set($Q = '"')
+<?xml version="1.0" encoding="UTF-8"?>
+##
+<edim name="${model.name}" project="${model.project}" version="${model.version}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/EdiModelDefinition-2.0.0">
+
+#foreach ($element in ${model.elementsList})
+#**##if (${element.type} == "targetNamespace")
+#**##**##generate("ModelGeneration:EdimTargetNamespace")
+#**##elseif (${element.type} == "require")
+#**##**##generate("ModelGeneration:EdimRequire")
+#**##elseif (${element.type} == "type")
+#**##**##generate("ModelGeneration:EdimType")
+#**##elseif (${element.type} == "typeSimple")
+#**##**##generate("ModelGeneration:EdimTypeSimple")
+#**##elseif (${element.type} == "element")
+#**##**##generate("ModelGeneration:EdimElement")
+#**##elseif (${element.type} == "redefineType")
+#**##**##generate("ModelGeneration:EdimRedefineType")
+#**##elseif (${element.type} == "redefineTypeSimple")
+#**##**##generate("ModelGeneration:EdimRedefineTypeSimple")
+#**##end
+
+#end
+</edim>

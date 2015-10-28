@@ -1,0 +1,41 @@
+## ####
+## Générateur java de la couche service IMC
+## Création des tris
+##
+## $generatedObject = prstm object
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## ####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pobject
+#set ( $obmObject = ${generatedObject.datamObject.obmObject} )
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+## on parcours les règles, si il sont de category orders
+#foreach ( $rule in ${obmObject.rules} )
+#if ($rule.category == "orders")
+	/**
+	 * tri ${rule.name.toUpperCase()}
+	 */
+	public static com.imcfr.commun.persistance.queryparams.QueryFilterOrderable ORDER_${rule.name.toUpperCase()} = null;
+	static {
+		try {
+			ORDER_${rule.name.toUpperCase()} = new com.imcfr.commun.persistance.queryparams.impl.QueryOrder();
+#foreach ($field in $rule.fields)
+			ORDER_${rule.name.toUpperCase()}.putOrder("${field.name}", com.imcfr.commun.persistance.TypeOrder.${field.direction});
+#end
+		} catch (Throwable e) {
+			throw new RuntimeException(e);
+		}
+	};
+
+#end
+#end

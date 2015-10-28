@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edim name="AgadirMesureEdim" project="AgadirMesure" version="4.0.0"
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xmlns="http://www.imc-fr.com/EdiModelDefinition-2.0.0"
+	  xsi:schemaLocation="http://www.imc-fr.com/EdiModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/EdimModel/src/main/resources/com/imcfr/generateur/sax/edimodel/EdiModelDefinition-2.0.0.xsd ">
+
+	<targetNamespace alias="agadirmesure" namespace="http://www.dgefp.emploi.gouv.fr/Agadir" schemaLocation="AgadirMesure.xsd"/>
+
+
+	<type name="ObjetProcedure" obmObject="AgadirMesure:mesure.ObjetProcedure" inherits="t::AgadirTechnique:TypeCode" final="true">
+		<elements>
+			<element xsi:type="elementObm" obmField="numDossier" name="numero"/>
+			<element xsi:type="elementObm" obmField="numDossierOperateurInitial" name="numeroOperateurInitial"/>
+			<element xsi:type="elementObm" obmField="commentaire"/>
+			<element xsi:type="elementObm" obmField="etat" type="t::AgadirMesure:Etat"/>
+			<element xsi:type="elementObm" obmField="nature" type="t::AgadirMesure:Nature"/>
+			<element xsi:type="element" name="date" type="ts::AgadirTechnique:TypeDate" minOccurs="0" maxOccurs="unbounded"/>
+			<element xsi:type="element" name="signature" type="t::AgadirTechnique:TypeSignature" minOccurs="0" maxOccurs="1"/>
+		</elements>
+	</type>
+
+	<type name="InfoConvention" obmObject="AgadirMesure:mesure.Convention" inherits="t::AgadirMesure:ObjetProcedure" final="false">
+		<elements>
+			<element xsi:type="element" name="numeroConventionPrecedente" type="Base:String"/>
+		</elements>
+	</type>
+
+	<type name="InfoDeclarationAdministrative" obmObject="AgadirMesure:mesure.DeclarationAdministrative" inherits="t::AgadirMesure:ObjetProcedure" final="false">
+	</type>
+	
+	<type name="InfoAgrement" obmObject="AgadirMesure:mesure.Agrement" inherits="t::AgadirMesure:ObjetProcedure" final="false">
+	</type>
+
+	<type name="Operation" obmObject="AgadirMesure:mesure.Operation" inherits="t::AgadirTechnique:TypeCode" final="false">
+		<elements>
+			<element xsi:type="elementObm" obmField="commentaire"/>
+			<element xsi:type="element" name="date" type="ts::AgadirTechnique:TypeDate" minOccurs="0" maxOccurs="unbounded"/>
+		</elements>
+	</type>
+
+	<type name="ContratTravail" obmObject="AgadirMesure:mesure.ContratTravail" inherits="t::AgadirTechnique:TypeCode" final="false">
+		<elements>
+			<element xsi:type="elementObm" obmField="salaireEmbauche"/>
+			<element xsi:type="elementObm" obmField="dureeHebdomadaire"/>
+			<element xsi:type="element" name="date" type="ts::AgadirTechnique:TypeDate" minOccurs="0" maxOccurs="unbounded"/>
+		</elements>
+	</type>
+
+	<type name="Controle" obmObject="AgadirMesure:mesure.Controle" inherits="t::AgadirTechnique:TypeCode" final="false">
+		<elements>
+			<element xsi:type="elementObm" obmField="commentaire"/>
+			<element xsi:type="element" name="date" type="ts::AgadirTechnique:TypeDate" minOccurs="0" maxOccurs="unbounded"/>
+			<element xsi:type="elementObm" obmField="resultatsControle" name="resultat" type="t::AgadirMesure:ResultatControle"/>
+		</elements>
+	</type>
+
+	<type name="ResultatControle" obmObject="AgadirMesure:mesure.ResultatControle" inherits="t::AgadirTechnique:TypeCode" final="false">
+		<elements>
+			<element xsi:type="elementObm" obmField="commentaire"/>
+			<element xsi:type="element" name="date" type="ts::AgadirTechnique:TypeDate" minOccurs="0" maxOccurs="unbounded"/>
+		</elements>
+	</type>
+
+	<type name="Financement" obmObject="AgadirMesure:mesure.Financement" inherits="t::AgadirTechnique:TypeCode" final="false">
+		<elements>
+			<element xsi:type="element" name="financeurRefId" type="Base:String"/>
+			<element xsi:type="element" name="decisionRefId" type="Base:String"/>
+		</elements>
+	</type>
+
+	<type name="Decision" obmObject="AgadirMesure:mesure.Decision" inherits="t::AgadirTechnique:TypeCode" final="false">
+		<elements>
+			<element xsi:type="elementObm" obmField="commentaire"/>
+			<element xsi:type="element" name="date" type="ts::AgadirTechnique:TypeDate" minOccurs="0" maxOccurs="unbounded"/>
+		</elements>
+	</type>
+
+	<type name="Notification" obmObject="AgadirMesure:mesure.Notification" inherits="t::AgadirTechnique:TypeCode" final="false">
+		<elements>
+			<element xsi:type="elementObm" obmField="commentaire"/>
+			<element xsi:type="element" name="date" type="ts::AgadirTechnique:TypeDate" minOccurs="0" maxOccurs="unbounded"/>
+		</elements>
+	</type>
+	<type name="Tutorat" obmObject="AgadirMesure:mesure.Tutorat" inherits="t::AgadirTechnique:TypeCode" final="false">
+		<elements>
+			<element xsi:type="element" name="tuteurRefId" type="Base:String"/>
+		</elements>
+	</type>
+</edim>

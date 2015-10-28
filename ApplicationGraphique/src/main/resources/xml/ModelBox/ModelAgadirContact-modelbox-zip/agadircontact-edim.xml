@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edim name="AgadirContactEdim" project="AgadirContact" version="4.0.0"
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xmlns="http://www.imc-fr.com/EdiModelDefinition-2.0.0"
+	  xsi:schemaLocation="http://www.imc-fr.com/EdiModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/EdimModel/src/main/resources/com/imcfr/generateur/sax/edimodel/EdiModelDefinition-2.0.0.xsd ">
+
+	<targetNamespace alias="agadircontact" namespace="http://www.dgefp.emploi.gouv.fr/Agadir" schemaLocation="AgadirContact.xsd"/>
+	
+	
+	<type name="Identite" abstract="true" obmObject="AgadirContact:contact.Identite">
+		<elements>
+			<element xsi:type="elementObm" obmField="nationalite" type="t::AgadirReferentielGeographique:Nationalite"/>
+		</elements>
+	</type>
+	
+	<type name="Personne" obmObject="AgadirContact:contact.Personne" inherits="t::AgadirContact:Identite" final="false">
+		<elements>
+			<element xsi:type="elementObm" obmField="nom"/>
+			<element xsi:type="elementObm" obmField="prenom"/>
+			<element xsi:type="elementObm" obmField="dateNaissance" name="date" type="ts::AgadirTechnique:TypeDate"/>
+			<element xsi:type="elementObm" obmField="sexe" type="t::AgadirReferentielContact:Sexe"/>
+		</elements>
+	</type>
+	
+	<type name="Organisation" obmObject="AgadirContact:contact.Organisation" inherits="t::AgadirContact:Identite" final="false">
+		<elements>
+			<element xsi:type="elementObm" obmField="siren" type="ts::AgadirTechnique:TypeSiren"/>
+			<element xsi:type="elementObm" obmField="siret" type="ts::AgadirTechnique:TypeSiret"/>
+			<element xsi:type="elementObm" obmField="denomination"/>
+			<element xsi:type="element" name="naf" type="t::AgadirReferentielContact:Naf"/>
+			<element xsi:type="elementObm" obmField="effectif"/>
+			<element xsi:type="elementObm" obmField="situationJuridique" type="t::AgadirReferentielContact:SituationJuridique"/>
+			<element xsi:type="elementObm" obmField="conventionCollective" type="t::AgadirReferentielContact:ConventionCollective"/>
+			<element xsi:type="element" name="date" type="ts::AgadirTechnique:TypeDate" minOccurs="0" maxOccurs="unbounded"/>
+		</elements>
+	</type>
+	<type name="Entreprise" obmObject="AgadirContact:contact.Entreprise" inherits="t::AgadirContact:Identite" final="false">
+		<elements>
+			<element xsi:type="elementObm" obmField="siren" type="ts::AgadirTechnique:TypeSiren"/>
+			<element xsi:type="element" name="siret" type="ts::AgadirTechnique:TypeSiret" minOccurs="0"/>
+			<element xsi:type="elementObm" obmField="denomination"/>
+			<element xsi:type="element" name="naf" type="t::AgadirReferentielContact:Naf"/>
+			<element xsi:type="elementObm" obmField="effectif"/>
+			<element xsi:type="elementObm" obmField="situationJuridique" type="t::AgadirReferentielContact:SituationJuridique"/>
+			<element xsi:type="elementObm" obmField="conventionCollective" type="t::AgadirReferentielContact:ConventionCollective"/>
+			<element xsi:type="element" name="date" type="ts::AgadirTechnique:TypeDate" minOccurs="0" maxOccurs="unbounded"/>
+		</elements>
+	</type>
+	<type name="Etablissement" obmObject="AgadirContact:contact.Etablissement" inherits="t::AgadirContact:Identite" final="false">
+		<elements>
+			<element xsi:type="element" name="siren" type="ts::AgadirTechnique:TypeSiren" minOccurs="0"/>
+			<element xsi:type="elementObm" obmField="siret" type="ts::AgadirTechnique:TypeSiret" />
+			<element xsi:type="elementObm" obmField="denomination"/>
+			<element xsi:type="element" name="naf" type="t::AgadirReferentielContact:Naf"/>
+			<element xsi:type="elementObm" obmField="effectif"/>
+			<element xsi:type="elementObm" obmField="situationJuridique" type="t::AgadirReferentielContact:SituationJuridique"/>
+			<element xsi:type="elementObm" obmField="conventionCollective" type="t::AgadirReferentielContact:ConventionCollective"/>
+			<element xsi:type="element" name="date" type="ts::AgadirTechnique:TypeDate" minOccurs="0" maxOccurs="unbounded"/>
+		</elements>
+	</type>
+	<type name="OrganismeFormation" obmObject="AgadirContact:contact.OrganismeFormation" inherits="t::AgadirContact:Identite" final="false">
+		<elements>
+			<element xsi:type="element" name="siren" type="ts::AgadirTechnique:TypeSiren" minOccurs="0"/>
+			<element xsi:type="elementObm" obmField="siret" type="ts::AgadirTechnique:TypeSiret" />
+			<element xsi:type="elementObm" obmField="denomination"/>
+			<element xsi:type="element" name="naf" type="t::AgadirReferentielContact:Naf"/>
+			<element xsi:type="elementObm" obmField="effectif"/>
+			<element xsi:type="elementObm" obmField="situationJuridique" type="t::AgadirReferentielContact:SituationJuridique"/>
+			<element xsi:type="elementObm" obmField="conventionCollective" type="t::AgadirReferentielContact:ConventionCollective"/>
+			<element xsi:type="element" name="date" type="ts::AgadirTechnique:TypeDate" minOccurs="0" maxOccurs="unbounded"/>
+			<element xsi:type="elementObm" obmField="numDA"/>
+		</elements>
+	</type>
+	<type name="Cfa" obmObject="AgadirContact:contact.CFA" inherits="t::AgadirContact:Identite" final="false">
+		<elements>
+			<element xsi:type="elementObm" obmField="denomination"/>
+			<element xsi:type="elementObm" obmField="effectif"/>
+			<element xsi:type="element" name="date" type="ts::AgadirTechnique:TypeDate" minOccurs="0" maxOccurs="unbounded"/>
+			<element xsi:type="elementObm" obmField="uai"/>
+		</elements>
+	</type>
+	
+	<type name="Contact" obmObject="AgadirContact:contact.Contact" final="false">
+		<elements>
+			<element xsi:type="elementObm" obmField="identite" type="t::AgadirContact:Identite"/>
+			<element xsi:type="elementObm" obmField="coordonnees" name="coordonnee" type="t::AgadirContact:Coordonnee"/>
+		</elements>
+		
+		<attribute xsi:type="attributeObm" obmField="typeIdentite" name="codeType"/>
+	</type>
+	
+	<type name="Entite" obmObject="AgadirContact:contact.Entite" inherits="t::AgadirContact:Identite" final="true">
+	</type>
+	<type name="EntiteNationale" obmObject="AgadirContact:contact.EntiteNationale" inherits="t::AgadirContact:Entite" final="false">
+	</type>
+	<type name="EntiteDepartementale" obmObject="AgadirContact:contact.EntiteDepartementale" inherits="t::AgadirContact:Entite" final="false">
+		<elements>
+			<element xsi:type="elementObm" obmField="departement" type="t::AgadirReferentielGeographique:Departement"/>
+		</elements>
+	</type>
+	<type name="EntiteRegionale" obmObject="AgadirContact:contact.EntiteRegionale" inherits="t::AgadirContact:Entite" final="false">
+		<elements>
+			<element xsi:type="elementObm" obmField="region" type="t::AgadirReferentielGeographique:Region"/>
+		</elements>
+	</type>
+	
+	<type name="Coordonnee" obmObject="AgadirContact:contact.Coordonnees">
+		<elements minOccurs="1">
+			<element xsi:type="element" name="adresse" type="t::AgadirReferentielContact:Adresse" minOccurs="0" maxOccurs="unbounded"/>
+			<element xsi:type="element" name="telephonie" type="ts::AgadirReferentielContact:Telephonie" minOccurs="0" maxOccurs="unbounded"/>
+			<element xsi:type="element" name="mail" type="ts::AgadirReferentielContact:Mail" minOccurs="0" maxOccurs="unbounded"/>
+			<element xsi:type="element" name="url" type="ts::AgadirReferentielContact:URL" minOccurs="0" maxOccurs="unbounded"/>
+		</elements>
+	</type>
+</edim>

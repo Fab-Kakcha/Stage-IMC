@@ -1,0 +1,8 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param element (com.imcfr.generateur.model.edimodel.Require)
+## 
+## #####
+##
+	<require edim="${element.edimName}"/>

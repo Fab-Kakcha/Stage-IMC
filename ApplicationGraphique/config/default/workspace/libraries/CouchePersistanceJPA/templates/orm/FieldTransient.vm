@@ -1,0 +1,23 @@
+## #####
+## Générateur Java
+## Gestion d'un attribut de l'entité attribut onetomany
+## 
+## @param generatedObject le model prstm
+## @param entite l'objet prstm courant
+## @param datamObject l'objet prstm courant
+## @param obmObject l'objet prstm courant
+## @param field le champ obm courant
+## @param fieldPrstm le champ prstm courant
+## @param fetchType le type de fecth lazy ou eager
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 12/11/2008
+## #####
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+## on injecte les infos du one to one
+			<transient name="${field.name}"/>
+

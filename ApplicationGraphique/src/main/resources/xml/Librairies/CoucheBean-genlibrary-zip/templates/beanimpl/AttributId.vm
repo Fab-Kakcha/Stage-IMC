@@ -1,0 +1,25 @@
+## #####
+## Générateur Java
+## Attribut de l'id de l'objet impl
+## les éléments ne sont créés que si l'objet n'hérite pas d'un autre
+## 
+## @param generatedObject l'obm object
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 12/11/2008
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## si l'id de la classe est composé
+#if ( ${generatedObject.fieldId.class.simpleName} == "ComposedId" )
+#set( $idName = "pk" )
+#set( $idType = ${manager.getElement("{0}:{1}.PK{2}", ${generatedObject.modelId})} )
+    /**
+     * Attribut id de l'objet
+     */
+    private ${idtype.path} ${idName} = null;
+
+#end

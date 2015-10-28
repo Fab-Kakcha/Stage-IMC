@@ -1,0 +1,106 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.datamodel.DatamModel)
+## @param element (com.imcfr.generateur.model.datamodel.DatamObject)
+## 
+## #####
+##
+#set($do_obmObject="")
+#if ("$!{element.obmObjectName}" != "")
+#**##set($do_obmObject=" obmObject=${Q}${element.obmObjectName}${Q}")
+#end
+#set($do_abstract="")
+#if (${element.isAbstract})
+#**##set($do_abstract=" abstract=${Q}true${Q}")
+#end
+#set($do_inherits="")
+#if (${element.isInherits})
+#**##set($do_inherits=" inherits=${Q}true${Q}")
+#end
+	<object name="${element.name}" schema="${element.schemaName}"$!{do_obmObject}$!{do_abstract}$!{do_inherits}>
+#**##foreach ($field in ${element.fieldsList})
+#**##if (!${field.fromHierarchy})
+#**##**##set($dof_type="")
+#**##**##if ("$!{field.type}" != "")
+#**##**##**##set($dof_type=" type=${Q}${field.type}${Q}")
+#**##**##end
+#**##**##set($dof_obmField="")
+#**##**##if ("$!{field.obmField}" != "")
+#**##**##**##set($dof_obmField=" obmField=${Q}${field.obmField}${Q}")
+#**##**##end
+#**##**##set($dof_default="")
+#**##**##if ("$!{field.defaut}" != "" && "$!{field.defaut}" != "{OBM}")
+#**##**##**##set($dof_default=" default=${Q}${field.defaut}${Q}")
+#**##**##end
+#**##**##if (${field.nbRules} == 0)
+		<field name="${field.name}"$!{dof_type}$!{dof_obmField}$!{dof_default}/>
+#**##**##else
+		<field name="${field.name}"$!{dof_type}$!{dof_obmField}$!{dof_default}>
+			<rules>
+#**##**##**##if (${field.getByCategory("fieldConstraints").size()} > 0)
+				<constraints>
+#**##**##**##**##foreach ($rule in ${field.getByCategory("fieldConstraints")})
+#**##**##**##**##**##set($dofrc_value="")
+#**##**##**##**##**##if ((${rule.type} == "index" && !${rule.index}) || (${rule.type} == "unique" && !${rule.unique}))
+#**##**##**##**##**##**##set($dofrc_value=" value=${Q}false${Q}")
+#**##**##**##**##**##end
+					<${rule.type}$!{dofrc_value}/>
+#**##**##**##**##end
+				</constraints>
+#**##**##**##end
+#**##**##**##if (${field.getByCategory("generation").size()} > 0)
+				<generation>
+#**##**##**##**##foreach ($rule in ${field.getByCategory("generation")})
+#**##**##**##**##**##if (${rule.type} == "auto")
+#**##**##**##**##**##**##set($dofrg_value="")
+#**##**##**##**##**##**##if (!${rule.value})
+#**##**##**##**##**##**##**##set($dofrg_value=" value=${Q}false${Q}")
+#**##**##**##**##**##**##end
+					<auto$!{dofrg_value}/>
+#**##**##**##**##**##elseif (${rule.type} == "sequence")
+					<sequence name="${rule.name}"/>
+#**##**##**##**##**##end
+#**##**##**##**##end
+				</generation>
+#**##**##**##end
+			</rules>
+		</field>
+#**##**##end
+#**##end
+#**##end
+#**##if (${element.nbRules} > 0)
+
+		<rules>
+#**##if (${element.getByCategory("objectConstraints").size()} > 0)
+			<constraints>
+#**##**##**##foreach ($rule in ${element.getByCategory("objectConstraints")})
+#**##**##**##**##if (${rule.type} == "unique")
+				<unique field="${rule.unique}"/>
+#**##**##**##**##elseif (${rule.type} == "index")
+				<index field="${rule.index}"/>
+#**##**##**##**##elseif (${rule.type} == "primaryKey")
+				<primaryKey field="${rule.primaryKeyRefName}"/>
+#**##**##**##**##elseif (${rule.type} == "foreignKey")
+#**##**##**##**##**##set($dorfk_refObject="")
+#**##**##**##**##**##if ("$!{rule.refObjectName}" != "")
+#**##**##**##**##**##**##set($dorfk_refObject=" refObject=${Q}${rule.refObjectName}${Q}")
+#**##**##**##**##**##end
+				<foreignKeys$!{dorfk_refObject}>
+#**##**##**##**##**##foreach ($foreignKey in $rule.foreignKeys)
+					<foreignKey field="${foreignKey.fieldName}" refField="${foreignKey.refFieldName}"/>
+#**##**##**##**##**##end
+				</foreignKeys>
+#**##**##**##**##end
+#**##**##**##end
+			</constraints>
+#**##end
+#**##if (${element.getByCategory("grants").size()} > 0)
+			<grants>
+#**##**##**##foreach ($rule in ${element.getByCategory("grants")})
+				<grant user="${rule.userName}" value="${rule.value}"/>
+#**##**##**##end
+			</grants>
+#**##end
+		</rules>
+#**##end
+	</object>

@@ -1,0 +1,166 @@
+## #####
+## Générateur java de la couche persistance IMC
+## Création de la classe d'implémentatino PObjectImp de l'interface PObjet
+## 
+## @param generatedObject l'obm object
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 30/09/2009
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+#set( $beanElement = ${manager.getElement("{0}:{1}.{2}Bean", ${generatedObject.modelId})} )
+#set( $beanElementImpl = ${manager.getElement("{0}:{1}.{2}BeanImpl", ${generatedObject.modelId})} )
+##
+## Classe abstraite ou non ?
+#set ( $abstract = "" )
+#if ( ${generatedObject.abstract} )
+#set ( $abstract = "abstract " )
+#end
+## si il hérite l'extends est son parent
+#if ( ${generatedObject.obmExtendsName} != "" )
+#set ( $extends = ${manager.getElement("{0}:{1}.{2}BeanImpl", ${generatedObject.obmExtends.modelId}).path} )
+#else
+## si l'objet n'hérite pas d'autre objet, il héritera de Bean<TypeCle> en passant le type de clé en généric
+## sinon il héritera du PObject de l'obm hérité
+##
+## si le nombre d'id de la classe est différent de 1 alors on aura une clé composé
+#if ( ${generatedObject.fieldId.class.simpleName} == "ComposedId" )
+#set ( $cleType = ${manager.getElement("{0}:{1}.PK{2}", ${generatedObject.modelId})} )
+#set ( $extends = ${manager.getElement("BeanImpl").path} )
+#set ( $extends = "${extends}<${cleType.path}>" )
+#else
+## si l'id est pas composé ou composé
+#if ( ${manager.isBaseType(${generatedObject.fieldId.type})} == true )
+#set ( $cleType = ${manager.getElement(${generatedObject.fieldId.type})} )
+#else
+#set ( $cleType = ${manager.getElement("{0}:{1}.{2}BeanImpl", ${generatedObject.fieldId.type})} )
+#end
+#set ( $extends = ${manager.getElement("BeanImpl").path} )
+#set ( $extends = "${extends}<${cleType.path}>" )
+#end
+#end
+##
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+package ${beanElementImpl.packageName};
+
+/**
+ * Classe d'implémentation de l'objet persistant ${generatedObject.completeName}
+ *
+ * @version ${model.version}
+ * @author généré par ${infoGen}
+ */
+public ${abstract}class ${beanElementImpl.className}
+		extends ${extends}
+        implements ${beanElement.path} {
+
+    /**
+     * Serial version uid
+     */
+    private static final long serialVersionUID = 1L;
+
+##
+## on génére les ids pour chaque champs pas ids
+#if ( ${generatedObject.obmExtendsName} == "" )
+#generate ( "CoucheBean:BeanImpl_AttributId" )
+#end
+#foreach ( $field in  ${generatedObject.fieldsList} )
+#**##if (${field.redefinition} == false || ${field.redefinitionFromInterface})
+#**##**##generate ( "CoucheBean:BeanImpl_Attribut" )
+#**##end
+#end
+
+    /**
+     * Constructeur
+     */
+    public ${beanElementImpl.className}() {
+        super();
+#foreach ( $field in  ${generatedObject.fieldsList} )
+#**##if (${field.redefinition} == true && ${field.redefinitionFromInterface} == false)
+#**##**##generate ( "CoucheBean:BeanImpl_SetAttribut" )
+#**##end
+#end
+    }
+#set($str_constparam="")
+#set($str_constbody="")
+#foreach ($field in ${generatedObject.fieldsList})
+#**##if ($field.required)
+#**##**### si le champ est une liste le type sera List<type>
+#**##**### sinon type simplement
+#**##**##set ( $_attributType = "" )
+#**##**##if ( ${manager.isBaseType(${field.type})} == true )
+#**##**##**##set ( $_attributType = ${manager.getElement(${field.type}).path} )
+#**##**##else
+#**##**##**##set ( $_attributType = ${manager.getElement("{0}:{1}.{2}Bean", ${field.type}).path} )
+#**##**##end
+#**##**### si liste
+#**##**##if ( ${field.list} )
+#**##**##**##set ( $atype = ${manager.getElement("IList").path} )
+#**##**##**##set ( $_attributType = "${atype}<${_attribut.type}>" )
+#**##**##end
+#**##**###
+#**##**##if ("$!{str_constparam}" == "")
+#**##**##**##set($str_constparam="${_attributType} ${field.name}")
+#**##**##else
+#**##**##**##set($str_constparam="${str_constparam}, ${_attributType} ${field.name}")
+#**##**##end
+#**##**##set($str_constbody="${str_constbody}${N}${T}${T}this.${field.name} = ${field.name};")
+#**##end
+#end
+#if ("$!{str_constbody}" != "" && "$!{str_constparam}" != "")
+
+    public ${beanElementImpl.className}($!{str_constparam}) {
+        super();
+#foreach ( $field in  ${generatedObject.fieldsList} )
+#**##if (${field.redefinition} == true && ${field.redefinitionFromInterface} == false)
+#**##**##generate ( "CoucheBean:BeanImpl_SetAttribut" )
+#**##end
+#end
+		$!{str_constbody}
+    }
+#end
+	
+    /* (non-Javadoc)
+     * @see ${manager.getElement("Bean").path}${esc.h}getNomTypeObjet()
+     */
+    @Override
+    public String getNomTypeObjet() {
+        return "${beanElementImpl.className}";
+    }
+    
+##
+## si l'objet n'hérite pas on généré get set id, puis get set champs
+#if ( ${generatedObject.obmExtendsName} == "" )
+#generate ( "CoucheBean:BeanImpl_GetterSetterId" )
+#end
+
+#foreach ( $field in  ${generatedObject.fieldsList} )
+#**##if (${field.redefinition} == false || ${field.redefinitionFromInterface})
+#**##**##generate ( "CoucheBean:BeanImpl_GetterSetter" )
+#**##**##if ("$!{field.usedFor}" != "")
+#**##**##**##set($fieldUsedFor = ${field.usedForField})
+#**##**##**##generate ( "CoucheBean:BeanImpl_GetterSetterUsedFor" )
+#**##**##end
+#**##end
+#end
+
+    /* (non-Javadoc)
+     * @see ${manager.getElement("Object").path}${esc.h}toString()
+     */
+    @Override
+    public String toString() {
+        String msg = "Persistant Object " + getClass().getSimpleName();
+        if (getIdBean() != null) {
+            msg += ", id : " + getIdBean().toString();
+        }
+        return msg;
+    }
+    
+}

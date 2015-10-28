@@ -1,0 +1,22 @@
+##
+## Générateur SQL pour postgres
+## Script de création de la base de données
+##
+## $generatedObject = model datam
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+##
+##
+## on génére les schémas
+-------------------------
+-------------------------
+-------------------------
+-- Les Schémas
+-------------------------
+-------------------------
+-------------------------
+#foreach( $schema in ${generatedObject.getSchemasList()} )
+DROP SCHEMA "${schema.completeName}" CASCADE;
+
+#end

@@ -1,0 +1,24 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.viewmodel.ViewModel)
+## @param element (com.imcfr.generateur.model.viewmodel.EditComponent)
+## 
+## #####
+##
+#**##foreach ($field in ${element.fields})
+		<vue name="${field.name}" component="${field.componentName}"/>
+#**##end
+
+		<grid name="${element.grid.name}" component="${element.grid.componentName}"/>
+
+#**##foreach ($action in ${element.actions})
+#**##**##set($vca_params="")
+#**##**##if ("$!{action.params}" != "")
+#**##**##**##set($vca_params=" params=${Q}${action.params}${Q}")
+#**##**##end
+#**##**##set($vca_type="")
+#**##**##if ("$!{action.type}" != "")
+#**##**##**##set($vca_type=" type=${Q}${action.type}${Q}")
+#**##**##end
+		<action name="${action.name}" component="${action.componentName}" action="${action.action}"$!{vca_params}$!{vca_type}/>
+#**##end

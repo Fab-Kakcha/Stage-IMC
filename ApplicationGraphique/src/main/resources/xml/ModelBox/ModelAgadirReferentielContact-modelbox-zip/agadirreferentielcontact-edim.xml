@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edim name="AgadirReferentielContactEdim" project="AgadirReferentielContact" version="4.0.0"
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xmlns="http://www.imc-fr.com/EdiModelDefinition-2.0.0"
+	  xsi:schemaLocation="http://www.imc-fr.com/EdiModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/EdimModel/src/main/resources/com/imcfr/generateur/sax/edimodel/EdiModelDefinition-2.0.0.xsd ">
+
+	<targetNamespace alias="agadirreferentielcontact" namespace="http://www.dgefp.emploi.gouv.fr/Agadir" schemaLocation="AgadirReferentielContact.xsd"/>
+	
+	
+	<type name="Sexe" obmObject="AgadirReferentielContact:referentiel.iso.Sexe" inherits="t::AgadirTechnique:Libelle">
+	</type>
+	
+	<type name="Naf" inherits="t::AgadirTechnique:Libelle">
+		<attribute xsi:type="attribute" name="codeType" type="ts::AgadirTechnique:TypeCodeTypeAttr" use="required"/>
+	</type>
+	
+	<type name="SecteurReference" obmObject="AgadirReferentielContact:referentiel.agadir.SecteurReference" inherits="t::AgadirTechnique:TypeCode">
+	</type>
+	<type name="SituationJuridique" obmObject="AgadirReferentielContact:referentiel.insee.SituationJuridique" inherits="t::AgadirTechnique:TypeCode">
+	</type>
+	
+	<type name="RegimeSocial" obmObject="AgadirReferentielContact:referentiel.agadir.RegimeSocial" inherits="t::AgadirTechnique:TypeCode">
+	</type>
+	
+	<type name="ConventionCollective" obmObject="AgadirReferentielContact:referentiel.legifrance.ConventionCollective">
+		<elements>
+			<element xsi:type="elementObm" obmField="idcc"/>
+			<element xsi:type="elementObm" obmField="codeBrochure"/>
+			<element xsi:type="elementObm" obmField="libelleCourt"/>
+			<element xsi:type="elementObm" obmField="libelleLong"/>
+			<element xsi:type="elementObm" obmField="urls" name="url" type="ts::AgadirReferentielContact:URL"/>		
+		</elements>
+	</type>
+	
+	<typeSimple name="Telephonie" inherits="ts::AgadirTechnique:TypeCodeValeur">
+		<attribute name="indicatif" type="Base:String" />
+	</typeSimple>
+	
+	<typeSimple name="Mail" inherits="ts::AgadirTechnique:TypeCodeValeur" >
+	</typeSimple>
+	
+	<typeSimple name="URL" inherits="ts::AgadirTechnique:TypeCodeValeur" >
+	</typeSimple>
+
+	<typeSimple name="Repetition"  inherits="ts::AgadirTechnique:TypeCodeValeur">
+	</typeSimple>	
+	
+	<typeSimple name="Voie" inherits="ts::AgadirTechnique:TypeCodeValeur" >
+	</typeSimple>
+	
+	<type name="Adresse" obmObject="AgadirReferentielContact:referentiel.format.Adresse">
+		<elements>
+			<element xsi:type="elementObm" obmField="numero"/>
+			<element xsi:type="elementObm" obmField="repetition" name="repetition" type="ts::AgadirReferentielContact:Repetition"/>
+			<element xsi:type="elementObm" obmField="voie" type="ts::AgadirReferentielContact:Voie"/>
+			<element xsi:type="elementObm" obmField="complement"/>
+			<element xsi:type="elementObm" obmField="localisation" type="t::AgadirReferentielGeographique:Localisation"/>
+			<element xsi:type="elementObm" obmField="bp"/>
+			<element xsi:type="elementObm" obmField="cedex"/>
+		</elements>
+		<attribute xsi:type="attributeObm" obmField="typeAdresse" name="codeType" type="ts::AgadirTechnique:TypeCodeTypeAttr" use="required"/>
+	</type>
+
+	<type name="TypeCommunication" obmObject="AgadirReferentielContact:referentiel.format.TypeCommunication" inherits="t::AgadirTechnique:Libelle">
+	</type>
+	
+</edim>

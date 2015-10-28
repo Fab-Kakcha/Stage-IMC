@@ -1,0 +1,114 @@
+## #####
+## Générateur Java
+## Getters et Setters des attributs de la classe PObject
+## Créer un objet attribut dans ${_attribut} et utilise l'objet ${field}
+## 
+## @param field un attribut obm
+## @param fieldUsedFor un attribut obm
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 12/11/2008
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+#set ( $_attribut = ${factory.newAttribut()} )
+#set ( ${_attribut.name} = ${field.name} )
+##
+## si le champ est une liste le type sera List<type>
+## sinon type simplement
+#if ( ${manager.isBaseType(${field.type})} == true )
+#set ( ${_attribut.type} = ${manager.getElement(${field.type}).path} )
+#else
+#set ( ${_attribut.type} = ${manager.getElement("{0}:{1}.{2}Bean", ${field.type}).path} )
+#end
+## si liste
+#if ( ${field.list} )
+#set ( $atype = ${manager.getElement("IList").path} )
+#set ( ${_attribut.type} = "${atype}<${_attribut.type}>" )
+#end
+##
+##
+#set ( $_attributUsedFor = ${factory.newAttribut()} )
+#set ( ${_attributUsedFor.name} = ${fieldUsedFor.name} )
+##
+## si le champ est une liste le type sera List<type>
+## sinon type simplement
+#if ( ${manager.isBaseType(${fieldUsedFor.type})} == true )
+#set ( ${_attributUsedFor.type} = ${manager.getElement(${fieldUsedFor.type}).path} )
+#else
+#set ( ${_attributUsedFor.type} = ${manager.getElement("{0}:{1}.{2}Bean", ${fieldUsedFor.type}).path} )
+#end
+## si liste
+#if ( ${fieldUsedFor.list} )
+#set ( $atype = ${manager.getElement("IList").path} )
+#set ( ${_attributUsedFor.type} = "${atype}<${_attributUsedFor.type}>" )
+#end
+## -------------------------
+## Le template
+## -------------------------
+##
+#if (${fieldUsedFor.is("rw")})
+	/**
+	 * récupéré la valeur de ${_attributUsedFor.name}
+	 * 
+	 * @return ${_attributUsedFor.name}
+	 */
+	public ${_attributUsedFor.type} ${_attributUsedFor.getterMethod}() {
+	   return this.${_attribut.getterMethod}();
+	}
+
+	/**
+	 * modifie la valeur de ${_attributUsedFor.name}
+	 * 
+	 * @param ${_attributUsedFor.name}
+	 * 					la nouvelle valeur
+	 */
+	public void ${_attributUsedFor.setterMethod}(${_attributUsedFor.type} ${_attributUsedFor.name}) {
+	   this.${_attribut.setterMethod}(${_attributUsedFor.name});
+	}
+
+#elseif (${fieldUsedFor.is("r")})
+	/**
+	 * récupéré la valeur de ${_attributUsedFor.name}
+	 * 
+	 * @return ${_attributUsedFor.name}
+	 */
+	public ${_attributUsedFor.type} ${_attributUsedFor.getterMethod}() {
+	   return this.${_attribut.getterMethod}();
+	}
+
+#elseif (${fieldUsedFor.is("w")})
+	/**
+	 * modifie la valeur de ${_attributUsedFor.name}
+	 * 
+	 * @param ${_attributUsedFor.name}
+	 * 					la nouvelle valeur
+	 */
+	public void ${_attributUsedFor.setterMethod}(${_attributUsedFor.type} ${_attributUsedFor.name}) {
+	   this.${_attribut.setterMethod}(${_attributUsedFor.name});
+	}
+
+#else
+	/**
+	 * récupéré la valeur de ${_attributUsedFor.name}
+	 * 
+	 * @return ${_attributUsedFor.name}
+	 */
+	public ${_attributUsedFor.type} ${_attributUsedFor.getterMethod}() {
+	   return this.${_attribut.getterMethod}();
+	}
+
+	/**
+	 * modifie la valeur de ${_attributUsedFor.name}
+	 * 
+	 * @param ${_attributUsedFor.name}
+	 * 					la nouvelle valeur
+	 */
+	public void ${_attributUsedFor.setterMethod}(${_attributUsedFor.type} ${_attributUsedFor.name}) {
+	   this.${_attribut.setterMethod}(${_attributUsedFor.name});
+	}
+
+#end

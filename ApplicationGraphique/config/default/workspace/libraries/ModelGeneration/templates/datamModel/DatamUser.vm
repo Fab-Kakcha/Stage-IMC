@@ -1,0 +1,8 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.datamodel.DatamModel)
+## @param element (com.imcfr.generateur.model.datamodel.User)
+## 
+## #####
+##
+	<user name="${element.name}"/>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<languages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.imc-fr.com/LanguageDefinition-2.0.0"
+	xsi:schemaLocation="http://www.imc-fr.com/LanguageDefinition-2.0.0 http://sites-snapshots.imc-fr.com/JavaPomParent/GenerateurPomParent/GenerateurModelPomParent/CodeGenerator/xsd/language/LanguageDefinition-2.0.0.xsd">
+	
+	<!--
+       Définition des éléments de base IMC du langage java
+    -->
+	<language name="java">
+	
+		<!-- type base IMC -->
+       <type name="ExceptionInconnue" className="ExceptionInconnue" package="com.imcfr.commun.exception" />
+       <type name="FactoryException" className="FactoryException" package="com.imcfr.commun.factory" />
+       <type name="TestManager" className="TestManager" package="com.imcfr.commun.test" />
+       <type name="PropertiesManager" className="PropertiesManager" package="com.imcfr.commun" />
+       <type name="TypeGenerator" className="TypeGenerator" package="com.imcfr.commun.test" />
+       
+       
+       <!-- Lib ImcCommun -->
+       <type name="MessageManager" className="MessageManager" package="com.imcfr.commun" />
+       
+       
+       <!-- Lib ImcOutils -->
+       <type name="Validateur" className="Validateur" package="com.imcfr.outils.validators" />
+       <type name="ValidateurResults" className="ValidateurResults" package="com.imcfr.outils.validators" />
+       
+		
+	</language>
+</languages>

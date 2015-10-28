@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prstm name="ImcSecuritePrstm" project="ImcSecurite" version="3.4.0" xmlns="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0">
+
+
+    <!-- Définition de l'objet Suivi pour l'objet datam base.suivi -->
+    <object name="Application" pack="ImcSecurite:securite" datamObject="ImcSecurite:securite.application">
+	
+        <!-- Champ OneToMany droits -->
+		<oneToMany name="droits">
+            <mappedPrstmField name="application" />
+			<rules>
+				<persistance>
+					<cascade value="ALL" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</oneToMany>
+		
+        <!-- Champ OneToMany Assertions -->
+		<oneToMany name="assertions">
+            <mappedPrstmField name="application" />
+			<rules>
+				<persistance>
+					<cascade value="ALL" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</oneToMany>
+		
+        <!-- Champ OneToMany ressources -->
+		<oneToMany name="ressources">
+            <mappedPrstmField name="application" />
+			<rules>
+				<persistance>
+					<cascade value="ALL" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</oneToMany>
+		
+        <!-- Champ OneToMany profils -->
+		<oneToMany name="profils">
+            <mappedPrstmField name="application" />
+			<rules>
+				<persistance>
+					<cascade value="ALL" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</oneToMany>
+		
+        <!-- Champ OneToMany actions -->
+		<oneToMany name="actions">
+            <mappedPrstmField name="application" />
+			<rules>
+				<persistance>
+					<cascade value="ALL" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</oneToMany>
+        
+	</object>
+    
+    
+    <!-- Définition de l'objet Ressource pour l'objet datam base.ressource -->
+    <object name="Ressource" pack="ImcSecurite:securite" datamObject="ImcSecurite:securite.ressource">
+        <!-- Champ ManyToOne parent -->
+		<manyToOne name="parent">
+			<references>
+				<reference datamField="fk__parent__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+        <!-- Champ ManyToOne application -->
+		<manyToOne name="application">
+			<references>
+				<reference datamField="fk__application__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+	</object>
+    
+    
+    <!-- Définition de l'objet Profil pour l'objet datam base.profil -->
+    <object name="Profil" pack="ImcSecurite:securite" datamObject="ImcSecurite:securite.profil">
+        <!-- Champ ManyToMany parents -->
+		<manyToMany name="parents">			
+			<refDatamObject name="ImcSecurite:securite.profil_parents" />
+			<references>
+				<reference datamField="fk__fils__id" refDatamField="id" />
+			</references>
+			<inverseReferences>
+				<inverseReference datamField="fk__parent__id" refDatamField="id" />
+			</inverseReferences>
+			<rules>
+				<persistance>
+					<cascade value="ALL" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+			
+		</manyToMany>
+		
+        <!-- Champ ManyToMany parents -->
+		<manyToMany name="fils">	
+			<refDatamObject name="ImcSecurite:securite.profil_parents" />
+			<references>
+				<reference datamField="fk__parent__id" refDatamField="id" />
+			</references>
+			<inverseReferences>
+				<inverseReference datamField="fk__fils__id" refDatamField="id" />
+			</inverseReferences>
+			<rules>
+				<persistance>
+					<cascade value="ALL" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+			
+		</manyToMany>
+		
+        <!-- Champ ManyToOne application -->
+		<manyToOne name="application">
+			<references>
+				<reference datamField="fk__application__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+	</object>
+    
+    
+    <!-- Définition de l'objet Action pour l'objet datam base.action -->
+    <object name="Action" pack="ImcSecurite:securite" datamObject="ImcSecurite:securite.action">
+        <!-- Champ ManyToOne application -->
+		<manyToOne name="application">
+			<references>
+				<reference datamField="fk__application__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+	</object>
+    
+    
+    <!-- Définition de l'objet Droit pour l'objet datam base.droit -->
+    <object name="Droit" pack="ImcSecurite:securite" datamObject="ImcSecurite:securite.droit">
+        <!-- Champ ManyToOne ressource -->
+		<manyToOne name="ressource">
+			<references>
+				<reference datamField="fk__ressource__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+        <!-- Champ ManyToOne profil -->
+		<manyToOne name="profil">
+			<references>
+				<reference datamField="fk__profil__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+        <!-- Champ ManyToOne action -->
+		<manyToOne name="action">
+			<references>
+				<reference datamField="fk__action__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+        <!-- Champ ManyToOne application -->
+		<manyToOne name="application">
+			<references>
+				<reference datamField="fk__application__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+	</object>
+    
+    
+    <!-- Définition de l'objet Assertion pour l'objet datam base.Assertion -->
+    <object name="Assertion" pack="ImcSecurite:securite" datamObject="ImcSecurite:securite.assertion">
+        <!-- Champ ManyToOne ressource -->
+		<manyToOne name="ressource">
+			<references>
+				<reference datamField="fk__ressource__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+        <!-- Champ ManyToOne profil -->
+		<manyToOne name="profil">
+			<references>
+				<reference datamField="fk__profil__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+        <!-- Champ ManyToOne action -->
+		<manyToOne name="action">
+			<references>
+				<reference datamField="fk__action__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+        <!-- Champ ManyToOne application -->
+		<manyToOne name="application">
+			<references>
+				<reference datamField="fk__application__id" />
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE" />
+					<lazy value="true" />
+				</persistance>
+			</rules>
+		</manyToOne>
+        
+	</object>
+	
+</prstm>

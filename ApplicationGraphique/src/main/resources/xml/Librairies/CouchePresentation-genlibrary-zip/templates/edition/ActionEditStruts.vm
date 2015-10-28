@@ -1,0 +1,93 @@
+## #####
+## Générateur java de la couche présentation IMC
+## Création de la classe de Model
+##
+## @param generatedObject l'objet viemw:vueModel
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 31/01/2012
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pobject
+#set ( $eElement = ${manager.getElement("{0}:{1}.{2}ActionEdit", ${generatedObject.modelId})} )
+#set ( $obmObject = ${generatedObject.object} )
+##
+## si le nombre d'id de la classe est différent de 1 alors on aura une clé composé
+## création d'un attribut pour le getter et setter de l'id
+#set( $_attribut = ${factory.newAttribut()} )
+#if ( ${obmObject.fieldId.class.simpleName} == "ComposedId" )
+##
+#set ( ${_attribut.name} = "pk" )
+#else
+#set ( ${_attribut.name} = ${obmObject.fieldId.name} )
+#end
+##
+## on récup la grid cible du retour d'edition
+#set ( $grd = ${generatedObject.grid.component} )
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="${generatedObject.name}" namespace="/${generatedObject.pack.pathName}" extends="${model.project}">
+
+        <!-- action d'édition -> résult jsp -->
+        <action name="Editer${generatedObject.name}-*" class="${eElement.path}" method="execute">
+            <interceptor-ref name="edit" />
+            <param name="${_attribut.name}">{1}</param>
+            <param name="title">Editer ${generatedObject.name}</param>
+            <result name="success" type="imctiles">
+                <param name="page">/${generatedObject.pack.pathName}/${generatedObject.name}.jspx</param>
+            </result>
+        </action>
+
+        <!-- action d'édition -> résult jsp -->
+        <action name="Consulter${generatedObject.name}-*" class="${eElement.path}" method="consult">
+            <interceptor-ref name="edit" />
+            <param name="${_attribut.name}">{1}</param>
+            <param name="title">Consulter ${generatedObject.name}</param>
+            <result name="success" type="imctiles">
+                <param name="page">/${generatedObject.pack.pathName}/${generatedObject.name}.jspx</param>
+            </result>
+        </action>
+        
+        <!-- action sauvegarde de l'édition -> résult redirect list -->
+        <action name="Save${generatedObject.name}" class="${eElement.path}" method="save">
+            <interceptor-ref name="save" />
+            <result name="success" type="redirectAction">
+				<param name="actionName">${grd.name}.action</param>
+				<param name="namespace">/${grd.pack.pathName}</param>
+			</result>
+        </action>
+        
+        <!-- action d'annulation de l'édition -> résult redirect list -->
+        <action name="Cancel${generatedObject.name}" class="${eElement.path}" method="cancel">
+            <interceptor-ref name="save" />
+            <result name="cancel" type="redirectAction">
+				<param name="actionName">${grd.name}.action</param>
+				<param name="namespace">/${grd.pack.pathName}</param>
+			</result>
+        </action>
+        
+        <!-- action de suppression -> résult redirect list -->
+        <action name="Supprimer${generatedObject.name}-*" class="${eElement.path}" method="supprimer">
+            <interceptor-ref name="edit" />
+            <param name="${_attribut.name}">{1}</param>
+            <param name="title">Supprimer ${generatedObject.name}</param>
+            <result name="remove" type="redirectAction">
+				<param name="actionName">${grd.name}.action</param>
+				<param name="namespace">/${grd.pack.pathName}</param>
+			</result>
+        </action>
+
+	</package>
+</struts>

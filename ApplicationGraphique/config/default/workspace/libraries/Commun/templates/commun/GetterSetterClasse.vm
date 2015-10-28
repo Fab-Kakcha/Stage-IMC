@@ -1,0 +1,11 @@
+## #####
+## Générateur Java
+## Getter et Setter d'une classe
+## 
+## @param _attribut (classe com.imcfr.generateur.factory.Attribut) l'attribut dont le getter et setter est à créer
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 27/09/2009
+## #####
+#generate ( "Commun:GetterClasse" )
+#generate ( "Commun:SetterClasse" )

@@ -1,0 +1,94 @@
+## #####
+## Générateur java de la couche persistance IMC
+## Création des méthodes getByRef et getCountByRef
+## 
+## @param generatedObject le prstm object
+## @param $beanElement le nom de l'interface bean de l'objet
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+##
+## on recup le field obm
+#firstUpper( $fieldName, ${field.name} )
+#set ( $objectName = ${manager.getElement("{0}:{1}.{2}Bean", ${generatedObject.modelId}).className} )
+## -------------------------
+## Le template
+## -------------------------
+##
+    /**
+     * Récupére la requête de sélection par ${field.name}
+     *
+     * @param ref
+     *          La valeur de la référence du filtre
+     *
+     * @return la requête
+     */
+    private ${manager.getElement("QueryHelper").path}
+            getQueryBy${fieldName}(${manager.getElement("{0}:{1}.{2}Bean", ${obmField.type}).path} ref) {
+            // on crée la requête
+            ${manager.getElement("QueryHelper").path} query = new ${manager.getElement("QueryHelper").path}();
+            query.add("SELECT x FROM ${obmObject.name} x JOIN x.${field.name} y WHERE y = :refparam");
+            query.addParam("refparam", ref);
+                
+            return query;
+    }
+    
+    /* (non-Javadoc)
+     * @see ${manager.getElement("{0}:{1}.PHome{2}Generated", ${obmObject.modelId}).path}${esc.d}getBy${fieldName}(
+     * 		${manager.getElement("JpaEntityManager").path}, ${manager.getElement("{0}:{1}.{2}Bean", ${obmField.type}).path})
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public ${manager.getElement("IList").path}<${beanElement.path}>
+            getBy${fieldName}(${manager.getElement("JpaEntityManager").path} em, ${manager.getElement("{0}:{1}.{2}Bean", ${obmField.type}).path} ref)
+            throws ${manager.getElement("PException").path}
+            , ${manager.getElement("ExceptionInconnue").path} {
+        
+        // on vérifie que l'objet reference peut - être utilisé
+        verifierReference(ref, "getBy${fieldName}");
+        
+        try {
+            // on crée la requête
+            ${manager.getElement("QueryHelper").path} query = getQueryBy${fieldName}(ref);
+            
+            return (${manager.getElement("IList").path}<${beanElement.path}>) query.getList(em);
+        } catch (${manager.getElement("RuntimeException").path} e) {
+            throw new ${manager.getElement("PException").path}(
+                    HOME_BUNDLE.get("Err.Test.GetByRef", new String[]{"${obmObject.name}"}), e);
+        } catch (${manager.getElement("Exception").path} e) {
+            throw new ${manager.getElement("ExceptionInconnue").path}(e);
+        }
+    }
+    
+    /* (non-Javadoc)
+     * @see ${manager.getElement("{0}:{1}.PHome{2}Generated", ${obmObject.modelId}).path}${esc.d}getCountBy${fieldName}(
+     * 		${manager.getElement("JpaEntityManager").path}, ${manager.getElement("{0}:{1}.{2}Bean", ${obmField.type}).path})
+     */
+    @Override
+    public ${manager.getElement("Long").path} getCountBy${fieldName}(${manager.getElement("JpaEntityManager").path} em
+			, ${manager.getElement("{0}:{1}.{2}Bean", ${obmField.type}).path} ref)
+            throws ${manager.getElement("PException").path}
+            , ${manager.getElement("ExceptionInconnue").path} {
+        
+        // on vérifie que l'objet reference peut - être utilisé
+        verifierReference(ref, "getBy${fieldName}");
+        
+        try {
+            // on crée la requête
+            ${manager.getElement("QueryHelper").path} query = getQueryBy${fieldName}(ref);
+            
+            return query.getCount(em);
+        } catch (${manager.getElement("RuntimeException").path} e) {
+            throw new ${manager.getElement("PException").path}(
+                    HOME_BUNDLE.get("Err.Test.GetCountByRef", new String[]{"${obmObject.name}"}), e);
+        } catch (${manager.getElement("Exception").path} e) {
+            throw new ${manager.getElement("ExceptionInconnue").path}(e);
+        }
+    }
+

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<obm name="AgadirMesureObm" project="AgadirMesure" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ObjectModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/ObjectModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/CodeGeneratorModel/src/main/resources/com/imcfr/generateur/sax/objectmodel/ObjectModelDefinition-2.0.0.xsd ">
+
+	<package name="mesure" completeName="com.imcfr.agadir.mesure"/>
+
+
+	<object name="ObjetProcedure" pack="AgadirMesure:mesure" abstract="true">
+		<!-- attributs -->
+		<field name="id" type="Base:Long" null="false" id="true"/>
+		<field name="dateReception" type="Base:Date"/>
+		<field name="numDossier" type="Base:String"/>
+		<field name="dateDebut" type="Base:Date"/>
+		<field name="dateEnregistrement" type="Base:Date"/>
+		<field name="numDossierOperateurInitial" type="Base:String"/>
+		<field name="commentaire" type="Base:String"/>
+		<field name="dateCompletude" type="Base:Date"/>
+		<field name="dateConformite" type="Base:Date"/>
+		<field name="dateFin" type="Base:Date"/>
+		
+		<!-- référentiel -->
+		<field name="etat" type="AgadirMesure:referentiel.EtatObjetProcedure" null="false"/>
+		<field name="nature" type="AgadirMesure:referentiel.NatureObjetProcedure" null="false"/>
+		
+		<!-- relations -->
+		<field name="signature" type="AgadirTechnique:agadir.Signature" null="true"/>
+	</object>
+
+	<object name="Convention" pack="AgadirMesure:mesure" obmExtends="AgadirMesure:mesure.ObjetProcedure">
+		<!-- relations -->
+		<field name="conventionPrecedente" type="AgadirMesure:mesure.Convention" null="true"/>
+		<field name="avenant" type="AgadirMesure:mesure.Convention" null="true"/>
+	</object>
+	
+	<object name="DeclarationAdministrative" pack="AgadirMesure:mesure" obmExtends="AgadirMesure:mesure.ObjetProcedure">
+	</object>
+	
+	<object name="Agrement" pack="AgadirMesure:mesure" obmExtends="AgadirMesure:mesure.ObjetProcedure">
+	</object>
+	
+	
+	
+	<object name="Operation" pack="AgadirMesure:mesure">
+		<!-- attributs -->
+		<field name="id" type="Base:Long" null="false" id="true"/>
+		<field name="commentaire" type="Base:String"/>
+		<field name="dateDebut" type="Base:Date"/>
+		<field name="dateFin" type="Base:Date"/>
+		<!-- référentiel -->
+		<field name="typeOperation" type="AgadirMesure:referentiel.TypeOperation" null="false"/>	
+	</object>
+	
+	<object name="ContratTravail" pack="AgadirMesure:mesure">
+		<!-- attributs -->
+		<field name="id" type="Base:Long" null="false" id="true"/>
+
+		<field name="salaireEmbauche" type="Base:Float"/>
+		<field name="dateDebut" type="Base:Date"/>
+		<field name="dateFin" type="Base:Date"/>
+		<field name="dureeHebdomadaire" type="Base:Float"/>
+		
+		<!-- référentiel -->
+		<field name="typeContratTravail" type="AgadirMesure:referentiel.TypeContratTravail" null="false"/>
+	</object>
+	
+	<object name="Controle" pack="AgadirMesure:mesure">
+		<!-- attributs -->
+		<field name="id" type="Base:Long" null="false" id="true"/>
+		<field name="commentaire" type="Base:String"/>
+		<field name="dateDebut" type="Base:Date"/>
+		<field name="dateFin" type="Base:Date"/>
+		<!-- référentiel -->
+		<field name="typeControle" type="AgadirMesure:referentiel.TypeControle" null="false"/>
+		
+		<!-- relations -->
+		<field name="resultatsControle" type="AgadirMesure:mesure.ResultatControle" list="true"/>
+	</object>
+	
+	<object name="ResultatControle" pack="AgadirMesure:mesure">
+		<!-- attributs -->
+		<field name="id" type="Base:Long" null="false" id="true"/>
+		<field name="commentaire" type="Base:String"/>
+		<field name="date" type="Base:Date"/>
+
+		<!-- référentiel -->
+		<field name="typeResultatControle" type="AgadirMesure:referentiel.TypeResultatControle" null="false"/>
+		
+		<!-- relations -->
+		<field name="controle" type="AgadirMesure:mesure.Controle" null="false"/>
+	</object>
+	
+	<object name="Financement" pack="AgadirMesure:mesure">
+		<!-- attributs -->
+		<field name="id" type="Base:Long" null="false" id="true"/>
+
+		<!-- référentiel -->
+		<field name="typeFinancement" type="AgadirMesure:referentiel.TypeFinancement" null="false"/>
+		
+		<!-- relations -->
+		<field name="financeurs" type="AgadirRole:role.Commanditaire" list="true"/>
+		<field name="decision" type="AgadirMesure:mesure.Decision" null="true"/>
+	</object>
+	
+	<object name="Decision" pack="AgadirMesure:mesure">
+		<!-- attributs -->
+		<field name="id" type="Base:Long" null="false" id="true"/>
+		<field name="commentaire" type="Base:String"/>
+		<field name="date" type="Base:Date"/>
+		
+		<!-- référentiel -->
+		<field name="typeDecision" type="AgadirMesure:referentiel.TypeDecision" null="false"/>
+	</object>
+	<object name="Notification" pack="AgadirMesure:mesure">
+		<!-- attributs -->
+		<field name="id" type="Base:Long" null="false" id="true"/>
+		<field name="commentaire" type="Base:String"/>
+		<field name="date" type="Base:Date"/>
+		
+		<!-- référentiel -->
+		<field name="typeNotification" type="AgadirMesure:referentiel.TypeNotification" null="false"/>
+	</object>
+	<object name="Tutorat" pack="AgadirMesure:mesure">
+		<!-- attributs -->
+		<field name="id" type="Base:Long" null="false" id="true"/>
+		<field name="tuteur" type="AgadirRole:role.Tuteur" list="true"/>
+		<!-- référentiel -->
+		<field name="typeTutorat" type="AgadirMesure:referentiel.TypeTutorat" null="false"/>
+	</object>
+
+</obm>

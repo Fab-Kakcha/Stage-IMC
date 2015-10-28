@@ -1,0 +1,48 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param element (com.imcfr.generateur.model.edimodel.RedefineType)
+## 
+## #####
+##
+	<redefineType base="${element.base}">
+#**##if (${element.elementsList.size()} > 0)
+#**##**##foreach ($elt in ${element.elementsList})
+#**##**##**##set($erte_nillable="")
+#**##**##**##if (${elt.nillable})
+#**##**##**##**##set($erte_nillable=" nillable=${Q}true${Q}")
+#**##**##**##end
+#**##**##**##set($erte_default="")
+#**##**##**##if ("$!{elt.defaut}" != "")
+#**##**##**##**##set($erte_default=" default=${Q}${elt.defaut}${Q}")
+#**##**##**##end
+#**##**##**##set($erte_min="")
+#**##**##**##if (${elt.minOccurs} != 1)
+#**##**##**##**##set($erte_min=" minOccurs=${Q}${elt.minOccurs}${Q}")
+#**##**##**##end
+#**##**##**##set($erte_max="")
+#**##**##**##if (${elt.maxOccurs} != 1)
+#**##**##**##**##if (${elt.maxOccurs} != -1)
+#**##**##**##**##**##set($erte_max=" maxOccurs=${Q}${elt.maxOccurs}${Q}")
+#**##**##**##**##else
+#**##**##**##**##**##set($erte_max=" maxOccurs=${Q}unbounded${Q}")
+#**##**##**##**##end
+#**##**##**##end
+		<element name="${elt.name}"$!{erte_min}$!{erte_max}$!{erte_nillable}$!{erte_default}/>
+#**##**##end
+#**##end
+#**##if (${element.attributesList.size()} > 0)
+
+#**##**##foreach ($attr in ${element.attributesList})
+#**##**##**##set($erta_use="")
+#**##**##**##if (${attr.use.name()} != "OPTIONAL")
+#**##**##**##**##set($erta_use=" use=${Q}${attr.use.name().toLowerCase()}${Q}")
+#**##**##**##end
+#**##**##**##set($erta_default="")
+#**##**##**##if ("$!{attr.defaut}" != "")
+#**##**##**##**##set($erta_default=" default=${Q}${attr.defaut}${Q}")
+#**##**##**##end
+		<attribute name="${attr.name}"$!{erta_use}$!{erta_default}/>
+#**##**##end
+#**##end
+	</redefineType>

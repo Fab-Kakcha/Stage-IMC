@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<box name="AgadirReferentielGeographique" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ModelsBoxDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/ModelsBoxDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/model/commun/ModelsBoxDefinition-2.0.0.xsd ">   
+
+	<dependencies>
+		<dependency name="AgadirTechnique" use="required"/>
+	</dependencies>	
+
+	<model type="obm" path="agadirreferentielgeographique-obm.xml"/>
+	<model type="datam" path="agadirreferentielgeographique-datam.xml"/>
+	<model type="prstm" path="agadirreferentielgeographique-prstm.xml"/>
+	<model type="edim" path="agadirreferentielgeographique-edim.xml"/>
+    <model type="viewm" path="agadirreferentielgeographique-viewm.xml"/>
+
+	<properties>
+		<property name="imcdev_PomParentPomParent">com.imcfr.agadir:AgadirJavaPomParent:4.0.0</property>
+		<property name="imcdev_MavenGroupId">com.imcfr.agadir</property>
+	</properties>
+
+</box>

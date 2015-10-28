@@ -1,0 +1,29 @@
+## #####
+## Générateur Java
+## 
+## @param generatedObject l'obm object
+## @param constante la constante
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 12/11/2008
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## sinon type simplement
+#set ($oc_type="")
+#set ($oc_value="null")
+#if ( ${manager.isBaseType(${constante.type})} == true )
+#**##set ( $oc_type = ${manager.getElement(${constante.type}).path} )
+#else
+#**##set ( $oc_type = ${manager.getElement("{0}:{1}.{2}Bean", ${constante.type}).path} )
+#end
+#if ( ${model.utils.isField(${constante.value})} == true )
+#**##set ( $oc_value = "#formatFieldRef($model ${constante.value})" )
+#else
+#**##set ( $oc_value = ${manager.getElement(${constante.type}).formatValue(${constante.value})} )
+#end
+##
+	public static final ${oc_type} ${constante.name} = ${oc_value};

@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datam name="AgadirAnnuaireDatam" project="AgadirAnnuaire" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns="http://www.imc-fr.com/DataModelDefinition-2.0.0"
+	xsi:schemaLocation="http://www.imc-fr.com/DataModelDefinition-2.0.0 http://sites.imc-fr.com/xsd/datamodel/DataModelDefinition-2.0.0.xsd">
+
+
+    <!-- DÃ©finition des users -->
+
+    <!-- DÃ©finition du schema annuaire pour le package obm annuaire -->
+    <schema name="annuaire" completeName="agadir_annuaire">
+        <rules>
+            <grants>
+                <grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="USAGE"/>
+            </grants>
+        </rules>
+    </schema>
+    
+    
+    <!-- DÃ©finition de l'objet ressource pour l'objet obm annuaire.Ressource -->
+    <object name="annuaire_ressource" schema="AgadirAnnuaire:annuaire" obmObject="AgadirAnnuaire:annuaire.AnnuaireRessource" >
+        <!--
+            DÃ©finition des ids hÃ©ritÃ©s de ImcSecurite:securite.Ressource
+        -->
+        <field name="id" type="Base:Long"/>
+		<field name="fk__ressource__id" type="Base:Long" obmField="ressource"/>
+
+        <rules>
+            <constraints>
+                <!-- DÃ©finition des rÃ¨gles de contraintes de clÃ© primaires -->
+                <primaryKey field="id" />
+    
+                <!-- DÃ©finition des clÃ© Ã©trangÃ¨res de l'id hÃ©ritÃ©s de ImcSecurite:securite.Ressource -->
+                <foreignKeys refObject="ImcSecurite:securite.ressource" >
+                    <foreignKey field="fk__ressource__id" refField="id" />
+                </foreignKeys>
+            </constraints>
+            
+            <grants>
+                <grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+            </grants>
+        </rules>
+
+    </object>
+    
+	
+	<!-- DÃ©finition de l'objet type_site pour l'objet obm annuaire.TypeSite -->
+    <object name="type_site" schema="AgadirAnnuaire:annuaire" obmObject="AgadirAnnuaire:annuaire.TypeSite" inherits="true">
+        <rules>
+            <grants>
+                <grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+            </grants>
+        </rules>
+    </object>
+    
+    <!-- DÃ©finition de l'objet site pour l'objet obm annuaire.Site -->
+    <object name="site" schema="AgadirAnnuaire:annuaire" obmObject="AgadirAnnuaire:annuaire.Site" >
+        <!--
+            DÃ©finition des ids hÃ©ritÃ©s de AgadirAnnuaire:annuaire.AnnuaireRessource
+        -->
+        <field name="ref__annuaire_ressource__id" type="Base:Long"/>
+		
+		<field name="libelle" obmField="libelle" />
+		
+
+        <!--
+            DÃ©finition des champs de l'objet
+        -->
+        <!-- Champ saisieLigne -->
+        <field name="saisie_ligne" obmField="saisieLigne" />
+
+        <!-- Champ nbConvEncours -->
+        <field name="nb_conv_encours" obmField="nbConvEncours" />
+
+        <!-- Champ siret -->
+        <field name="siret" obmField="siret" />
+
+        <!-- Champ reseau -->
+        <field name="fk__reseau__id" type="Base:Integer" obmField="reseau"/>
+
+        <!-- Champ nbMaxConv -->
+        <field name="nb_max_conv" obmField="nbMaxConv" />
+
+        <!-- Champ raisonSociale -->
+        <field name="raison_sociale" obmField="raisonSociale" />
+
+        <!-- Champ contact -->
+        <field name="fk__contact__id" type="Base:Integer" obmField="contact"/>
+
+        <!-- Champ adresse -->
+        <field name="fk__adresse__id" type="Base:Integer" obmField="adresse"/>
+
+        <!-- Champ type -->
+        <field name="fk__type__id" type="Base:Integer" obmField="type"/>
+
+        <!-- Champ niveau -->
+        <field name="fk__niveau__id" type="Base:Long" obmField="niveau"/>
+
+        <rules>
+            <constraints>
+				<!-- DÃ©finition des rÃ¨gles de contraintes de clÃ© primaires -->
+                <primaryKey field="ref__annuaire_ressource__id" />
+				
+                <!-- DÃ©finition des clÃ© Ã©trangÃ¨res de l'id hÃ©ritÃ©s de AgadirAnnuaire:annuaire.AnnuaireRessource -->
+				<foreignKeys refObject="AgadirAnnuaire:annuaire.annuaire_ressource" >
+					<foreignKey field="ref__annuaire_ressource__id" refField="id" />
+				</foreignKeys>
+
+                <!-- DÃ©finition des clÃ© Ã©trangÃ¨res du champ reseau -->
+                <foreignKeys refObject="AgadirAnnuaire:annuaire.reseau">
+                    <foreignKey field="fk__reseau__id" refField="id" />
+                </foreignKeys>
+
+                <!-- DÃ©finition des clÃ© Ã©trangÃ¨res du champ contact -->
+                <foreignKeys refObject="AgadirContact:contact.contact">
+                    <foreignKey field="fk__contact__id" refField="id" />
+                </foreignKeys>
+
+                <!-- DÃ©finition des clÃ© Ã©trangÃ¨res du champ adresse -->
+                <foreignKeys refObject="AgadirContact:contact.adresse">
+                    <foreignKey field="fk__adresse__id" refField="id" />
+                </foreignKeys>
+
+                <!-- DÃ©finition des clÃ© Ã©trangÃ¨res du champ type -->
+                <foreignKeys refObject="AgadirAnnuaire:annuaire.type_site">
+                    <foreignKey field="fk__type__id" refField="id" />
+                </foreignKeys>
+
+                <!-- DÃ©finition des clÃ© Ã©trangÃ¨res du champ niveau -->
+                <foreignKeys refObject="AgadirAnnuaire:annuaire.niveau">
+                    <foreignKey field="fk__niveau__id" refField="id" />
+                </foreignKeys>
+            </constraints>
+            
+            <!-- DÃ©finition des droits sur la table -->
+            <grants>
+                <grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+            </grants>
+        </rules>
+
+    </object>
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    <!-- DÃ©finition de l'objet compte_utilisateur pour l'objet obm annuaire.CompteUtilisateur -->
+    <object name="compte_utilisateur" schema="AgadirAnnuaire:annuaire" obmObject="AgadirAnnuaire:annuaire.CompteUtilisateur" >
+        <!--
+            DÃ©finition des ids hÃ©ritÃ©s de AgadirAnnuaire:annuaire.AnnuaireRessource
+        -->
+        <field name="ref__annuaire_ressource__id" type="Base:Long"/>
+        
+        <!--
+            DÃ©finition des champs de l'objet
+        -->
+        <!-- Champ identite -->
+        <field name="fk__identite__id" type="Base:Integer" obmField="identite"/>
+
+        <!-- Champ telephone -->
+        <field name="fk__telephone__id" type="Base:Integer" obmField="telephone"/>
+
+        <!-- Champ site -->
+        <field name="fk__site__id" type="Base:Integer" obmField="site"/>
+
+        <!-- Champ email -->
+        <field name="fk__email__id" type="Base:Integer" obmField="email"/>
+
+        <!-- Champ adresse -->
+        <field name="fk__adresse__id" type="Base:Integer" obmField="adresse"/>
+
+        <!-- Champ recevoirMail -->
+        <field name="recevoir_mail" obmField="recevoirMail" />
+		
+		<!-- Champ login -->
+		<field name="login" obmField="login" />
+		
+		<!-- Champ password -->
+		<field name="password" obmField="password" />
+
+        <rules>
+            <constraints>
+                <!-- DÃ©finition des rÃ¨gles de contraintes de clÃ© primaires -->
+                <primaryKey field="ref__annuaire_ressource__id" />
+    
+                <!-- DÃ©finition des clÃ© Ã©trangÃ¨res de l'id hÃ©ritÃ©s de AgadirAnnuaire:annuaire.AnnuaireRessource -->
+                <foreignKeys refObject="AgadirAnnuaire:annuaire.annuaire_ressource" >
+                    <foreignKey field="ref__annuaire_ressource__id" refField="id" />
+                </foreignKeys>
+
+                <!-- DÃ©finition des clÃ© Ã©trangÃ¨res du champ identite -->
+                <foreignKeys refObject="AgadirContact:contact.identite">
+                    <foreignKey field="fk__identite__id" refField="id" />
+                </foreignKeys>
+
+                <!-- DÃ©finition des clÃ© Ã©trangÃ¨res du champ telephone -->
+                <foreignKeys refObject="AgadirContact:contact.telephonie">
+                    <foreignKey field="fk__telephone__id" refField="id" />
+                </foreignKeys>
+
+                <!-- DÃ©finition des clÃ© Ã©trangÃ¨res du champ site -->
+                <foreignKeys refObject="AgadirAnnuaire:annuaire.site">
+                    <foreignKey field="fk__site__id" refField="ref__annuaire_ressource__id" />
+                </foreignKeys>
+
+                <!-- DÃ©finition des clÃ© Ã©trangÃ¨res du champ email -->
+                <foreignKeys refObject="AgadirContact:contact.mail">
+                    <foreignKey field="fk__email__id" refField="id" />
+                </foreignKeys>
+
+                <!-- DÃ©finition des clÃ© Ã©trangÃ¨res du champ adresse -->
+                <foreignKeys refObject="AgadirContact:contact.adresse">
+                    <foreignKey field="fk__adresse__id" refField="id" />
+                </foreignKeys>
+            </constraints>
+            
+            <!-- DÃ©finition des droits sur la table -->
+            <grants>
+                <grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+            </grants>
+        </rules>
+
+    </object>
+    
+    
+    
+    <!-- DÃ©finition de l'objet reseau pour l'objet obm annuaire.Reseau -->
+    <object name="reseau" schema="AgadirAnnuaire:annuaire" obmObject="AgadirAnnuaire:annuaire.Reseau" inherits="true">
+        <rules>
+            <grants>
+                <grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+            </grants>
+        </rules>
+    </object>
+    
+    
+
+    
+    <!-- DÃ©finition de l'objet niveau pour l'objet obm annuaire.Niveau -->
+    <object name="niveau" schema="AgadirAnnuaire:annuaire" obmObject="AgadirAnnuaire:annuaire.Niveau" inherits="true">
+        <rules>
+            <grants>
+                <grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+            </grants>
+        </rules>
+    </object>
+    
+    
+   
+    
+    
+	
+	<!-- compte_utilisateurs_profils : relation manyToMany entre les compteUtilisateur et les profils -->
+	<object name="compte_utilisateurs_profils" schema="AgadirAnnuaire:annuaire">
+		<field name="fk__compte_utilisateur__id" type="Base:Long" />
+		<field name="fk__profil__id" type="Base:Long" />
+		
+		<rules>
+			<constraints>
+				<primaryKey field="fk__compte_utilisateur__id" />
+                <primaryKey field="fk__profil__id" />
+
+                <foreignKeys refObject="AgadirAnnuaire:annuaire.compte_utilisateur">
+                    <foreignKey field="fk__compte_utilisateur__id" refField="ref__annuaire_ressource__id" />
+                </foreignKeys>
+
+                <foreignKeys refObject="ImcSecurite:securite.profil">
+                    <foreignKey field="fk__profil__id" refField="id" />
+                </foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+            </grants>
+		</rules>
+	</object>
+
+	<!-- regions_sites : relation manyToMany entre les regions et les sites -->
+	<object name="regions_sites" schema="AgadirAnnuaire:annuaire">
+		<field name="fk__region__id" type="Base:Long" />
+		<field name="fk__site__id" type="Base:Long" />
+		
+		<rules>
+			<constraints>
+				<primaryKey field="fk__region__id" />
+                <primaryKey field="fk__site__id" />
+
+                <foreignKeys refObject="AgadirReferentielGeographique:referentiel.region">
+                    <foreignKey field="fk__region__id" refField="id" />
+                </foreignKeys>
+
+                <foreignKeys refObject="AgadirAnnuaire:annuaire.site">
+                    <foreignKey field="fk__site__id" refField="ref__annuaire_ressource__id" />
+                </foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+            </grants>
+		</rules>
+	</object>
+	
+	<!-- departements_sites : relation manyToMany entre les departements et les sites -->
+	<object name="departements_sites" schema="AgadirAnnuaire:annuaire">
+		<field name="fk__departement__id" type="Base:Long" />
+		<field name="fk__site__id" type="Base:Long" />
+		
+		<rules>
+			<constraints>
+				<primaryKey field="fk__departement__id" />
+                <primaryKey field="fk__site__id" />
+
+                <foreignKeys refObject="AgadirReferentielGeographique:referentiel.departement">
+                    <foreignKey field="fk__departement__id" refField="id" />
+                </foreignKeys>
+
+                <foreignKeys refObject="AgadirAnnuaire:annuaire.site">
+                    <foreignKey field="fk__site__id" refField="ref__annuaire_ressource__id" />
+                </foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+            </grants>
+		</rules>
+	</object>
+	
+	
+	<!-- actions_ressources : relation manyToMany entre les actions et les ressources -->
+	<object name="actions_ressources" schema="AgadirAnnuaire:annuaire">
+		<field name="fk__action__id" type="Base:Long" />
+		<field name="fk__ressource__id" type="Base:Long" />
+		
+		<rules>
+			<constraints>
+				<primaryKey field="fk__action__id" />
+                <primaryKey field="fk__ressource__id" />
+
+                <foreignKeys refObject="ImcSecurite:securite.action">
+                    <foreignKey field="fk__action__id" refField="id" />
+                </foreignKeys>
+
+                <foreignKeys refObject="AgadirAnnuaire:annuaire.annuaire_ressource">
+                    <foreignKey field="fk__ressource__id" refField="id" />
+                </foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+            </grants>
+		</rules>
+	</object>
+	
+	<object name="profil_utilisateur_site" schema="AgadirAnnuaire:annuaire" obmObject="AgadirAnnuaire:annuaire.ProfilUtilisateurSite">
+		<field name="id" type="Base:Long" />
+		<field name="fk__site__id" type="Base:Long" />
+		<field name="fk__profil__id" type="Base:Long" />
+		<field name="fk__utilisateur__id" type="Base:Long" />
+		
+		<rules>
+			<constraints>
+				<primaryKey field="id" />
+
+                <foreignKeys refObject="ImcSecurite:securite.profil">
+                    <foreignKey field="fk__profil__id" refField="id" />
+                </foreignKeys>
+
+                <foreignKeys refObject="AgadirAnnuaire:annuaire.site">
+                    <foreignKey field="fk__site__id" refField="ref__annuaire_ressource__id" />
+                </foreignKeys>
+				
+				<foreignKeys refObject="AgadirAnnuaire:annuaire.compte_utilisateur">
+                    <foreignKey field="fk__utilisateur__id" refField="ref__annuaire_ressource__id" />
+                </foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+            </grants>
+		</rules>
+	</object>
+	
+	
+
+    
+
+</datam>

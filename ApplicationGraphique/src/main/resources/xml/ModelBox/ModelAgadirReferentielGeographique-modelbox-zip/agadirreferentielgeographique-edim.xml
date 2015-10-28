@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edim name="AgadirReferentielGeographiqueEdim" project="AgadirReferentielGeographique" version="4.0.0"
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xmlns="http://www.imc-fr.com/EdiModelDefinition-2.0.0"
+	  xsi:schemaLocation="http://www.imc-fr.com/EdiModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/EdimModel/src/main/resources/com/imcfr/generateur/sax/edimodel/EdiModelDefinition-2.0.0.xsd ">
+
+	<targetNamespace alias="agadirreferentielgeographique" namespace="http://www.dgefp.emploi.gouv.fr/Agadir" schemaLocation="AgadirReferentielGeographique.xsd"/>
+	
+	<type name="Departement" obmObject="AgadirReferentielGeographique:referentiel.insee.Departement" inherits="t::AgadirTechnique:TypeCode">
+		<elements>
+			<element xsi:type="elementObm" obmField="region" type="t::AgadirReferentielGeographique:Region"/>
+		</elements>
+	</type>
+
+	<type name="Region" obmObject="AgadirReferentielGeographique:referentiel.insee.Region" inherits="t::AgadirTechnique:TypeCode">
+	</type>
+	<type name="Localisation" obmObject="AgadirReferentielGeographique:referentiel.hexaposte.Localisation">
+		<elements>
+			<element xsi:type="elementObm" obmField="bureauDistributeur"/>
+			<element xsi:type="elementObm" obmField="codePostal"/>
+			<element xsi:type="elementObm" obmField="commune"/>
+			<element xsi:type="elementObm" obmField="numeroINSEE"/>
+			<element xsi:type="elementObm" obmField="pays" type="t::AgadirReferentielGeographique:Pays"/>
+			<element xsi:type="elementObm" obmField="departement" type="t::AgadirReferentielGeographique:Departement"/>
+		</elements>
+	</type>
+	
+	<type name="Pays" obmObject="AgadirReferentielGeographique:referentiel.iso.Pays" inherits="t::AgadirTechnique:TypeCode">
+	</type>
+	
+	<type name="Nationalite" obmObject="AgadirReferentielGeographique:referentiel.iso.Nationalite" inherits="t::AgadirTechnique:TypeCode">
+	</type>
+
+	
+	
+</edim>

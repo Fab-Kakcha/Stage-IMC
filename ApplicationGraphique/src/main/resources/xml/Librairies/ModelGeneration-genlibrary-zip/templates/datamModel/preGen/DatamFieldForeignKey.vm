@@ -1,0 +1,37 @@
+##
+## Générateur Xml
+## Création d'un élément pour un field d'un obm
+##
+## $generatedObject = model obm
+## $obm = l'objet obm
+## $field = un champ d'un obm
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 27/09/2009
+##
+
+                <!-- Définition des clé étrangères du champ ${field.name} -->
+#if( ${field.list} == true )
+        <!-- TODO vérifier qu'il ne s'agit pas d'une relation à créer -->
+#end
+##
+## sinon si c'est pas un type simple, on va recup l'objet ref et ses ids et on va construire autant de champs que d'id
+## le nom des ids sera préfixé de fk__
+##
+## on récupérer l'obm du type, puis sont nom bdd et sont nom bdd de schema
+#set ( $obmField = ${supermodel.getElement("obm:object:${field.type}")} )
+#getBddName( $fieldName, ${field.name} )
+#getBddName( $obmFieldName, ${obmField.name} )
+#getPackageBddName( $obmFieldSchemaName, ${obmField.pack.name} )
+##
+## on va parcourir les ids de cet objet
+#getIdsObm ( $ids, ${obmField} )
+#getFieldsType ( $typeIds, ${obmField} )
+#set( $typeIds = ${typeIds.split(",")} )
+#set( $index = 0 )
+                <foreignKeys refObject="${obmField.project}:${obmFieldSchemaName}.${obmFieldName}">
+#foreach( $id in ${ids.split(",")} )
+                    <foreignKey field="fk__${fieldName}__${id}" refField="${id}" />
+#set( $index = ${index} + 1 )
+#end
+                </foreignKeys>

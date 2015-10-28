@@ -1,0 +1,8 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.viewmodel.ViewModel)
+## @param element (com.imcfr.generateur.model.viewmodel.VueModel)
+## 
+## #####
+##
+	<vueModel name="${element.name}" pack="${element.packName}" object="${element.objectName}"/>

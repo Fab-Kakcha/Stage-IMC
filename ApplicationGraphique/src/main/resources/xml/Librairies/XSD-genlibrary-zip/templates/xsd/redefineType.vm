@@ -1,0 +1,42 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param redefineType (com.imcfr.generateur.model.edimodel.RedefineType)
+## 
+## #####
+#set($rt_baseElt = ${model.utils.getType($model, $redefineType.base)})
+#set($rt_baseTns = ${model.utils.getTargetNamespaceOf($model, $redefineType.base)})
+#set($t_indent="					")
+## 
+<!-- #formatType($model ${redefineType.base}) -->
+	<redefine schemaLocation="${rt_baseTns.schemaLocation}">
+		<complexType name="#formatType($model ${redefineType.base})">
+#**##**##**##if (!("$!{rt_baseElt.obmObject}" == ""))
+#**##**##**##**##if (${rt_baseElt.obmObject.libellesList.size()} > 0 || ${rt_baseElt.obmObject.descriptionsList.size()} > 0)
+#**##**##**#			<annotation>
+#**##**##**#				<documentation>
+#**##**##**##**##**##foreach ($rt_libelle in ${rt_baseElt.obmObject.libellesList})
+#**##**##**#					<libelle xml:lang="${rt_libelle.langue}">${rt_libelle.value}</libelle>
+#**##**##**##**##**##end
+#**##**##**##**##**##foreach ($rt_desc in ${rt_baseElt.obmObject.descriptionsList})
+#**##**##**#					<description xml:lang="${rt_desc.langue}">${rt_desc.value}</description>
+#**##**##**##**##**##end
+#**##**##**#				</documentation>
+#**##**##**#			</annotation>
+#**##**##**#
+#**##**##**##**##end
+#**##**##**##end
+			<complexContent>
+				<restriction base="#formatRef($model ${redefineType.base})">
+#**##**##**##**##**##set($type=$rt_baseElt)
+#**##**##**##**##**##generate("XSD:Elements")
+	
+#**##**##**##**##**##foreach ($t_attribute in $rt_baseElt.attributesList)
+#**##**##**##**##**##**##set($rt_attribute=$!{redefineType.getAttribute($t_attribute.name)})
+#**##**##**##**##**##**##generate("XSD:AttributeBase")
+#**##**##**##**##**##**##set($rt_attribute="")
+#**##**##**##**##**##end
+				</restriction>
+			</complexContent>
+		</complexType>
+	</redefine>

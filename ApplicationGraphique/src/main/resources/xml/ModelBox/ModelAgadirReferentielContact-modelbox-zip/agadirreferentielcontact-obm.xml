@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<obm name="AgadirReferentielContactObm" project="AgadirReferentielContact" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ObjectModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/ObjectModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/CodeGeneratorModel/src/main/resources/com/imcfr/generateur/sax/objectmodel/ObjectModelDefinition-2.0.0.xsd ">
+
+	<package name="referentiel.iso" completeName="com.imcfr.agadir.referentiel.contact.iso"/>
+	<package name="referentiel.legifrance" completeName="com.imcfr.agadir.referentiel.contact.legifrance"/>
+	<package name="referentiel.agadir" completeName="com.imcfr.agadir.referentiel.contact.agadir"/>
+	<package name="referentiel.insee" completeName="com.imcfr.agadir.referentiel.contact.insee"/>
+	<package name="referentiel.rgi" completeName="com.imcfr.agadir.referentiel.contact.rgi"/>
+	<package name="referentiel.format" completeName="com.imcfr.agadir.referentiel.contact.format"/>
+
+
+	<!-- iso -->
+	<object name="Sexe" pack="AgadirReferentielContact:referentiel.iso" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+
+<!-- insee -->
+	<object name="Naf2003" pack="AgadirReferentielContact:referentiel.insee" obmExtends="AgadirTechnique:agadir.Libelle">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="APE" pack="AgadirReferentielContact:referentiel.insee" obmExtends="AgadirTechnique:agadir.Libelle">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="Naf2008" pack="AgadirReferentielContact:referentiel.insee" obmExtends="AgadirTechnique:agadir.Libelle">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="SituationJuridique" pack="AgadirReferentielContact:referentiel.insee" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeNaf" pack="AgadirReferentielContact:referentiel.insee" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+
+	<!-- legifrance -->
+	<object name="ConventionCollective" pack="AgadirReferentielContact:referentiel.legifrance">
+		<field name="id" type="Base:Long" null="false" id="true"/>
+		<field name="idcc" type="Base:String" />
+		<field name="codeBrochure" type="Base:String" />
+		<field name="libelleCourt" type="Base:String" />
+		<field name="libelleLong" type="Base:String" />
+		<field name="urls" type="AgadirReferentielContact:referentiel.format.URL" list="true" />
+	</object>
+
+	<!-- agadir -->
+	
+	<object name="SecteurReference" pack="AgadirReferentielContact:referentiel.agadir" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="RegimeSocial" pack="AgadirReferentielContact:referentiel.agadir" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeCommunication" pack="AgadirReferentielContact:referentiel.format" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+
+	
+	<!-- rgi -->
+	<object name="TypeTelephonie" pack="AgadirReferentielContact:referentiel.rgi" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeRepetition" pack="AgadirReferentielContact:referentiel.rgi" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeAdresse" pack="AgadirReferentielContact:referentiel.rgi" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeMail" pack="AgadirReferentielContact:referentiel.rgi" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeURL" pack="AgadirReferentielContact:referentiel.rgi" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeVoie" pack="AgadirReferentielContact:referentiel.rgi" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	
+	<!-- Formats de contacts -->
+	<object name="ModaliteCommunication" pack="AgadirReferentielContact:referentiel.format" abstract="true">
+		<!-- attributs -->
+		<field name="id" type="Base:Long" null="false" id="true"/>
+	</object>
+	<object name="Mail" pack="AgadirReferentielContact:referentiel.format" obmExtends="AgadirReferentielContact:referentiel.format.ModaliteCommunication">
+		<!-- référentiel -->
+		<field name="typeMail" type="AgadirReferentielContact:referentiel.rgi.TypeMail" null="false"/>
+		<field name="adresse" type="Base:String" null="false"/>
+	</object>
+
+	<object name="Telephonie" pack="AgadirReferentielContact:referentiel.format" obmExtends="AgadirReferentielContact:referentiel.format.ModaliteCommunication">
+		<field name="indicatif" type="Base:String" null="false">
+			<!-- 
+			TODO initialiser à 033 + mettre le max(4) et le min(3) 
+			-->	
+		</field>
+		<field name="numero" type="Base:String" null="false">
+			<!-- 
+			TODO mettre le mettre le max(10) et le min(10)
+			-->	
+		</field>
+		<!-- référentiel -->
+		<field name="typeTelephonie" type="AgadirReferentielContact:referentiel.rgi.TypeTelephonie" null="false"/>
+	</object>
+
+	<object name="URL" pack="AgadirReferentielContact:referentiel.format" obmExtends="AgadirReferentielContact:referentiel.format.ModaliteCommunication">
+		<field name="url" type="Base:String" null="false">
+			<!-- 
+			TODO mettre le pattern
+			-->
+		</field>
+		<!-- référentiel -->
+		<field name="typeURL" type="AgadirReferentielContact:referentiel.rgi.TypeURL" null="false"/>
+	</object>
+
+	<object name="Adresse" pack="AgadirReferentielContact:referentiel.format" obmExtends="AgadirReferentielContact:referentiel.format.ModaliteCommunication">
+		<!-- attributs -->
+		<field name="numero" type="Base:String"/>
+		<field name="repetition" type="AgadirReferentielContact:referentiel.rgi.TypeRepetition" null="false"/>
+		<field name="typeVoie" type="AgadirReferentielContact:referentiel.rgi.TypeVoie" null="false"/>
+		<field name="voie" type="Base:String"/>
+		<field name="complement" type="Base:String"/>
+		<field name="localisation" type="AgadirReferentielGeographique:referentiel.hexaposte.Localisation" null="false"/>
+		<field name="bp" type="Base:String"/>
+		<field name="cedex" type="Base:String"/>
+		<!-- référentiel -->
+		<field name="typeAdresse" type="AgadirReferentielContact:referentiel.rgi.TypeAdresse" null="false"/>
+	</object>
+	
+	
+
+</obm>

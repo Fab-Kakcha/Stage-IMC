@@ -1,0 +1,44 @@
+## #####
+## Générateur java de la couche bean IMC
+## Création de l'interface
+## 
+## @param generatedObject l'obm object
+## 
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+##  on récup le pobject et le pobjectimpl
+#set ( $beanElement = ${manager.getElement("{0}:{1}.{2}Interface", ${generatedObject.modelId})} )
+## si il hérite l'extends est son parent
+#set ( $extends = "" )
+#if ( ${generatedObject.obmExtendsName} != "" )
+#set ( $extends = " extends ${manager.getElement('{0}:{1}.{2}Interface', ${generatedObject.obmExtends.modelId}).path}" )
+#end
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+package ${beanElement.packageName};
+
+/**
+ * Interface ${generatedObject.completeName}
+ *
+ * @version ${model.version}
+ * @author généré par ${infoGen}
+ */
+public interface ${beanElement.className}$!{extends} {
+## on génére les constantes
+#foreach ( $constante in  ${generatedObject.constsList} )
+#generate ( "CoucheBean:Bean_Constante" )
+#end
+
+## on génére les getter et setter des champs
+#foreach ( $field in  ${generatedObject.fieldsList} )
+#generate ( "CoucheBean:Bean_GetterSetter" )
+#end
+
+}

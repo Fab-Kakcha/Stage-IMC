@@ -1,0 +1,87 @@
+## #####
+## Générateur java de la couche persistance IMC
+## Création de la classe d'implémentation PHomeImpl
+## 
+## @param generatedObject le prstm object
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+## on récup le pobject
+#set ( $obmObject = ${generatedObject.datamObject.obmObject} )
+#set ( $beanElement = ${manager.getElement("{0}:{1}.{2}Bean", ${obmObject.modelId})} )
+#set ( $beanElementImpl = ${manager.getElement("{0}:{1}.{2}BeanImpl", ${obmObject.modelId})} )
+#set ( $pElementHome = ${manager.getElement("{0}:{1}.PHome{2}Generated", ${obmObject.modelId})} )
+#set ( $pElementHomeImpl = ${manager.getElement("{0}:{1}.PHome{2}GeneratedImpl", ${obmObject.modelId})} )
+##
+## si le nombre d'id de la classe est différent de 1 alors on aura une clé composé
+#if ( ${obmObject.fieldId.class.simpleName} == "ComposedId" )
+##
+#set ( $cleType = ${manager.getElement("{0}:{1}.PK{2}", ${obmObject.modelId})} )
+#else
+#if ( ${manager.isBaseType(${obmObject.fieldId.type})} == true )
+#set ( $cleType = ${manager.getElement(${obmObject.fieldId.type})} )
+#else
+#set ( $cleType = ${manager.getElement("{0}:{1}.{2}Bean", ${obmObject.fieldId.type})} )
+#end
+#end
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+package ${pElementHomeImpl.packageName};
+
+/**
+ * Classe d'implémentation générée du home de l'objet persistant ${obmObject.completeName}
+ *
+ * @version ${model.version}
+ * @author généré par ${infoGen}
+ */
+public class ${pElementHomeImpl.className}
+        extends ${manager.getElement("PHomeImpl").path}<${beanElement.path}, ${cleType.path}>
+        implements ${pElementHome.path} {
+
+    /**
+     * Serial version uid
+     */
+    private static final long serialVersionUID = 1L;
+    
+    /**
+     * Constructeur à partir du persistence unit
+     */
+    public ${pElementHomeImpl.className}() {
+        super(${beanElement.path}.BEAN_NAME
+				, ${beanElementImpl.path}.class);
+    }
+##
+##
+##
+## méthode getname
+    
+    /* (non-Javadoc)
+     * @see ${manager.getElement("PHome").path}${esc.d}getName()
+     */
+    @Override
+    public String getName() {
+        return "PHome_JPA_${generatedObject.refName}";
+    }
+
+#generate ("CouchePersistanceJPA:PHomeGeneratedImpl_DefaultQuery")
+##
+## on parcours les champs, si il sont de types ref à un autre objet, on va générer un getByRef
+#foreach ( $field in ${generatedObject.fields.values()} )
+#set ( $obmField = ${generatedObject.datamObject.obmObject.getField(${field.name})} )
+#if ( ${obmField.list} == false)
+#generate ("CouchePersistanceJPA:PHomeGeneratedImpl_GetByRef")
+#else
+#generate ("CouchePersistanceJPA:PHomeGeneratedImpl_GetByRefList")
+#end
+#end
+
+}

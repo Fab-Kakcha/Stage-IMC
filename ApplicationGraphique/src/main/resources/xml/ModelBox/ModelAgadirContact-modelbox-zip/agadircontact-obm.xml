@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<obm name="AgadirContactObm" project="AgadirContact" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ObjectModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/ObjectModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/CodeGeneratorModel/src/main/resources/com/imcfr/generateur/sax/objectmodel/ObjectModelDefinition-2.0.0.xsd ">
+
+	<package name="contact" completeName="com.imcfr.agadir.contact"/>
+
+
+	
+
+	<object name="Coordonnees" pack="AgadirContact:contact">
+		<!-- attributs -->
+		<field name="id" type="Base:Long" null="false" id="true"/>
+		
+		<!-- relations -->
+		<field name="listeAdresse" type="AgadirReferentielContact:referentiel.format.Adresse" null="false" list="true" />
+		<field name="listeTelephonie" type="AgadirReferentielContact:referentiel.format.Telephonie" null="false" list="true" />
+		<field name="listeMail" type="AgadirReferentielContact:referentiel.format.Mail" null="false" list="true" />
+		<field name="listeURL" type="AgadirReferentielContact:referentiel.format.URL" null="false" list="true" />
+	</object>
+	
+	<object name="Contact" pack="AgadirContact:contact">
+		<!-- attributs -->
+		<field name="id" type="Base:Long" null="false" id="true"/>
+		
+		<!-- relations -->
+		<field name="coordonnees" type="AgadirContact:contact.Coordonnees" null="false"/>
+		<field name="identite" type="AgadirContact:contact.Identite" null="false"/>
+		<field name="typeIdentite" type="Base:String" null="false"/>
+	</object>
+	
+	<object name="Identite" pack="AgadirContact:contact">
+		<!-- attributs -->
+		<field name="id" type="Base:Long" null="false" id="true"/>
+		
+		<!-- référentiel -->
+		<field name="nationalite" type="AgadirReferentielGeographique:referentiel.iso.Nationalite" null="false"/>
+	</object>
+	
+	<object name="Personne" pack="AgadirContact:contact" obmExtends="AgadirContact:contact.Identite">
+		<!-- attributs -->
+		<field name="nom" type="Base:String"/>
+		<field name="prenom" type="Base:String"/>
+		<field name="dateNaissance" type="Base:Date"/>
+		<!-- TODO à utiliser lorsque le bénéficiaire est une personne 
+		<field name="regimeSocial" type="AgadirReferentielContact:referentiel.agadir.RegimeSocial" null="true"/>
+		<field name="Handicap" type="AgadirReferentielContact:referentiel.agadir.Handicap" null="true"/> 
+		-->
+		
+		<!-- référentiel -->
+		<field name="sexe" type="AgadirReferentielContact:referentiel.iso.Sexe" null="false"/>
+	</object>
+	
+	<object name="Organisation" pack="AgadirContact:contact" obmExtends="AgadirContact:contact.Identite">
+		<!-- attributs -->
+		<field name="siret" type="Base:String"/>
+		<field name="denomination" type="Base:String"/>
+		<field name="siren" type="Base:String"/>
+		<field name="effectif" type="Base:Integer"/>
+		
+		<!-- référentiel -->
+		<field name="conventionCollective" type="AgadirReferentielContact:referentiel.legifrance.ConventionCollective" null="true"/>
+		<field name="naf2003" type="AgadirReferentielContact:referentiel.insee.Naf2003" null="true"/>
+		<field name="naf2008" type="AgadirReferentielContact:referentiel.insee.Naf2008" null="true"/>
+		<field name="ape" type="AgadirReferentielContact:referentiel.insee.APE" null="true"/>
+		<field name="situationJuridique" type="AgadirReferentielContact:referentiel.insee.SituationJuridique" null="true"/>
+		<!-- TODO: Utiliser seulement lorsque l'organisation joue un rôle? -->
+		<field name="secteurReference" type="AgadirReferentielContact:referentiel.agadir.SecteurReference" null="true"/>
+	</object>
+	<object name="Entreprise" pack="AgadirContact:contact" obmExtends="AgadirContact:contact.Organisation" type="interface">
+	</object>
+	<object name="Etablissement" pack="AgadirContact:contact" obmExtends="AgadirContact:contact.Organisation" type="interface">
+	</object>
+	<object name="Entite" pack="AgadirContact:contact" obmExtends="AgadirContact:contact.Identite" abstract="true">
+		<!-- <field name="contacts" type="AgadirContact:contact.Contact" list="true"/> -->
+	</object>
+	<object name="EntiteDepartementale" pack="AgadirContact:contact" obmExtends="AgadirContact:contact.Entite">
+		<field name="departement" type="AgadirReferentielGeographique:referentiel.insee.Departement"/>
+		<field name="entiteRegionale" type="AgadirContact:contact.EntiteRegionale"/>
+	</object>
+	<object name="EntiteRegionale" pack="AgadirContact:contact" obmExtends="AgadirContact:contact.Entite">
+		<field name="region" type="AgadirReferentielGeographique:referentiel.insee.Region"/>
+		<field name="entitesDepartementales" type="AgadirContact:contact.EntiteDepartementale" list="true"/>
+	</object>
+	<object name="EntiteNationale" pack="AgadirContact:contact" obmExtends="AgadirContact:contact.Entite">
+	</object>
+
+	<object name="EtablissementFormation" pack="AgadirContact:contact" obmExtends="AgadirContact:contact.Organisation" abstract="true">
+	</object>
+	<object name="OrganismeFormation" pack="AgadirContact:contact" implements="AgadirContact:contact.EtablissementFormation" obmExtends="AgadirContact:contact.Organisation" >
+		<field name="numDA" type="Base:String" null="false"/>
+	</object>
+	<object name="CFA" pack="AgadirContact:contact"  implements="AgadirContact:contact.EtablissementFormation" obmExtends="AgadirContact:contact.Organisation">
+		<field name="uai" type="Base:String" null="false"/>
+	</object>
+
+
+	<object name="Communication" pack="AgadirContact:contact">
+		<field name="id" type="Base:Long" null="false" id="true">
+			<descriptions>
+				<description langue="fr" value="Identifiant BDD"/>
+			</descriptions>
+		</field>
+
+		<field name="dateEnvoi" type="Base:Date"/>
+		<field name="dateReception" type="Base:Date"/>
+		<field name="dateRetour" type="Base:Date"/>
+		
+		<field name="typeCommunication" type="AgadirReferentielContact:referentiel.format.TypeCommunication" null="false"/>		
+		<field name="modaliteCommunication" type="AgadirReferentielContact:referentiel.format.ModaliteCommunication" null="false"/>		
+	</object>
+</obm>

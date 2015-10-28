@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datam name="AgadirReferentielRoleDatam" project="AgadirRole" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/DataModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/DataModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/DatamModel/src/main/resources/com/imcfr/generateur/sax/datamodel/DataModelDefinition-2.0.0.xsd ">
+
+    <schema name="referentiel" completeName="agadir_referentiel_role">
+        <rules>
+            <grants>
+                <grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="USAGE"/>
+            </grants>
+        </rules>
+    </schema>
+
+
+	<object name="type_operateur" schema="AgadirRole:referentiel" obmObject="AgadirRole:referentiel.TypeOperateur" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="type_beneficiaire" schema="AgadirRole:referentiel" obmObject="AgadirRole:referentiel.TypeBeneficiaire" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="type_commanditaire" schema="AgadirRole:referentiel" obmObject="AgadirRole:referentiel.TypeCommanditaire" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="type_porteur_projet" schema="AgadirRole:referentiel" obmObject="AgadirRole:referentiel.TypePorteurProjet" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="type_tuteur" schema="AgadirRole:referentiel" obmObject="AgadirRole:referentiel.TypeTuteur" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+</datam>

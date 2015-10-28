@@ -1,0 +1,12 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param element (com.imcfr.generateur.model.edimodel.TargetNamespace)
+## 
+## #####
+##
+#set($et_schemaLocation="")
+#if ("$!{element.schemaLocation}" != "")
+#**##set($et_schemaLocation=" schemaLocation=${Q}${element.schemaLocation}${Q}")
+#end
+	<targetNamespace alias="${element.alias}" namespace="${element.namespace}"$!{et_schemaLocation}/>

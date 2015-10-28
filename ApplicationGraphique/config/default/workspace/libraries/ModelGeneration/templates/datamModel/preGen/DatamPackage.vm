@@ -1,0 +1,24 @@
+##
+## Générateur Xml
+## Création de l'élément schema à partir d'un package obm
+##
+## $generatedObject = model obm
+## @pack = le package obm
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 27/09/2009
+##
+##
+## on récup le nom bdd du package
+#set( $schemaName = "" )
+#getPackageBddName( ${schemaName}, ${pack.name} ) 
+    <!-- Définition du schema ${schemaName} pour le package obm ${pack.name} -->
+    <schema name="${schemaName}">
+        <rules>
+            <grants>
+                <grant user="${generatedObject.project}:adm_${generatedObject.project.toLowerCase()}" value="OWNER"/>
+                <grant user="${generatedObject.project}:usr_${generatedObject.project.toLowerCase()}" value="USAGE"/>
+            </grants>
+        </rules>
+    </schema>
+

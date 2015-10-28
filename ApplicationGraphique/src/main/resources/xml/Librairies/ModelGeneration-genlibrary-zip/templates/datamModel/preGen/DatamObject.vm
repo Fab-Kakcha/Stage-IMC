@@ -1,0 +1,155 @@
+##
+## Générateur Xml
+## Création d'un élément object data à partir d'un objet obm
+##
+## $generatedObject = model obm
+## $obm = l'objet obm
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 27/09/2009
+##
+##
+## on nomme la table créée pour l'objet de la façon t_{nom de l'objet en minuscule}
+#getBddName( $objectName, ${obm.name} )
+##
+## on nomme le schéma dans lequel la table va être créé de la façon {nom du package en minuscule en replaçant les points par des underscore}
+#getPackageBddName( $schemaName, ${obm.pack.name} )
+    <!-- Définition de l'objet ${objectName} pour l'objet obm ${obm.refName} -->
+    <object name="${objectName}" schema="${obm.project}:${schemaName}" obmObject="${obm.project}:${obm.refName}">
+##
+## si l'objet étends d'un autre objet, on va créer les foreign key de l'id
+#if( ${obm.obmExtendsName} != "" )
+        <!--
+            Définition des ids hérités de ${obm.obmExtends.modelId}
+        -->
+##
+## on récupérer l'obm parent
+#set ( $obmExField = ${obm.obmExtends} )
+##
+## on va parcourir les ids de cet objet
+#getIdsObm ( $idsEx, ${obmExField} )
+#getFieldsType ( $typeIdsEx, ${obmExField} )
+#set( $typeIdsEx = ${typeIdsEx.split(",")} )
+#set( $index = 0 )
+#foreach( $idEx in ${idsEx.split(",")} )
+        <field name="ref__${idEx}" type="${list.get(${typeIdsEx}, ${index})}"/>
+        
+#set( $index = ${index} + 1 )
+#end
+#else
+##
+## sinon si l'objet n'hérite pas on va parcourir les ids et les crée
+        <!--
+            Définition des ids de l'objet
+        -->
+##
+## création des champs
+#foreach ( $field in ${obm.fieldsList} )
+#if( ${field.id} == true )
+#generate( "ModelGeneration:DatamFieldPreGen" )
+#end
+#end
+#end
+##
+## création des champs
+        <!--
+            Définition des champs de l'objet
+        -->
+#foreach ( $field in ${obm.fieldsList} )
+#if( ${field.id} == false )
+#generate( "ModelGeneration:DatamFieldPreGen" )
+#end
+#end
+##
+## on va généré les contraints de primary key pour les ids
+        <rules>
+            <constraints>
+##
+## si l'objet étends on crée prim sur les ids ref de l'objet parent
+#if( ${obm.obmExtendsName} != "" )
+##
+## on récupérer l'obm parent, puis sont nom bdd et sont nom bdd de schema
+#set ( $obmExField = ${obm.obmExtends} )
+##
+## on va parcourir les ids de cet objet
+#getIdsObm ( $idsEx, ${obmExField} )
+                <!-- Définition des règles de contraintes de clé primaires -->
+#foreach( $idEx in ${idsEx.split(",")} )
+                <primaryKey field="ref__${idEx}" />
+#end
+#else
+##
+## sinon si l'objet n'hérite pas on va parcourir les ids et les crée
+##
+## création des champs
+                <!-- Définition des règles de contraintes de clé primaires -->
+#foreach ( $field in ${obm.fieldsList} )
+#if( ${field.id} == true )
+##
+## si le champ est un type simple on transforme le nom bdd
+#if ( ${manager.isBaseType(${field.type})} == true )
+#getBddName( $fieldName, ${field.name} )
+                <primaryKey field="${fieldName}" />
+#else
+##
+## sinon si c'est pas un type simple, on va recup l'objet ref et ses ids et on va construire autant de champs que d'id
+## le nom des ids sera préfixé de fk__
+##
+## on récupérer l'obm du type, puis sont nom bdd et sont nom bdd de schema
+#set ( $obmField = ${supermodel.getElement("obm:object:${field.type}")} )
+#getBddName( $obmFieldName, ${field.name} )
+##
+## on va parcourir les ids de cet objet
+#getIdsObm ( $ids, ${obmField} )
+#foreach( $id in ${ids.split(",")} )
+                <primaryKey field="fk__${obmFieldName}__${id}" />
+#end
+#end
+#end
+#end
+#end
+##
+## si l'objet étends d'un autre objet, on va créer les foreign key de l'id
+#if( ${obm.obmExtendsName} != "" )
+    
+                <!-- Définition des clé étrangères de l'id hérités de ${obm.obmExtends.modelId} -->
+##
+## on va parcourir les ids de cet objet
+##
+## on récupérer l'obm parent, puis sont nom bdd et sont nom bdd de schema
+#set ( $obmExField = ${obm.obmExtends} )
+#getBddName( $obmExFieldName, ${obmExField.name} )
+#getPackageBddName( $obmExFieldSchemaName, ${obmExField.pack.name} )
+##
+## on va parcourir les ids de cet objet
+#getIdsObm ( $idsEx, ${obmExField} )
+#getFieldsType ( $typeIdsEx, ${obmExField} )
+#set( $typeIdsEx = ${typeIdsEx.split(",")} )
+#set( $index = 0 )
+                <foreignKeys refObject="${obmExField.project}:${obmExFieldSchemaName}.${obmExFieldName}" >
+#foreach( $idEx in ${idsEx.split(",")} )
+                    <foreignKey field="ref__${idEx}" refField="${idEx}" />
+#set( $index = ${index} + 1 )
+#end
+                </foreignKeys>
+#end
+##
+## création des foreign key pour les champs
+#foreach ( $field in ${obm.fieldsList} )
+##
+## si le champ est un type simple on transforme le nom bdd
+#if ( ${manager.isBaseType(${field.type})} == false )
+#generate( "ModelGeneration:DatamFieldForeignKeyPreGen" )
+#end
+#end
+            </constraints>
+            
+            <!-- Définition des droits sur la table -->
+            <grants>
+                <grant user="${generatedObject.project}:adm_${generatedObject.project.toLowerCase()}" value="OWNER"/>
+                <grant user="${generatedObject.project}:usr_${generatedObject.project.toLowerCase()}" value="ALL"/>
+            </grants>
+        </rules>
+
+    </object>
+

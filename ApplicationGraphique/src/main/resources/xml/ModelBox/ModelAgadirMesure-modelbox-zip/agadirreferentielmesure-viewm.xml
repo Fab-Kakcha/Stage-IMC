@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewm name="AgadirReferentielMesureViewm" project="AgadirMesure" version="4.0.0" xmlns="http://www.imc-fr.com/ViewModelDefinition-2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- AgadirMesure:referentiel.EtatObjetProcedure -->
+	<vueModel name="EtatObjetProcedureModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.EtatObjetProcedure"/>
+	
+	<component type="vue" name="EtatObjetProcedureVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.EtatObjetProcedure" vueModel="AgadirMesure:referentiel.EtatObjetProcedureModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="EtatObjetProcedureEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.EtatObjetProcedure" vueModel="AgadirMesure:referentiel.EtatObjetProcedureModel"
+		titre="Edition EtatObjetProcedure">
+		<vue name="vue" component="AgadirMesure:referentiel.EtatObjetProcedureVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheEtatObjetProcedure"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.EtatObjetProcedureEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.EtatObjetProcedureEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheEtatObjetProcedure" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.EtatObjetProcedure"
+		titre="Recherche EtatObjetProcedure">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.EtatObjetProcedureEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.EtatObjetProcedureEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.EtatObjetProcedureEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.Accompagnement -->
+	<vueModel name="AccompagnementModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.Accompagnement"/>
+	
+	<component type="vue" name="AccompagnementVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.Accompagnement" vueModel="AgadirMesure:referentiel.AccompagnementModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+		<select name="typeAccompagnement" valueObmField="id" labelObmField="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="AccompagnementEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.Accompagnement" vueModel="AgadirMesure:referentiel.AccompagnementModel"
+		titre="Edition Accompagnement">
+		<vue name="vue" component="AgadirMesure:referentiel.AccompagnementVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheAccompagnement"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.AccompagnementEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.AccompagnementEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheAccompagnement" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.Accompagnement"
+		titre="Recherche Accompagnement">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.AccompagnementEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.AccompagnementEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.AccompagnementEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.DerniereSituation -->
+	<vueModel name="DerniereSituationModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.DerniereSituation"/>
+	
+	<component type="vue" name="DerniereSituationVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.DerniereSituation" vueModel="AgadirMesure:referentiel.DerniereSituationModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="DerniereSituationEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.DerniereSituation" vueModel="AgadirMesure:referentiel.DerniereSituationModel"
+		titre="Edition DerniereSituation">
+		<vue name="vue" component="AgadirMesure:referentiel.DerniereSituationVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheDerniereSituation"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.DerniereSituationEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.DerniereSituationEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheDerniereSituation" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.DerniereSituation"
+		titre="Recherche DerniereSituation">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.DerniereSituationEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.DerniereSituationEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.DerniereSituationEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.Derogation -->
+	<vueModel name="DerogationModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.Derogation"/>
+	
+	<component type="vue" name="DerogationVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.Derogation" vueModel="AgadirMesure:referentiel.DerogationModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="DerogationEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.Derogation" vueModel="AgadirMesure:referentiel.DerogationModel"
+		titre="Edition Derogation">
+		<vue name="vue" component="AgadirMesure:referentiel.DerogationVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheDerogation"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.DerogationEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.DerogationEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheDerogation" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.Derogation"
+		titre="Recherche Derogation">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.DerogationEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.DerogationEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.DerogationEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.NatureObjetProcedure -->
+	<vueModel name="NatureObjetProcedureModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.NatureObjetProcedure"/>
+	
+	<component type="vue" name="NatureObjetProcedureVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.NatureObjetProcedure" vueModel="AgadirMesure:referentiel.NatureObjetProcedureModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="NatureObjetProcedureEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.NatureObjetProcedure" vueModel="AgadirMesure:referentiel.NatureObjetProcedureModel"
+		titre="Edition NatureObjetProcedure">
+		<vue name="vue" component="AgadirMesure:referentiel.NatureObjetProcedureVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheNatureObjetProcedure"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.NatureObjetProcedureEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.NatureObjetProcedureEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheNatureObjetProcedure" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.NatureObjetProcedure"
+		titre="Recherche NatureObjetProcedure">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.NatureObjetProcedureEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.NatureObjetProcedureEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.NatureObjetProcedureEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.Handicap -->
+	<vueModel name="HandicapModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.Handicap"/>
+	
+	<component type="vue" name="HandicapVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.Handicap" vueModel="AgadirMesure:referentiel.HandicapModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="HandicapEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.Handicap" vueModel="AgadirMesure:referentiel.HandicapModel"
+		titre="Edition Handicap">
+		<vue name="vue" component="AgadirMesure:referentiel.HandicapVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheHandicap"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.HandicapEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.HandicapEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheHandicap" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.Handicap"
+		titre="Recherche Handicap">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.HandicapEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.HandicapEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.HandicapEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.TypeTutorat -->
+	<vueModel name="TypeTutoratModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeTutorat"/>
+	
+	<component type="vue" name="TypeTutoratVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeTutorat" vueModel="AgadirMesure:referentiel.TypeTutoratModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeTutoratEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeTutorat" vueModel="AgadirMesure:referentiel.TypeTutoratModel"
+		titre="Edition TypeTutorat">
+		<vue name="vue" component="AgadirMesure:referentiel.TypeTutoratVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheTypeTutorat"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.TypeTutoratEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.TypeTutoratEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeTutorat" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeTutorat"
+		titre="Recherche TypeTutorat">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.TypeTutoratEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.TypeTutoratEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.TypeTutoratEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.TypeOperation -->
+	<vueModel name="TypeOperationModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeOperation"/>
+	
+	<component type="vue" name="TypeOperationVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeOperation" vueModel="AgadirMesure:referentiel.TypeOperationModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeOperationEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeOperation" vueModel="AgadirMesure:referentiel.TypeOperationModel"
+		titre="Edition TypeOperation">
+		<vue name="vue" component="AgadirMesure:referentiel.TypeOperationVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheTypeOperation"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.TypeOperationEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.TypeOperationEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeOperation" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeOperation"
+		titre="Recherche TypeOperation">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.TypeOperationEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.TypeOperationEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.TypeOperationEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.TypeFinancement -->
+	<vueModel name="TypeFinancementModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeFinancement"/>
+	
+	<component type="vue" name="TypeFinancementVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeFinancement" vueModel="AgadirMesure:referentiel.TypeFinancementModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeFinancementEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeFinancement" vueModel="AgadirMesure:referentiel.TypeFinancementModel"
+		titre="Edition TypeFinancement">
+		<vue name="vue" component="AgadirMesure:referentiel.TypeFinancementVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheTypeFinancement"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.TypeFinancementEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.TypeFinancementEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeFinancement" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeFinancement"
+		titre="Recherche TypeFinancement">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.TypeFinancementEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.TypeFinancementEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.TypeFinancementEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.TypeConvention -->
+	<vueModel name="TypeConventionModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeConvention"/>
+	
+	<component type="vue" name="TypeConventionVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeConvention" vueModel="AgadirMesure:referentiel.TypeConventionModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeConventionEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeConvention" vueModel="AgadirMesure:referentiel.TypeConventionModel"
+		titre="Edition TypeConvention">
+		<vue name="vue" component="AgadirMesure:referentiel.TypeConventionVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheTypeConvention"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.TypeConventionEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.TypeConventionEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeConvention" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeConvention"
+		titre="Recherche TypeConvention">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.TypeConventionEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.TypeConventionEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.TypeConventionEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.TypeAccompagnement -->
+	<vueModel name="TypeAccompagnementModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeAccompagnement"/>
+	
+	<component type="vue" name="TypeAccompagnementVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeAccompagnement" vueModel="AgadirMesure:referentiel.TypeAccompagnementModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeAccompagnementEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeAccompagnement" vueModel="AgadirMesure:referentiel.TypeAccompagnementModel"
+		titre="Edition TypeAccompagnement">
+		<vue name="vue" component="AgadirMesure:referentiel.TypeAccompagnementVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheTypeAccompagnement"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.TypeAccompagnementEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.TypeAccompagnementEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeAccompagnement" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeAccompagnement"
+		titre="Recherche TypeAccompagnement">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.TypeAccompagnementEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.TypeAccompagnementEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.TypeAccompagnementEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.TypeControle -->
+	<vueModel name="TypeControleModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeControle"/>
+	
+	<component type="vue" name="TypeControleVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeControle" vueModel="AgadirMesure:referentiel.TypeControleModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeControleEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeControle" vueModel="AgadirMesure:referentiel.TypeControleModel"
+		titre="Edition TypeControle">
+		<vue name="vue" component="AgadirMesure:referentiel.TypeControleVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheTypeControle"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.TypeControleEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.TypeControleEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeControle" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeControle"
+		titre="Recherche TypeControle">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.TypeControleEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.TypeControleEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.TypeControleEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.TypeResultatControle -->
+	<vueModel name="TypeResultatControleModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeResultatControle"/>
+	
+	<component type="vue" name="TypeResultatControleVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeResultatControle" vueModel="AgadirMesure:referentiel.TypeResultatControleModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeResultatControleEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeResultatControle" vueModel="AgadirMesure:referentiel.TypeResultatControleModel"
+		titre="Edition TypeResultatControle">
+		<vue name="vue" component="AgadirMesure:referentiel.TypeResultatControleVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheTypeResultatControle"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.TypeResultatControleEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.TypeResultatControleEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeResultatControle" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeResultatControle"
+		titre="Recherche TypeResultatControle">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.TypeResultatControleEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.TypeResultatControleEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.TypeResultatControleEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.TypeDecision -->
+	<vueModel name="TypeDecisionModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeDecision"/>
+	
+	<component type="vue" name="TypeDecisionVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeDecision" vueModel="AgadirMesure:referentiel.TypeDecisionModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeDecisionEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeDecision" vueModel="AgadirMesure:referentiel.TypeDecisionModel"
+		titre="Edition TypeDecision">
+		<vue name="vue" component="AgadirMesure:referentiel.TypeDecisionVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheTypeDecision"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.TypeDecisionEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.TypeDecisionEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeDecision" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeDecision"
+		titre="Recherche TypeDecision">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.TypeDecisionEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.TypeDecisionEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.TypeDecisionEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.TypeNotification -->
+	<vueModel name="TypeNotificationModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeNotification"/>
+	
+	<component type="vue" name="TypeNotificationVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeNotification" vueModel="AgadirMesure:referentiel.TypeNotificationModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeNotificationEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeNotification" vueModel="AgadirMesure:referentiel.TypeNotificationModel"
+		titre="Edition TypeNotification">
+		<vue name="vue" component="AgadirMesure:referentiel.TypeNotificationVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheTypeNotification"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.TypeNotificationEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.TypeNotificationEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeNotification" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeNotification"
+		titre="Recherche TypeNotification">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.TypeNotificationEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.TypeNotificationEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.TypeNotificationEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.MinimumSocial -->
+	<vueModel name="MinimumSocialModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.MinimumSocial"/>
+	
+	<component type="vue" name="MinimumSocialVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.MinimumSocial" vueModel="AgadirMesure:referentiel.MinimumSocialModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="MinimumSocialEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.MinimumSocial" vueModel="AgadirMesure:referentiel.MinimumSocialModel"
+		titre="Edition MinimumSocial">
+		<vue name="vue" component="AgadirMesure:referentiel.MinimumSocialVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheMinimumSocial"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.MinimumSocialEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.MinimumSocialEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheMinimumSocial" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.MinimumSocial"
+		titre="Recherche MinimumSocial">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.MinimumSocialEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.MinimumSocialEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.MinimumSocialEdit" action="Editer"/>
+	</component>
+
+<!-- AgadirMesure:referentiel.TypeContratTravail -->
+	<vueModel name="TypeContratTravailModel" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeContratTravail"/>
+	
+	<component type="vue" name="TypeContratTravailVue" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeContratTravail" vueModel="AgadirMesure:referentiel.TypeContratTravailModel">
+		<field name="codeLibelle"/>
+		<field name="intitule"/>
+		<field name="libelleIHM"/>
+	</component>
+
+	<component type="edit" name="TypeContratTravailEdit" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeContratTravail" vueModel="AgadirMesure:referentiel.TypeContratTravailModel"
+		titre="Edition TypeContratTravail">
+		<vue name="vue" component="AgadirMesure:referentiel.TypeContratTravailVue"/>
+
+		<grid name="grid" component="AgadirMesure:referentiel.RechercheTypeContratTravail"/>
+
+		<action name="Enregistrer" component="AgadirMesure:referentiel.TypeContratTravailEdit" action="Save" type="submit"/>
+		<action name="Annuler" component="AgadirMesure:referentiel.TypeContratTravailEdit" action="Cancel" type="cancel"/>
+	</component>
+
+	<component type="grid" name="RechercheTypeContratTravail" pack="AgadirMesure:referentiel" object="AgadirMesure:referentiel.TypeContratTravail"
+		titre="Recherche TypeContratTravail">
+
+		<colonne name="id" key="true" visible="false"/>
+		<colonne name="codeLibelle"/>
+		<colonne name="intitule"/>
+		<colonne name="libelleIHM"/>
+		
+		<actionColonne name="Modifier" component="AgadirMesure:referentiel.TypeContratTravailEdit" action="Editer" params="{0}"/>
+		<actionColonne name="Supprimer" component="AgadirMesure:referentiel.TypeContratTravailEdit" action="Supprimer" params="{0}"/>
+
+		<action name="Ajouter" component="AgadirMesure:referentiel.TypeContratTravailEdit" action="Editer"/>
+	</component>
+
+</viewm>

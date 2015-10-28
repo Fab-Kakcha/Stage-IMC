@@ -1,0 +1,37 @@
+## #####
+## Générateur Java
+## Gestion d'un attribut de l'entité attribut simple
+## 
+## @param generatedObject le model prstm
+## @param entite l'objet prstm courant
+## @param datamObject l'objet prstm courant
+## @param obmObject l'objet prstm courant
+## @param field le champ obm courant
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 12/11/2008
+## #####
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+##
+## on regarde si le champs est définit dans le datam, si il l'est on ajoute l'info de quel colonne
+#if (${datamObject.containsFieldObm(${field.name})} == true )
+#set ( $fieldDatam = ${datamObject.getFieldObm(${field.name})} )
+				<column name="${fieldDatam.name}"/>
+## on récup info de id auto si il y a
+#set ( $autos = ${fieldDatam.getByType("generation", "auto")} )
+#if ( ${autos.size()} != 0 )
+				<generated-value strategy="IDENTITY"/>
+#end
+## on récup séquence
+#set ( $sequences = ${fieldDatam.getByType("generation", "sequence")} )
+#if ( ${sequences.size()} != 0 )
+				<!-- la séquence est : ${datamObject.schema.completeName}.${list.get(${sequences}, 0).name} -->
+				<generated-value strategy="SEQUENCE" generator="Sequence${entite.name}${field.name}"/>
+				<sequence-generator name="Sequence${entite.name}${field.name}" sequence-name="${datamObject.schema.completeName}.${list.get(${sequences}, 0).name}" initial-value="1" allocation-size="1" />
+#end
+#end
+

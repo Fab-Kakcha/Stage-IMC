@@ -1,0 +1,26 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.viewmodel.ViewModel)
+## @param element (com.imcfr.generateur.model.viewmodel.AbstractComponent)
+## 
+## #####
+##
+#set($vc_title="")
+#if ("$!{element.titre}" != "")
+#**##set($vc_title="${N}${T}${T}titre=${Q}${element.titre}${Q}")
+#end
+#set($vc_model="")
+#if ((${element.type} == "edit" || ${element.type} == "vue") && "$!{element.vueModelName}" != "")
+#**##set($vc_model=" vueModel=${Q}${element.vueModelName}${Q}")
+#end
+	<component type="${element.type}" name="${element.name}" pack="${element.packName}" object="${element.objectName}"$!{vc_model}$!{vc_title}>
+#**##**##if (${element.type} == "vue")
+#**##**##**##generate("ModelGeneration:ViewmVue")
+#**##**##elseif (${element.type} == "edit")
+#**##**##**##generate("ModelGeneration:ViewmEdit")
+#**##**##elseif (${element.type} == "grid")
+#**##**##**##generate("ModelGeneration:ViewmGrid")
+#**##**##elseif (${element.type} == "gridAjax")
+#**##**##**##generate("ModelGeneration:ViewmGrid")
+#**##**##end		
+	</component>

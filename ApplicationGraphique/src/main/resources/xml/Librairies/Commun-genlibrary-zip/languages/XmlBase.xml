@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<languages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.imc-fr.com/LanguageDefinition-2.0.0"
+	xsi:schemaLocation="http://www.imc-fr.com/LanguageDefinition-2.0.0 http://sites-snapshots.imc-fr.com/JavaPomParent/GenerateurPomParent/GenerateurModelPomParent/CodeGenerator/xsd/language/LanguageDefinition-2.0.0.xsd">
+	
+	<!--
+       Définition des éléments de base du langage xml
+    -->
+	<language name="xml" separator=":">
+		
+		<!-- Type de base du langage
+		-->
+		<type name="Integer" className="Integer" package="xsd">
+			<validation>
+				<pattern value="[0-9]+"/>
+				<nullable value="true"/>
+			</validation>
+		</type>
+		<type name="String" className="String" package="xsd">
+			<validation>
+				<pattern value=".*"/>
+				<nullable value="true"/>
+			</validation>
+		</type>
+		
+	</language>
+</languages>

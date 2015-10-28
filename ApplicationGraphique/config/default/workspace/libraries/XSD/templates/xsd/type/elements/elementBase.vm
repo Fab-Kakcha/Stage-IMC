@@ -1,0 +1,132 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param t_element (com.imcfr.generateur.model.edimodel.ElementBase)
+## @param rt_element (com.imcfr.generateur.model.edimodel.RedefineElement) : optionnel, présent si l'on veut permettre la redefinition
+## @param t_indent (String) : optionnel, présent si l'on veut permettre une indentation différente
+## 
+## #####
+#set($t_eb_annotationsTag="")
+#set($t_eb_rulesTag="")
+#set($t_eb_endTag="")
+#set($t_eb_closeTag="/>")
+#if ("$!{t_indent}"=="")
+#**##set($t_indent="			")
+#end
+#set($t_eb_default="")
+#if (!("$!{t_element.defaut}" == ""))
+#**##set($t_eb_default=" default=${Q}${t_element.defaut}${Q}")
+#end
+#set($t_eb_fixed="")
+#if (!("$!{t_element.fixed}" == ""))
+#**##set($t_eb_fixed=" fixed=${Q}${t_element.fixed}${Q}")
+#end
+#set($t_eb_nillable="")
+#if (${t_element.nillable})
+#**##set($t_eb_nillable=" nillable=${Q}true${Q}")
+#end
+##
+#if ($t_element.class.simpleName == "Element")
+#**##set($t_eb_type=$t_element.type)
+#**##set($t_eb_type_formatted=" type=${Q}#formatRef($model $t_eb_type)${Q}")
+#**###
+#**##set($t_eb_min="")
+#**##if (${t_element.minOccurs} != 1)
+#**##**##set($t_eb_min=" minOccurs=${Q}${t_element.minOccurs}${Q}")
+#**##end
+#**##set($t_eb_max="")
+#**##if (${t_element.maxOccurs} == -1)
+#**##**##set($t_eb_max=" maxOccurs=${Q}unbounded${Q}")
+#**##elseif (${t_element.maxOccurs} != 1)
+#**##**##set($t_eb_max=" maxOccurs=${Q}${t_element.maxOccurs}${Q}")
+#**##end
+#elseif ($t_element.class.simpleName == "ElementObm")
+#**##set($t_eb_type="")
+#**##if (!("$!{t_element.type}" == ""))
+#**##**##set($t_eb_type=${t_element.type})
+#**##else
+#**##**##set($t_eb_type=${t_element.obmField.type})
+#**##end
+#**##set($t_eb_type_formatted=" type=${Q}#formatRef($model $t_eb_type)${Q}")
+#**###
+#**##set($t_eb_min="")
+#**##set($t_eb_max="")
+#**##if (${t_element.obmField.list})
+#**##**##set($t_eb_nillable=" nillable=${Q}true${Q}")
+#**##**##set($t_eb_min=" minOccurs=${Q}0${Q}")
+#**##**##set($t_eb_max=" maxOccurs=${Q}unbounded${Q}")
+#**##**###
+#**##**##set($t_eb_rsmin=${t_element.obmField.getByType('validation', 'min')})
+#**##**##if ( ${t_eb_rsmin.size()} != 0 && ${t_eb_rsmin.get(0).min} != -1)
+#**##**##**##set($t_eb_min=" minOccurs=${Q}${t_eb_rsmin.get(0).min}${Q}")
+#**##**##end
+#**##**##set($t_eb_rsmax=${t_element.obmField.getByType('validation', 'max')})
+#**##**##if ( ${t_eb_rsmax.size()} != 0 && ${t_eb_rsmax.get(0).max} != -1)
+#**##**##**##set($t_eb_max=" maxOccurs=${Q}${t_eb_rsmax.get(0).max}${Q}")
+#**##**##end
+#**##else
+#**##**##set($t_eb_min_rule="")
+#**##**##set($t_eb_max_rule="")
+#**##**##set($t_eb_min_rule_name="minInclusive")
+#**##**##set($t_eb_max_rule_name="maxInclusive")
+#**##**##set($t_eb_pattern_rule="")
+#**##**##set($t_eb_rsmin=${t_element.obmField.getByType('validation', 'min')})
+#**##**##isStringType($t_eb_type $_isNumeric)
+#**##**##if ($_isNumeric)
+#**##**##**##set($t_eb_min_rule_name="minLength")
+#**##**##**##set($t_eb_max_rule_name="maxLength")
+#**##**##end
+#**##**##if ( ${t_eb_rsmin.size()} != 0 && ${t_eb_rsmin.get(0).min} != -1)
+#**##**##**##set($t_eb_min_rule="${N}${t_indent}${T}${T}${T}${T}<${t_eb_min_rule_name} value=${Q}${t_eb_rsmin.get(0).min}${Q}/>")
+#**##**##end
+#**##**##set($t_eb_rsmax=${t_element.obmField.getByType('validation', 'max')})
+#**##**##if ( ${t_eb_rsmax.size()} != 0 && ${t_eb_rsmax.get(0).max} != -1)
+#**##**##**##set($t_eb_max_rule="${N}${t_indent}${T}${T}${T}${T}<${t_eb_max_rule_name} value=${Q}${t_eb_rsmax.get(0).max}${Q}/>")
+#**##**##end
+#**##**##set($t_eb_rspattern=${t_element.obmField.getByType('validation', 'pattern')})
+#**##**##if ( ${t_eb_rspattern.size()} != 0 && ${t_eb_rspattern.get(0).min} != -1)
+#**##**##**##set($t_eb_pattern_rule="${N}${t_indent}${T}${T}${T}${T}<pattern value=${Q}${t_eb_rspattern.get(0).min}${Q}/>")
+#**##**##end
+#**##**##if ("$!t_eb_min_rule" != "" || "$!t_eb_max_rule" != "" || "$!t_eb_pattern_rule" != "")
+#**##**##**##set($t_eb_rulesTag="${N}${t_indent}${T}${T}<simpleType>${N}${t_indent}${T}${T}${T}<restriction base=${Q}#formatRef($model $t_eb_type)${Q}>$!{t_eb_min_rule}$!{t_eb_max_rule}$!{t_eb_pattern_rule}${N}${t_indent}${T}${T}${T}</restriction>${N}${t_indent}${T}${T}</simpleType>")
+#**##**##**##set($t_eb_endTag=">")
+#**##**##**##set($t_eb_closeTag="${N}${t_indent}${T}</element>")
+#**##**##**##set($t_eb_type_formatted="")
+#**##**##end
+#**##end
+#**##if (${t_element.obmField.null})
+#**##**##set($t_eb_nillable=" nillable=${Q}true${Q}")
+#**##elseif (${t_element.obmField.list})
+#**##**##set($t_eb_nillable=" nillable=${Q}false${Q}")
+#**##end
+#**##if (${t_element.obmField.libellesList.size()} > 0 || ${t_element.obmField.descriptionsList.size()} > 0)
+#**##**##set($t_eb_endTag=">")
+#**##**##set($t_eb_closeTag="${N}${t_indent}${T}</element>")
+#**##**##set($_docTags="")
+#**##**##foreach ($t_eb_libelle in ${t_element.obmField.libellesList})
+#**##**##**##set($_docTags="${_docTags}${N}${t_indent}${T}${T}${T}${T}<libelle xml:lang=${Q}${t_eb_libelle.langue}${Q}>${t_eb_libelle.value}</libelle>")
+#**##**##end
+#**##**##foreach ($t_eb_desc in ${t_element.obmField.descriptionsList})
+#**##**##**##set($_docTags="${_docTags}${N}${t_indent}${T}${T}${T}${T}<description xml:lang=${Q}${t_eb_desc.langue}${Q}>${t_eb_desc.value}</description>")
+#**##**##end
+#**##**##set($t_eb_annotationsTag="${N}${t_indent}${T}${T}<annotation>${N}${t_indent}${T}${T}${T}<documentation>${_docTags}${N}${t_indent}${T}${T}${T}</documentation>${N}${t_indent}${T}${T}</annotation>")
+#**##end
+#end
+##
+#if (!("$!rt_element" == ""))
+#**##if (!("$!{rt_element.defaut}" == ""))
+#**##**##set($t_eb_default=" default=${Q}${rt_element.defaut}${Q}")
+#**##end
+#**##if (${rt_element.nillable})
+#**##**##set($t_eb_nillable=" nillable=${Q}true${Q}")
+#**##end
+#**##if (${rt_element.minOccurs} != 1)
+#**##**##set($t_eb_min=" minOccurs=${Q}${rt_element.minOccurs}${Q}")
+#**##end
+#**##if (${rt_element.maxOccurs} == -1)
+#**##**##set($t_eb_max=" maxOccurs=${Q}unbounded${Q}")
+#**##elseif (${rt_element.maxOccurs} != 1)
+#**##**##set($t_eb_max=" maxOccurs=${Q}${rt_element.maxOccurs}${Q}")
+#**##end
+#end
+${t_indent}	<element name="${t_element.name}"${t_eb_type_formatted}$!{t_eb_default}$!{t_eb_fixed}$!{t_eb_nillable}$!{t_eb_min}$!{t_eb_max}$!{t_eb_endTag}$!{t_eb_annotationsTag}$!{t_eb_rulesTag}${t_eb_closeTag}

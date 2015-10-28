@@ -1,0 +1,22 @@
+## #####
+## 
+## @param generatedObject (com.imcfr.generateur.model.datamodel.DatamModel)
+## 
+## #####
+#set($model = $generatedObject)
+#set($Q = '"')
+<?xml version="1.0" encoding="UTF-8"?>
+##
+<datam name="${model.name}" project="${model.project}" version="${model.version}" xmlns="http://www.imc-fr.com/DataModelDefinition-2.0.0">
+
+#foreach ($element in ${model.elementsList})
+#**##if (${element.type} == "user")
+#**##**##generate("ModelGeneration:DatamUser")
+#**##elseif (${element.type} == "schema")
+#**##**##generate("ModelGeneration:DatamSchema")
+#**##elseif (${element.type} == "object")
+#**##**##generate("ModelGeneration:DatamObject")
+#**##end
+
+#end
+</datam>

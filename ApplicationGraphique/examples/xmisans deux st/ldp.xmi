@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Configuration="http:///schemas/Configuration/_knFEQWHwEeWSgJl_KVJsYA/0" xmlns:Profile="http:///schemas/Profile/_knFEQmHwEeWSgJl_KVJsYA/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/Configuration/_knFEQWHwEeWSgJl_KVJsYA/0 Configuration.profile.xmi#_koCGV2HwEeWSgJl_KVJsYA http:///schemas/Profile/_knFEQmHwEeWSgJl_KVJsYA/0 Profile.profile.xmi#_ko_Il2HwEeWSgJl_KVJsYA">
+  <uml:Model xmi:id="_knFEEGHwEeWSgJl_KVJsYA" name="ldp">
+    <eAnnotations xmi:id="_knFEEWHwEeWSgJl_KVJsYA" source="Objing">
+      <contents xmi:type="uml:Property" xmi:id="_knFEEmHwEeWSgJl_KVJsYA" name="exporterVersion">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_knFEE2HwEeWSgJl_KVJsYA" value="3.0.0"/>
+      </contents>
+    </eAnnotations>
+    <packagedElement xmi:type="uml:Package" xmi:id="_knFEFGHwEeWSgJl_KVJsYA" name="RepPkg">
+      <packagedElement xmi:type="uml:Class" xmi:id="_knFEFWHwEeWSgJl_KVJsYA" name="NouvelleClasse"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_knFEFmHwEeWSgJl_KVJsYA" name="AnalPkg">
+      <packagedElement xmi:type="uml:Actor" xmi:id="_knFEF2HwEeWSgJl_KVJsYA" name="theActor"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_knFEGGHwEeWSgJl_KVJsYA" memberEnd="_knFEGWHwEeWSgJl_KVJsYA _knFEG2HwEeWSgJl_KVJsYA" navigableOwnedEnd="_knFEGWHwEeWSgJl_KVJsYA">
+        <ownedEnd xmi:id="_knFEGWHwEeWSgJl_KVJsYA" visibility="public" type="_knFEHWHwEeWSgJl_KVJsYA" association="_knFEGGHwEeWSgJl_KVJsYA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_knFEGmHwEeWSgJl_KVJsYA"/>
+        </ownedEnd>
+        <ownedEnd xmi:id="_knFEG2HwEeWSgJl_KVJsYA" visibility="public" type="_knFEF2HwEeWSgJl_KVJsYA" association="_knFEGGHwEeWSgJl_KVJsYA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_knFEHGHwEeWSgJl_KVJsYA"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_knFEHWHwEeWSgJl_KVJsYA" name="uc1">
+        <ownedComment xmi:id="_knFEHmHwEeWSgJl_KVJsYA">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="_knFEH2HwEeWSgJl_KVJsYA">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="_knFEIGHwEeWSgJl_KVJsYA">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="_knFEIWHwEeWSgJl_KVJsYA">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="_knFEImHwEeWSgJl_KVJsYA">
+          <body>...</body>
+        </ownedComment>
+        <ownedComment xmi:id="_knFEI2HwEeWSgJl_KVJsYA">
+          <body>...</body>
+        </ownedComment>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_knFEJGHwEeWSgJl_KVJsYA" name="ldp">
+      <packagedElement xmi:type="uml:Class" xmi:id="_knFEJWHwEeWSgJl_KVJsYA" name="Processus">
+        <ownedAttribute xmi:id="_knFEJmHwEeWSgJl_KVJsYA" name="fin" visibility="public" type="_knFEP2HwEeWSgJl_KVJsYA" aggregation="composite" association="_knFEKmHwEeWSgJl_KVJsYA"/>
+        <ownedAttribute xmi:id="_knFEJ2HwEeWSgJl_KVJsYA" name="debut" visibility="public" type="_knFEPWHwEeWSgJl_KVJsYA" aggregation="composite" association="_knFELGHwEeWSgJl_KVJsYA"/>
+        <ownedAttribute xmi:id="_knFEKGHwEeWSgJl_KVJsYA" name="activite" visibility="public" type="_knFEMGHwEeWSgJl_KVJsYA" aggregation="composite" association="_knFELmHwEeWSgJl_KVJsYA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_knFEKWHwEeWSgJl_KVJsYA"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_knFEKmHwEeWSgJl_KVJsYA" memberEnd="_knFEJmHwEeWSgJl_KVJsYA _knFEK2HwEeWSgJl_KVJsYA">
+        <ownedEnd xmi:id="_knFEK2HwEeWSgJl_KVJsYA" visibility="public" type="_knFEJWHwEeWSgJl_KVJsYA" association="_knFEKmHwEeWSgJl_KVJsYA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_knFELGHwEeWSgJl_KVJsYA" memberEnd="_knFEJ2HwEeWSgJl_KVJsYA _knFELWHwEeWSgJl_KVJsYA">
+        <ownedEnd xmi:id="_knFELWHwEeWSgJl_KVJsYA" visibility="public" type="_knFEJWHwEeWSgJl_KVJsYA" association="_knFELGHwEeWSgJl_KVJsYA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_knFELmHwEeWSgJl_KVJsYA" memberEnd="_knFEKGHwEeWSgJl_KVJsYA _knFEL2HwEeWSgJl_KVJsYA">
+        <ownedEnd xmi:id="_knFEL2HwEeWSgJl_KVJsYA" visibility="public" type="_knFEJWHwEeWSgJl_KVJsYA" association="_knFELmHwEeWSgJl_KVJsYA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_knFEMGHwEeWSgJl_KVJsYA" name="Activite">
+        <ownedAttribute xmi:id="_knFEMWHwEeWSgJl_KVJsYA" name="activite" visibility="public" type="_knFEMGHwEeWSgJl_KVJsYA" association="_knFENGHwEeWSgJl_KVJsYA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_knFEMmHwEeWSgJl_KVJsYA"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_knFEM2HwEeWSgJl_KVJsYA" name="nom" visibility="public" isUnique="false">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_knFENGHwEeWSgJl_KVJsYA" name="precedente" memberEnd="_knFEMWHwEeWSgJl_KVJsYA _knFENWHwEeWSgJl_KVJsYA">
+        <ownedEnd xmi:id="_knFENWHwEeWSgJl_KVJsYA" visibility="public" type="_knFEMGHwEeWSgJl_KVJsYA" association="_knFENGHwEeWSgJl_KVJsYA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_knFENmHwEeWSgJl_KVJsYA"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_knFEN2HwEeWSgJl_KVJsYA" name="PseudoEtat">
+        <ownedAttribute xmi:id="_knFEOGHwEeWSgJl_KVJsYA" name="nom" visibility="public" type="_knFEMGHwEeWSgJl_KVJsYA" association="_knFEOmHwEeWSgJl_KVJsYA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_knFEOWHwEeWSgJl_KVJsYA"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_knFEOmHwEeWSgJl_KVJsYA" name="reference" memberEnd="_knFEOGHwEeWSgJl_KVJsYA _knFEO2HwEeWSgJl_KVJsYA">
+        <ownedEnd xmi:id="_knFEO2HwEeWSgJl_KVJsYA" visibility="public" type="_knFEN2HwEeWSgJl_KVJsYA" association="_knFEOmHwEeWSgJl_KVJsYA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_knFEPGHwEeWSgJl_KVJsYA"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_knFEPWHwEeWSgJl_KVJsYA" name="Debut">
+        <generalization xmi:id="_knFEPmHwEeWSgJl_KVJsYA" general="_knFEN2HwEeWSgJl_KVJsYA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_knFEP2HwEeWSgJl_KVJsYA" name="Fin">
+        <generalization xmi:id="_knFEQGHwEeWSgJl_KVJsYA" general="_knFEN2HwEeWSgJl_KVJsYA"/>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_ko_Iu2HwEeWSgJl_KVJsYA">
+      <eAnnotations xmi:id="_ko_IvGHwEeWSgJl_KVJsYA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="Configuration.profile.xmi#_koCGV2HwEeWSgJl_KVJsYA"/>
+      </eAnnotations>
+      <appliedProfile href="Configuration.profile.xmi#_koCGUGHwEeWSgJl_KVJsYA"/>
+    </profileApplication>
+    <profileApplication xmi:id="_ko_IvWHwEeWSgJl_KVJsYA">
+      <eAnnotations xmi:id="_ko_IvmHwEeWSgJl_KVJsYA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="Profile.profile.xmi#_ko_Il2HwEeWSgJl_KVJsYA"/>
+      </eAnnotations>
+      <appliedProfile href="Profile.profile.xmi#_ko_IkGHwEeWSgJl_KVJsYA"/>
+    </profileApplication>
+  </uml:Model>
+  <Configuration:Project xmi:id="_kpFPMGHwEeWSgJl_KVJsYA" base_Package="_knFEFGHwEeWSgJl_KVJsYA"/>
+  <Configuration:TagConfg xmi:id="_kpFPMWHwEeWSgJl_KVJsYA" base_Class="_knFEFWHwEeWSgJl_KVJsYA"/>
+  <Profile:Tag3 xmi:id="_kpFPMmHwEeWSgJl_KVJsYA" base_Package="_knFEFmHwEeWSgJl_KVJsYA"/>
+  <Configuration:Project xmi:id="_kpFPM2HwEeWSgJl_KVJsYA" base_Package="_knFEJGHwEeWSgJl_KVJsYA"/>
+  <Profile:Tag3 xmi:id="_kpFPNGHwEeWSgJl_KVJsYA" base_Package="_knFEJGHwEeWSgJl_KVJsYA"/>
+  <Profile:Tag1 xmi:id="_kpFPNWHwEeWSgJl_KVJsYA" base_Class="_knFEJWHwEeWSgJl_KVJsYA"/>
+  <Profile:Tag2 xmi:id="_kpFPNmHwEeWSgJl_KVJsYA" base_Class="_knFEMGHwEeWSgJl_KVJsYA"/>
+  <Profile:Tag1 xmi:id="_kpFPN2HwEeWSgJl_KVJsYA" base_Class="_knFEN2HwEeWSgJl_KVJsYA"/>
+</xmi:XMI>

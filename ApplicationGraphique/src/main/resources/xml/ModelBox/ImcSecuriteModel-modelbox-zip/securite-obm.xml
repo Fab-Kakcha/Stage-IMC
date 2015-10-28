@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<obm name="ImcSecuriteObm" project="ImcSecurite" version="3.4.0" xmlns="http://www.imc-fr.com/ObjectModelDefinition-2.0.0">
+		
+	<package name="securite" completeName="com.imcfr.imc.securite"/>
+	
+	
+	<!-- Application -->
+	<object name="Application" pack="ImcSecurite:securite" >
+		<field name="id" type="Base:Long" id="true" null="false"/>
+		<field name="code" type="Base:String" null="false"/>
+		<field name="libelle" type="Base:String" null="false"/>
+		<field name="urlMAJAcl" type="Base:String" null="true"/>
+		<field name="admin" type="Base:Boolean" null="false"/>
+		<field name="droits" type="ImcSecurite:securite.Droit" list="true"/>
+		<field name="assertions" type="ImcSecurite:securite.Assertion" list="true"/>
+		<field name="profils" type="ImcSecurite:securite.Profil" list="true"/>
+		<field name="ressources" type="ImcSecurite:securite.Ressource" list="true"/>
+		<field name="actions" type="ImcSecurite:securite.Action" list="true"/>
+	</object>
+	
+	
+	<!-- Ressourece -->
+	<object name="Ressource" pack="ImcSecurite:securite">
+		<field name="id" type="Base:Long" id="true" null="false"/>
+		<field name="libelle" type="Base:String" null="false"/>
+		<field name="parent" type="ImcSecurite:securite.Ressource"/>
+		<field name="application" type="ImcSecurite:securite.Application" null="false"/>
+	</object>
+	
+	
+	<!-- Profil -->
+	<object name="Profil" pack="ImcSecurite:securite" >
+		<field name="id" type="Base:Long" id="true" null="false"/>
+		<field name="libelle" type="Base:String" null="false"/>
+		<field name="parents" type="ImcSecurite:securite.Profil" list="true"/>
+		<field name="fils" type="ImcSecurite:securite.Profil" list="true"/>
+		<field name="application" type="ImcSecurite:securite.Application" null="false"/>
+	</object>
+	
+	
+	<!-- Action -->
+	<object name="Action" pack="ImcSecurite:securite" >
+		<field name="id" type="Base:Long" id="true" null="false"/>
+		<field name="libelle" type="Base:String" null="false"/>
+		<field name="application" type="ImcSecurite:securite.Application" null="false"/>
+	</object>
+	
+	
+	<!-- Droit -->
+	<object name="Droit" pack="ImcSecurite:securite" >
+		<field name="id" type="Base:Long" id="true" null="false"/>
+		<field name="autorise" type="Base:Boolean" null="false"/>
+		<field name="profil" type="ImcSecurite:securite.Profil" null="true"/>
+		<field name="ressource" type="ImcSecurite:securite.Ressource" null="true"/>
+		<field name="action" type="ImcSecurite:securite.Action" null="true"/>
+		<field name="application" type="ImcSecurite:securite.Application" null="false"/>
+	</object>
+	
+	
+	<!-- Assertion -->
+	<object name="Assertion" pack="ImcSecurite:securite" >
+		<field name="id" type="Base:Long" id="true" null="false"/>
+		<field name="klass" type="Base:String" null="false"/>
+		<field name="profil" type="ImcSecurite:securite.Profil" null="true"/>
+		<field name="ressource" type="ImcSecurite:securite.Ressource" null="true"/>
+		<field name="action" type="ImcSecurite:securite.Action" null="true"/>
+		<field name="application" type="ImcSecurite:securite.Application" null="false"/>
+	</object>
+</obm>

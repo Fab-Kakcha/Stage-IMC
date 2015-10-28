@@ -1,0 +1,97 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param t_attribute (com.imcfr.generateur.model.edimodel.AttributeBase)
+## @param rt_attribute (com.imcfr.generateur.model.edimodel.RedefineAttribute)
+## @param t_indent (String) : optionnel, présent si l'on veut permettre une indentation différente
+## 
+## #####
+#set($t_ab_annotationsTag="")
+#set($t_ab_rulesTag="")
+#set($t_ab_endTag="")
+#set($t_ab_closeTag="/>")
+#if ("$!{t_indent}" == "")
+#**##set($t_indent="		")
+#end
+#set($t_ab_default="")
+#if (!("$!{t_attribute.defaut}" == ""))
+#**##set($t_ab_default=" default=${Q}${t_attribute.defaut}${Q}")
+#end
+#set($t_ab_fixed="")
+#if (!("$!{t_attribute.fixed}" == ""))
+#**##set($t_ab_fixed=" fixed=${Q}${t_attribute.fixed}${Q}")
+#end
+#set($t_ab_use="")
+#if (!("$!{t_attribute.use}" == "") && "$!{t_attribute.use}" != "OPTIONAL")
+#**##set($t_ab_use=" use=${Q}${t_attribute.use.toString().toLowerCase()}${Q}")
+#end
+##
+#if ($t_attribute.class.simpleName == "Attribute" || $t_attribute.class.simpleName == "AttributeTypeSimple")
+#**##set($t_ab_type=$t_attribute.type)
+#**##set($t_ab_type_formatted=" type=${Q}#formatRef($model $t_ab_type true)${Q}")
+#elseif ($t_attribute.class.simpleName == "AttributeObm")
+#**##set($t_ab_type="")
+#**##if (!("$!{t_attribute.type}" == ""))
+#**##**##set($t_ab_type=${t_attribute.type})
+#**##else
+#**##**##set($t_ab_type=${t_attribute.obmField.type})
+#**##end
+#**##set($t_ab_type_formatted=" type=${Q}#formatRef($model $t_ab_type true)${Q}")
+#**##if ("$!{t_ab_use}" == "")
+#**##**##if (!${t_attribute.obmField.null})
+#**##**##**##set($t_ab_use=" use=${Q}required${Q}")
+#**##**##end
+#**##end
+#**###
+#**##set($t_ab_min_rule="")
+#**##set($t_ab_max_rule="")
+#**##set($t_ab_min_rule_name="minInclusive")
+#**##set($t_ab_max_rule_name="maxInclusive")
+#**##set($t_ab_pattern_rule="")
+#**##set($t_ab_rsmin=${t_attribute.obmField.getByType('validation', 'min')})
+#**##isStringType($t_eb_type $_isNumeric)
+#**##if ($_isNumeric)
+#**##**##set($t_ab_min_rule_name="minLength")
+#**##**##set($t_ab_max_rule_name="maxLength")
+#**##end
+#**##if ( ${t_ab_rsmin.size()} != 0 && ${t_ab_rsmin.get(0).min} != -1)
+#**##**##set($t_ab_min_rule="${N}${t_indent}${T}${T}${T}<${t_ab_min_rule_name} value=${Q}${t_ab_rsmin.get(0).min}${Q}/>")
+#**##end
+#**##set($t_ab_rsmax=${t_attribute.obmField.getByType('validation', 'max')})
+#**##if ( ${t_ab_rsmax.size()} != 0 && ${t_ab_rsmax.get(0).max} != -1)
+#**##**##set($t_ab_max_rule="${N}${t_indent}${T}${T}${T}<${t_ab_max_rule_name} value=${Q}${t_ab_rsmax.get(0).max}${Q}/>")
+#**##end
+#**##set($t_ab_rspattern=${t_attribute.obmField.getByType('validation', 'pattern')})
+#**##if ( ${t_ab_rspattern.size()} != 0 && ${t_ab_rspattern.get(0).min} != -1)
+#**##**##set($t_ab_pattern_rule="${N}${t_indent}${T}${T}${T}<pattern value=${Q}${t_ab_rspattern.get(0).min}${Q}/>")
+#**##end
+#**##if ("$!t_ab_min_rule" != "" || "$!t_ab_max_rule" != "" || "$!t_ab_pattern_rule" != "")
+#**##**##set($t_ab_rulesTag="${N}${t_indent}${T}<simpleType>${N}${t_indent}${T}${T}<restriction base=${Q}#formatRef($model $t_ab_type true)${Q}>$!{t_ab_min_rule}$!{t_ab_max_rule}$!{t_ab_pattern_rule}${N}${t_indent}${T}${T}</restriction>${N}${t_indent}${T}</simpleType>")
+#**##**##set($t_ab_endTag=">")
+#**##**##set($t_ab_closeTag="${N}${t_indent}</attribute>")
+#**##**##set($t_ab_type_formatted="")
+#**##end
+#**###
+#**##if (${t_attribute.obmField.libellesList.size()} > 0 || ${t_attribute.obmField.descriptionsList.size()} > 0)
+#**##**##set($t_ab_endTag=">")
+#**##**##set($t_ab_closeTag="${N}${t_indent}</attribute>")
+#**##**##set($_docTags="")
+#**##**##foreach ($t_ab_libelle in ${t_attribute.obmField.libellesList})
+#**##**##**##set($_docTags="${_docTags}${N}${t_indent}${T}${T}${T}<libelle xml:lang=${Q}${t_ab_libelle.langue}${Q}>${t_ab_libelle.value}</libelle>")
+#**##**##end
+#**##**##foreach ($t_ab_desc in ${t_attribute.obmField.descriptionsList})
+#**##**##**##set($_docTags="${_docTags}${N}${t_indent}${T}${T}${T}<description xml:lang=${Q}${t_ab_desc.langue}${Q}>${t_ab_desc.value}</description>")
+#**##**##end
+#**##**##set($t_ab_annotationsTag="${N}${t_indent}${T}<annotation>${N}${t_indent}${T}${T}<documentation>${_docTags}${N}${t_indent}${T}${T}</documentation>${N}${t_indent}${T}</annotation>")
+#**##end
+#end
+##
+#if (!("$!rt_attribute" == ""))
+#**##if (!("$!{rt_attribute.defaut}" == ""))
+#**##**##set($t_ab_default=" default=${Q}${rt_attribute.defaut}${Q}")
+#**##end	
+#**##if (!("$!{rt_attribute.use}" == ""))
+#**##**##set($t_ab_use=" use=${Q}${rt_attribute.use.toString().toLowerCase()}${Q}")
+#**##end
+#end
+${t_indent}<attribute name="${t_attribute.name}"${t_ab_type_formatted}$!{t_ab_use}$!{t_ab_default}$!{t_ab_fixed}$!{t_ab_endTag}$!{t_ab_annotationsTag}$!{t_ab_rulesTag}${t_ab_closeTag}

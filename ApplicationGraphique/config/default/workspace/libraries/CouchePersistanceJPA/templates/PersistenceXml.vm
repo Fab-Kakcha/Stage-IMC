@@ -1,0 +1,50 @@
+## #####
+## Générateur xml du fichier persistence.xml
+## 
+## @param generatedObject le model prstm
+## 
+## @author PINSON Pierre-Marie
+## @author BENOIT Lilian
+## @version 1.0.0 30/09/2009
+## @version 1.1.0 16/01/2014
+## #####
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+        
+    <persistence-unit name="${model.project}" transaction-type="JTA">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <jta-data-source>jdbc/${model.project}DS</jta-data-source>
+
+		<!--
+		<mapping-file>META-INF/ImcSecurite-orm.xml</mapping-file>
+		<mapping-file>META-INF/ImcBatch-orm.xml</mapping-file>
+		<mapping-file>META-INF/AgadirTechnique-orm.xml</mapping-file>
+		<mapping-file>META-INF/AgadirRole-orm.xml</mapping-file>
+		<mapping-file>META-INF/AgadirMesure-orm.xml</mapping-file>
+		<mapping-file>META-INF/AgadirContact-orm.xml</mapping-file>
+		<mapping-file>META-INF/AgadirReferentielContact-orm.xml</mapping-file>
+		<mapping-file>META-INF/AgadirReferentielFormation-orm.xml</mapping-file>
+		<mapping-file>META-INF/AgadirReferentielGeographique-orm.xml</mapping-file>
+		<mapping-file>META-INF/AgadirSecurite-orm.xml</mapping-file>
+		-->
+        <mapping-file>META-INF/${model.project}-orm.xml</mapping-file>
+
+        
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <!-- 
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/> 
+              -->
+        </properties>
+        
+    </persistence-unit>
+</persistence>

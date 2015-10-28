@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<obm name="AgadirReferentielFormationObm" project="AgadirReferentielFormation" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/ObjectModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/ObjectModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/CodeGeneratorModel/src/main/resources/com/imcfr/generateur/sax/objectmodel/ObjectModelDefinition-2.0.0.xsd ">
+
+	<package name="referentiel.lheo" completeName="com.imcfr.agadir.referentiel.formation.lheo"/>
+
+
+	<!-- lheo -->
+	<object name="NiveauFormation" pack="AgadirReferentielFormation:referentiel.lheo" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<field name="codeLibelle">
+			<rules>
+				<validation>
+					<pattern value="[1-9]{1}"/>
+				</validation>
+			</rules>
+		</field>
+		<!-- <field name="ordre" type="Base:String" null="true">
+			<descriptions>
+				<description langue="fr" value=""/>
+			</descriptions>
+		</field>
+		<field name="hierarchie" type="Base:Integer" null="true">
+			<descriptions>
+				<description langue="fr" value=""/>
+			</descriptions>
+		</field>
+		<field name="lheo-n" type="Base:Integer" null="true">
+			<descriptions>
+				<description langue="fr" value=""/>
+			</descriptions>
+		</field>
+		<field name="lheo-ns" type="Base:Integer" null="true">
+			<descriptions>
+				<description langue="fr" value=""/>
+			</descriptions>
+		</field> -->
+		
+		<descriptions>
+			<description langue="fr" value="Liste des niveaux de formation définis par l'éducation nationale et repris dans LHEO"/>
+		</descriptions>
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeReferentielMetier" pack="AgadirReferentielFormation:referentiel.lheo" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<descriptions>
+			<description langue="fr" value="Permet de caractériser le référentiel Métier (ROME ou RIME)"/>
+		</descriptions>
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="TypeDiplome" pack="AgadirReferentielFormation:referentiel.lheo" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<field name="objectifs" type="Base:String" />
+		<field name="inscritRncp" type="Base:Boolean"/>
+		<field name="niveau" type="AgadirReferentielFormation:referentiel.lheo.NiveauFormation" />
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="Formacode" pack="AgadirReferentielFormation:referentiel.lheo" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<field name="codeLibelle">
+			<rules>
+				<validation>
+					<min value="5"/>
+					<max value="5"/>
+				</validation>
+			</rules>
+		</field>
+		<field name="nsf" type="AgadirReferentielFormation:referentiel.lheo.Nsf" />
+		<descriptions>
+			<description langue="fr" value="Table de référence des Formacodes"/>
+		</descriptions>
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="Nsf" pack="AgadirReferentielFormation:referentiel.lheo" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<field name="codeLibelle">
+			<rules>
+				<validation>
+					<min value="2"/>
+					<max value="2"/>
+				</validation>
+			</rules>
+		</field>
+		<descriptions>
+			<description langue="fr" value="Table de référence des Formacodes"/>
+		</descriptions>
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	<object name="Rncp" pack="AgadirReferentielFormation:referentiel.lheo" obmExtends="AgadirTechnique:agadir.TypeCode">
+		<field name="codeLibelle">
+			<rules>
+				<validation>
+					<min value="4"/>
+					<max value="4"/>
+				</validation>
+			</rules>
+		</field>
+		<descriptions>
+			<description langue="fr" value="Table de référence des Formacodes"/>
+		</descriptions>
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+	
+	<object name="Diplome" pack="AgadirReferentielFormation:referentiel.lheo" obmExtends="AgadirTechnique:agadir.Libelle">
+		<!-- relations -->
+		<field name="niveauFormation" type="AgadirReferentielFormation:referentiel.lheo.NiveauFormation" null="false"/>
+		<field name="typeDiplome" type="AgadirReferentielFormation:referentiel.lheo.TypeDiplome" null="false"/>
+		<field name="formacodes" type="AgadirReferentielFormation:referentiel.lheo.Formacode" list="true" />
+		<field name="nsf" type="AgadirReferentielFormation:referentiel.lheo.Nsf" />
+		<field name="rncp" type="AgadirReferentielFormation:referentiel.lheo.Rncp" />
+		<field name="referenceMetier" type="AgadirReferentielFormation:referentiel.lheo.ReferentielMetier" list="true"/>
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+
+	<object name="ReferentielMetier" pack="AgadirReferentielFormation:referentiel.lheo" obmExtends="AgadirTechnique:agadir.Libelle">
+		<!-- relations -->
+		<field name="typeReferentielMetier" type="AgadirReferentielFormation:referentiel.lheo.TypeReferentielMetier" null="false"/>
+		<rules>
+			<orders default="ordre">
+				<order name="ordre">
+					<field name="ordre" direction="ASC"/>
+				</order>
+			</orders>
+		</rules>
+	</object>
+</obm>

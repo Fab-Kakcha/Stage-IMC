@@ -1,0 +1,24 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.persistancemodel.PrstmModel)
+## @param element (com.imcfr.generateur.model.persistancemodel.PrstmObject)
+## @param field (com.imcfr.generateur.model.persistancemodel.OneToOne)
+## 
+## #####
+##
+#**##**##if (${field.getByCategory("persistance").size()} > 0)
+
+			<rules>
+				<persistance>
+#**##**##**##**##foreach ($rule in ${field.getByCategory("persistance")})
+#**##**##**##**##**##set($pfrp_value="")
+#**##**##**##**##**##if ($rule.type == "lazy" && !$rule.lazy)
+#**##**##**##**##**##**##set($pfrp_value=" value=${Q}false${Q}")
+#**##**##**##**##**##elseif ($rule.type == "cascade" && "$!{rule.value}" != "" && $rule.value != "NONE")
+#**##**##**##**##**##**##set($pfrp_value=" value=${Q}${rule.value}${Q}")
+#**##**##**##**##**##end
+					<$rule.type$!{pfrp_value}/>
+#**##**##**##**##end
+				</persistance>
+			</rules>
+#**##**##end			

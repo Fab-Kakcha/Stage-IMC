@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edim name="AgadirReferentielMesureEdim" project="AgadirMesure" version="4.0.0"
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xmlns="http://www.imc-fr.com/EdiModelDefinition-2.0.0"
+	  xsi:schemaLocation="http://www.imc-fr.com/EdiModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/EdimModel/src/main/resources/com/imcfr/generateur/sax/edimodel/EdiModelDefinition-2.0.0.xsd ">
+
+	<targetNamespace alias="agadirreferentielmesure" namespace="http://www.dgefp.emploi.gouv.fr/Agadir" schemaLocation="AgadirMesure.xsd"/>
+
+	<type name="Etat" obmObject="AgadirMesure:referentiel.EtatObjetProcedure" inherits="t::AgadirTechnique:TypeCode" final="false"></type>
+	<type name="Nature" obmObject="AgadirMesure:referentiel.NatureObjetProcedure" inherits="t::AgadirTechnique:TypeCode" final="false"></type>
+	<type name="Derogation" obmObject="AgadirMesure:referentiel.Derogation" inherits="t::AgadirTechnique:TypeCode" final="false"></type>
+	<type name="Accompagnement" obmObject="AgadirMesure:referentiel.Accompagnement" inherits="t::AgadirTechnique:TypeCode" final="false"></type>
+	<type name="DerniereSituation" obmObject="AgadirMesure:referentiel.DerniereSituation" inherits="t::AgadirTechnique:TypeCode" final="false"></type>
+	<type name="Handicap" obmObject="AgadirMesure:referentiel.Handicap" inherits="t::AgadirTechnique:TypeCode" final="false"></type>
+	<type name="MinimumSocial" obmObject="AgadirMesure:referentiel.MinimumSocial" inherits="t::AgadirTechnique:TypeCode" final="false"></type>
+	<type name="TypeContratTravail" obmObject="AgadirMesure:referentiel.TypeContratTravail" inherits="t::AgadirTechnique:TypeCode" final="false"></type>
+</edim>

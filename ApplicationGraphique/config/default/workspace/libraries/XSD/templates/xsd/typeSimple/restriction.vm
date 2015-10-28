@@ -1,0 +1,13 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param st_definition (com.imcfr.generateur.model.edimodel.Restriction)
+## 
+## #####
+#set($st_r_base="")
+#if (!("$!{st_definition.base}" == ""))
+#**##set($st_r_base=" base=${Q}#formatRef($model $st_definition.base true)${Q}")
+#end
+		<restriction${st_r_base}>
+			$!{st_definition.xsdDefinition}
+		</restriction>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generators langage="java" name="CouchePresentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/GeneratorDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/GeneratorDefinition-2.0.0 ../../../../sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/generator/GeneratorDefinition-2.0.0.xsd ">
+
+	<!-- dépendance -->
+	<dependencies>
+		<dependency name="java:Commun"/>
+		<dependency name="java:CoucheBean"/>
+		<dependency name="java:CoucheService"/>
+	</dependencies>
+    
+    <languagefile path="JavaLanguageCouchePresentation.xml" />
+    
+    
+    <!--
+       définition des générateurs de la couche CouchePresentation Struts2 / tiles2 IMC
+    -->
+    
+    
+    <!-- Générateur du fichier de correspondance des models
+       fichier : ${repGénération}/src/main/resources/${project}-Model.properties
+       filter : aucun
+    -->
+    <generator name="ModelProperties" pathtemplate="ModelProperties.vm"
+        version="1.0.0" generatedObject="viewm:model">
+        <file>
+            <name value="{0}-model.properties">
+             <property>$project</property>
+            </name>
+            <path value="src/main/resources"/>
+        </file>
+    </generator>
+    
+    
+    <!-- Générateur du fichier d'import des fichiers struts
+       fichier : ${repGénération}/src/main/resources/struts.xml
+       filter : aucun
+    -->
+    <generator name="StrutsPackage" pathtemplate="StrutsPackage.vm"
+        version="1.0.0" generatedObject="viewm:model">
+        <file>
+            <name value="struts.xml"/>
+            <path value="src/main/resources"/>
+        </file>
+    </generator>
+    
+    
+    <!-- Générateur des fichiers de classe de model d'un élément "vueModel"
+       fichier : ${repGénération}/src/main/java/{object.pack.completeName}/presentation/model/{object.name}.java
+       filter : aucun
+    -->
+	<generator name="VueModel" pathtemplate="edition/VueModel.vm"
+		version="1.0.0" generatedObject="viewm:vueModel">
+        <file>
+            <name value="{0}.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/presentation/model">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.{2}VueModel">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="{0}">
+                <property>$name</property>
+            </className>
+            <package value="{0}.presentation.model">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+	</generator>
+    
+    
+    <!-- Générateur des fichiers de classe d'édition d'un élément "edit"
+       fichier : ${repGénération}/src/main/java/{object.pack.completeName}/presentation/{object.name}.java
+       filter : aucun
+    -->
+	<generator name="ActionEdit" pathtemplate="edition/ActionEdit.vm"
+		version="1.0.0" generatedObject="viewm:edit">
+        <file>
+            <name value="{0}.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/presentation">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.{2}ActionEdit">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="{0}">
+                <property>$name</property>
+            </className>
+            <package value="{0}.presentation">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+	</generator>
+    
+    
+    <!-- Générateur des fichiers struts d'un élément "edit"
+       fichier : ${repGénération}/src/main/resources/{object.pack.completeName}/presentation/{object.name}-struts.xml
+       filter : aucun
+    -->
+	<generator name="ActionEditStruts" pathtemplate="edition/ActionEditStruts.vm"
+		version="1.0.0" generatedObject="viewm:edit">
+        <file>
+            <name value="{0}-struts.xml">
+                <property>$name</property>
+            </name>
+            <path value="src/main/resources/{0}/presentation">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+	</generator>
+    
+    
+    <!-- Générateur des fichiers jsp d'une page d'édition
+       fichier : ${repGénération}/src/main/webapp/{object.pack.name}/{object.name}.jspx
+       filter : aucun
+    -->
+	<generator name="JspEdit" pathtemplate="edition/JspEdit.vm"
+		version="1.0.0" generatedObject="viewm:edit">
+        <file>
+            <name value="{0}.jspx">
+                <property>$name</property>
+            </name>
+            <path value="src/main/webapp/{0}">
+                <property>$pack.name</property>
+            </path>
+        </file>
+	</generator>
+    
+    
+    <!-- Générateur des fichiers jsp d'une vue
+       fichier : ${repGénération}/src/main/webapp/{object.pack.name}/{object.name}.jspx
+       filter : aucun
+    -->
+	<generator name="JspVue" pathtemplate="edition/JspVue.vm"
+		version="1.0.0" generatedObject="viewm:vue">
+        <file>
+            <name value="{0}.jspx">
+                <property>$name</property>
+            </name>
+            <path value="src/main/webapp/{0}">
+                <property>$pack.name</property>
+            </path>
+        </file>
+	</generator>
+    
+    
+    <!-- Générateur des fichiers de classe d'édition d'un élément "grid"
+       fichier : ${repGénération}/src/main/java/{object.pack.completeName}/presentation/{object.name}.java
+       filter : aucun
+    -->
+	<generator name="ActionList" pathtemplate="lister/ActionList.vm"
+		version="1.0.0" generatedObject="viewm:grid">
+        <file>
+            <name value="{0}.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/presentation">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.{2}ActionList">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="{0}">
+                <property>$name</property>
+            </className>
+            <package value="{0}.presentation">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+	</generator>
+    
+    
+    <!-- Générateur des fichiers struts d'un élément "grid"
+       fichier : ${repGénération}/src/main/resources/{object.pack.completeName}/presentation/{object.name}-struts.xml
+       filter : aucun
+    -->
+	<generator name="ActionListStruts" pathtemplate="lister/ActionListStruts.vm"
+		version="1.0.0" generatedObject="viewm:grid">
+        <file>
+            <name value="{0}-struts.xml">
+                <property>$name</property>
+            </name>
+            <path value="src/main/resources/{0}/presentation">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+	</generator>
+    
+    
+    <!-- Générateur des fichiers jsp d'une liste de recherche
+       fichier : ${repGénération}/src/main/webapp/{object.pack.name}/{object.name}.jspx
+       filter : aucun
+    -->
+	<generator name="JspList" pathtemplate="lister/JspList.vm"
+		version="1.0.0" generatedObject="viewm:grid">
+        <file>
+            <name value="{0}.jspx">
+                <property>$name</property>
+            </name>
+            <path value="src/main/webapp/{0}">
+                <property>$pack.name</property>
+            </path>
+        </file>
+	</generator>
+    
+    
+    
+	<!-- Apis permettant de générer directement dans les projets eclipse -->
+    <api name="Presentation">
+        <refgenerator name="ModelProperties"/>
+        <refgenerator name="StrutsPackage"/>
+        <refgenerator name="VueModel"/>
+        <refgenerator name="ActionEdit"/>
+        <refgenerator name="ActionEditStruts"/>
+        <refgenerator name="JspEdit"/>
+        <refgenerator name="ActionList"/>
+        <refgenerator name="ActionListStruts"/>
+        <refgenerator name="JspList"/>
+        <refgenerator name="JspVue"/>
+    </api>
+	
+</generators>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datam name="AgadirReferentielMesureDatam" project="AgadirMesure" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/DataModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/DataModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/DatamModel/src/main/resources/com/imcfr/generateur/sax/datamodel/DataModelDefinition-2.0.0.xsd ">
+
+    <schema name="referentiel" completeName="agadir_referentiel_mesure">
+        <rules>
+            <grants>
+                <grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="USAGE"/>
+            </grants>
+        </rules>
+    </schema>
+
+
+	<object name="etat_objet_procedure" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.EtatObjetProcedure" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="accompagnement" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.Accompagnement" inherits="true">
+		<field name="fk__type_accompagnement__id" obmField="typeAccompagnement" type="Base:Long"/>
+	
+		<rules>
+			<constraints>
+				<foreignKeys refObject="AgadirMesure:referentiel.type_accompagnement">
+					<foreignKey field="fk__type_accompagnement__id" refField="id"/>
+				</foreignKeys>
+			</constraints>
+			
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="derniere_situation" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.DerniereSituation" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="derogation" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.Derogation" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="nature_objet_procedure" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.NatureObjetProcedure" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="handicap" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.Handicap" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+
+	<object name="type_operation" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.TypeOperation" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="type_financement" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.TypeFinancement" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="type_convention" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.TypeConvention" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="type_accompagnement" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.TypeAccompagnement" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="type_controle" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.TypeControle" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="type_resultat_controle" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.TypeResultatControle" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="type_decision" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.TypeDecision" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="type_notification" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.TypeNotification" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="minimum_social" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.MinimumSocial" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+	<object name="type_contrat_travail" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.TypeContratTravail" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+	<object name="type_tutorat" schema="AgadirMesure:referentiel" obmObject="AgadirMesure:referentiel.TypeTutorat" inherits="true">
+		<rules>
+			<grants>
+				<grant user="AgadirTechnique:adm_agadir" value="OWNER"/>
+                <grant user="AgadirTechnique:usr_agadir" value="ALL"/>
+			</grants>
+		</rules>
+	</object>
+
+</datam>

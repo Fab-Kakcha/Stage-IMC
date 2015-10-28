@@ -1,0 +1,181 @@
+##
+## Générateur SQL pour postgres
+## Création des inforamtions d'une table
+##
+## $generatedObject = model datam
+## $datam = l'objet datam du model en cours de création
+##
+## @author Pinson Pierre-Marie
+## @version 1.0.0 09/10/2009
+##
+##
+## on récup l'obm lié si il existe
+#if ( ${datam.obmObject} )
+#set ( $obm = ${datam.obmObject} )
+#end
+-- Définition des séquences de la table ${datam.schema.completeName}.${datam.name}
+#foreach ( $field in ${datam.fieldsList} )
+##
+## on récup si le champ ou il faut créer une séquance
+#set ( $seqs = ${field.getByType("fieldGeneration", "sequence")} )
+#foreach ( $seq in ${seqs} )
+CREATE SEQUENCE "${datam.schema.completeName}"."${seq.name}";
+#end
+#end
+
+#if ( ${datam.isAbstract} == false )
+-------------------------
+-- Définition de la table ${datam.schema.completeName}.${datam.name}
+-------------------------
+
+CREATE TABLE "${datam.schema.completeName}"."${datam.name}" (
+#foreach ( $field in ${datam.fieldsList} )
+##
+## on récup le champ obm
+#set ( $obmField = "")
+#if ( ${field.obmField} != "" )
+#set ( $obmField = ${obm.getAllField(${field.obmField})} )
+#end
+##
+## on récup si le champ est non null
+#set ( $nullable = "" )
+#if ( ${obmField} )
+#if ( ${obmField.null} == false )
+#set ( $nullable = " NOT NULL" )
+#end
+#end
+##
+## on récup le type du champ
+## si le type du champ datam est vide on prend de l'obm
+#set ( $fieldType = "" )
+#if (${field.type} == "")
+#set ( $fieldType = ${obmField.type} )
+#else
+#set ( $fieldType = ${field.type} )
+#end
+##
+#set($default="")
+## si c'est une type simple on formatte
+#if ("$!{field.defaut}" != "" && "$!{field.realDefaut}" != "" && "$!{field.realDefaut}" != "{NONE}" && "$!{field.defaut}" != "{NONE}")
+#**##if ("$!{field.defaut}" == "{NEXTVAL}")
+#**##**##set ($default=" DEFAULT nextval('${datam.schema.completeName}.${field.realDefaut}')")
+#**##elseif ("$!{field.defaut}" == "{OBM}")
+#**##**##if (${manager.isBaseType($fieldType)} == true)
+#**##**##**##set ($default=" DEFAULT ${manager.getElement($fieldType).formatValue(${field.realDefaut})}")
+#**##**##else
+#**##**##**### sinon si c'est un enum ou une constante, il faudra formatte comme il faut => ne devrait jamais arriver
+#**##**##end
+#**##elseif (${field.defaut.matches("^\{[^{}]+\}$")})
+#**##**##**##set ($default=" DEFAULT ${field.realDefaut}")
+#**##else
+#**##**##if (${manager.isBaseType($fieldType)} == true)
+#**##**##**##set ($default=" DEFAULT ${manager.getElement($fieldType).formatValue(${field.realDefaut})}")
+#**##**##else
+#**##**##**### sinon si c'est un enum ou une constante, il faudra formatte comme il faut => ne devrait jamais arriver
+#**##**##end
+#**##end
+#end
+##
+## on récup si le champ a une génération auto
+#set ( $autos = ${field.getByType("fieldGeneration", "auto")} )
+#if ( ${list.size(${autos})} != 0 )
+#if ( ${list.get(${autos}, 0).auto} )
+##
+## si type long alors BIGSERIAL, sinon SERIAL
+#if ( ${fieldType} == "Base:Long" )
+#set ( $fieldType = "Base:BigSerial" )    
+#else
+#set ( $fieldType = "Base:Serial" )
+#end
+#end
+#end
+##
+## si le type du champ datam est pas vide
+#if ( ${fieldType} == "" )
+    "${field.name}" TODO${nullable}$!{default},
+#else
+    "${field.name}" ${manager.getElement(${fieldType}).path}${nullable}$!{default},
+#end
+#end
+##
+## création des clés primaires, on récup les régle objet clé primaire
+#set ( $primaryKeys = ${datam.getByType("objectConstraints", "primaryKey")} )
+#if ( ${list.size(${primaryKeys})} != 0 )
+#set ( $valPrims = "" )
+#foreach ( $rule in ${primaryKeys} )
+#if (${valPrims} != "" )
+#set ( $valPrims = "${valPrims}, " )
+#end
+#set ( $valPrims = "${valPrims}${esc.q}${rule.primaryKeyRefName}${esc.q}" )
+#end
+    PRIMARY KEY(${valPrims})
+#end
+);
+##
+
+-- Définition des index unique des champs de la table ${datam.schema.completeName}.${datam.name}
+##
+## création des index unique sur les champs
+#foreach ( $field in ${datam.fieldsList} )
+##
+## création des clés primaires, on récup les régle field index
+#set ( $uniques = ${field.getByType("fieldConstraints", "unique")} )
+#if ( ${list.size(${uniques})} != 0 )
+#if ( ${list.get(${uniques}, 0).unique} )
+CREATE UNIQUE INDEX "idx_unq_${datam.name}_${field.name}" ON "${datam.schema.completeName}"."${datam.name}"("${field.name}");
+#end
+#end
+#end
+##
+
+-- Définition des index des champs de la table ${datam.schema.completeName}.${datam.name}
+##
+## création des index sur les champs
+#foreach ( $field in ${datam.fieldsList} )
+##
+## création des clés primaires, on récup les régle field index
+#set ( $indexes = ${field.getByType("fieldConstraints", "index")} )
+#if ( ${list.size(${indexes})} != 0 )
+#if ( ${list.get(${indexes}, 0).index} )
+CREATE INDEX "idx_${datam.name}_${field.name}" ON "${datam.schema.completeName}"."${datam.name}"("${field.name}");
+#end
+#end
+#end
+##
+
+-- Définition des index unique de la table ${datam.schema.completeName}.${datam.name}
+##
+## création des index unique sur l'objet
+#set ( $uniques = ${datam.getByType("objectConstraints", "unique")} )
+#if ( ${list.size(${uniques})} != 0 )
+#set ( $valUnique = "" )
+#foreach ( $unique in ${uniques} )
+#if (${valUnique} != "" )
+#set ( $valUnique = "${valUnique}, " )
+#end
+#set ( $valUnique = "${valUnique}${esc.q}${unique.unique}${esc.q}" )
+#end
+CREATE UNIQUE INDEX "idx_unq_${datam.name}_table" ON "${datam.schema.completeName}"."${datam.name}"(${valUnique});
+#end
+##
+
+-- Définition des index de la table ${datam.schema.completeName}.${datam.name}
+##
+## création des index sur l'objet
+#set ( $indexes = ${datam.getByType("objectConstraints", "index")} )
+#if ( ${list.size(${indexes})} != 0 )
+#set ( $valIndex = "" )
+#foreach ( $index in ${indexes} )
+#if (${valIndex} != "" )
+#set ( $valIndex = "${valIndex}, " )
+#end
+#set ( $valIndex = "${valIndex}${esc.q}${index.index}${esc.q}" )
+#end
+CREATE INDEX "idx_${datam.name}_table" ON "${datam.schema.completeName}"."${datam.name}"(${valIndex});
+#end
+#end
+##
+## fin de la partie pour les tables pas abstraites
+##
+
+	

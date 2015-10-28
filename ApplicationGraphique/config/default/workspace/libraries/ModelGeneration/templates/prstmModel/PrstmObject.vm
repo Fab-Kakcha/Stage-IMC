@@ -1,0 +1,20 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.persistancemodel.PrstmModel)
+## @param element (com.imcfr.generateur.model.persistancemodel.PrstmObject)
+## 
+## #####
+##
+#set($po_extends="")
+#if (${element.extendsType.name()} != "None")
+#**##set($po_extends=" extendsType=${Q}${element.extendsType.name()}${Q}")
+#end
+#if (${element.nbFields} == 0)
+	<object name="${element.name}" pack="${element.packName}" datamObject="${element.datamObjectName}"$!{po_extends}/>
+#else
+	<object name="${element.name}" pack="${element.packName}" datamObject="${element.datamObjectName}"$!{po_extends}>
+#**##foreach ($field in ${element.fieldsList})
+#**##**##generate("ModelGeneration:PrstmField${field.class.simpleName}")
+#**##end
+	</object>
+#end

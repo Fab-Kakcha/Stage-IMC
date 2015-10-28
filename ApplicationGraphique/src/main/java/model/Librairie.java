@@ -1,7 +1,11 @@
 package model;
 
+/**
+ * Cette classe définit le nom et le chemin vers les librairies qui sont utilisées pour la configuration du générateur
+ * @author fkakcha
+ *
+ */
 public class Librairie {
-
 	
 	private String nom;
 	private String cheminFichier;
@@ -31,7 +35,5 @@ public class Librairie {
 	@Override
 	public String toString() {
 		return "Modeles [nom=" + nom + ", cheminFichier=" + cheminFichier + "]";
-	}
-	
-	
+	}	
 }

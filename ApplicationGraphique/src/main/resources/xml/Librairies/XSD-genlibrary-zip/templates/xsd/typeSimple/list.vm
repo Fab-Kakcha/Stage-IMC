@@ -1,0 +1,13 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.edimodel.EdimModel)
+## @param st_definition (com.imcfr.generateur.model.edimodel.List)
+## 
+## #####
+#set($st_l_itemType="")
+#if (!("$!{st_definition.base}" == ""))
+#**##set($st_l_itemType=" itemType=${Q}#formatRef($model $st_definition.itemType true)${Q}")
+#end
+		<list${st_l_itemType}>
+			$!{st_definition.xsdDefinition}
+		</list>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prstm name="AgadirReferentielFormationPrstm" project="AgadirReferentielFormation" version="4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/PersistanceModelDefinition-2.0.0 ../../../../../../../IMC/CodeGenerateur/sources/PrstmModel/src/main/resources/com/imcfr/generateur/sax/persistancemodel/PersistanceModelDefinition-2.0.0.xsd ">
+
+	<!-- lheo -->
+	<object name="NiveauFormation" pack="AgadirReferentielFormation:referentiel.lheo" datamObject="AgadirReferentielFormation:referentiel.niveau_formation"/>
+	<object name="TypeReferentielMetier" pack="AgadirReferentielFormation:referentiel.lheo" datamObject="AgadirReferentielFormation:referentiel.type_referentiel_metier"/>
+	<object name="TypeDiplome" pack="AgadirReferentielFormation:referentiel.lheo" datamObject="AgadirReferentielFormation:referentiel.type_diplome"/>
+	<object name="Formacode" pack="AgadirReferentielFormation:referentiel.lheo" datamObject="AgadirReferentielFormation:referentiel.formacode">
+		<manyToOne name="nsf">
+			<references>
+				<reference datamField="fk__nsf__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="true"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+	<object name="Nsf" pack="AgadirReferentielFormation:referentiel.lheo" datamObject="AgadirReferentielFormation:referentiel.nsf"/>
+	<object name="Rncp" pack="AgadirReferentielFormation:referentiel.lheo" datamObject="AgadirReferentielFormation:referentiel.rncp"/>
+	<object name="ReferentielMetier" pack="AgadirReferentielFormation:referentiel.lheo" datamObject="AgadirReferentielFormation:referentiel.referentiel_metier">
+		<manyToOne name="typeReferentielMetier">
+			<references>
+				<reference datamField="fk__type_referentiel_metier__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+	</object>
+	
+	<object name="Diplome" pack="AgadirReferentielFormation:referentiel.lheo" datamObject="AgadirReferentielFormation:referentiel.diplome">
+		<manyToOne name="niveauFormation">
+			<references>
+				<reference datamField="fk__niveau_formation__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+		<manyToOne name="typeDiplome">
+			<references>
+				<reference datamField="fk__type_diplome__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+		<manyToOne name="nsf">
+			<references>
+				<reference datamField="fk__nsf__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+		<manyToOne name="rncp">
+			<references>
+				<reference datamField="fk__rncp__id"/>
+			</references>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="false"/>
+				</persistance>
+			</rules>
+		</manyToOne>
+		
+		<manyToMany name="referenceMetier">
+			<refDatamObject name="AgadirReferentielFormation:referentiel.diplome__referentiel_metier"/>
+			<references>
+				<reference datamField="ref__diplome__id" refDatamField="id"/>
+			</references>
+			<inverseReferences>
+				<inverseReference datamField="fk__referentiel_metier__id" refDatamField="id"/>
+			</inverseReferences>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="true"/>
+				</persistance>
+			</rules>
+		</manyToMany>
+		<manyToMany name="formacodes">
+			<refDatamObject name="AgadirReferentielFormation:referentiel.diplome__formacode"/>
+			<references>
+				<reference datamField="ref__diplome__id" refDatamField="id"/>
+			</references>
+			<inverseReferences>
+				<inverseReference datamField="fk__formacode__id" refDatamField="id"/>
+			</inverseReferences>
+			<rules>
+				<persistance>
+					<cascade value="NONE"/>
+					<lazy value="true"/>
+				</persistance>
+			</rules>
+		</manyToMany>
+	</object>
+
+</prstm>

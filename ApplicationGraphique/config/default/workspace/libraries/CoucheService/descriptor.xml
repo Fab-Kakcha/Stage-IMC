@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generators langage="java" name="CoucheService" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/GeneratorDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/GeneratorDefinition-2.0.0 ../../../../sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/generator/GeneratorDefinition-2.0.0.xsd ">
+
+	<!-- dépendance -->
+	<dependencies>
+		<dependency name="java:Commun"/>
+		<dependency name="java:CoucheBean"/>
+		<dependency name="java:CouchePersistanceJPA"/>
+	</dependencies>
+    
+    <languagefile path="JavaLanguageCoucheService.xml" />
+    
+    
+    <!--
+       définition des générateurs de la couche service IMC
+    -->
+    
+    
+    
+     <!-- Générateur de création des interfaces des services
+       fichier : repGénération/interface/src/main/java/{object.pack.completeName}/service/S{object.name}.java
+       elementsLangage : 
+                    - interface Service - nommé {project}:{packName}.S{name}
+       filter : uniquement les objets pas abstrait
+    -->
+    <generator name="Service" pathtemplate="service/Service.vm"
+        version="1.0.0" generatedObject="prstm:object" implementationClass="com.imcfr.imc.generateur.templates.Ajeter">
+        <filter class="com.imcfr.generateur.generator.param.filter.PrstmObjectNotAbstract" />
+        <file>
+            <name value="S{0}.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/service">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.S{2}">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="S{0}">
+                <property>$name</property>
+            </className>
+            <package value="{0}.service">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+    </generator>
+    
+    
+    
+     <!-- Générateur de création des interfaces locales des services
+       fichier : repGénération/interface/src/main/java/{object.pack.completeName}/service/local/S{object.name}Local.java
+       elementsLangage : 
+                    - interface Service - nommé {project}:{packName}.S{name}Local
+       filter : uniquement les objets pas abstrait
+    -->
+    <generator name="ServiceLocal" pathtemplate="service/ServiceLocal.vm"
+        version="1.0.0" generatedObject="prstm:object">
+        <filter class="com.imcfr.generateur.generator.param.filter.PrstmObjectNotAbstract" />
+        <file>
+            <name value="S{0}Local.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/service/local">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.S{2}Local">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="S{0}Local">
+                <property>$name</property>
+            </className>
+            <package value="{0}.service.local">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+    </generator>
+    
+    
+    
+    
+    
+     <!-- Générateur de création des interfaces des services crud
+       fichier : repGénération/interface/src/main/java/{object.pack.completeName}/service/generated/S{object.name}Generated.java
+       elementsLangage : 
+                    - interface ServiceGenerated - nommé {project}:{packName}.S{name}Generated
+       filter : uniquement les objets pas abstrait
+    -->
+    <generator name="ServiceGenerated" pathtemplate="servicegenerated/ServiceGenerated.vm"
+        version="1.0.0" generatedObject="prstm:object">
+        <supports>
+        	<support>generation</support>
+        	<support>regeneration</support>
+        </supports>
+        <filter class="com.imcfr.generateur.generator.param.filter.PrstmObjectNotAbstract" />
+        <file>
+            <name value="S{0}Generated.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/service/generated">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.S{2}Generated">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="S{0}Generated">
+                <property>$name</property>
+            </className>
+            <package value="{0}.service.generated">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+    </generator>
+    
+    <!-- Template de création des tris -->
+    <template name="ServiceGenerated_Orders" pathtemplate="servicegenerated/Orders.vm" />
+    
+    <!-- Template de création des méthodes getByRef -->
+    <template name="ServiceGenerated_GetByRef" pathtemplate="servicegenerated/GetByRef.vm" />
+    
+    
+    
+     <!-- Générateur de création des classes d'implémentation des services crud
+       fichier : repGénération/impl/src/main/java/{object.pack.completeName}/service/impl/ServiceCrud{object.name}Impl.java
+       elementsLangage : 
+                    - classe ServiceImpl - nommé {project}:{packName}.Service{name}Impl
+       filter : uniquement les objets pas abstrait
+       generateur incompatible avec ServiceLocalImpl
+    -->
+    <generator name="ServiceImpl" pathtemplate="serviceimpl/ServiceImpl.vm"
+        version="1.0.0" generatedObject="prstm:object">
+        <filter class="com.imcfr.generateur.generator.param.filter.PrstmObjectNotAbstract" />
+        <file>
+            <name value="S{0}Impl.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/service/impl">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.S{2}Impl">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="S{0}Impl">
+                <property>$name</property>
+            </className>
+            <package value="{0}.service.impl">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+    </generator>
+    
+    
+    
+     <!-- Générateur de création des classes d'implémentation des services crud
+       fichier : repGénération/impl/src/main/java/{object.pack.completeName}/service/impl/ServiceCrud{object.name}Impl.java
+       elementsLangage : 
+                    - classe ServiceImpl - nommé {project}:{packName}.Service{name}Impl
+       filter : uniquement les objets pas abstrait
+       generateur incompatible avec ServiceImpl
+    -->
+    <generator name="ServiceRemoteOnlyImpl" pathtemplate="serviceimpl/ServiceRemoteImpl.vm"
+        version="1.0.0" generatedObject="prstm:object">
+        <filter class="com.imcfr.generateur.generator.param.filter.PrstmObjectNotAbstract" />
+        <file>
+            <name value="S{0}Impl.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/service/impl">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <!--  définition dans ServiceImpl
+        <language>
+            <name value="{0}:{1}.S{2}Impl">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="S{0}Impl">
+                <property>$name</property>
+            </className>
+            <package value="{0}.service.impl">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+         -->
+    </generator>
+    
+    
+    
+     <!-- Générateur de création des classes des d'implémentation abstraite des service cruds
+       fichier : repGénération/impl/src/main/java/{object.pack.completeName}/service/impl/generated/Service{object.name}Generated.java
+       elementsLangage : 
+                    - classe ServiceGeneratedImpl - nommé {project}:{packName}.Service{name}Generated
+       filter : uniquement les objets pas abstrait
+    -->
+    <generator name="ServiceGeneratedImpl" pathtemplate="servicegeneratedimpl/ServiceGeneratedImpl.vm"
+        version="1.0.0" generatedObject="prstm:object">
+        <supports>
+        	<support>generation</support>
+        	<support>regeneration</support>
+        </supports>
+        <filter class="com.imcfr.generateur.generator.param.filter.PrstmObjectNotAbstract" />
+        <file>
+            <name value="S{0}GeneratedImpl.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/service/impl/generated">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.S{2}GeneratedImpl">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="S{0}GeneratedImpl">
+                <property>$name</property>
+            </className>
+            <package value="{0}.service.impl.generated">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+    </generator>
+    
+    <!-- Template de création des tris -->
+    <template name="ServiceGeneratedImpl_Orders" pathtemplate="servicegeneratedimpl/Orders.vm" />
+    
+    <!-- Template de création des méthodes getByRef et getCountByRef -->
+    <template name="ServiceGeneratedImpl_GetByRef" pathtemplate="servicegeneratedimpl/GetByRef.vm" />
+    
+    
+    
+     <!-- Générateur de création du fichier ejb-jar.xml de définition des ejbs
+       fichier : repGénération/impl/src/main/resources/META-INF/ejb-jar.xml
+       filter : aucun
+    -->
+    <generator name="EjbJarLocal" pathtemplate="EjbJarLocal.vm"
+        version="1.0.0" generatedObject="prstm:model">
+        <file>
+            <name value="ejb-jar.xml"/>
+            <path value="src/main/resources/META-INF"/>
+        </file>
+    </generator>
+    <generator name="EjbJar2Remote" pathtemplate="EjbJar2Remote.vm"
+        version="1.0.0" generatedObject="prstm:model">
+        <file>
+            <name value="ejb-jar.xml"/>
+            <path value="src/main/resources/META-INF"/>
+        </file>
+    </generator>
+    <generator name="EjbJar3Remote" pathtemplate="EjbJar3Remote.vm"
+        version="1.0.0" generatedObject="prstm:model">
+        <file>
+            <name value="ejb-jar.xml"/>
+            <path value="src/main/resources/META-INF"/>
+        </file>
+    </generator>
+    <generator name="EjbJar3" pathtemplate="EjbJar3.vm"
+        version="1.0.0" generatedObject="prstm:model">
+        <file>
+            <name value="ejb-jar.xml"/>
+            <path value="src/main/resources/META-INF"/>
+        </file>
+    </generator>
+    
+    
+    
+     <!-- Générateur de création du fichier jboss.xml de définition des ejbs et des noms jndi pour jboss
+       fichier : repGénération/impl/src/main/resources/META-INF/jboss.xml
+       filter : aucun
+    -->
+    <generator name="JbossXmlLocal" pathtemplate="JbossXmlLocal.vm"
+        version="1.0.0" generatedObject="prstm:model">
+        <file>
+            <name value="jboss.xml"/>
+            <path value="src/main/resources/META-INF"/>
+        </file>
+    </generator>
+    <generator name="JbossXmlRemote" pathtemplate="JbossXmlRemote.vm"
+        version="1.0.0" generatedObject="prstm:model">
+        <file>
+            <name value="jboss.xml"/>
+            <path value="src/main/resources/META-INF"/>
+        </file>
+    </generator>
+    <generator name="JbossXml" pathtemplate="JbossXml.vm"
+        version="1.0.0" generatedObject="prstm:model">
+        <file>
+            <name value="jboss.xml"/>
+            <path value="src/main/resources/META-INF"/>
+        </file>
+    </generator>
+    
+    
+    
+     <!-- Générateur de création du fichier ${project}-service.properties de définition des services crud
+       fichier : repGénération/interface/src/main/resources/{project}-service.properties
+       filter : aucun
+    -->
+    <generator name="ServiceProperties" pathtemplate="ServiceProperties.vm"
+        version="1.0.0" generatedObject="prstm:model">
+        <file>
+            <name value="{0}-service.properties">
+             <property>$project</property>
+            </name>
+            <path value="src/main/resources"/>
+        </file>
+    </generator>
+    
+    
+    
+     <!-- Générateur de création du fichier ${project}-jndi-service.properties de définition des services crud par JNDI
+       fichier : repGénération/interface/src/main/resources/{project}-jndi-service.properties
+       filter : aucun
+    -->
+    <generator name="JndiServiceProperties" pathtemplate="JndiServiceProperties.vm"
+        version="1.0.0" generatedObject="prstm:model">
+        <file>
+            <name value="{0}-jndi-service.properties">
+             <property>$project</property>
+            </name>
+            <path value="src/main/resources"/>
+        </file>
+    </generator>
+    
+    
+     <!-- Générateur de création du fichier ${project}-jndiremote-service.properties de définition des services remote crud par JNDI
+       fichier : repGénération/interface/src/main/resources/{project}-jndiremote-service.properties
+       filter : aucun
+    -->
+    <generator name="JndiServiceRemoteProperties" pathtemplate="JndiRemoteServiceProperties.vm"
+        version="1.0.0" generatedObject="prstm:model">
+        <file>
+            <name value="{0}-jndiremote-service.properties">
+             <property>$project</property>
+            </name>
+            <path value="src/main/resources"/>
+        </file>
+    </generator>
+    
+    
+    
+	<!-- Apis permettant de générer directement dans les projets eclipse -->
+	<api name="Service">
+		<refgenerator name="Service"/>
+    	<refgenerator name="ServiceLocal"/>
+        <refgenerator name="ServiceGenerated"/>
+        <refgenerator name="JndiServiceProperties"/>
+		<refgenerator name="JndiServiceRemoteProperties"/>
+	</api>
+	
+	<api name="ServiceImpl">
+		<refgenerator name="ServiceRemoteOnlyImpl"/>
+        <refgenerator name="ServiceGeneratedImpl"/>
+		<refgenerator name="ServiceImpl"/>
+		<refgenerator name="EjbJar3"/>
+        <refgenerator name="JbossXml"/>
+        <refgenerator name="ServiceProperties"/>
+	</api>
+	
+</generators>

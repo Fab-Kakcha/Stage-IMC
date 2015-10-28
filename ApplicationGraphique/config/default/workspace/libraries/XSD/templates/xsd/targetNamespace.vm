@@ -1,0 +1,16 @@
+## #####
+## 
+## @param tns (com.imcfr.generateur.model.edimodel.TargetNamespace)
+## 
+## #####
+xmlns="http://www.w3.org/2001/XMLSchema"
+		targetNamespace="${tns.namespace}"
+		xmlns:${tns.alias}="${tns.namespace}"
+#foreach ($tns_require in $model.requiresList)
+#**##if (!${tns_require.skip})
+#**##**##if (${tns_require.import})
+		xmlns:${tns_require.refTns.alias}="${tns_require.refTns.namespace}"
+#**##**##end
+#**##end
+#end
+		elementFormDefault="qualified"

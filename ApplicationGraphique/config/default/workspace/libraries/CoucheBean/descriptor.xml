@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generators langage="java" name="CoucheBean" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.imc-fr.com/GeneratorDefinition-2.0.0" xsi:schemaLocation="http://www.imc-fr.com/GeneratorDefinition-2.0.0 ../../../../sources/CodeGeneratorUtils/src/main/resources/com/imcfr/generateur/sax/generator/GeneratorDefinition-2.0.0.xsd ">
+
+	<!-- dépendance -->
+	<dependencies>
+		<dependency name="java:Commun"/>
+	</dependencies>
+    
+    <languagefile path="JavaLanguageCoucheBean.xml" />
+    
+    
+    <!--
+       définition des générateurs de la couche bean IMC
+    -->
+    
+    
+    <!-- Générateur de création des enum
+       fichier : repGénération/src/main/java/{objet.pack.completeName}/enums/{objet.name}.java
+       elementsLangage : 
+                    - {project}:{packName}.{name}Enum : le fichier généré
+    -->
+    <generator name="Enum" pathtemplate="enums/Enum.vm"
+        version="1.0.0" generatedObject="obm:object">
+        <supports>
+        	<support>generation</support>
+        	<support>regeneration</support>
+        </supports>
+        <filter class="com.imcfr.generateur.generator.param.filter.ObmObjectIsEnum" />
+        <file>
+            <name value="{0}.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/enums">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.{2}Enum">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="{0}">
+                <property>$name</property>
+            </className>
+            <package value="{0}.enums">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+        <language>
+            <name value="{0}:{1}.{2}Bean">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="{0}">
+                <property>$name</property>
+            </className>
+            <package value="{0}.enums">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+    </generator>
+    
+    
+    <!-- Générateur de création des interface
+       fichier : repGénération/src/main/java/{objet.pack.completeName}/interfaces/{objet.name}.java
+       elementsLangage : 
+                    - {project}:{packName}.{name}Interface : le fichier généré
+    -->
+    <generator name="Interface" pathtemplate="interfaces/Interface.vm"
+        version="1.0.0" generatedObject="obm:object">
+        <supports>
+        	<support>generation</support>
+        	<support>regeneration</support>
+        </supports>
+        <filter class="com.imcfr.generateur.generator.param.filter.ObmObjectIsInterface" />
+        <file>
+            <name value="{0}.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/interfaces">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.{2}Interface">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="{0}">
+                <property>$name</property>
+            </className>
+            <package value="{0}.interfaces">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+        <language>
+            <name value="{0}:{1}.{2}Bean">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="{0}">
+                <property>$name</property>
+            </className>
+            <package value="{0}.interfaces">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+    </generator>
+    
+    <!-- Générateur de création des interface d'objets beans BeanObjet
+       fichier : repGénération/src/main/java/{objet.pack.completeName}/bean/{objet.name}.java
+       elementsLangage : 
+                    - {project}:{packName}.{name}Bean : le fichier généré
+    -->
+    <generator name="Bean" pathtemplate="bean/Bean.vm"
+        version="1.0.0" generatedObject="obm:object">
+        <supports>
+        	<support>generation</support>
+        	<support>regeneration</support>
+        </supports>
+        <filter class="com.imcfr.generateur.generator.param.filter.ObmObjectIsObject" />
+        <file>
+            <name value="{0}.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/bean">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.{2}Bean">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="{0}">
+                <property>$name</property>
+            </className>
+            <package value="{0}.bean">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+        <language>
+            <name value="{0}:{1}.{2}Interface">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="{0}">
+                <property>$name</property>
+            </className>
+            <package value="{0}.bean">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+    </generator>
+    
+    <!-- Template de création des getters et setters de l'id du bean -->
+    <template name="Bean_GetterSetterId" pathtemplate="bean/GetterSetterId.vm" />
+    
+    <!-- Template de création des getters et setters des champs du bean -->
+    <template name="Bean_GetterSetter" pathtemplate="bean/GetterSetter.vm" />
+    
+    <template name="Bean_Constante" pathtemplate="bean/Constante.vm" />
+    
+    
+    
+    <!-- Générateur de création des implémentations d'objets beans BeanObjetImpl
+       fichier : repGénération/src/main/java/{object.pack.completeName}/bean/impl/{object.name}Impl.java
+       elementsLangage : 
+                    - {project}:{packName}.{name}BeanImpl : le fichier généré
+    -->
+    <generator name="BeanImpl" pathtemplate="beanimpl/BeanImpl.vm"
+        version="1.0.0" generatedObject="obm:object">
+        <supports>
+        	<support>generation</support>
+        	<support>regeneration</support>
+        </supports>
+        <filter class="com.imcfr.generateur.generator.param.filter.ObmObjectIsObject" />
+        <file>
+            <name value="{0}Impl.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/bean/impl">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.{2}BeanImpl">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="{0}Impl">
+                <property>$name</property>
+            </className>
+            <package value="{0}.bean.impl">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+    </generator>
+    
+    <!-- Template de création des attrobut des ids du bean impl -->
+    <template name="BeanImpl_AttributId" pathtemplate="beanimpl/AttributId.vm" />
+    
+    <!-- Template de création des attrobut des ids du bean impl -->
+    <template name="BeanImpl_Attribut" pathtemplate="beanimpl/Attribut.vm" />
+    
+    <!-- Template de'appel d'un setter -->
+    <template name="BeanImpl_SetAttribut" pathtemplate="beanimpl/SetAttribut.vm" />
+    
+    <!-- Template de création des getters et setters de l'id du bean impl -->
+    <template name="BeanImpl_GetterSetterId" pathtemplate="beanimpl/GetterSetterId.vm" />
+    
+    <!-- Template de création des getters et setters des champs du bean impl -->
+    <template name="BeanImpl_GetterSetter" pathtemplate="beanimpl/GetterSetter.vm" />
+    
+    <!-- Template de création des getters et setters des champs du bean impl ayant un usedfor -->
+    <template name="BeanImpl_GetterSetterUsedFor" pathtemplate="beanimpl/GetterSetterUsedFor.vm" />
+    
+    
+    
+    <!-- Générateur de création des classes de clé primaire composées pour les beans
+       fichier : repGénération/src/main/java/{object.pack.completeName}/bean/PK{object.name}.java
+       elementsLangage : 
+                    - {project}:{packName}.PK{name} : le fichier généré
+       filter : uniquement les objets qui n'hérite pas d'un autre et qui ont une clé composé 
+    -->
+    <generator name="PKBean" pathtemplate="pkbean/PKBean.vm"
+        version="1.0.0" generatedObject="obm:object">
+        <supports>
+        	<support>generation</support>
+        	<support>regeneration</support>
+        </supports>
+        <filter class="com.imcfr.generateur.generator.param.filter.ObmObjectIsObject" />
+        <filter class="com.imcfr.generateur.generator.param.filter.ObmObjectWithMultiId" />
+        <file>
+            <name value="PK{0}.java">
+                <property>$name</property>
+            </name>
+            <path value="src/main/java/{0}/bean">
+                <property>$pack.completeName</property>
+            </path>
+        </file>
+        <language>
+            <name value="{0}:{1}.PK{2}">
+                <property>$project</property>
+                <property>$pack.name</property>
+                <property>$name</property>
+            </name>
+            <className value="PK{0}">
+                <property>$name</property>
+            </className>
+            <package value="{0}.bean">
+                <property>$pack.completeName</property>
+            </package>
+            <separator value="." />
+        </language>
+    </generator>
+    
+    
+    
+     <!-- Générateur de création du fichier ${project}-bean.properties de définition des beans disponibles
+       fichier : repGénération/src/main/resources/{project}-bean.properties
+       filter : aucun
+    -->
+    <generator name="BeanProperties" pathtemplate="BeanProperties.vm"
+        version="1.0.0" generatedObject="obm:model">
+        <supports>
+        	<support>generation</support>
+        	<support>regeneration</support>
+        </supports>
+        <file>
+            <name value="{0}-bean.properties">
+             <property>$project</property>
+            </name>
+            <path value="src/main/resources"/>
+        </file>
+    </generator>
+    
+    
+    
+	<!-- Apis permettant de générer directement dans les projets eclipse -->
+    <api name="Bean">
+        <refgenerator name="Interface"/>
+        <refgenerator name="Enum"/>
+        <refgenerator name="Bean"/>
+        <refgenerator name="BeanImpl"/>
+        <refgenerator name="PKBean"/>
+        <refgenerator name="BeanProperties"/>
+    </api>
+	
+</generators>

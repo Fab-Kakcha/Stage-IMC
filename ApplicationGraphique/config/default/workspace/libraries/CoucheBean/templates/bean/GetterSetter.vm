@@ -1,0 +1,43 @@
+## #####
+## Générateur Java
+## Getters et Setters des champs du bean
+## 
+## @param generatedObject l'obm object
+## 
+## @author Pinson Pierre-Marie
+## @version 1.0.0 12/11/2008
+## #####
+##
+##  -------------------------
+##  Chargement de variables
+##  -------------------------
+##
+#set ( $_attribut = ${factory.newAttribut()} )
+#set ( ${_attribut.name} = ${field.name} )
+##
+## si le champ est une liste le type sera List<type>
+## sinon type simplement
+#if ( ${manager.isBaseType(${field.type})} == true )
+#set ( ${_attribut.type} = ${manager.getElement(${field.type}).path} )
+#else
+#set ( ${_attribut.type} = ${manager.getElement("{0}:{1}.{2}Bean", ${field.type}).path} )
+#end
+## si liste
+#if ( ${field.list} )
+#set ( $atype = ${manager.getElement("IList").path} )
+#set ( ${_attribut.type} = "${atype}<${_attribut.type}>" )
+#end
+##
+## -------------------------
+## Le template
+## -------------------------
+##
+#if (${field.is("rw")})
+#**##generate ( "Commun:GetterSetterInterface" )
+#elseif (${field.is("r")})
+#**##generate ( "Commun:GetterInterface" )
+#elseif (${field.is("w")})
+#**##generate ( "Commun:SetterInterface" )
+#else
+#**##generate ( "Commun:GetterSetterInterface" )
+#end

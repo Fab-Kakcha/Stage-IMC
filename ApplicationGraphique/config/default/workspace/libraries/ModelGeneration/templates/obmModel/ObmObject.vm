@@ -1,0 +1,229 @@
+## #####
+## 
+## @param model (com.imcfr.generateur.model.objectmodel.ObmModel)
+## @param element (com.imcfr.generateur.model.objectmodel.ObmObject)
+## 
+## #####
+##
+#set($oo_extends="")
+#if ("$!{element.obmExtendsName}" != "")
+#**##set($oo_extends=" obmExtends=${Q}${element.obmExtendsName}${Q}")
+#end
+#set($oo_abstract="")
+#if (${element.abstract})
+#**##set($oo_abstract=" abstract=${Q}true${Q}")
+#end
+#set($oo_type="")
+#if (${element.typeObject.name()} != "OBJECT")
+#**##set($oo_type=" type=${Q}${element.typeObject.name().toLowerCase()}${Q}")
+#end
+#set($oo_implements="")
+#if (${element.nbImplementations} > 0)
+#**##set($_oo_implementationNameListStr="")
+#**##foreach ($implementationName in ${element.implementationNameList})
+#**##**##if ("$!{_oo_implementationNameListStr}" != "")
+#**##**##**##set($_oo_implementationNameListStr="${_oo_implementationNameListStr} ")
+#**##**##end
+#**##**##set($_oo_implementationNameListStr="${_oo_implementationNameListStr}${implementationName}")
+#**##end
+#**##set($oo_implements=" implements=${Q}${_oo_implementationNameListStr}${Q}")
+#end
+	<object name="${element.name}" pack="$element.packName"$!{oo_type}$!{oo_extends}$!{oo_abstract}$!{oo_implements}>
+#**##foreach ($enum in ${element.enumsList})
+#**##**##if (${enum.nbValues} > 0 || ${enum.nbLibelle} > 0 || ${enum.nbDescriptions} > 0)
+		<enum name="${enum.name}">
+#**##**##**##if (${enum.nbValues} > 0)
+#**##**##**##**##foreach ($value in ${enum.valuesList})
+			<value field="${value.field}" value="${value.value}"/>
+#**##**##**##**##end
+#**##**##**##end
+#**##**##**##set($_indent="${T}${T}${T}${T}")
+#**##**##**##if (${enum.nbDescriptions} > 0)
+
+			<descriptions>
+#**##**##**##**##set($_desc_type="description")
+#**##**##**##**##foreach ($description in ${enum.descriptionsList})
+#**##**##**##**##**##generate("ModelGeneration:ObmDescription")
+#**##**##**##**##end
+			</descriptions>
+#**##**##**##end
+#**##**##**##if (${enum.nbLibelle} > 0)
+
+			<libelles>
+#**##**##**##**##set($_desc_type="libelle")
+#**##**##**##**##foreach ($description in ${enum.libellesList})
+#**##**##**##**##**##generate("ModelGeneration:ObmDescription")
+#**##**##**##**##end
+			</libelles>
+#**##**##**##end
+		</enum>
+#**##**##else
+		<enum name="${enum.name}"/>
+#**##**##end
+#**##end
+#**##foreach ($constante in ${element.constsList})
+#**##**##set($oof_type="")
+#**##**##if ("$!{constante.type}" != "")
+#**##**##**##set($oof_type=" type=${Q}${constante.type}${Q}")
+#**##**##end
+#**##**##set($oof_value="")
+#**##**##if ("$!{constante.value}" != "")
+#**##**##**##set($oof_value=" value=${Q}${constante.value}${Q}")
+#**##**##end
+#**##**##if (${constante.nbLibelle} > 0 || ${constante.nbDescriptions} > 0)
+		<const name="${constante.name}"$!{oof_type}$!{oof_value}>
+#**##**##**##set($_indent="${T}${T}${T}${T}")
+#**##**##**##if (${constante.nbDescriptions} > 0)
+
+			<descriptions>
+#**##**##**##**##set($_desc_type="description")
+#**##**##**##**##foreach ($description in ${constante.descriptionsList})
+#**##**##**##**##**##generate("ModelGeneration:ObmDescription")
+#**##**##**##**##end
+			</descriptions>
+#**##**##**##end
+#**##**##**##if (${constante.nbLibelle} > 0)
+
+			<libelles>
+#**##**##**##**##set($_desc_type="libelle")
+#**##**##**##**##foreach ($description in ${constante.libellesList})
+#**##**##**##**##**##generate("ModelGeneration:ObmDescription")
+#**##**##**##**##end
+			</libelles>
+#**##**##**##end
+		</const>
+#**##**##else
+		<const name="${constante.name}"$!{oof_type}$!{oof_value}/>
+#**##**##end
+#**##end
+#**##foreach ($field in ${element.fieldsList})
+#**##if (!${field.fromHierarchy})
+#**##**##set($oof_type="")
+#**##**##if ("$!{field.type}" != "")
+#**##**##**##set($oof_type=" type=${Q}${field.type}${Q}")
+#**##**##end
+#**##**##set($oof_id="")
+#**##**##if (${field.id})
+#**##**##**##set($oof_id=" id=${Q}true${Q}")
+#**##**##end
+#**##**##set($oof_null="")
+#**##**##if (!${field.null})
+#**##**##**##set($oof_null=" null=${Q}false${Q}")
+#**##**##end
+#**##**##set($oof_list="")
+#**##**##if (${field.list})
+#**##**##**##set($oof_list=" list=${Q}true${Q}")
+#**##**##end
+#**##**##set($oof_transient="")
+#**##**##if (${field.transient})
+#**##**##**##set($oof_transient=" transient=${Q}true${Q}")
+#**##**##end
+#**##**##set($oof_required="")
+#**##**##if (${field.required})
+#**##**##**##set($oof_required=" required=${Q}true${Q}")
+#**##**##end
+#**##**##set($oof_value="")
+#**##**##if ("$!{field.value}" != "")
+#**##**##**##set($oof_value=" value=${Q}${field.value}${Q}")
+#**##**##end
+#**##**##set($oof_access="")
+#**##**##if (${field.is("r")})
+#**##**##**##set($oof_access=" access=${Q}r${Q}")
+#**##**##elseif (${field.is("w")})
+#**##**##**##set($oof_access=" access=${Q}w${Q}")
+#**##**##elseif (${field.is("rw")})
+#**##**##**##set($oof_access=" access=${Q}rw${Q}")
+#**##**##end
+#**##**##set($oof_usedFor="")
+#**##**##if ("$!{field.usedFor}" != "")
+#**##**##**##set($oof_usedFor=" usedFor=${Q}${field.usedFor}${Q}")
+#**##**##end
+#**##**##if (${field.getByCategory("validation").size()} > 0 || ${field.nbLibelle} > 0 || ${field.nbDescriptions} > 0)
+#**##**##**##if (${field.redefinition})
+		<field name="${field.name}"$!{oof_value}$!{oof_access}$!{oof_usedFor}>
+#**##**##**##else
+		<field name="${field.name}"$!{oof_type}$!{oof_id}$!{oof_null}$!{oof_list}$!{oof_transient}$!{oof_value}$!{oof_required}$!{oof_access}$!{oof_usedFor}>
+#**##**##**##end
+#**##**##**##if (${field.getByCategory("validation").size()} > 0)
+			<rules>
+				<validation>
+#**##**##**##**##**##foreach ($rule in ${field.getByCategory("validation")})
+#**##**##**##**##**##**##if (${rule.type} == "pattern")
+					<pattern value="${rule.pattern}"/>
+#**##**##**##**##**##**##elseif (${rule.type} == "min" && ${rule.min} != -1)
+					<min value="${rule.min}"/>
+#**##**##**##**##**##**##elseif (${rule.type} == "max" && ${rule.max} != -1)
+					<max value="${rule.max}"/>
+#**##**##**##**##**##**##end
+#**##**##**##**##**##end
+				</validation>
+			</rules>
+#**##**##**##end
+#**##**##**##set($_indent="${T}${T}${T}${T}")
+#**##**##**##if (${field.nbDescriptions} > 0)
+
+			<descriptions>
+#**##**##**##**##set($_desc_type="description")
+#**##**##**##**##foreach ($description in ${field.descriptionsList})
+#**##**##**##**##**##generate("ModelGeneration:ObmDescription")
+#**##**##**##**##end
+			</descriptions>
+#**##**##**##end
+#**##**##**##if (${field.nbLibelle} > 0)
+
+			<libelles>
+#**##**##**##**##set($_desc_type="libelle")
+#**##**##**##**##foreach ($description in ${field.libellesList})
+#**##**##**##**##**##generate("ModelGeneration:ObmDescription")
+#**##**##**##**##end
+			</libelles>
+#**##**##**##end
+		</field>
+#**##**##else
+#**##**##**##if (${field.redefinition})
+		<field name="${field.name}"$!{oof_value}$!{oof_access}$!{oof_usedFor}/>
+#**##**##**##else
+		<field name="${field.name}"$!{oof_type}$!{oof_id}$!{oof_null}$!{oof_list}$!{oof_transient}$!{oof_value}$!{oof_required}$!{oof_access}$!{oof_usedFor}/>
+#**##**##**##end
+#**##**##end
+#**##end
+#**##end
+#**##set($_indent="${T}${T}${T}")
+#**##if (${element.nbDescriptions} > 0)
+
+		<descriptions>
+#**##**##set($_desc_type="description")
+#**##**##foreach ($description in ${element.descriptionsList})
+#**##**##**##generate("ModelGeneration:ObmDescription")
+#**##**##end
+		</descriptions>
+#**##end
+#**##if (${element.nbLibelles} > 0)
+
+		<libelles>
+#**##**##set($_desc_type="libelle")
+#**##**##foreach ($description in ${element.libellesList})
+#**##**##**##generate("ModelGeneration:ObmDescription")
+#**##**##end
+		</libelles>
+#**##end
+#**##if (${element.getByCategory("orders").size()} > 0)
+
+		<rules>
+#**##**##**##foreach ($rule in ${element.getByCategory("orders")})
+#**##**##**##**##set($ooo_default="")
+#**##**##**##**##if ($rule.default)
+#**##**##**##**##**##set($ooo_default=" default=${Q}${rule.name}${Q}")
+#**##**##**##**##end
+#**##**##**##**###
+#**##**##**##**##set($_ooo_str="${N}${T}${T}${T}${T}<order name=${Q}${rule.name}${Q}>")
+#**##**##**##**##foreach ($field in ${rule.fieldsList})
+#**##**##**##**##**##set($_ooo_str="${_ooo_str}${N}${T}${T}${T}${T}${T}<field name=${Q}${field.name}${Q} direction=${Q}${field.direction}${Q}/>")
+#**##**##**##**##end
+#**##**##**##**##set($_ooo_str="${_ooo_str}${N}${T}${T}${T}${T}</order>")
+#**##**##**##end
+			<orders$!{ooo_default}>$!{_ooo_str}
+			</orders>
+		</rules>
+#**##end
+	</object>
